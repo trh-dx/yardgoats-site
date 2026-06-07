@@ -203,13 +203,22 @@ export default function TryoutsPage() {
           <div className="max-w-[1180px] mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { icon: "📅", label: "Dates",      val: "July 12th",             sub: undefined },
-                { icon: "📍", label: "Location",   val: "The Goat Yard",          sub: "Pecan St, Paradise, TX" },
-                { icon: "⚾", label: "Age Groups", val: "7U · 8U · 9U · 11U",    sub: undefined },
-                { icon: "💰", label: "Cost",       val: "Free to Try Out",        sub: undefined },
+                { icon: null,   label: "Dates",      val: "July 12th",             sub: undefined },
+                { icon: "📍",  label: "Location",   val: "The Goat Yard",          sub: "Pecan St, Paradise, TX" },
+                { icon: "⚾",  label: "Age Groups", val: "7U · 8U · 9U · 11U",    sub: undefined },
+                { icon: "💰",  label: "Cost",       val: "Free to Try Out",        sub: undefined },
               ].map((f) => (
                 <div key={f.label} className="flex items-center gap-3">
-                  <span className="text-[1.35rem]">{f.icon}</span>
+                  {f.icon ? (
+                    <span className="text-[1.35rem]">{f.icon}</span>
+                  ) : (
+                    <svg className="w-6 h-6 text-white flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  )}
                   <div>
                     <div className="text-[0.65rem] font-[family-name:var(--font-barlow)] font-bold uppercase tracking-[2px] text-navy mb-0.5">
                       {f.label}
