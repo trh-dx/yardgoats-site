@@ -71,7 +71,7 @@ export default function Nav() {
             <Link
               href="/tryouts"
               className={`text-[0.82rem] font-bold uppercase tracking-wide transition-colors ${
-                onTryouts ? "text-tan" : "text-gray-lt hover:text-tan"
+                onTryouts ? "text-tan" : "nav-pulse hover:[animation-play-state:paused]"
               }`}
             >
               Tryouts

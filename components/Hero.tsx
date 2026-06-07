@@ -39,7 +39,7 @@ export default function Hero() {
           alt="Paradise Yard Goats"
           width={190}
           height={190}
-          className="mb-6 drop-shadow-[0_8px_36px_rgba(0,0,0,0.7)]"
+          className="logo-float mb-6"
           style={{ width: "min(190px, 44vw)", height: "auto" }}
           priority
         />
@@ -77,9 +77,9 @@ export default function Hero() {
           </a>
           <a
             href="/tryouts"
-            className="inline-flex items-center gap-2 bg-transparent text-white font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-white/40 hover:border-white hover:bg-white/8 transition-all hover:-translate-y-0.5"
+            className="btn-glow inline-flex items-center gap-2 bg-tan text-navy font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-tan hover:brightness-110 hover:[animation-play-state:paused] transition-all"
           >
-            Ask About Tryouts
+            View Tryout Info
           </a>
           <a
             href="#schedule"

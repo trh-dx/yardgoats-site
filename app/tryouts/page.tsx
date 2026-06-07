@@ -80,7 +80,7 @@ const steps = [
   {
     num: "01",
     title: "Show Up",
-    body: "Come to the tryout location at your division's scheduled time. No pre-registration required — just show up ready to play.",
+    body: "Come to the tryout location at your division's scheduled time. Be on time and ready to play and have fun.",
   },
   {
     num: "02",
@@ -95,7 +95,7 @@ const steps = [
   {
     num: "04",
     title: "Hear Back",
-    body: "Coaches follow up with families after tryouts. Our goal is to find a place for every player who wants to be a Yard Goat.",
+    body: "Coaches follow up with families after tryouts.",
   },
 ];
 
@@ -281,10 +281,9 @@ export default function TryoutsPage() {
                 href={siteConfig.register}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-green text-white font-[family-name:var(--font-barlow)] font-bold text-[1.05rem] tracking-[2px] uppercase px-10 py-3.5 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(46,125,50,0.45)]"
-                style={{ transform: "skewX(-8deg)" }}
+                className="inline-flex items-center gap-2.5 bg-green text-white font-[family-name:var(--font-barlow)] font-bold text-[1rem] tracking-[2px] uppercase px-8 py-3.5 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(46,125,50,0.5)]"
               >
-                Register <span className="text-navy">Here</span> ⚾
+                ⚾ Register for Tryouts
               </a>
             </div>
           </div>

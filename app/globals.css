@@ -35,3 +35,56 @@ body {
 [id] {
   scroll-margin-top: 72px;
 }
+
+@keyframes logo-entrance {
+  0%   { opacity: 0; transform: scale(0.45); }
+  65%  { opacity: 1; transform: scale(1.1);  }
+  100% { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1deg);
+    filter: drop-shadow(0 8px 36px rgba(0,0,0,0.7));
+  }
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+    filter: drop-shadow(0 22px 44px rgba(0,0,0,0.5));
+  }
+}
+
+.logo-float {
+  animation:
+    logo-entrance 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    float 3.6s ease-in-out 0.75s infinite;
+}
+
+@keyframes nav-pulse {
+  0%, 100% {
+    color: #c9d6de;
+    text-shadow: none;
+  }
+  50% {
+    color: #C49A6C;
+    text-shadow: 0 0 10px rgba(196,154,108,0.65);
+  }
+}
+
+.nav-pulse {
+  animation: nav-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tan-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(196,154,108,0.35), 0 4px 16px rgba(196,154,108,0.2);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 0 28px 8px rgba(196,154,108,0.7), 0 8px 28px rgba(196,154,108,0.45);
+    transform: translateY(-3px);
+  }
+}
+
+.btn-glow {
+  animation: tan-glow 2s ease-in-out infinite;
+}
