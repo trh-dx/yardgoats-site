@@ -2,7 +2,7 @@ import { teams } from "@/lib/data";
 
 export default function Teams() {
   return (
-    <section id="teams" className="bg-navy py-24">
+    <section id="teams" className="bg-navy py-16 md:py-24">
       <div className="max-w-[1180px] mx-auto px-6">
 
         <div className="text-center mb-10">

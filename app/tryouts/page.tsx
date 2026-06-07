@@ -117,7 +117,7 @@ export default function TryoutsPage() {
       <main>
 
         {/* Page Header — Banner */}
-        <section className="relative bg-navy pt-[68px] overflow-hidden" style={{ minHeight: "540px" }}>
+        <section className="relative bg-navy pt-[68px] overflow-hidden" style={{ minHeight: "clamp(420px, 70vh, 540px)" }}>
           {/* Background image */}
           <Image
             src="/images/baseball-tryout-image.png"
@@ -157,7 +157,7 @@ export default function TryoutsPage() {
 
             <div className="max-w-[600px]">
               {/* Logo + org name */}
-              <div className="flex items-center gap-4 mb-5">
+              <div className="flex items-center flex-wrap gap-4 mb-5">
                 <Image
                   src="/yardgoatsimage.png"
                   alt="Yard Goats"
@@ -230,7 +230,7 @@ export default function TryoutsPage() {
         </div>
 
         {/* Tryout Schedule */}
-        <section className="bg-navy py-20">
+        <section className="bg-navy py-14 md:py-20">
           <div className="max-w-[860px] mx-auto px-6 text-center">
             <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
               Tryout Schedule
@@ -248,7 +248,7 @@ export default function TryoutsPage() {
                 { ages: "9U",      time: "1:00 PM",  end: "1:45 PM",  bg: "#C49A6C" },
                 { ages: "11U",     time: "2:00 PM",  end: "2:45 PM",  bg: "#B3261E" },
               ].map((slot) => (
-                <div key={slot.ages} className="relative flex-shrink-0" style={{ width: "190px", height: "240px" }}>
+                <div key={slot.ages} className="relative flex-shrink-0" style={{ width: "clamp(150px, 42vw, 190px)", height: "clamp(190px, 53vw, 240px)" }}>
                   {/* Home plate shape */}
                   <div
                     className="absolute inset-0"
@@ -290,7 +290,7 @@ export default function TryoutsPage() {
         </section>
 
         {/* Age Divisions */}
-        <section className="bg-charcoal py-24">
+        <section className="bg-charcoal py-16 md:py-24">
           <div className="max-w-[1180px] mx-auto px-6">
             <div className="text-center mb-12">
               <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
@@ -347,9 +347,9 @@ export default function TryoutsPage() {
         </section>
 
         {/* What to Expect + What to Bring */}
-        <section className="bg-navy py-24">
+        <section className="bg-navy py-16 md:py-24">
           <div className="max-w-[1180px] mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-10 md:gap-16">
 
               {/* Steps */}
               <div>
@@ -413,7 +413,7 @@ export default function TryoutsPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-charcoal py-20 border-t border-white/6">
+        <section className="bg-charcoal py-14 md:py-20 border-t border-white/6">
           <div className="max-w-[680px] mx-auto px-6 text-center">
             <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
               Stay in the Loop

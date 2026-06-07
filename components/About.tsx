@@ -6,7 +6,7 @@ const values = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-navy-mid py-24">
+    <section id="about" className="bg-navy-mid py-16 md:py-24">
       <div className="max-w-[1180px] mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
@@ -25,7 +25,7 @@ export default function About() {
               fundamentals, effort, sportsmanship, and love for the game.
             </p>
 
-            <div className="grid grid-cols-3 gap-3 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
               {values.map((v) => (
                 <div
                   key={v.label}

@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/config";
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="bg-charcoal py-24">
+    <section id="gallery" className="bg-charcoal py-16 md:py-24">
       <div className="max-w-[1180px] mx-auto px-6">
 
         <div className="flex justify-between items-end mb-8 flex-wrap gap-4">
@@ -26,7 +26,7 @@ export default function Gallery() {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3" style={{ gridAutoRows: "200px" }}>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3" style={{ gridAutoRows: "clamp(140px, 22vw, 200px)" }}>
           {gallery.map((item, i) => (
             <div
               key={i}

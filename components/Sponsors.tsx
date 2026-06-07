@@ -8,7 +8,7 @@ const icons: Record<string, string> = {
 
 export default function Sponsors() {
   return (
-    <section id="sponsors" className="bg-navy py-24">
+    <section id="sponsors" className="bg-navy py-16 md:py-24">
       <div className="max-w-[1180px] mx-auto px-6">
 
         {/* Header */}

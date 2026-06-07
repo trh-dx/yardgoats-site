@@ -17,7 +17,7 @@ export default function Schedule() {
   return (
     <section
       id="schedule"
-      className="relative py-24"
+      className="relative py-16 md:py-24"
       style={{ background: "linear-gradient(135deg, #0c1c12 0%, #09142a 100%)" }}
     >
       {/* Field line texture */}
