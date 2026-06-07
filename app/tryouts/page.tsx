@@ -165,7 +165,7 @@ export default function TryoutsPage() {
                   height={68}
                   className="rounded-full bg-green object-cover flex-shrink-0 drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
                 />
-                <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.8rem] tracking-[4px] uppercase text-tan">
+                <span className="font-[family-name:var(--font-barlow)] font-bold text-[1rem] tracking-[3px] uppercase text-tan">
                   Paradise Yard Goats Baseball
                 </span>
               </div>
@@ -212,11 +212,16 @@ export default function TryoutsPage() {
                   {f.icon ? (
                     <span className="text-[1.35rem]">{f.icon}</span>
                   ) : (
-                    <svg className="w-6 h-6 text-white flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
+                    <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="white" strokeWidth="1.6"/>
+                      <line x1="3" y1="9" x2="21" y2="9" stroke="white" strokeWidth="1.6"/>
+                      <line x1="8" y1="2" x2="8" y2="6.5" stroke="white" strokeWidth="2.2" strokeLinecap="round"/>
+                      <line x1="16" y1="2" x2="16" y2="6.5" stroke="white" strokeWidth="2.2" strokeLinecap="round"/>
+                      <rect x="6.5" y="11.5" width="2.5" height="2.5" rx="0.5" fill="white"/>
+                      <rect x="10.75" y="11.5" width="2.5" height="2.5" rx="0.5" fill="white"/>
+                      <rect x="15" y="11.5" width="2.5" height="2.5" rx="0.5" fill="white"/>
+                      <rect x="6.5" y="15.5" width="2.5" height="2.5" rx="0.5" fill="white"/>
+                      <rect x="10.75" y="15.5" width="2.5" height="2.5" rx="0.5" fill="white"/>
                     </svg>
                   )}
                   <div>
