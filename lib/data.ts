@@ -35,7 +35,7 @@ export const schedule = [
     event: "NCS Summer Classic",
     isTournament: true,
     location: "Bridgeport, TX",
-    team: "10U",
+    team: "11U",
     time: "TBD",
   },
   {
@@ -51,7 +51,7 @@ export const schedule = [
     event: "DFW Youth Invitational",
     isTournament: true,
     location: "Fort Worth, TX",
-    team: "10U",
+    team: "9U / 11U",
     time: "TBD",
   },
   {
@@ -67,7 +67,7 @@ export const schedule = [
     event: "Summer Showdown",
     isTournament: true,
     location: "Weatherford, TX",
-    team: "8U / 10U",
+    team: "8U / 11U",
     time: "TBD",
   },
 ];
