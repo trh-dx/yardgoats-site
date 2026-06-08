@@ -51,6 +51,10 @@ yardgoats-site/
 │   ├── globals.css           # Tailwind v4 @theme brand tokens + CSS animations
 │   ├── layout.tsx            # Root layout — fonts, metadata, html/body
 │   ├── page.tsx              # Home page — imports and orders all sections
+│   ├── teams/
+│   │   └── page.tsx          # Teams page — divisions, coaches, player spotlights, philosophy
+│   ├── schedule/
+│   │   └── page.tsx          # Schedule page — tournament calendar, full schedule, external links
 │   └── tryouts/
 │       └── page.tsx          # Tryouts page — schedule, divisions, register CTA
 ├── components/
@@ -59,7 +63,7 @@ yardgoats-site/
 │   ├── Scoreboard.tsx        # Stats strip: location, age groups, level, support
 │   ├── StitchDivider.tsx     # Red baseball stitch SVG divider
 │   ├── About.tsx             # About section with value cards
-│   ├── Teams.tsx             # Baseball card style team cards (7U, 8U, 9U, 11U)
+│   ├── Teams.tsx             # Baseball card style team cards (used by /teams page)
 │   ├── Schedule.tsx          # Game/tournament schedule table with division filters
 │   ├── Sponsors.tsx          # Single / Double / Home Run sponsor packages
 │   ├── Gallery.tsx           # Game day photo grid with placeholders
@@ -71,7 +75,7 @@ yardgoats-site/
 └── public/
     ├── yardgoatsimage.png    # Team logo (goat mascot)
     └── images/
-        └── baseball-tryout-image.png  # Tryouts page banner photo
+        └── baseball-tryout-image.png  # Hero banner photo (Teams, Schedule, Tryouts pages)
 ```
 
 ---
@@ -94,8 +98,8 @@ export const siteConfig = {
 |---|---|
 | `facebook` | Nav, Hero, Gallery, Contact, Footer, Tryouts |
 | `register` | Tryouts page — banner button + schedule section |
-| `gameChanger` | Schedule section, Contact, Footer |
-| `ncs` | Schedule section, Footer |
+| `gameChanger` | Schedule page, Schedule component, Contact, Footer |
+| `ncs` | Schedule page, Schedule component, Footer |
 | `email` | Contact section, Footer |
 
 ---
@@ -184,8 +188,9 @@ Defined in `app/globals.css` under `@theme`.
 | Token | Hex | Tailwind class |
 |---|---|---|
 | `--color-navy` | `#08111F` | `bg-navy`, `text-navy` |
-| `--color-green` | `#2E7D32` | `bg-green`, `text-green` |
+| `--color-green` | `#00A651` | `bg-green`, `text-green` |
 | `--color-green-lt` | `#43a047` | `bg-green-lt`, `text-green-lt` |
+| `--color-green-dk` | `#007A3D` | `bg-green-dk`, `text-green-dk` |
 | `--color-tan` | `#C49A6C` | `bg-tan`, `text-tan` |
 | `--color-red` | `#B3261E` | `bg-red`, `text-red` |
 | `--color-charcoal` | `#1F2933` | `bg-charcoal`, `text-charcoal` |
@@ -214,11 +219,31 @@ Apply in JSX: `className="font-[family-name:var(--font-bebas)]"`
 |---|---|---|
 | `#home` | `Hero.tsx` | — |
 | `#about` | `About.tsx` | About |
-| `#teams` | `Teams.tsx` | Teams |
-| `#schedule` | `Schedule.tsx` | Schedule |
+| `#schedule` | `Schedule.tsx` | — |
 | `#sponsors` | `Sponsors.tsx` | Sponsors |
 | `#gallery` | `Gallery.tsx` | Photos |
 | `#contact` | `Contact.tsx` | Get Involved |
+
+### Teams page (`/teams`)
+
+| Section | Description |
+|---|---|
+| Hero | "Built on Dirt. Driven by Development." — baseball photo background |
+| Team Directory | 7U, 8U, 9U, 11U cards with coach, format, record |
+| Meet the Coaches | Coach cards with bio, years, and quote |
+| Player Spotlights | Recognition cards by position and team |
+| Development Philosophy | Four pillars: Skills, Teamwork, Confidence, Sportsmanship |
+| Join the Herd CTA | Register for Tryouts + Contact buttons |
+
+### Schedule page (`/schedule`)
+
+| Section | Description |
+|---|---|
+| Hero | "From the Dugout" — baseball photo background |
+| Tournament Calendar | Key tournament cards with dates, location, teams |
+| Full Schedule Table | Filterable by division — pulls from `lib/data.ts` |
+| External Links | GameChanger live scoring + NCS Events cards |
+| Join CTA | Register for Tryouts + Contact buttons with logo watermark |
 
 ### Tryouts page (`/tryouts`)
 
