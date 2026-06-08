@@ -3,7 +3,6 @@ import Hero         from "@/components/Hero";
 import Scoreboard   from "@/components/Scoreboard";
 import StitchDivider from "@/components/StitchDivider";
 import About        from "@/components/About";
-import Teams        from "@/components/Teams";
 import Schedule     from "@/components/Schedule";
 import Sponsors     from "@/components/Sponsors";
 import Gallery      from "@/components/Gallery";
@@ -19,8 +18,6 @@ export default function Home() {
         <Scoreboard />
         <StitchDivider />
         <About />
-        <StitchDivider />
-        <Teams />
         <StitchDivider />
         <Schedule />
         <StitchDivider />

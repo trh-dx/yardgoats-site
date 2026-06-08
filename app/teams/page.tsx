@@ -171,7 +171,7 @@ export default function TeamsPage() {
   return (
     <>
       <Nav />
-      <main style={{ backgroundColor: "#0F0F0F", color: "#F8F6F0" }}>
+      <main style={{ backgroundColor: "#08111F", color: "#F8F6F0" }}>
 
         {/* ─── SECTION 1 · HERO ─────────────────────────────────────── */}
         <section
@@ -190,18 +190,18 @@ export default function TeamsPage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(120deg, rgba(10,10,10,0.97) 0%, rgba(0,166,81,0.88) 45%, rgba(10,10,10,0.93) 100%)",
+                "linear-gradient(120deg, rgba(8,17,31,0.97) 0%, rgba(0,166,81,0.42) 45%, rgba(8,17,31,0.93) 100%)",
             }}
           />
           {/* Top vignette */}
           <div
             className="absolute inset-x-0 top-0 h-40 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.6), transparent)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(8,17,31,0.6), transparent)" }}
           />
           {/* Bottom fade */}
           <div
             className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
-            style={{ background: "linear-gradient(to top, #0F0F0F, transparent)" }}
+            style={{ background: "linear-gradient(to top, #08111F, transparent)" }}
           />
 
           <div
@@ -224,8 +224,8 @@ export default function TeamsPage() {
                 className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.72rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
                 style={{
                   color: "#D4AF37",
-                  backgroundColor: "rgba(212,175,55,0.08)",
-                  border: "1px solid rgba(212,175,55,0.22)",
+                  backgroundColor: "rgba(8,17,31,0.75)",
+                  border: "1px solid rgba(212,175,55,0.35)",
                 }}
               >
                 Paradise Yard Goats Baseball · Paradise, TX
@@ -234,7 +234,7 @@ export default function TeamsPage() {
               {/* Headline */}
               <h1
                 className="font-[family-name:var(--font-bebas)] leading-none text-white tracking-wide mb-5"
-                style={{ fontSize: "clamp(5rem, 15vw, 10rem)", letterSpacing: "0.02em" }}
+                style={{ fontSize: "clamp(5rem, 15vw, 10rem)", letterSpacing: "0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9)" }}
               >
                 THE{" "}
                 <span style={{ color: "#D4AF37" }}>GOATS</span>
@@ -253,7 +253,7 @@ export default function TeamsPage() {
               {/* Support text */}
               <p
                 className="text-[0.97rem] leading-relaxed mb-8 max-w-[500px]"
-                style={{ color: "rgba(255,255,255,0.45)" }}
+                style={{ color: "rgba(255,255,255,0.78)" }}
               >
                 Explore the Paradise Yard Goats teams, meet our coaches, and discover a program
                 built around player development, teamwork, and a love for the game.
@@ -284,7 +284,7 @@ export default function TeamsPage() {
         <section
           id="teams"
           className="py-16 md:py-24"
-          style={{ backgroundColor: "#111111", scrollMarginTop: "68px" }}
+          style={{ backgroundColor: "#0a1525", scrollMarginTop: "68px" }}
         >
           <div className="max-w-[1180px] mx-auto px-6">
 
@@ -315,7 +315,7 @@ export default function TeamsPage() {
                 <div
                   key={team.age}
                   className="rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 border border-[rgba(212,175,55,0.18)] hover:border-[rgba(212,175,55,0.55)] shadow-[0_4px_28px_rgba(0,0,0,0.45)] hover:shadow-[0_24px_64px_rgba(212,175,55,0.1),0_4px_28px_rgba(0,0,0,0.5)]"
-                  style={{ backgroundColor: "#181818" }}
+                  style={{ backgroundColor: "#0f1f35" }}
                 >
                   {/* Gold top stripe */}
                   <div style={{ height: "3px", background: "linear-gradient(to right, #D4AF37, #E8CC65, #D4AF37)" }} />
@@ -413,7 +413,7 @@ export default function TeamsPage() {
         </section>
 
         {/* ─── SECTION 3 · MEET THE COACHES ─────────────────────────── */}
-        <section className="py-16 md:py-24" style={{ backgroundColor: "#161616" }}>
+        <section className="py-16 md:py-24" style={{ backgroundColor: "#0d1b2e" }}>
           <div className="max-w-[1180px] mx-auto px-6">
 
             <div className="text-center mb-12">
@@ -444,7 +444,7 @@ export default function TeamsPage() {
                   key={i}
                   className="rounded-xl overflow-hidden transition-all duration-300 hover:border-[rgba(212,175,55,0.3)] hover:-translate-y-1"
                   style={{
-                    backgroundColor: "#1C1C1C",
+                    backgroundColor: "#121e30",
                     border: "1px solid rgba(255,255,255,0.07)",
                   }}
                 >
@@ -513,7 +513,7 @@ export default function TeamsPage() {
         </section>
 
         {/* ─── SECTION 4 · PLAYER SPOTLIGHTS ────────────────────────── */}
-        <section className="py-16 md:py-24" style={{ backgroundColor: "#111111" }}>
+        <section className="py-16 md:py-24" style={{ backgroundColor: "#0a1525" }}>
           <div className="max-w-[1180px] mx-auto px-6">
 
             <div className="text-center mb-12">
@@ -544,7 +544,7 @@ export default function TeamsPage() {
                   key={i}
                   className="flex rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,175,55,0.28)]"
                   style={{
-                    backgroundColor: "#1C1C1C",
+                    backgroundColor: "#121e30",
                     border: "1px solid rgba(255,255,255,0.07)",
                   }}
                 >
@@ -584,7 +584,7 @@ export default function TeamsPage() {
         </section>
 
         {/* ─── SECTION 5 · DEVELOPMENT PHILOSOPHY ──────────────────── */}
-        <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#141414" }}>
+        <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#0b1827" }}>
           {/* Dirt dot texture */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -678,13 +678,13 @@ export default function TeamsPage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(150deg, rgba(10,10,10,0.94) 0%, rgba(0,166,81,0.85) 50%, rgba(10,10,10,0.94) 100%)",
+                "linear-gradient(150deg, rgba(8,17,31,0.94) 0%, rgba(0,166,81,0.85) 50%, rgba(8,17,31,0.94) 100%)",
             }}
           />
           {/* Top + bottom vignette */}
           <div
             className="absolute inset-x-0 top-0 h-20 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, #141414, transparent)" }}
+            style={{ background: "linear-gradient(to bottom, #08111F, transparent)" }}
           />
 
           <div className="relative max-w-[680px] mx-auto px-6 text-center">
