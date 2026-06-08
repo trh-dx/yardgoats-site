@@ -6,11 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/#about",    label: "About" },
-  { href: "/#teams",    label: "Teams" },
-  { href: "/#schedule", label: "Schedule" },
-  { href: "/#sponsors", label: "Sponsors" },
-  { href: "/#gallery",  label: "Photos" },
+  { href: "/#about",    label: "About",    route: false },
+  { href: "/teams",     label: "Teams",    route: true  },
+  { href: "/#schedule", label: "Schedule", route: false },
+  { href: "/#sponsors", label: "Sponsors", route: false },
+  { href: "/#gallery",  label: "Photos",   route: false },
 ];
 
 export default function Nav() {
@@ -18,6 +18,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const onTryouts = pathname === "/tryouts";
+  const onTeams   = pathname === "/teams";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -57,16 +58,21 @@ export default function Nav() {
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-6 list-none">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-gray-lt text-[0.82rem] font-semibold uppercase tracking-wide hover:text-tan transition-colors"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
+          {links.map((l) => {
+            const active = l.route && onTeams && l.href === "/teams";
+            const cls = `text-[0.82rem] font-semibold uppercase tracking-wide transition-colors ${
+              active ? "text-tan" : "text-gray-lt hover:text-tan"
+            }`;
+            return (
+              <li key={l.href}>
+                {l.route ? (
+                  <Link href={l.href} className={cls}>{l.label}</Link>
+                ) : (
+                  <a href={l.href} className={cls}>{l.label}</a>
+                )}
+              </li>
+            );
+          })}
           <li>
             <Link
               href="/tryouts"
@@ -114,16 +120,17 @@ export default function Nav() {
       {/* Mobile menu */}
       {open && (
         <div className="fixed top-[68px] left-0 right-0 z-40 bg-navy/99 backdrop-blur-md border-b border-green/20 flex flex-col px-6 py-4">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={closeMenu}
-              className="text-gray-lt font-semibold py-2.5 border-b border-white/7 hover:text-tan transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const active = l.route && onTeams && l.href === "/teams";
+            const cls = `font-semibold py-2.5 border-b border-white/7 transition-colors ${
+              active ? "text-tan" : "text-gray-lt hover:text-tan"
+            }`;
+            return l.route ? (
+              <Link key={l.href} href={l.href} onClick={closeMenu} className={cls}>{l.label}</Link>
+            ) : (
+              <a key={l.href} href={l.href} onClick={closeMenu} className={cls}>{l.label}</a>
+            );
+          })}
           <Link
             href="/tryouts"
             onClick={closeMenu}

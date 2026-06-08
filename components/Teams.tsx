@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { teams } from "@/lib/data";
 
 export default function Teams() {
@@ -64,12 +65,12 @@ export default function Teams() {
                   <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[1.5px] uppercase text-gray">
                     {team.tag}
                   </span>
-                  <a
-                    href="#contact"
+                  <Link
+                    href={`/teams#team-${team.age}`}
                     className="text-green-lt border border-green rounded px-4 py-1.5 font-[family-name:var(--font-barlow)] font-bold text-[0.8rem] tracking-wide uppercase hover:bg-green hover:text-white transition-all"
                   >
-                    Get Info
-                  </a>
+                    Learn More
+                  </Link>
                 </div>
               </div>
             </div>
