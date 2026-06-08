@@ -84,7 +84,7 @@ export default function SchedulePage() {
               <span style={{ color: "#D4AF37" }}>Schedule</span>
             </div>
 
-            <div className="max-w-[680px]">
+            <div className="max-w-[680px]" style={{ paddingTop: "4rem" }}>
               {/* Eyebrow badge */}
               <div
                 className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.72rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
@@ -101,7 +101,7 @@ export default function SchedulePage() {
               <h1
                 className="font-[family-name:var(--font-bebas)] leading-none text-white tracking-wide mb-5"
                 style={{
-                  fontSize: "clamp(4.5rem, 13vw, 9rem)",
+                  fontSize: "clamp(3.5rem, 9vw, 7rem)",
                   letterSpacing: "0.02em",
                   textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9)",
                 }}
@@ -298,20 +298,21 @@ export default function SchedulePage() {
         </section>
 
         {/* ─── SECTION 5 · JOIN CTA ──────────────────────────────────── */}
-        <section className="relative py-20 md:py-28 overflow-hidden">
-          <Image
-            src="/images/baseball-tryout-image.png"
-            alt=""
-            fill
-            className="object-cover object-center"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(150deg, rgba(8,17,31,0.94) 0%, rgba(0,166,81,0.85) 50%, rgba(8,17,31,0.94) 100%)",
-            }}
-          />
+        <section className="relative py-20 md:py-28 overflow-hidden" style={{ backgroundColor: "#08111F" }}>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <Image
+              src="/yardgoatsimage.png"
+              alt=""
+              width={580}
+              height={580}
+              className="object-contain opacity-[0.35] select-none"
+            />
+            {/* Suppress green bleed while keeping logo outlines visible */}
+            <div
+              className="absolute inset-0"
+              style={{ backgroundColor: "rgba(8,17,31,0.72)" }}
+            />
+          </div>
           <div
             className="absolute inset-x-0 top-0 h-20 pointer-events-none"
             style={{ background: "linear-gradient(to bottom, #08111F, transparent)" }}
