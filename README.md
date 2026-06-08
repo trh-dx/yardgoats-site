@@ -1,6 +1,9 @@
-# Paradise Yard Goats Baseball — Next.js Site
+# Paradise Yard Goats Baseball — Website
 
-Official website for the Paradise Yard Goats Baseball organization, built with Next.js 16, React 19, and Tailwind CSS v4.
+Official website for the Paradise Yard Goats Baseball organization based in Paradise, Texas.  
+Teams: **7U · 8U · 9U · 11U**
+
+**GitHub:** https://github.com/trh-dx/yardgoats-site
 
 ---
 
@@ -10,9 +13,9 @@ Official website for the Paradise Yard Goats Baseball organization, built with N
 |---|---|---|
 | Next.js | 16 | Framework, App Router |
 | React | 19 | UI components |
-| Tailwind CSS | 4 | Styling via `@theme` tokens |
+| Tailwind CSS | 4 | Styling via `@theme` tokens (no config file) |
 | TypeScript | 5 | Type safety |
-| next/font | built-in | Google Fonts (zero layout shift) |
+| next/font | built-in | Google Fonts — zero layout shift |
 
 ---
 
@@ -22,14 +25,20 @@ Official website for the Paradise Yard Goats Baseball organization, built with N
 # Install dependencies
 npm install
 
-# Start dev server (runs on port 3001 if 3000 is in use)
-npm run dev -- -p 3001
+# Start dev server
+npm run dev
 
 # Build for production
 npm run build
 
 # Start production server
 npm start
+```
+
+Dev server runs on port 3000 by default. If that port is in use:
+
+```bash
+npm run dev -- -p 3001
 ```
 
 ---
@@ -39,19 +48,19 @@ npm start
 ```
 yardgoats-site/
 ├── app/
-│   ├── globals.css           # Tailwind v4 @theme brand tokens + base styles
+│   ├── globals.css           # Tailwind v4 @theme brand tokens + CSS animations
 │   ├── layout.tsx            # Root layout — fonts, metadata, html/body
 │   ├── page.tsx              # Home page — imports and orders all sections
 │   └── tryouts/
 │       └── page.tsx          # Tryouts page — schedule, divisions, register CTA
 ├── components/
 │   ├── Nav.tsx               # Sticky nav, mobile hamburger, active-page detection
-│   ├── Hero.tsx              # Full-viewport hero with logo and CTA buttons
+│   ├── Hero.tsx              # Full-viewport hero with animated logo and CTA
 │   ├── Scoreboard.tsx        # Stats strip: location, age groups, level, support
 │   ├── StitchDivider.tsx     # Red baseball stitch SVG divider
 │   ├── About.tsx             # About section with value cards
 │   ├── Teams.tsx             # Baseball card style team cards (7U, 8U, 9U, 11U)
-│   ├── Schedule.tsx          # Game/tournament schedule table
+│   ├── Schedule.tsx          # Game/tournament schedule table with division filters
 │   ├── Sponsors.tsx          # Single / Double / Home Run sponsor packages
 │   ├── Gallery.tsx           # Game day photo grid with placeholders
 │   ├── Contact.tsx           # Contact form with validation (Client Component)
@@ -60,7 +69,7 @@ yardgoats-site/
 │   ├── config.ts             # All external URLs — edit here to update every link
 │   └── data.ts               # All site content — edit here to update the site
 └── public/
-    ├── yardgoatsimage.png    # Team logo
+    ├── yardgoatsimage.png    # Team logo (goat mascot)
     └── images/
         └── baseball-tryout-image.png  # Tryouts page banner photo
 ```
@@ -83,11 +92,11 @@ export const siteConfig = {
 
 | Key | Used in |
 |---|---|
-| `facebook` | Nav, Hero, Gallery, Contact, Footer, Tryouts page |
-| `register` | Tryouts page (banner + schedule section) |
-| `gameChanger` | Contact, Footer |
-| `ncs` | Footer |
-| `email` | Contact section |
+| `facebook` | Nav, Hero, Gallery, Contact, Footer, Tryouts |
+| `register` | Tryouts page — banner button + schedule section |
+| `gameChanger` | Schedule section, Contact, Footer |
+| `ncs` | Schedule section, Footer |
+| `email` | Contact section, Footer |
 
 ---
 
@@ -108,7 +117,7 @@ All schedule rows, team info, sponsor packages, and gallery items live in **`lib
 },
 ```
 
-Set `isTournament: true` to show the "Tournament" badge.
+Set `isTournament: true` to show the "Tournament" badge in the table.
 
 ### Add or edit a team
 
@@ -121,7 +130,7 @@ Set `isTournament: true` to show the "Tournament" badge.
 },
 ```
 
-Current divisions: **7U, 8U, 9U, 11U**
+Current divisions: **7U · 8U · 9U · 11U**
 
 ### Update sponsor packages
 
@@ -143,43 +152,28 @@ Set `featured: true` to highlight a package with the red "Featured" badge.
 
 ## Tryouts Page
 
-The tryouts page lives at `/tryouts` (`app/tryouts/page.tsx`). Content to keep updated:
+The tryouts page lives at `/tryouts` (`app/tryouts/page.tsx`). Key content to keep updated each year:
 
-| Item | Location in file |
+| Item | Where to edit |
 |---|---|
 | Tryout year ("2026 YG Tryouts") | `<h1>` in the Page Header section |
 | Date in facts bar | `val: "July 12th"` in the Key Facts array |
 | Location name & address | `val: "The Goat Yard"` / `sub: "Pecan St, Paradise, TX"` |
-| Time slots per division | `scheduleSlots` array in Tryout Schedule section |
+| Time slots per division | slot objects in the Tryout Schedule section |
 | Division details (age, format, highlights) | `divisions` array near top of file |
-| Register link | Comes from `siteConfig.register` in `lib/config.ts` |
+| Register link | `siteConfig.register` in `lib/config.ts` |
 
 ---
 
-## Swapping in Real Photos
+## Animations
 
-### Team logo
-Replace `public/yardgoatsimage.png`. Keep the same filename, or update the `src` prop in `Nav.tsx`, `Hero.tsx`, `Footer.tsx`, and `app/tryouts/page.tsx`.
+Defined as CSS `@keyframes` in `app/globals.css` and applied via utility classes:
 
-### Tryouts banner
-Replace `public/images/baseball-tryout-image.png` with any wide landscape photo. The overlay handles contrast automatically.
-
-### Gallery photos
-In `components/Gallery.tsx`, replace placeholder `<span>` elements with `<Image>` tags:
-
-```tsx
-import Image from "next/image";
-<Image src="/photos/game-1.jpg" alt="Game action" fill className="object-cover" />
-```
-
-Add photos to `public/photos/`.
-
-### Sponsor logos
-In `components/Sponsors.tsx`:
-
-```tsx
-<Image src="/sponsors/acme.png" alt="Acme Co" width={160} height={80} className="object-contain" />
-```
+| Class | Effect | Used on |
+|---|---|---|
+| `.logo-float` | Entrance bounce + continuous gentle float | Hero logo |
+| `.btn-glow` | Pulsing tan glow + lift | "View Tryout Info" button on Hero |
+| `.nav-pulse` | Alternating tan color glow | Tryouts link in Nav (when not on Tryouts page) |
 
 ---
 
@@ -208,7 +202,7 @@ Loaded via `next/font/google` in `app/layout.tsx`.
 | Barlow Condensed | `--font-barlow` | Labels, buttons, nav, badges (normal + italic) |
 | DM Sans | `--font-dm-sans` | Body copy, form inputs, descriptions |
 
-Apply in JSX: `font-[family-name:var(--font-bebas)]`
+Apply in JSX: `className="font-[family-name:var(--font-bebas)]"`
 
 ---
 
@@ -240,12 +234,39 @@ Apply in JSX: `font-[family-name:var(--font-bebas)]`
 
 ---
 
+## Swapping in Real Photos
+
+### Team logo
+Replace `public/yardgoatsimage.png`. Keep the same filename, or update the `src` prop in `Nav.tsx`, `Hero.tsx`, `Footer.tsx`, and `app/tryouts/page.tsx`.
+
+### Tryouts banner
+Replace `public/images/baseball-tryout-image.png` with any wide landscape photo. The gradient overlay handles contrast automatically.
+
+### Gallery photos
+In `components/Gallery.tsx`, replace the placeholder `<span>` blocks with real images:
+
+```tsx
+import Image from "next/image";
+<Image src="/photos/game-1.jpg" alt="Game action" fill className="object-cover" />
+```
+
+Add photos to `public/photos/`.
+
+### Sponsor logos
+In `components/Sponsors.tsx`:
+
+```tsx
+<Image src="/sponsors/acme.png" alt="Acme Co" width={160} height={80} className="object-contain" />
+```
+
+---
+
 ## Deployment
 
 ### Vercel (recommended)
-1. Push `yardgoats-site/` to a GitHub repo
+1. Push to GitHub
 2. Import at vercel.com — Vercel auto-detects Next.js
-3. Deploy
+3. Deploy — no config needed
 
 ### Static export (Netlify, GitHub Pages, S3)
 
@@ -257,11 +278,11 @@ const nextConfig: NextConfig = {
 };
 ```
 
-Then run `npm run build` — upload the `/out` folder.
+Run `npm run build` and upload the `/out` folder.
 
 ---
 
 ## Contact
 
 Paradise Yard Goats Baseball — Paradise, Texas  
-Update `paradiseyardgoats@email.com` in `lib/config.ts` with the real team email.
+Update `paradiseyardgoats@email.com` in `lib/config.ts` with the real team email address.
