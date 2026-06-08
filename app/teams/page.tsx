@@ -190,7 +190,7 @@ export default function TeamsPage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(120deg, rgba(10,10,10,0.97) 0%, rgba(31,77,58,0.91) 45%, rgba(10,10,10,0.93) 100%)",
+                "linear-gradient(120deg, rgba(10,10,10,0.97) 0%, rgba(0,166,81,0.88) 45%, rgba(10,10,10,0.93) 100%)",
             }}
           />
           {/* Top vignette */}
@@ -324,7 +324,7 @@ export default function TeamsPage() {
                   <div
                     className="relative overflow-hidden flex flex-col items-center justify-center"
                     style={{
-                      background: "linear-gradient(160deg, #2E7D32 0%, #0d2419 100%)",
+                      background: "linear-gradient(160deg, #00A651 0%, #0d2419 100%)",
                       aspectRatio: "4 / 3",
                     }}
                   >
@@ -452,13 +452,13 @@ export default function TeamsPage() {
                   <div
                     className="pt-8 pb-5 flex flex-col items-center"
                     style={{
-                      background: "linear-gradient(to bottom, rgba(31,77,58,0.22) 0%, transparent 100%)",
+                      background: "linear-gradient(to bottom, rgba(0,166,81,0.18) 0%, transparent 100%)",
                     }}
                   >
                     <div
                       className="w-24 h-24 rounded-full flex items-center justify-center mb-3"
                       style={{
-                        background: "linear-gradient(140deg, #2E7D32, #0d2419)",
+                        background: "linear-gradient(140deg, #00A651, #0d2419)",
                         border: "2px solid rgba(212,175,55,0.3)",
                       }}
                     >
@@ -551,7 +551,7 @@ export default function TeamsPage() {
                   {/* Action photo */}
                   <div
                     className="w-[90px] flex-shrink-0 flex items-center justify-center relative overflow-hidden"
-                    style={{ background: "linear-gradient(180deg, #2E7D32 0%, #0a1f10 100%)" }}
+                    style={{ background: "linear-gradient(180deg, #00A651 0%, #0a1f10 100%)" }}
                   >
                     <span style={{ fontSize: "1.75rem", opacity: 0.15 }}>⚾</span>
                   </div>
@@ -678,7 +678,7 @@ export default function TeamsPage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(150deg, rgba(10,10,10,0.94) 0%, rgba(31,77,58,0.88) 50%, rgba(10,10,10,0.94) 100%)",
+                "linear-gradient(150deg, rgba(10,10,10,0.94) 0%, rgba(0,166,81,0.85) 50%, rgba(10,10,10,0.94) 100%)",
             }}
           />
           {/* Top + bottom vignette */}

@@ -258,7 +258,7 @@ export default function TryoutsPage() {
 
             <div className="flex flex-wrap justify-center gap-8">
               {[
-                { ages: "7U & 8U", time: "12:00 PM", end: "12:45 PM", bg: "#2E7D32" },
+                { ages: "7U & 8U", time: "12:00 PM", end: "12:45 PM", bg: "#00A651" },
                 { ages: "9U",      time: "1:00 PM",  end: "1:45 PM",  bg: "#C49A6C" },
                 { ages: "11U",     time: "2:00 PM",  end: "2:45 PM",  bg: "#B3261E" },
               ].map((slot) => (
