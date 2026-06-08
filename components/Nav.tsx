@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/#about",    label: "About",    route: false },
   { href: "/teams",     label: "Teams",    route: true  },
-  { href: "/#schedule", label: "Schedule", route: false },
+  { href: "/schedule",  label: "Schedule", route: true  },
   { href: "/#sponsors", label: "Sponsors", route: false },
   { href: "/#gallery",  label: "Photos",   route: false },
 ];
@@ -17,8 +17,9 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const onTryouts = pathname === "/tryouts";
-  const onTeams   = pathname === "/teams";
+  const onTryouts  = pathname === "/tryouts";
+  const onTeams    = pathname === "/teams";
+  const onSchedule = pathname === "/schedule";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -59,7 +60,7 @@ export default function Nav() {
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-6 list-none">
           {links.map((l) => {
-            const active = l.route && onTeams && l.href === "/teams";
+            const active = (l.route && onTeams && l.href === "/teams") || (l.route && onSchedule && l.href === "/schedule");
             const cls = `text-[0.82rem] font-semibold uppercase tracking-wide transition-colors ${
               active ? "text-tan" : "text-gray-lt hover:text-tan"
             }`;
@@ -121,7 +122,7 @@ export default function Nav() {
       {open && (
         <div className="fixed top-[68px] left-0 right-0 z-40 bg-navy/99 backdrop-blur-md border-b border-green/20 flex flex-col px-6 py-4">
           {links.map((l) => {
-            const active = l.route && onTeams && l.href === "/teams";
+            const active = (l.route && onTeams && l.href === "/teams") || (l.route && onSchedule && l.href === "/schedule");
             const cls = `font-semibold py-2.5 border-b border-white/7 transition-colors ${
               active ? "text-tan" : "text-gray-lt hover:text-tan"
             }`;
