@@ -324,7 +324,7 @@ export default function TeamsPage() {
                   <div
                     className="relative overflow-hidden flex flex-col items-center justify-center"
                     style={{
-                      background: "linear-gradient(160deg, #1F4D3A 0%, #0d2419 100%)",
+                      background: "linear-gradient(160deg, #2E7D32 0%, #0d2419 100%)",
                       aspectRatio: "4 / 3",
                     }}
                   >
@@ -458,7 +458,7 @@ export default function TeamsPage() {
                     <div
                       className="w-24 h-24 rounded-full flex items-center justify-center mb-3"
                       style={{
-                        background: "linear-gradient(140deg, #1F4D3A, #0d2419)",
+                        background: "linear-gradient(140deg, #2E7D32, #0d2419)",
                         border: "2px solid rgba(212,175,55,0.3)",
                       }}
                     >
@@ -551,7 +551,7 @@ export default function TeamsPage() {
                   {/* Action photo */}
                   <div
                     className="w-[90px] flex-shrink-0 flex items-center justify-center relative overflow-hidden"
-                    style={{ background: "linear-gradient(180deg, #1F4D3A 0%, #0a1f10 100%)" }}
+                    style={{ background: "linear-gradient(180deg, #2E7D32 0%, #0a1f10 100%)" }}
                   >
                     <span style={{ fontSize: "1.75rem", opacity: 0.15 }}>⚾</span>
                   </div>
