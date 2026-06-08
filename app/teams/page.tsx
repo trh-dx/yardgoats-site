@@ -233,30 +233,19 @@ export default function TeamsPage() {
 
               {/* Headline */}
               <h1
-                className="font-[family-name:var(--font-bebas)] leading-none text-white tracking-wide mb-5"
-                style={{ fontSize: "clamp(5rem, 15vw, 10rem)", letterSpacing: "0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9)" }}
+                className="font-[family-name:var(--font-bebas)] leading-none tracking-wide mb-5"
+                style={{ fontSize: "clamp(2.8rem, 6.5vw, 5.5rem)", letterSpacing: "0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9)", lineHeight: 1.1 }}
               >
-                THE{" "}
-                <span style={{ color: "#D4AF37" }}>GOATS</span>
+                <span className="text-white">Built on Dirt.</span><br />
+                <span style={{ color: "#D4AF37" }}>Driven by Development.</span>
               </h1>
-
-              {/* Italic subheadline */}
-              <div
-                className="font-[family-name:var(--font-barlow)] font-bold italic text-[1.1rem] leading-[2] mb-6"
-                style={{ color: "rgba(255,255,255,0.65)" }}
-              >
-                Every player matters.<br />
-                Every rep counts.<br />
-                Every season is earned.
-              </div>
 
               {/* Support text */}
               <p
                 className="text-[0.97rem] leading-relaxed mb-8 max-w-[500px]"
                 style={{ color: "rgba(255,255,255,0.78)" }}
               >
-                Explore the Paradise Yard Goats teams, meet our coaches, and discover a program
-                built around player development, teamwork, and a love for the game.
+                Developing North Texas ballplayers through hard work, competition, and a passion for the game.
               </p>
 
               {/* CTAs */}
