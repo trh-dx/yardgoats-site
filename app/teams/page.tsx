@@ -3,486 +3,732 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
-import { schedule } from "@/lib/data";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Teams | Paradise Yard Goats Baseball",
   description:
-    "Meet the 7U, 8U, 9U, and 11U Paradise Yard Goats teams — coach pitch through tournament baseball in Paradise, Texas.",
+    "Meet the Paradise Yard Goats — player-focused youth baseball in Paradise, Texas. Explore our teams, coaches, and development philosophy.",
 };
 
-const teamData = [
+// ── Data ─────────────────────────────────────────────────────────────
+
+const teamCards = [
   {
     age: "7U",
-    eligible: "Ages 6–7",
+    name: "7U Yard Goats",
     format: "Coach Pitch",
-    level: "Rec / Development",
-    season: "Spring & Summer",
-    sectionBg: "bg-navy",
-    accentHex: "#2E7D32",
-    bar: "bg-green",
-    badge: "bg-green/14 text-green-lt border-green/30",
-    dot: "bg-green",
-    btn: "bg-green text-white border-green hover:bg-green-dk hover:border-green-dk hover:shadow-[0_8px_20px_rgba(46,125,50,0.35)]",
-    description:
-      "The entry point to Yard Goats baseball. The 7U team is built around sparking a genuine love for the game — young players learn to throw, catch, and hit in a positive, pressure-free environment where fun always comes first.",
-    highlights: [
-      "Coach pitch — relaxed, player-friendly format",
-      "Fielding positions, base running, and batting basics",
-      "Team-first culture established from day one",
-      "No prior experience required",
-      "Encouraging coaching staff focused on growth",
-    ],
+    headCoach: "Update with name",
+    assistantCoach: "Update with name",
+    city: "Paradise, TX",
+    record: "—",
   },
   {
     age: "8U",
-    eligible: "Ages 7–8",
+    name: "8U Yard Goats",
     format: "Coach Pitch",
-    level: "Rec / Competitive",
-    season: "Spring & Summer",
-    sectionBg: "bg-charcoal",
-    accentHex: "#C49A6C",
-    bar: "bg-tan",
-    badge: "bg-tan/14 text-tan border-tan/30",
-    dot: "bg-tan",
-    btn: "bg-tan text-navy border-tan hover:bg-tan-lt hover:border-tan-lt hover:shadow-[0_8px_20px_rgba(196,154,108,0.35)]",
-    description:
-      "The 8U Yard Goats build on a 7U foundation with more structure, competitive play, and real reps that push players to grow. Game IQ starts developing in earnest — players begin to understand the game beyond just the basics.",
-    highlights: [
-      "Advancing coach pitch with structured game format",
-      "Competitive rec play and local league games",
-      "Skill development: fielding, hitting mechanics, throws",
-      "Game awareness and situational baseball basics",
-      "Tournament exposure for motivated players",
-    ],
+    headCoach: "Update with name",
+    assistantCoach: "Update with name",
+    city: "Paradise, TX",
+    record: "—",
   },
   {
     age: "9U",
-    eligible: "Ages 8–9",
+    name: "9U Yard Goats",
     format: "Kid Pitch",
-    level: "Competitive",
-    season: "Spring & Summer",
-    sectionBg: "bg-navy",
-    accentHex: "#B3261E",
-    bar: "bg-red",
-    badge: "bg-red/14 text-red border-red/30",
-    dot: "bg-red",
-    btn: "bg-red text-white border-red hover:bg-red-dk hover:border-red-dk hover:shadow-[0_8px_20px_rgba(179,38,30,0.35)]",
-    description:
-      "The bridge division. 9U makes the jump to kid pitch — a major step requiring faster thinking, cleaner execution, and real trust in teammates. Fundamentals get pressure-tested in live game action where every at-bat matters.",
-    highlights: [
-      "Kid pitch — players throw from the mound",
-      "Advanced fielding and positional awareness",
-      "In-game strategy and situational decision making",
-      "Competitive league and tournament schedule",
-      "Preparation for high-level tournament advancement",
-    ],
+    headCoach: "Update with name",
+    assistantCoach: "Update with name",
+    city: "Paradise, TX",
+    record: "—",
   },
   {
     age: "11U",
-    eligible: "Ages 10–11",
+    name: "11U Yard Goats",
     format: "Tournament",
-    level: "Tournament",
-    season: "Spring – Fall",
-    sectionBg: "bg-charcoal",
-    accentHex: "#C49A6C",
-    bar: "bg-tan",
-    badge: "bg-tan/14 text-tan border-tan/30",
-    dot: "bg-tan",
-    btn: "bg-tan text-navy border-tan hover:bg-tan-lt hover:border-tan-lt hover:shadow-[0_8px_20px_rgba(196,154,108,0.35)]",
-    description:
-      "Our flagship competitive division. The 11U Yard Goats are ready for regional and invitational tournament baseball. This team demands advanced skills, high coachability, and the mental toughness to compete when the moment is biggest.",
-    highlights: [
-      "Kid pitch with advanced mechanics and strategy",
-      "Regional and invitational tournament schedule",
-      "Advanced team defense and offensive schemes",
-      "High-intensity practice structure",
-      "Development pathway toward high school baseball",
-    ],
+    headCoach: "Update with name",
+    assistantCoach: "Update with name",
+    city: "Paradise, TX",
+    record: "—",
   },
 ];
+
+const coachCards = [
+  {
+    name: "Coach Name",
+    team: "7U / 8U Yard Goats",
+    bio: "Dedicated to giving every young player a positive experience on the diamond. Believes the most important development happens in practice, not just in games.",
+    years: 5,
+    quote: "Every great player was once a beginner who just kept showing up.",
+  },
+  {
+    name: "Coach Name",
+    team: "9U Yard Goats",
+    bio: "Brings a calm, instructive approach that helps players transition confidently to kid pitch. Focused on building habits that stick — in baseball and in life.",
+    years: 4,
+    quote: "Work hard in silence. Let the game be your noise.",
+  },
+  {
+    name: "Coach Name",
+    team: "11U Yard Goats",
+    bio: "Develops the complete player — physical tools, baseball IQ, and the mental toughness to compete at the regional level with poise and intensity.",
+    years: 7,
+    quote: "Success is earned, never given. This group earns it every day.",
+  },
+];
+
+const spotlightPlayers = [
+  {
+    name: "Player Name",
+    position: "Shortstop",
+    team: "11U Yard Goats",
+    highlight:
+      "Has demonstrated outstanding effort and leadership throughout the season while continuing to raise the level of every player around them. A true team-first competitor who leads by example.",
+  },
+  {
+    name: "Player Name",
+    position: "Catcher",
+    team: "9U Yard Goats",
+    highlight:
+      "Improved dramatically behind the plate this season through patience and hard work. The kind of player every team is better for having — attitude and effort, every single day.",
+  },
+  {
+    name: "Player Name",
+    position: "Pitcher / OF",
+    team: "8U Yard Goats",
+    highlight:
+      "Shows maturity beyond their years with composure on the mound and infectious energy in the dugout. One of the most coachable players on the roster — always asking what they can do better.",
+  },
+  {
+    name: "Player Name",
+    position: "1B / Pitcher",
+    team: "7U Yard Goats",
+    highlight:
+      "In their first season of organized baseball, this player has become someone teammates look to for encouragement. Pure heart and hustle from the first inning to the last.",
+  },
+];
+
+// SVG icons for development pillars
+const PillarIcons = {
+  skills: (
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 28 28" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="14" cy="14" r="11" />
+      <path d="M6 14 Q9 8 14 14 Q19 20 22 14" />
+      <path d="M6 14 Q9 20 14 14 Q19 8 22 14" />
+    </svg>
+  ),
+  team: (
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 28 28" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="9" r="3.5" />
+      <circle cx="19" cy="9" r="3.5" />
+      <path d="M2 23 C2 18 5 15.5 9 15.5" />
+      <path d="M26 23 C26 18 23 15.5 19 15.5" />
+      <path d="M9 15.5 C9 15.5 14 13.5 19 15.5" />
+      <path d="M9 23 L19 23" />
+    </svg>
+  ),
+  confidence: (
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 28 28" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 3 L16.5 10.5 H24.5 L18 15 L20.5 22.5 L14 18 L7.5 22.5 L10 15 L3.5 10.5 H11.5 Z" />
+    </svg>
+  ),
+  sport: (
+    <svg className="w-7 h-7" fill="none" viewBox="0 0 28 28" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 4 L19 4 L19 16 L14 20 L9 16 Z" />
+      <path d="M9 4 L5 8 L9 16" />
+      <path d="M19 4 L23 8 L19 16" />
+      <path d="M14 20 L14 25" />
+      <path d="M10 25 L18 25" />
+    </svg>
+  ),
+};
+
+const pillars = [
+  {
+    icon: PillarIcons.skills,
+    title: "Baseball Skills",
+    desc: "From throwing mechanics to bat path, we teach the fundamentals that build players who truly understand the game from the ground up.",
+  },
+  {
+    icon: PillarIcons.team,
+    title: "Teamwork",
+    desc: "Baseball is played together. We build players who trust their teammates, communicate clearly, and celebrate each other's success.",
+  },
+  {
+    icon: PillarIcons.confidence,
+    title: "Confidence",
+    desc: "We give players repetition, encouragement, and small wins that stack into real belief — on the field and far beyond it.",
+  },
+  {
+    icon: PillarIcons.sport,
+    title: "Sportsmanship",
+    desc: "How you handle a strikeout says more than a home run. We develop players who compete hard and carry themselves with class.",
+  },
+];
+
+// ── Component ─────────────────────────────────────────────────────────
 
 export default function TeamsPage() {
   return (
     <>
       <Nav />
-      <main>
+      <main style={{ backgroundColor: "#0F0F0F", color: "#F8F6F0" }}>
 
-        {/* ── Banner ──────────────────────────────────────── */}
+        {/* ─── SECTION 1 · HERO ─────────────────────────────────────── */}
         <section
-          className="relative bg-navy pt-[68px] overflow-hidden"
-          style={{ minHeight: "clamp(380px, 55vh, 460px)" }}
+          className="relative overflow-hidden"
+          style={{ minHeight: "clamp(540px, 88vh, 780px)", paddingTop: "68px" }}
         >
-          {/* Diagonal field stripes */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(46,125,50,0.04) 40px, rgba(46,125,50,0.04) 41px)",
-            }}
+          <Image
+            src="/images/baseball-tryout-image.png"
+            alt=""
+            fill
+            className="object-cover object-center scale-105"
+            priority
           />
-          {/* Green radial glow */}
+          {/* Forest green cinematic overlay */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 70% 60% at 15% 55%, rgba(46,125,50,0.1) 0%, transparent 70%)",
+                "linear-gradient(120deg, rgba(10,10,10,0.97) 0%, rgba(31,77,58,0.91) 45%, rgba(10,10,10,0.93) 100%)",
             }}
+          />
+          {/* Top vignette */}
+          <div
+            className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.6), transparent)" }}
           />
           {/* Bottom fade */}
           <div
-            className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-            style={{ background: "linear-gradient(to top, #08111F, transparent)" }}
+            className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
+            style={{ background: "linear-gradient(to top, #0F0F0F, transparent)" }}
           />
 
-          <div className="relative max-w-[1180px] mx-auto px-6 pt-10 pb-16">
+          <div
+            className="relative max-w-[1180px] mx-auto px-6 flex flex-col justify-center"
+            style={{ minHeight: "clamp(540px, 88vh, 780px)" }}
+          >
             {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-[0.73rem] text-white/45 mb-10 font-[family-name:var(--font-barlow)] uppercase tracking-[1.5px]">
-              <Link href="/" className="hover:text-tan transition-colors">Home</Link>
+            <div
+              className="absolute font-[family-name:var(--font-barlow)] text-[0.72rem] tracking-[1.5px] uppercase flex items-center gap-2"
+              style={{ top: "2.5rem", left: "1.5rem", color: "rgba(255,255,255,0.35)" }}
+            >
+              <Link href="/" className="hover:text-white/60 transition-colors">Home</Link>
               <span>›</span>
-              <span className="text-tan">Teams</span>
+              <span style={{ color: "#D4AF37" }}>Teams</span>
             </div>
 
             <div className="max-w-[680px]">
-              {/* Logo + org name */}
-              <div className="flex items-center flex-wrap gap-4 mb-5">
-                <Image
-                  src="/yardgoatsimage.png"
-                  alt="Yard Goats"
-                  width={68}
-                  height={68}
-                  className="rounded-full bg-green object-cover flex-shrink-0 drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
-                />
-                <span className="font-[family-name:var(--font-barlow)] font-bold text-[1rem] tracking-[3px] uppercase text-tan">
-                  Paradise Yard Goats Baseball
-                </span>
+              {/* Eyebrow badge */}
+              <div
+                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.72rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
+                style={{
+                  color: "#D4AF37",
+                  backgroundColor: "rgba(212,175,55,0.08)",
+                  border: "1px solid rgba(212,175,55,0.22)",
+                }}
+              >
+                Paradise Yard Goats Baseball · Paradise, TX
               </div>
 
+              {/* Headline */}
               <h1
-                className="font-[family-name:var(--font-bebas)] leading-none text-white tracking-wide mb-4 drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)]"
-                style={{ fontSize: "clamp(3.2rem, 9vw, 6.2rem)" }}
+                className="font-[family-name:var(--font-bebas)] leading-none text-white tracking-wide mb-5"
+                style={{ fontSize: "clamp(5rem, 15vw, 10rem)", letterSpacing: "0.02em" }}
               >
-                Our <span className="text-green-lt">Teams</span>
+                THE{" "}
+                <span style={{ color: "#D4AF37" }}>HERD</span>
               </h1>
 
-              <p className="text-white/80 text-[1.05rem] leading-relaxed mb-8 max-w-[480px]">
-                Four divisions, one community. From first-time players to regional
-                competitors — there&apos;s a place for every kid in Paradise.
+              {/* Italic subheadline */}
+              <div
+                className="font-[family-name:var(--font-barlow)] font-bold italic text-[1.1rem] leading-[2] mb-6"
+                style={{ color: "rgba(255,255,255,0.65)" }}
+              >
+                Every player matters.<br />
+                Every rep counts.<br />
+                Every season is earned.
+              </div>
+
+              {/* Support text */}
+              <p
+                className="text-[0.97rem] leading-relaxed mb-8 max-w-[500px]"
+                style={{ color: "rgba(255,255,255,0.45)" }}
+              >
+                Explore the Paradise Yard Goats teams, meet our coaches, and discover a program
+                built around player development, teamwork, and a love for the game.
               </p>
 
-              {/* Division jump badges */}
+              {/* CTAs */}
               <div className="flex flex-wrap gap-3">
-                {teamData.map((t) => (
-                  <a
-                    key={t.age}
-                    href={`#team-${t.age}`}
-                    className="font-[family-name:var(--font-bebas)] text-[1.1rem] tracking-[2px] px-4 py-1.5 rounded border-2 border-white/20 text-white/80 hover:border-green hover:text-green-lt transition-all"
-                  >
-                    {t.age}
-                  </a>
-                ))}
+                <a
+                  href="#teams"
+                  className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0"
+                  style={{ backgroundColor: "#D4AF37", color: "#1A1A1A", border: "2px solid #D4AF37" }}
+                >
+                  View Teams
+                </a>
+                <Link
+                  href="/tryouts"
+                  className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0 hover:border-white/70"
+                  style={{ color: "#fff", border: "2px solid rgba(255,255,255,0.3)" }}
+                >
+                  Register for Tryouts
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── Sticky Division Nav ──────────────────────────── */}
-        <div className="bg-green sticky top-[68px] z-40 border-b border-green-dk/60 py-2.5">
-          <div className="max-w-[1180px] mx-auto px-6 flex items-center gap-2 overflow-x-auto">
-            <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[2.5px] uppercase text-white/60 pr-3 border-r border-white/20 flex-shrink-0">
-              Jump to
-            </span>
-            {teamData.map((t) => (
-              <a
-                key={t.age}
-                href={`#team-${t.age}`}
-                className="font-[family-name:var(--font-bebas)] text-[0.95rem] tracking-[2px] px-4 py-1 rounded bg-white/10 text-white hover:bg-white/25 whitespace-nowrap flex-shrink-0 transition-all"
-              >
-                {t.age}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Team Sections ─────────────────────────────────── */}
-        {teamData.map((team, idx) => {
-          const teamSchedule = schedule.filter((row) =>
-            row.team.includes(team.age)
-          );
-          const flip = idx % 2 !== 0;
-
-          return (
-            <section
-              key={team.age}
-              id={`team-${team.age}`}
-              className={`${team.sectionBg} py-16 md:py-24`}
-              style={{ scrollMarginTop: "130px" }}
-            >
-              <div className="max-w-[1180px] mx-auto px-6">
-
-                {/* Section label */}
-                <div className="flex items-center gap-3 mb-10">
-                  <div className={`h-[3px] w-12 ${team.bar} rounded`} />
-                  <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan">
-                    {team.format} Division
-                  </span>
-                </div>
-
-                {/* Two-column layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-start">
-
-                  {/* Info column */}
-                  <div className={flip ? "lg:order-last" : ""}>
-                    {/* Age + format badge */}
-                    <div className="flex items-end gap-5 mb-2">
-                      <h2
-                        className="font-[family-name:var(--font-bebas)] leading-none text-white"
-                        style={{ fontSize: "clamp(4.5rem, 13vw, 7.5rem)" }}
-                      >
-                        {team.age}
-                      </h2>
-                      <span
-                        className={`mb-3 text-[0.7rem] font-[family-name:var(--font-barlow)] font-bold uppercase tracking-[2px] px-2.5 py-1 rounded border ${team.badge}`}
-                      >
-                        {team.format}
-                      </span>
-                    </div>
-
-                    <p className="text-[0.75rem] font-[family-name:var(--font-barlow)] font-bold uppercase tracking-[2.5px] text-gray mb-5">
-                      {team.eligible} · {team.level}
-                    </p>
-
-                    <p className="text-gray-lt text-[1rem] leading-relaxed mb-7 max-w-[510px]">
-                      {team.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <ul className="space-y-3 mb-8">
-                      {team.highlights.map((h) => (
-                        <li key={h} className="flex items-start gap-3 text-[0.9rem] text-gray-lt">
-                          <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-[7px] ${team.dot}`} />
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Stats strip */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-                      {[
-                        { label: "Format",  val: team.format },
-                        { label: "Ages",    val: team.eligible },
-                        { label: "Season",  val: team.season },
-                        { label: "Level",   val: team.level },
-                      ].map((s) => (
-                        <div key={s.label} className="bg-white/[0.04] rounded-lg p-3 border border-white/8">
-                          <div className="text-[0.6rem] font-[family-name:var(--font-barlow)] font-bold uppercase tracking-[2px] text-gray mb-1">
-                            {s.label}
-                          </div>
-                          <div className="font-[family-name:var(--font-barlow)] font-bold text-[0.83rem] text-white leading-snug">
-                            {s.val}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* CTAs */}
-                    <div className="flex gap-3 flex-wrap">
-                      <a
-                        href="/#contact"
-                        className={`inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.88rem] tracking-[1.5px] uppercase px-6 py-2.5 rounded border-2 transition-all hover:-translate-y-0.5 ${team.btn}`}
-                      >
-                        Get Info
-                      </a>
-                      <Link
-                        href="/tryouts"
-                        className="inline-flex items-center gap-2 bg-transparent text-white font-[family-name:var(--font-barlow)] font-bold text-[0.88rem] tracking-[1.5px] uppercase px-6 py-2.5 rounded border-2 border-white/30 hover:border-white hover:bg-white/8 transition-all hover:-translate-y-0.5"
-                      >
-                        2026 Tryouts
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Visual column */}
-                  <div className={flip ? "lg:order-first" : ""}>
-                    {/* Team card / photo placeholder */}
-                    <div className="rounded-xl overflow-hidden shadow-[0_8px_48px_rgba(0,0,0,0.5)] mb-4 border border-white/[0.06]">
-                      {/* Card top bar */}
-                      <div
-                        className="px-4 py-2.5 flex justify-between items-center"
-                        style={{ backgroundColor: team.accentHex }}
-                      >
-                        <span className="font-[family-name:var(--font-bebas)] text-[0.82rem] tracking-[3px] text-white/85">
-                          Paradise Yard Goats
-                        </span>
-                        <span className="font-[family-name:var(--font-bebas)] text-[0.82rem] text-white/70">
-                          2026
-                        </span>
-                      </div>
-                      {/* Photo area */}
-                      <div
-                        className="relative w-full flex flex-col items-center justify-center overflow-hidden"
-                        style={{
-                          background: "linear-gradient(160deg, #0d1d30, #060f1c)",
-                          aspectRatio: "16 / 11",
-                        }}
-                      >
-                        {/* Watermark */}
-                        <span
-                          className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-bebas)] text-white/[0.038] select-none pointer-events-none leading-none"
-                          aria-hidden="true"
-                          style={{ fontSize: "clamp(8rem, 22vw, 16rem)" }}
-                        >
-                          {team.age}
-                        </span>
-                        {/* Age circle */}
-                        <div
-                          className="absolute top-3.5 right-3.5 w-[54px] h-[54px] rounded-full border-2 border-white/22 flex items-center justify-center font-[family-name:var(--font-bebas)] text-[1.3rem] text-white"
-                          style={{ backgroundColor: team.accentHex }}
-                        >
-                          {team.age}
-                        </div>
-                        {/* Placeholder center */}
-                        <div className="relative z-10 flex flex-col items-center">
-                          <span className="text-[2.5rem] opacity-[0.13] mb-2">⚾</span>
-                          <span className="text-[0.68rem] text-gray tracking-[2px] uppercase opacity-50">
-                            Team Photo
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Schedule mini-card */}
-                    <div className="rounded-xl border border-white/8 overflow-hidden">
-                      <div className="px-4 py-2.5 bg-white/[0.04] border-b border-white/8 flex items-center justify-between">
-                        <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.72rem] tracking-[2.5px] uppercase text-gray">
-                          {team.age} Schedule
-                        </span>
-                        <a
-                          href="/#schedule"
-                          className="text-[0.7rem] font-[family-name:var(--font-barlow)] font-bold tracking-wide uppercase text-green-lt hover:text-white transition-colors"
-                        >
-                          Full Schedule →
-                        </a>
-                      </div>
-
-                      {teamSchedule.length > 0 ? (
-                        <div className="divide-y divide-white/[0.05]">
-                          {teamSchedule.slice(0, 3).map((row, i) => (
-                            <div key={i} className="flex items-start gap-3 px-4 py-3">
-                              <div className="w-16 flex-shrink-0 pt-0.5">
-                                <div className="text-[0.72rem] font-[family-name:var(--font-barlow)] font-bold text-tan leading-tight">
-                                  {row.date}
-                                </div>
-                                {row.time !== "TBD" && (
-                                  <div className="text-[0.65rem] text-gray mt-0.5">{row.time}</div>
-                                )}
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="text-[0.85rem] text-white font-semibold leading-snug">
-                                  {row.event}
-                                </div>
-                                <div className="text-[0.72rem] text-gray mt-0.5">{row.location}</div>
-                              </div>
-                              {row.isTournament && (
-                                <span className="text-[0.6rem] font-bold tracking-wide uppercase bg-tan/15 text-tan px-2 py-0.5 rounded flex-shrink-0 mt-0.5">
-                                  Tourn.
-                                </span>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="px-4 py-5 text-center text-[0.82rem] text-gray">
-                          Schedule updates coming soon.
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          );
-        })}
-
-        {/* ── Philosophy ────────────────────────────────────── */}
+        {/* ─── SECTION 2 · TEAM DIRECTORY ───────────────────────────── */}
         <section
+          id="teams"
           className="py-16 md:py-24"
-          style={{ background: "linear-gradient(135deg, #0c1c12 0%, #09142a 100%)" }}
+          style={{ backgroundColor: "#111111", scrollMarginTop: "68px" }}
         >
           <div className="max-w-[1180px] mx-auto px-6">
-            <div className="text-center mb-12 max-w-[640px] mx-auto">
-              <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
-                What We Stand For
+
+            <div className="text-center mb-12">
+              <span
+                className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
+                style={{ color: "#D4AF37" }}
+              >
+                2026 Season
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
-                Built on <span className="text-tan">Character</span>
+              <h2
+                className="font-[family-name:var(--font-bebas)] leading-none text-white mb-3"
+                style={{ fontSize: "clamp(2.5rem, 6vw, 4.2rem)" }}
+              >
+                Our Teams
               </h2>
-              <div className="w-[52px] h-[3px] bg-red rounded mx-auto mb-4" />
-              <p className="text-gray text-[0.95rem] leading-relaxed">
-                Paradise Yard Goats isn&apos;t just about wins. We measure success by how hard our
-                players compete, how much they improve, and how they treat their teammates.
+              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#D4AF37" }} />
+              <p
+                className="text-[0.95rem] leading-relaxed max-w-[520px] mx-auto"
+                style={{ color: "rgba(255,255,255,0.45)" }}
+              >
+                Find your team and learn more about the coaches and players that make up the Yard Goats family.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: "⚾",
-                  title: "Fundamentals First",
-                  body: "Every division, every practice — we coach the right mechanics so the game gets easier as players level up.",
-                },
-                {
-                  icon: "🤝",
-                  title: "Team Over Self",
-                  body: "From 7U to 11U, we build players who cheer for their teammates as loud as they celebrate themselves.",
-                },
-                {
-                  icon: "🏆",
-                  title: "Compete With Heart",
-                  body: "We teach players to leave it all on the field, respect the game, and handle both wins and losses with class.",
-                },
-              ].map((card) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {teamCards.map((team) => (
                 <div
-                  key={card.title}
-                  className="bg-white/[0.04] rounded-xl p-7 border border-white/8 hover:border-green/30 hover:bg-white/[0.06] transition-all"
+                  key={team.age}
+                  className="rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 border border-[rgba(212,175,55,0.18)] hover:border-[rgba(212,175,55,0.55)] shadow-[0_4px_28px_rgba(0,0,0,0.45)] hover:shadow-[0_24px_64px_rgba(212,175,55,0.1),0_4px_28px_rgba(0,0,0,0.5)]"
+                  style={{ backgroundColor: "#181818" }}
                 >
-                  <div className="text-[2.4rem] mb-4">{card.icon}</div>
-                  <h3 className="font-[family-name:var(--font-bebas)] text-[1.5rem] text-white mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-gray text-[0.88rem] leading-relaxed">{card.body}</p>
+                  {/* Gold top stripe */}
+                  <div style={{ height: "3px", background: "linear-gradient(to right, #D4AF37, #E8CC65, #D4AF37)" }} />
+
+                  {/* Photo area */}
+                  <div
+                    className="relative overflow-hidden flex flex-col items-center justify-center"
+                    style={{
+                      background: "linear-gradient(160deg, #1F4D3A 0%, #0d2419 100%)",
+                      aspectRatio: "4 / 3",
+                    }}
+                  >
+                    {/* Watermark age */}
+                    <span
+                      className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-bebas)] select-none pointer-events-none leading-none"
+                      aria-hidden="true"
+                      style={{ fontSize: "clamp(6rem, 17vw, 10rem)", color: "rgba(255,255,255,0.04)" }}
+                    >
+                      {team.age}
+                    </span>
+                    {/* Age badge */}
+                    <div
+                      className="absolute top-3 right-3 font-[family-name:var(--font-bebas)] text-[1.1rem] px-2.5 py-0.5 rounded-sm"
+                      style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}
+                    >
+                      {team.age}
+                    </div>
+                    {/* Placeholder */}
+                    <div className="relative z-10 flex flex-col items-center gap-1.5">
+                      <span style={{ fontSize: "2rem", opacity: 0.12 }}>⚾</span>
+                      <span
+                        className="font-[family-name:var(--font-barlow)] font-bold text-[0.6rem] uppercase tracking-[2px]"
+                        style={{ color: "rgba(255,255,255,0.28)" }}
+                      >
+                        Team Photo
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Card body */}
+                  <div className="p-4 pt-3.5">
+                    <h3
+                      className="font-[family-name:var(--font-bebas)] text-white leading-none mb-0.5"
+                      style={{ fontSize: "1.55rem" }}
+                    >
+                      {team.name}
+                    </h3>
+                    <div
+                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.67rem] tracking-[2.5px] uppercase mb-4"
+                      style={{ color: "#D4AF37" }}
+                    >
+                      {team.format}
+                    </div>
+
+                    <div className="space-y-1.5 mb-4">
+                      {[
+                        { label: "Head Coach",  val: team.headCoach },
+                        { label: "Asst. Coach", val: team.assistantCoach },
+                        { label: "Home",        val: team.city },
+                        { label: "Record",      val: team.record },
+                      ].map((row) => (
+                        <div key={row.label} className="flex gap-2 text-[0.77rem]">
+                          <span className="flex-shrink-0 w-[70px]" style={{ color: "rgba(255,255,255,0.32)" }}>
+                            {row.label}
+                          </span>
+                          <span className="text-white truncate">{row.val}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-2">
+                      <a
+                        href="/#teams"
+                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-colors hover:bg-[#E8CC65]"
+                        style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}
+                      >
+                        View Team
+                      </a>
+                      <a
+                        href="/#contact"
+                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-all hover:border-[rgba(212,175,55,0.55)] hover:text-[#D4AF37]"
+                        style={{
+                          color: "rgba(255,255,255,0.55)",
+                          border: "1px solid rgba(255,255,255,0.13)",
+                        }}
+                      >
+                        Contact Coach
+                      </a>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── CTA ───────────────────────────────────────────── */}
-        <section className="bg-charcoal py-14 md:py-20 border-t border-white/6">
-          <div className="max-w-[680px] mx-auto px-6 text-center">
-            <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
-              Ready to Play?
-            </span>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-4">
-              Find Your <span className="text-green-lt">Division</span>
+        {/* ─── SECTION 3 · MEET THE COACHES ─────────────────────────── */}
+        <section className="py-16 md:py-24" style={{ backgroundColor: "#161616" }}>
+          <div className="max-w-[1180px] mx-auto px-6">
+
+            <div className="text-center mb-12">
+              <span
+                className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
+                style={{ color: "#D4AF37" }}
+              >
+                The Coaching Staff
+              </span>
+              <h2
+                className="font-[family-name:var(--font-bebas)] leading-none text-white mb-3"
+                style={{ fontSize: "clamp(2.5rem, 6vw, 4.2rem)" }}
+              >
+                Coaches Who Care
+              </h2>
+              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#D4AF37" }} />
+              <p
+                className="text-[0.95rem] leading-relaxed max-w-[480px] mx-auto"
+                style={{ color: "rgba(255,255,255,0.45)" }}
+              >
+                Our coaches are committed to helping players grow as athletes, teammates, and young leaders.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {coachCards.map((coach, i) => (
+                <div
+                  key={i}
+                  className="rounded-xl overflow-hidden transition-all duration-300 hover:border-[rgba(212,175,55,0.3)] hover:-translate-y-1"
+                  style={{
+                    backgroundColor: "#1C1C1C",
+                    border: "1px solid rgba(255,255,255,0.07)",
+                  }}
+                >
+                  {/* Photo area */}
+                  <div
+                    className="pt-8 pb-5 flex flex-col items-center"
+                    style={{
+                      background: "linear-gradient(to bottom, rgba(31,77,58,0.22) 0%, transparent 100%)",
+                    }}
+                  >
+                    <div
+                      className="w-24 h-24 rounded-full flex items-center justify-center mb-3"
+                      style={{
+                        background: "linear-gradient(140deg, #1F4D3A, #0d2419)",
+                        border: "2px solid rgba(212,175,55,0.3)",
+                      }}
+                    >
+                      <svg className="w-10 h-10" fill="none" viewBox="0 0 40 40" style={{ color: "rgba(255,255,255,0.2)" }}>
+                        <circle cx="20" cy="14" r="7" stroke="currentColor" strokeWidth="1.75"/>
+                        <path d="M4 38 C4 28 11 23 20 23 C29 23 36 28 36 38" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                    <h3
+                      className="font-[family-name:var(--font-bebas)] text-white leading-none mb-0.5"
+                      style={{ fontSize: "1.65rem" }}
+                    >
+                      {coach.name}
+                    </h3>
+                    <div
+                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.67rem] tracking-[2px] uppercase"
+                      style={{ color: "#D4AF37" }}
+                    >
+                      {coach.team}
+                    </div>
+                  </div>
+
+                  <div className="px-6 pb-7">
+                    <p
+                      className="text-[0.88rem] leading-relaxed mb-4"
+                      style={{ color: "rgba(255,255,255,0.48)" }}
+                    >
+                      {coach.bio}
+                    </p>
+
+                    <div
+                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.65rem] tracking-[2px] uppercase mb-3"
+                      style={{ color: "rgba(255,255,255,0.28)" }}
+                    >
+                      {coach.years} Years Coaching
+                    </div>
+
+                    <blockquote
+                      className="text-[0.84rem] italic leading-relaxed pl-3"
+                      style={{
+                        color: "rgba(255,255,255,0.5)",
+                        borderLeft: "2px solid #D4AF37",
+                      }}
+                    >
+                      &ldquo;{coach.quote}&rdquo;
+                    </blockquote>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── SECTION 4 · PLAYER SPOTLIGHTS ────────────────────────── */}
+        <section className="py-16 md:py-24" style={{ backgroundColor: "#111111" }}>
+          <div className="max-w-[1180px] mx-auto px-6">
+
+            <div className="text-center mb-12">
+              <span
+                className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
+                style={{ color: "#D4AF37" }}
+              >
+                Player Recognition
+              </span>
+              <h2
+                className="font-[family-name:var(--font-bebas)] leading-none text-white mb-3"
+                style={{ fontSize: "clamp(2.5rem, 6vw, 4.2rem)" }}
+              >
+                Player Spotlights
+              </h2>
+              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#D4AF37" }} />
+              <p
+                className="text-[0.95rem] leading-relaxed max-w-[480px] mx-auto"
+                style={{ color: "rgba(255,255,255,0.45)" }}
+              >
+                Celebrating effort, growth, sportsmanship, and the players who set the standard every day.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {spotlightPlayers.map((player, i) => (
+                <div
+                  key={i}
+                  className="flex rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,175,55,0.28)]"
+                  style={{
+                    backgroundColor: "#1C1C1C",
+                    border: "1px solid rgba(255,255,255,0.07)",
+                  }}
+                >
+                  {/* Action photo */}
+                  <div
+                    className="w-[90px] flex-shrink-0 flex items-center justify-center relative overflow-hidden"
+                    style={{ background: "linear-gradient(180deg, #1F4D3A 0%, #0a1f10 100%)" }}
+                  >
+                    <span style={{ fontSize: "1.75rem", opacity: 0.15 }}>⚾</span>
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-5 flex-1 min-w-0">
+                    <div
+                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.64rem] tracking-[2.5px] uppercase mb-1"
+                      style={{ color: "#D4AF37" }}
+                    >
+                      {player.position} &nbsp;·&nbsp; {player.team}
+                    </div>
+                    <h3
+                      className="font-[family-name:var(--font-bebas)] text-white leading-none mb-2"
+                      style={{ fontSize: "1.4rem" }}
+                    >
+                      {player.name}
+                    </h3>
+                    <p
+                      className="text-[0.84rem] leading-relaxed"
+                      style={{ color: "rgba(255,255,255,0.48)" }}
+                    >
+                      {player.highlight}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── SECTION 5 · DEVELOPMENT PHILOSOPHY ──────────────────── */}
+        <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#141414" }}>
+          {/* Dirt dot texture */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(160,120,70,0.12) 1px, transparent 0)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+
+          <div className="relative max-w-[1180px] mx-auto px-6">
+
+            {/* Two-column intro */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end mb-14">
+              <div>
+                <span
+                  className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
+                  style={{ color: "#D4AF37" }}
+                >
+                  Our Philosophy
+                </span>
+                <h2
+                  className="font-[family-name:var(--font-bebas)] leading-none text-white mb-4"
+                  style={{ fontSize: "clamp(2.8rem, 8vw, 5.5rem)" }}
+                >
+                  From the{" "}
+                  <span style={{ color: "#D4AF37" }}>Dirt Up</span>
+                </h2>
+                <div className="w-12 h-[3px] rounded" style={{ backgroundColor: "#D4AF37" }} />
+              </div>
+              <div className="lg:pb-2">
+                <p
+                  className="text-[1rem] leading-relaxed"
+                  style={{ color: "rgba(255,255,255,0.52)" }}
+                >
+                  At Paradise Yard Goats, success is measured by more than wins and losses. We focus on
+                  teaching fundamentals, building confidence, encouraging teamwork, and helping players
+                  develop a lifelong love for the game that carries them far beyond the baseball field.
+                </p>
+              </div>
+            </div>
+
+            {/* Four pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {pillars.map((p) => (
+                <div
+                  key={p.title}
+                  className="rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(212,175,55,0.4)]"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.025)",
+                    border: "1px solid rgba(212,175,55,0.14)",
+                  }}
+                >
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
+                    style={{
+                      backgroundColor: "rgba(212,175,55,0.09)",
+                      color: "#D4AF37",
+                    }}
+                  >
+                    {p.icon}
+                  </div>
+                  <h4
+                    className="font-[family-name:var(--font-bebas)] text-white leading-none mb-2"
+                    style={{ fontSize: "1.2rem" }}
+                  >
+                    {p.title}
+                  </h4>
+                  <p
+                    className="text-[0.82rem] leading-relaxed"
+                    style={{ color: "rgba(255,255,255,0.42)" }}
+                  >
+                    {p.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── SECTION 6 · JOIN THE HERD CTA ────────────────────────── */}
+        <section className="relative py-20 md:py-32 overflow-hidden">
+          <Image
+            src="/images/baseball-tryout-image.png"
+            alt=""
+            fill
+            className="object-cover object-center"
+          />
+          {/* Sunset-toned green overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(150deg, rgba(10,10,10,0.94) 0%, rgba(31,77,58,0.88) 50%, rgba(10,10,10,0.94) 100%)",
+            }}
+          />
+          {/* Top + bottom vignette */}
+          <div
+            className="absolute inset-x-0 top-0 h-20 pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, #141414, transparent)" }}
+          />
+
+          <div className="relative max-w-[680px] mx-auto px-6 text-center">
+            <div
+              className="inline-flex items-center font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
+              style={{
+                color: "#D4AF37",
+                backgroundColor: "rgba(212,175,55,0.08)",
+                border: "1px solid rgba(212,175,55,0.22)",
+              }}
+            >
+              Open to All Skill Levels
+            </div>
+
+            <h2
+              className="font-[family-name:var(--font-bebas)] leading-none text-white mb-4"
+              style={{ fontSize: "clamp(3rem, 9vw, 6rem)" }}
+            >
+              Ready to Join{" "}
+              <span style={{ color: "#D4AF37" }}>the Herd?</span>
             </h2>
-            <p className="text-gray text-[0.97rem] leading-relaxed mb-8">
-              Tryouts are open to all skill levels. Come show us what you&apos;ve got — we&apos;ll
-              find the right spot for your player.
+
+            <p
+              className="text-[1rem] leading-relaxed mb-8 max-w-[460px] mx-auto"
+              style={{ color: "rgba(255,255,255,0.52)" }}
+            >
+              We&apos;re always looking for players who want to learn, compete, and grow in a positive
+              baseball environment. There&apos;s a spot on this team for you.
             </p>
+
             <div className="flex gap-3 justify-center flex-wrap">
               <Link
                 href="/tryouts"
-                className="inline-flex items-center gap-2 bg-green text-white font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:shadow-[0_8px_24px_rgba(46,125,50,0.4)]"
+                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:bg-[#E8CC65]"
+                style={{ backgroundColor: "#D4AF37", color: "#1A1A1A", border: "2px solid #D4AF37" }}
               >
-                ⚾ 2026 Tryout Info
+                Register for Tryouts
               </Link>
               <a
                 href="/#contact"
-                className="inline-flex items-center gap-2 bg-transparent text-white font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-white/40 hover:border-white hover:bg-white/8 transition-all"
+                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:border-white/70"
+                style={{ color: "#fff", border: "2px solid rgba(255,255,255,0.3)" }}
               >
-                Contact Us
+                Contact Our Coaches
               </a>
             </div>
           </div>
