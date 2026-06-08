@@ -237,7 +237,7 @@ export default function TeamsPage() {
                 style={{ fontSize: "clamp(5rem, 15vw, 10rem)", letterSpacing: "0.02em" }}
               >
                 THE{" "}
-                <span style={{ color: "#D4AF37" }}>HERD</span>
+                <span style={{ color: "#D4AF37" }}>GOATS</span>
               </h1>
 
               {/* Italic subheadline */}
@@ -704,7 +704,7 @@ export default function TeamsPage() {
               style={{ fontSize: "clamp(3rem, 9vw, 6rem)" }}
             >
               Ready to Join{" "}
-              <span style={{ color: "#D4AF37" }}>the Herd?</span>
+              <span style={{ color: "#D4AF37" }}>the Goats?</span>
             </h2>
 
             <p
