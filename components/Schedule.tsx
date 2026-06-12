@@ -35,7 +35,7 @@ export default function Schedule() {
         <div className="flex justify-between items-end mb-6 flex-wrap gap-4">
           <div>
             <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
-              2025 Season
+              2026 Season
             </span>
             <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
               From the <span className="text-tan">Dugout</span>
