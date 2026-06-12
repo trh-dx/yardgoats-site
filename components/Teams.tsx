@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { teams } from "@/lib/data";
 
 export default function Teams() {
@@ -6,75 +5,76 @@ export default function Teams() {
     <section id="teams" className="bg-navy py-16 md:py-24">
       <div className="max-w-[1180px] mx-auto px-6">
 
-        <div className="text-center mb-10">
-          <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
+        {/* Header */}
+        <div className="text-center mb-3">
+          <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-green block mb-2">
             Travel &amp; Rec Baseball
           </span>
           <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
-            Our <span className="text-tan">Teams</span>
+            Yard Goats <span className="text-green">Teams</span>
           </h2>
           <div className="w-[52px] h-[3px] bg-red rounded mx-auto" />
         </div>
+        <p className="text-center text-gray text-[1.05rem] leading-[1.78] max-w-[640px] mx-auto mt-4 mb-12">
+          From early fundamentals to competitive tournament play, Paradise Yard Goats teams help
+          players grow with confidence, effort, and a love for the game.
+        </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 max-w-[1040px] mx-auto">
+        {/* 4-card grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {teams.map((team) => (
             <div
               key={team.age}
-              className="rounded-[10px] overflow-hidden shadow-[0_4px_28px_rgba(0,0,0,0.45)] hover:-translate-y-2 hover:rotate-[-0.7deg] hover:shadow-[0_30px_70px_rgba(0,0,0,0.6)] transition-all duration-300"
+              className="bg-white rounded-xl overflow-hidden shadow-[0_4px_22px_rgba(0,0,0,0.22)] hover:-translate-y-[7px] hover:shadow-[0_20px_56px_rgba(0,0,0,0.3)] transition-all duration-300"
             >
-              {/* Card top bar */}
-              <div className="bg-green px-3.5 py-1.5 flex justify-between items-center">
-                <span className="font-[family-name:var(--font-bebas)] text-[0.78rem] tracking-[3px] text-white/82">
-                  Paradise Yard Goats
-                </span>
-                <span className="font-[family-name:var(--font-bebas)] text-[0.78rem] text-white/70">
-                  2025
-                </span>
-              </div>
+              {/* Green accent bar */}
+              <div className="h-1 bg-green" />
 
-              {/* Photo area */}
-              <div
-                className="w-full aspect-[4/3] flex flex-col items-center justify-center relative overflow-hidden"
-                style={{ background: "linear-gradient(160deg, #0d1d30, #060f1c)" }}
-              >
-                <span
-                  className="absolute font-[family-name:var(--font-bebas)] text-[9.5rem] text-white/[0.04] tracking-[-4px] select-none pointer-events-none"
-                  aria-hidden="true"
-                >
-                  {team.age}
-                </span>
-                <span className="text-[3rem] opacity-20 relative z-10 mb-1">⚾</span>
-                <span className="text-[0.68rem] text-gray tracking-[2px] uppercase relative z-10 opacity-55">
-                  Team Photo
-                </span>
-                {/* Age badge */}
-                <div className="absolute top-3 right-3 w-[46px] h-[46px] bg-red rounded-full border-2 border-white/28 flex items-center justify-center font-[family-name:var(--font-bebas)] text-[1.2rem] text-white">
+              <div className="p-6 pb-7">
+                {/* Icon badge */}
+                <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center text-lg mb-4">
+                  ⚾
+                </div>
+
+                {/* Age number */}
+                <div className="font-[family-name:var(--font-bebas)] text-[4.2rem] leading-[0.88] text-navy tracking-wide mb-0.5">
                   {team.age}
                 </div>
-              </div>
 
-              {/* Card body */}
-              <div className="bg-[#101c2a] px-5 py-5 border-t-[3px] border-red">
-                <h3 className="font-[family-name:var(--font-bebas)] text-[1.75rem] text-white tracking-wide leading-none mb-1.5">
-                  {team.name}
-                </h3>
-                <p className="text-[0.88rem] text-gray leading-relaxed mb-4">
+                {/* Team label */}
+                <div className="font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[3px] uppercase text-green mb-3.5">
+                  Yard Goats
+                </div>
+
+                {/* Description */}
+                <p className="text-[0.875rem] text-[#4a5568] leading-relaxed mb-6">
                   {team.description}
                 </p>
-                <div className="flex justify-between items-center pt-2.5 border-t border-white/7">
-                  <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[1.5px] uppercase text-gray">
-                    {team.tag}
-                  </span>
-                  <Link
-                    href={`/teams#team-${team.age}`}
-                    className="text-green-lt border border-green rounded px-4 py-1.5 font-[family-name:var(--font-barlow)] font-bold text-[0.8rem] tracking-wide uppercase hover:bg-green hover:text-white transition-all"
-                  >
-                    Learn More
-                  </Link>
-                </div>
+
+                {/* CTA */}
+                <a
+                  href="#contact"
+                  className="block text-center text-navy border-2 border-navy rounded-md py-2.5 px-4 font-[family-name:var(--font-barlow)] font-bold text-[0.8rem] tracking-[1.5px] uppercase hover:bg-navy hover:text-white transition-all duration-300"
+                >
+                  Ask About Openings
+                </a>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Sponsor callout */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-green/10 border border-green/25 rounded-xl px-7 py-7">
+          <p className="text-gray-lt text-[0.93rem] leading-[1.7] flex-1 max-w-[640px]">
+            Sponsorships help support uniforms, equipment, tournament fees, practice needs, and
+            player development across all Yard Goats teams.
+          </p>
+          <a
+            href="#sponsors"
+            className="shrink-0 bg-green text-white border-2 border-green rounded px-7 py-3 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase hover:bg-green-dk hover:border-green-dk transition-all duration-300 whitespace-nowrap"
+          >
+            Become a Sponsor
+          </a>
         </div>
 
       </div>

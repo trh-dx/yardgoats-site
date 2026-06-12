@@ -141,7 +141,7 @@ export default function Contact() {
                   </label>
                   <select value={fields.pInt} onChange={set("pInt")} className={inputCls("pInt") + " cursor-pointer"}>
                     <option value="">Select interest</option>
-                    {["Register a Player / Ask About Tryouts","Sponsor Inquiry","Volunteering","General Question"].map((o) => (
+                    {["Register a Player / Ask About Tryouts","Sponsorship","General Question"].map((o) => (
                       <option key={o} value={o} className="bg-charcoal">{o}</option>
                     ))}
                   </select>

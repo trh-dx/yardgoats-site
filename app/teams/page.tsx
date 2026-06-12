@@ -6,6 +6,8 @@ import Image from "next/image";
 import { siteConfig } from "@/lib/config";
 import SpotlightCards from "@/components/SpotlightCards";
 import CoachCards from "@/components/CoachCards";
+import TeamCards from "@/components/TeamCards";
+import { teams } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Teams | Paradise Yard Goats Baseball",
@@ -14,45 +16,6 @@ export const metadata: Metadata = {
 };
 
 // ── Data ─────────────────────────────────────────────────────────────
-
-const teamCards = [
-  {
-    age: "7U",
-    name: "7U Yard Goats",
-    format: "Coach Pitch",
-    headCoach: "Update with name",
-    assistantCoach: "Update with name",
-    city: "Paradise, TX",
-    record: "—",
-  },
-  {
-    age: "8U",
-    name: "8U Yard Goats",
-    format: "Coach Pitch",
-    headCoach: "Update with name",
-    assistantCoach: "Update with name",
-    city: "Paradise, TX",
-    record: "—",
-  },
-  {
-    age: "9U",
-    name: "9U Yard Goats",
-    format: "Kid Pitch",
-    headCoach: "Update with name",
-    assistantCoach: "Update with name",
-    city: "Paradise, TX",
-    record: "—",
-  },
-  {
-    age: "11U",
-    name: "11U Yard Goats",
-    format: "Tournament",
-    headCoach: "Update with name",
-    assistantCoach: "Update with name",
-    city: "Paradise, TX",
-    record: "—",
-  },
-];
 
 const coachCards = [
   {
@@ -283,127 +246,52 @@ export default function TeamsPage() {
         >
           <div className="max-w-[1180px] mx-auto px-6">
 
-            <div className="text-center mb-12">
+            <div className="text-center mb-3">
               <span
                 className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
                 style={{ color: "#7AC143" }}
               >
-                2026 Season
+                Travel Baseball
               </span>
               <h2
                 className="font-[family-name:var(--font-bebas)] leading-none text-white mb-3"
                 style={{ fontSize: "clamp(2.5rem, 6vw, 4.2rem)" }}
               >
-                Our Teams
+                Yard Goats <span style={{ color: "#7AC143" }}>Teams</span>
               </h2>
-              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#7AC143" }} />
-              <p
-                className="text-[0.95rem] leading-relaxed max-w-[520px] mx-auto"
-                style={{ color: "rgba(255,255,255,0.45)" }}
-              >
-                Find your team and learn more about the coaches and players that make up the Yard Goats family.
+              <div className="w-12 h-[3px] rounded mx-auto" style={{ backgroundColor: "#B3261E" }} />
+            </div>
+            <p
+              className="text-center text-[1.05rem] leading-[1.78] max-w-[640px] mx-auto mt-4 mb-12"
+              style={{ color: "#A7A8AA" }}
+            >
+              From early fundamentals to competitive tournament play, Paradise Yard Goats teams help
+              players grow with confidence, effort, and a love for the game.
+            </p>
+
+            <TeamCards teams={teams} />
+
+            {/* Sponsor callout */}
+            <div
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 rounded-xl px-7 py-7"
+              style={{
+                backgroundColor: "rgba(122,193,67,0.09)",
+                border: "1px solid rgba(122,193,67,0.22)",
+              }}
+            >
+              <p className="text-[0.93rem] leading-[1.7] flex-1 max-w-[640px]" style={{ color: "#D0D1D2" }}>
+                Sponsorships help support uniforms, equipment, tournament fees, practice needs, and
+                player development across all Yard Goats teams.
               </p>
+              <a
+                href="/#sponsors"
+                className="shrink-0 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all duration-300 whitespace-nowrap hover:opacity-90"
+                style={{ backgroundColor: "#7AC143", color: "#ffffff", border: "2px solid #7AC143" }}
+              >
+                Become a Sponsor
+              </a>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {teamCards.map((team) => (
-                <div
-                  key={team.age}
-                  className="rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 border border-[rgba(122,193,67,0.18)] hover:border-[rgba(122,193,67,0.55)] shadow-[0_4px_28px_rgba(0,0,0,0.45)] hover:shadow-[0_24px_64px_rgba(122,193,67,0.1),0_4px_28px_rgba(0,0,0,0.5)]"
-                  style={{ backgroundColor: "#0f1f35" }}
-                >
-                  {/* Gold top stripe */}
-                  <div style={{ height: "3px", background: "linear-gradient(to right, #7AC143, #94D45A, #7AC143)" }} />
-
-                  {/* Photo area */}
-                  <div
-                    className="relative overflow-hidden flex flex-col items-center justify-center"
-                    style={{
-                      background: "linear-gradient(160deg, #A7A8AA 0%, #001A3D 100%)",
-                      aspectRatio: "4 / 3",
-                    }}
-                  >
-                    {/* Watermark age */}
-                    <span
-                      className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-bebas)] select-none pointer-events-none leading-none"
-                      aria-hidden="true"
-                      style={{ fontSize: "clamp(6rem, 17vw, 10rem)", color: "rgba(255,255,255,0.04)" }}
-                    >
-                      {team.age}
-                    </span>
-                    {/* Age badge */}
-                    <div
-                      className="absolute top-3 right-3 font-[family-name:var(--font-bebas)] text-[1.1rem] px-2.5 py-0.5 rounded-sm"
-                      style={{ backgroundColor: "#7AC143", color: "#000000" }}
-                    >
-                      {team.age}
-                    </div>
-                    {/* Placeholder */}
-                    <div className="relative z-10 flex flex-col items-center gap-1.5">
-                      <span style={{ fontSize: "2rem", opacity: 0.12 }}>⚾</span>
-                      <span
-                        className="font-[family-name:var(--font-barlow)] font-bold text-[0.6rem] uppercase tracking-[2px]"
-                        style={{ color: "rgba(255,255,255,0.28)" }}
-                      >
-                        Team Photo
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Card body */}
-                  <div className="p-4 pt-3.5">
-                    <h3
-                      className="font-[family-name:var(--font-bebas)] text-white leading-none mb-0.5"
-                      style={{ fontSize: "1.55rem" }}
-                    >
-                      {team.name}
-                    </h3>
-                    <div
-                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.67rem] tracking-[2.5px] uppercase mb-4"
-                      style={{ color: "#7AC143" }}
-                    >
-                      {team.format}
-                    </div>
-
-                    <div className="space-y-1.5 mb-4">
-                      {[
-                        { label: "Head Coach",  val: team.headCoach },
-                        { label: "Asst. Coach", val: team.assistantCoach },
-                        { label: "Home",        val: team.city },
-                        { label: "Record",      val: team.record },
-                      ].map((row) => (
-                        <div key={row.label} className="flex gap-2 text-[0.77rem]">
-                          <span className="flex-shrink-0 w-[70px]" style={{ color: "rgba(255,255,255,0.32)" }}>
-                            {row.label}
-                          </span>
-                          <span className="text-white truncate">{row.val}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="flex gap-2">
-                      <a
-                        href="/#teams"
-                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-colors hover:bg-[#94D45A]"
-                        style={{ backgroundColor: "#7AC143", color: "#000000" }}
-                      >
-                        View Team
-                      </a>
-                      <a
-                        href="/#contact"
-                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-all hover:border-[rgba(122,193,67,0.55)] hover:text-[#7AC143]"
-                        style={{
-                          color: "rgba(255,255,255,0.55)",
-                          border: "1px solid rgba(255,255,255,0.13)",
-                        }}
-                      >
-                        Contact Coach
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

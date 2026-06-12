@@ -2,29 +2,25 @@ export const teams = [
   {
     age: "7U",
     name: "7U Yard Goats",
-    description:
-      "Developing young players through coach pitch baseball and team-first instruction.",
+    description: "Fundamentals, teamwork, base running, and learning the game.",
     tag: "Coach Pitch",
   },
   {
     age: "8U",
     name: "8U Yard Goats",
-    description:
-      "Coach pitch baseball with a focus on fundamentals, competition, and confidence.",
+    description: "Confidence, field awareness, hitting mechanics, and game experience.",
     tag: "Coach Pitch",
   },
   {
     age: "9U",
     name: "9U Yard Goats",
-    description:
-      "Kid pitch baseball bridging the gap between fundamentals and competitive play.",
+    description: "Competitive reps, stronger fundamentals, pitching development, and tournament play.",
     tag: "Kid Pitch",
   },
   {
     age: "11U",
     name: "11U Yard Goats",
-    description:
-      "Tournament baseball for players ready to compete at a higher level and develop advanced skills.",
+    description: "Advanced development, leadership, competition, and preparing for higher levels of baseball.",
     tag: "Tournament",
   },
 ];
@@ -84,7 +80,7 @@ export const sponsors = [
       "Recognition at events",
     ],
     featured: false,
-    cta: "Get Started",
+    cta: "Sponsor at $250",
   },
   {
     tier: "Extra Base",
@@ -98,7 +94,7 @@ export const sponsors = [
       "All Single perks",
     ],
     featured: false,
-    cta: "Get Started",
+    cta: "Sponsor at $500",
   },
   {
     tier: "Triple Play",
@@ -112,7 +108,7 @@ export const sponsors = [
       "All Double perks",
     ],
     featured: false,
-    cta: "Get Started",
+    cta: "Sponsor at $1,000",
   },
   {
     tier: "Premier Partner",
@@ -126,7 +122,7 @@ export const sponsors = [
       "All Triple perks",
     ],
     featured: true,
-    cta: "Hit a Home Run",
+    cta: "Become a Premier Sponsor",
   },
 ];
 
