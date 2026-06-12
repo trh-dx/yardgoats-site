@@ -20,7 +20,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(8,17,31,0.72) 0%, rgba(8,17,31,0.65) 50%, rgba(8,17,31,0.85) 100%)",
+            "linear-gradient(180deg, rgba(0,26,61,0.72) 0%, rgba(0,26,61,0.65) 50%, rgba(0,26,61,0.85) 100%)",
         }}
       />
 
@@ -28,7 +28,7 @@ export default function Hero() {
       <div
         className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
         style={{
-          background: "linear-gradient(to top, rgba(8,17,31,0.9) 0%, transparent 100%)",
+          background: "linear-gradient(to top, rgba(0,26,61,0.9) 0%, transparent 100%)",
         }}
       />
 

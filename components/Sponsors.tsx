@@ -1,8 +1,9 @@
 import { sponsors } from "@/lib/data";
 
 const icons: Record<string, string> = {
-  Single: "⚾",
-  Double: "🏅",
+  Single:     "⚾",
+  Double:     "🏅",
+  Triple:     "⭐",
   "Home Run": "🏆",
 };
 
@@ -29,13 +30,13 @@ export default function Sponsors() {
         </div>
 
         {/* Package cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-14">
           {sponsors.map((pkg) => (
             <div
               key={pkg.name}
               className={`relative rounded-xl p-7 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)] ${
                 pkg.featured
-                  ? "border border-red bg-[linear-gradient(160deg,#1F2933,rgba(179,38,30,0.09))]"
+                  ? "border border-red bg-[linear-gradient(160deg,#002255,rgba(179,38,30,0.09))]"
                   : "border border-white/9 bg-charcoal"
               }`}
             >
@@ -80,6 +81,8 @@ export default function Sponsors() {
                 className={`block w-full text-center font-[family-name:var(--font-barlow)] font-bold text-[0.9rem] tracking-[1.5px] uppercase py-2.5 rounded border-2 transition-all ${
                   pkg.featured
                     ? "bg-red text-white border-red hover:bg-red-dk hover:border-red-dk hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)]"
+                    : pkg.name === "Triple"
+                    ? "bg-royal-blue text-white border-royal-blue hover:brightness-110"
                     : pkg.name === "Double"
                     ? "bg-tan text-navy border-tan hover:bg-tan-lt"
                     : "bg-transparent text-white border-white/40 hover:border-white hover:bg-white/8"

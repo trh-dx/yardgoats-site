@@ -3,7 +3,8 @@
 Official website for the Paradise Yard Goats Baseball organization based in Paradise, Texas.  
 Teams: **7U · 8U · 9U · 11U**
 
-**GitHub:** https://github.com/trh-dx/yardgoats-site
+**GitHub:** https://github.com/trh-dx/yardgoats-site  
+**Live site:** https://yardgoats-site.vercel.app
 
 ---
 
@@ -52,7 +53,7 @@ yardgoats-site/
 │   ├── layout.tsx            # Root layout — fonts, metadata, html/body
 │   ├── page.tsx              # Home page — imports and orders all sections
 │   ├── teams/
-│   │   └── page.tsx          # Teams page — divisions, coaches, player spotlights, philosophy
+│   │   └── page.tsx          # Teams page — divisions, coaches, spotlights, philosophy, CTA
 │   ├── schedule/
 │   │   └── page.tsx          # Schedule page — tournament calendar, full schedule, external links
 │   └── tryouts/
@@ -63,9 +64,11 @@ yardgoats-site/
 │   ├── Scoreboard.tsx        # Stats strip: location, age groups, level, support
 │   ├── StitchDivider.tsx     # Red baseball stitch SVG divider
 │   ├── About.tsx             # About section with value cards
-│   ├── Teams.tsx             # Baseball card style team cards (used by /teams page)
+│   ├── Teams.tsx             # Team cards component (homepage)
+│   ├── CoachCards.tsx        # Coach cards — Client Component (hover effects)
+│   ├── SpotlightCards.tsx    # Player spotlight cards — Client Component (hover effects)
 │   ├── Schedule.tsx          # Game/tournament schedule table with division filters
-│   ├── Sponsors.tsx          # Single / Double / Home Run sponsor packages
+│   ├── Sponsors.tsx          # Single / Double / Triple / Home Run sponsor packages
 │   ├── Gallery.tsx           # Game day photo grid with placeholders
 │   ├── Contact.tsx           # Contact form with validation (Client Component)
 │   └── Footer.tsx            # Logo, quick links, external links, copyright
@@ -90,7 +93,7 @@ export const siteConfig = {
   register:    "https://form.jotform.com/261348363828162",
   gameChanger: "#",   // replace with your GameChanger schedule URL
   ncs:         "#",   // replace with your NCS events URL
-  email:       "paradiseyardgoats@email.com",
+  email:       "paradiseyardgoats@gmail.com",
 };
 ```
 
@@ -98,7 +101,7 @@ export const siteConfig = {
 |---|---|
 | `facebook` | Nav, Hero, Gallery, Contact, Footer, Tryouts |
 | `register` | Tryouts page — banner button + schedule section |
-| `gameChanger` | Schedule page, Schedule component, Contact, Footer |
+| `gameChanger` | Schedule page, Schedule component, Footer |
 | `ncs` | Schedule page, Schedule component, Footer |
 | `email` | Contact section, Footer |
 
@@ -138,17 +141,14 @@ Current divisions: **7U · 8U · 9U · 11U**
 
 ### Update sponsor packages
 
-```ts
-{
-  tier: "Base Hit",
-  name: "Single",
-  price: "$300",
-  priceSuffix: "",
-  perks: ["Website listing", "Social media shoutout"],
-  featured: false,
-  cta: "Get Started",
-},
-```
+Four tiers are defined in `lib/data.ts`:
+
+| Tier | Name | Price |
+|---|---|---|
+| Base Hit | Single | $250 |
+| Extra Base | Double | $500 |
+| Triple Play | Triple | $1,000 |
+| Premier Partner | Home Run | $2,000+ |
 
 Set `featured: true` to highlight a package with the red "Featured" badge.
 
@@ -176,24 +176,31 @@ Defined as CSS `@keyframes` in `app/globals.css` and applied via utility classes
 | Class | Effect | Used on |
 |---|---|---|
 | `.logo-float` | Entrance bounce + continuous gentle float | Hero logo |
-| `.btn-glow` | Pulsing tan glow + lift | "View Tryout Info" button on Hero |
-| `.nav-pulse` | Alternating tan color glow | Tryouts link in Nav (when not on Tryouts page) |
+| `.btn-glow` | Pulsing green glow + lift | "View Tryout Info" button on Hero |
+| `.nav-pulse` | Alternating green color glow | Tryouts link in Nav (when not on Tryouts page) |
 
 ---
 
 ## Brand Colors
 
-Defined in `app/globals.css` under `@theme`.
+Defined in `app/globals.css` under `@theme`. Official Yard Goats palette.
 
 | Token | Hex | Tailwind class |
 |---|---|---|
-| `--color-navy` | `#08111F` | `bg-navy`, `text-navy` |
-| `--color-green` | `#00A651` | `bg-green`, `text-green` |
-| `--color-green-lt` | `#43a047` | `bg-green-lt`, `text-green-lt` |
-| `--color-green-dk` | `#007A3D` | `bg-green-dk`, `text-green-dk` |
-| `--color-tan` | `#C49A6C` | `bg-tan`, `text-tan` |
+| `--color-navy` | `#001A3D` | `bg-navy`, `text-navy` |
+| `--color-navy-mid` | `#002255` | `bg-navy-mid`, `text-navy-mid` |
+| `--color-royal-blue` | `#003DA5` | `bg-royal-blue`, `text-royal-blue` |
+| `--color-green` | `#7AC143` | `bg-green`, `text-green` |
+| `--color-green-lt` | `#94D45A` | `bg-green-lt`, `text-green-lt` |
+| `--color-green-dk` | `#5A9132` | `bg-green-dk`, `text-green-dk` |
 | `--color-red` | `#B3261E` | `bg-red`, `text-red` |
-| `--color-charcoal` | `#1F2933` | `bg-charcoal`, `text-charcoal` |
+| `--color-gray` | `#A7A8AA` | `bg-gray`, `text-gray` |
+| `--color-gray-lt` | `#D0D1D2` | `bg-gray-lt`, `text-gray-lt` |
+| `--color-white` | `#F8F7F2` | `bg-white`, `text-white` |
+
+Section background pattern (Teams page):
+- `#001A3D` — base navy (S2 Our Teams, S4 Spotlights)
+- `#002255` — mid navy (S3 Coaches, S5 Philosophy)
 
 ---
 
@@ -204,7 +211,7 @@ Loaded via `next/font/google` in `app/layout.tsx`.
 | Font | CSS variable | Used for |
 |---|---|---|
 | Bebas Neue | `--font-bebas` | Section titles, hero headline, card names |
-| Barlow Condensed | `--font-barlow` | Labels, buttons, nav, badges (normal + italic) |
+| Barlow Condensed | `--font-barlow` | Labels, buttons, nav, badges |
 | DM Sans | `--font-dm-sans` | Body copy, form inputs, descriptions |
 
 Apply in JSX: `className="font-[family-name:var(--font-bebas)]"`
@@ -228,18 +235,18 @@ Apply in JSX: `className="font-[family-name:var(--font-bebas)]"`
 
 | Section | Description |
 |---|---|
-| Hero | "Built on Dirt. Driven by Development." — baseball photo background |
+| Hero | "Built on Dirt. Driven by Development." — photo background |
 | Team Directory | 7U, 8U, 9U, 11U cards with coach, format, record |
-| Meet the Coaches | Coach cards with bio, years, and quote |
-| Player Spotlights | Recognition cards by position and team |
+| Meet the Coaches | `CoachCards.tsx` — bio, years, quote, hover glow |
+| Player Spotlights | `SpotlightCards.tsx` — recognition cards with badge, position, team |
 | Development Philosophy | Four pillars: Skills, Teamwork, Confidence, Sportsmanship |
-| Join the Herd CTA | Register for Tryouts + Contact buttons |
+| Join the Herd CTA | Radial gradient + logo watermark, Register + Contact buttons |
 
 ### Schedule page (`/schedule`)
 
 | Section | Description |
 |---|---|
-| Hero | "From the Dugout" — baseball photo background |
+| Hero | "From the Dugout" — photo background |
 | Tournament Calendar | Key tournament cards with dates, location, teams |
 | Full Schedule Table | Filterable by division — pulls from `lib/data.ts` |
 | External Links | GameChanger live scoring + NCS Events cards |
@@ -250,12 +257,25 @@ Apply in JSX: `className="font-[family-name:var(--font-bebas)]"`
 | Section | Description |
 |---|---|
 | Banner header | Full-width photo background, title, Register CTA |
-| Key facts bar | Date, location, age groups, cost |
+| Key facts bar | Date, location, age groups, cost — Royal Blue ribbon |
 | Tryout schedule | July 12th, home-plate time cards per division |
 | Age divisions | 7U, 8U, 9U, 11U cards with format + highlights |
 | What to Expect | 4-step process |
 | What to Bring | Checklist |
 | CTA | Register + Facebook + Contact buttons |
+
+---
+
+## Client Components
+
+Pages use Server Components by default. The following are `"use client"` components that require interactivity:
+
+| Component | Why client |
+|---|---|
+| `CoachCards.tsx` | `onMouseEnter`/`onMouseLeave` for border hover glow |
+| `SpotlightCards.tsx` | `onMouseEnter`/`onMouseLeave` for border hover glow |
+| `Contact.tsx` | Form state + validation |
+| `Nav.tsx` | `usePathname` for active link detection |
 
 ---
 
@@ -293,6 +313,8 @@ In `components/Sponsors.tsx`:
 2. Import at vercel.com — Vercel auto-detects Next.js
 3. Deploy — no config needed
 
+Auto-deploys on every push to `main`.
+
 ### Static export (Netlify, GitHub Pages, S3)
 
 Add to `next.config.ts`:
@@ -310,4 +332,4 @@ Run `npm run build` and upload the `/out` folder.
 ## Contact
 
 Paradise Yard Goats Baseball — Paradise, Texas  
-Update `paradiseyardgoats@email.com` in `lib/config.ts` with the real team email address.
+Email: paradiseyardgoats@gmail.com

@@ -40,7 +40,7 @@ export default function SchedulePage() {
   return (
     <>
       <Nav />
-      <main style={{ backgroundColor: "#08111F", color: "#F8F6F0" }}>
+      <main style={{ backgroundColor: "#001A3D", color: "#F8F6F0" }}>
 
         {/* ─── SECTION 1 · HERO ─────────────────────────────────────── */}
         <section
@@ -58,16 +58,16 @@ export default function SchedulePage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(120deg, rgba(8,17,31,0.97) 0%, rgba(0,166,81,0.42) 45%, rgba(8,17,31,0.93) 100%)",
+                "linear-gradient(120deg, rgba(0,26,61,0.97) 0%, rgba(0,61,165,0.42) 45%, rgba(0,26,61,0.93) 100%)",
             }}
           />
           <div
             className="absolute inset-x-0 top-0 h-40 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, rgba(8,17,31,0.6), transparent)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(0,26,61,0.6), transparent)" }}
           />
           <div
             className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
-            style={{ background: "linear-gradient(to top, #08111F, transparent)" }}
+            style={{ background: "linear-gradient(to top, #001A3D, transparent)" }}
           />
 
           <div
@@ -81,7 +81,7 @@ export default function SchedulePage() {
             >
               <Link href="/" className="hover:text-white/60 transition-colors">Home</Link>
               <span>›</span>
-              <span style={{ color: "#D4AF37" }}>Schedule</span>
+              <span style={{ color: "#7AC143" }}>Schedule</span>
             </div>
 
             <div className="max-w-[680px]" style={{ paddingTop: "4rem" }}>
@@ -89,9 +89,9 @@ export default function SchedulePage() {
               <div
                 className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.72rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
                 style={{
-                  color: "#D4AF37",
-                  backgroundColor: "rgba(8,17,31,0.75)",
-                  border: "1px solid rgba(212,175,55,0.35)",
+                  color: "#7AC143",
+                  backgroundColor: "rgba(0,26,61,0.75)",
+                  border: "1px solid rgba(122,193,67,0.35)",
                 }}
               >
                 Paradise Yard Goats Baseball · 2026 Season
@@ -107,7 +107,7 @@ export default function SchedulePage() {
                 }}
               >
                 FROM THE{" "}
-                <span style={{ color: "#D4AF37" }}>DUGOUT</span>
+                <span style={{ color: "#7AC143" }}>DUGOUT</span>
               </h1>
 
               <div
@@ -131,7 +131,7 @@ export default function SchedulePage() {
                 <a
                   href="#schedule"
                   className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0"
-                  style={{ backgroundColor: "#D4AF37", color: "#1A1A1A", border: "2px solid #D4AF37" }}
+                  style={{ backgroundColor: "#7AC143", color: "#000000", border: "2px solid #7AC143" }}
                 >
                   View Schedule
                 </a>
@@ -154,7 +154,7 @@ export default function SchedulePage() {
             <div className="text-center mb-10">
               <span
                 className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
-                style={{ color: "#D4AF37" }}
+                style={{ color: "#7AC143" }}
               >
                 2026 Season
               </span>
@@ -164,7 +164,7 @@ export default function SchedulePage() {
               >
                 Tournament Calendar
               </h2>
-              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#D4AF37" }} />
+              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#7AC143" }} />
               <p
                 className="text-[0.95rem] leading-relaxed max-w-[480px] mx-auto"
                 style={{ color: "rgba(255,255,255,0.52)" }}
@@ -177,14 +177,14 @@ export default function SchedulePage() {
               {tournaments.map((t, i) => (
                 <div
                   key={i}
-                  className="rounded-xl overflow-hidden border border-[rgba(212,175,55,0.18)] hover:border-[rgba(212,175,55,0.45)] transition-all duration-300 hover:-translate-y-1.5"
+                  className="rounded-xl overflow-hidden border border-[rgba(122,193,67,0.18)] hover:border-[rgba(122,193,67,0.45)] transition-all duration-300 hover:-translate-y-1.5"
                   style={{ backgroundColor: "#0f1f35" }}
                 >
-                  <div style={{ height: "3px", background: "linear-gradient(to right, #D4AF37, #E8CC65, #D4AF37)" }} />
+                  <div style={{ height: "3px", background: "linear-gradient(to right, #7AC143, #E8CC65, #7AC143)" }} />
                   <div className="p-6">
                     <div
                       className="inline-block font-[family-name:var(--font-barlow)] font-bold text-[0.62rem] tracking-[2.5px] uppercase px-2 py-0.5 rounded-sm mb-3"
-                      style={{ backgroundColor: "rgba(212,175,55,0.12)", color: "#D4AF37", border: "1px solid rgba(212,175,55,0.25)" }}
+                      style={{ backgroundColor: "rgba(122,193,67,0.12)", color: "#7AC143", border: "1px solid rgba(122,193,67,0.25)" }}
                     >
                       {t.type}
                     </div>
@@ -234,12 +234,12 @@ export default function SchedulePage() {
               {/* GameChanger */}
               <a
                 href={siteConfig.gameChanger}
-                className="group rounded-xl p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,175,55,0.4)]"
+                className="group rounded-xl p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(122,193,67,0.4)]"
                 style={{ backgroundColor: "#0f1f35", border: "1px solid rgba(255,255,255,0.07)" }}
               >
                 <div
                   className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-xl"
-                  style={{ backgroundColor: "rgba(212,175,55,0.1)" }}
+                  style={{ backgroundColor: "rgba(122,193,67,0.1)" }}
                 >
                   ⏱
                 </div>
@@ -255,7 +255,7 @@ export default function SchedulePage() {
                   </p>
                   <span
                     className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[2px] uppercase"
-                    style={{ color: "#D4AF37" }}
+                    style={{ color: "#7AC143" }}
                   >
                     Open GameChanger →
                   </span>
@@ -265,12 +265,12 @@ export default function SchedulePage() {
               {/* NCS Events */}
               <a
                 href={siteConfig.ncs}
-                className="group rounded-xl p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,175,55,0.4)]"
+                className="group rounded-xl p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(122,193,67,0.4)]"
                 style={{ backgroundColor: "#0f1f35", border: "1px solid rgba(255,255,255,0.07)" }}
               >
                 <div
                   className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-xl"
-                  style={{ backgroundColor: "rgba(212,175,55,0.1)" }}
+                  style={{ backgroundColor: "rgba(122,193,67,0.1)" }}
                 >
                   📅
                 </div>
@@ -286,7 +286,7 @@ export default function SchedulePage() {
                   </p>
                   <span
                     className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[2px] uppercase"
-                    style={{ color: "#D4AF37" }}
+                    style={{ color: "#7AC143" }}
                   >
                     View NCS Events →
                   </span>
@@ -298,7 +298,7 @@ export default function SchedulePage() {
         </section>
 
         {/* ─── SECTION 5 · JOIN CTA ──────────────────────────────────── */}
-        <section className="relative py-20 md:py-28 overflow-hidden" style={{ backgroundColor: "#08111F" }}>
+        <section className="relative py-20 md:py-28 overflow-hidden" style={{ backgroundColor: "#001A3D" }}>
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <Image
               src="/yardgoatsimage.png"
@@ -310,21 +310,21 @@ export default function SchedulePage() {
             {/* Suppress green bleed while keeping logo outlines visible */}
             <div
               className="absolute inset-0"
-              style={{ backgroundColor: "rgba(8,17,31,0.72)" }}
+              style={{ backgroundColor: "rgba(0,26,61,0.72)" }}
             />
           </div>
           <div
             className="absolute inset-x-0 top-0 h-20 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, #08111F, transparent)" }}
+            style={{ background: "linear-gradient(to bottom, #001A3D, transparent)" }}
           />
 
           <div className="relative max-w-[680px] mx-auto px-6 text-center">
             <div
               className="inline-flex items-center font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
               style={{
-                color: "#D4AF37",
-                backgroundColor: "rgba(212,175,55,0.08)",
-                border: "1px solid rgba(212,175,55,0.22)",
+                color: "#7AC143",
+                backgroundColor: "rgba(122,193,67,0.08)",
+                border: "1px solid rgba(122,193,67,0.22)",
               }}
             >
               Open to All Skill Levels
@@ -334,7 +334,7 @@ export default function SchedulePage() {
               style={{ fontSize: "clamp(3rem, 9vw, 6rem)" }}
             >
               Want to Be on{" "}
-              <span style={{ color: "#D4AF37" }}>the Field?</span>
+              <span style={{ color: "#7AC143" }}>the Field?</span>
             </h2>
             <p
               className="text-[1rem] leading-relaxed mb-8 max-w-[460px] mx-auto"
@@ -346,7 +346,7 @@ export default function SchedulePage() {
               <Link
                 href="/tryouts"
                 className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:bg-[#E8CC65]"
-                style={{ backgroundColor: "#D4AF37", color: "#1A1A1A", border: "2px solid #D4AF37" }}
+                style={{ backgroundColor: "#7AC143", color: "#000000", border: "2px solid #7AC143" }}
               >
                 Register for Tryouts
               </Link>

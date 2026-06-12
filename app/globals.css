@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy:      #08111F;
-  --color-navy-mid:  #0d1b2e;
-  --color-green:     #00A651;
-  --color-green-lt:  #43a047;
-  --color-green-dk:  #007A3D;
-  --color-tan:       #C49A6C;
-  --color-tan-lt:    #d4b08a;
-  --color-red:       #B3261E;
-  --color-red-dk:    #8c1d17;
-  --color-charcoal:  #1F2933;
-  --color-gray:      #8fa3b1;
-  --color-gray-lt:   #c9d6de;
-  --color-white:     #F8F7F2;
+  --color-navy:        #001A3D;
+  --color-navy-mid:    #002255;
+  --color-royal-blue:  #003DA5;
+  --color-green:       #7AC143;
+  --color-green-lt:    #94D45A;
+  --color-green-dk:    #5A9132;
+  --color-tan:         #7AC143;
+  --color-tan-lt:      #94D45A;
+  --color-red:         #B3261E;
+  --color-red-dk:      #8c1d17;
+  --color-charcoal:    #002255;
+  --color-gray:        #A7A8AA;
+  --color-gray-lt:     #D0D1D2;
+  --color-white:       #F8F7F2;
 
   --font-display:    var(--font-bebas);
   --font-condensed:  var(--font-barlow);
@@ -25,7 +26,7 @@ html {
 }
 
 body {
-  background-color: #08111F;
+  background-color: #001A3D;
   color: #F8F7F2;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   overflow-x: hidden;
@@ -61,12 +62,12 @@ body {
 
 @keyframes nav-pulse {
   0%, 100% {
-    color: #c9d6de;
+    color: #D0D1D2;
     text-shadow: none;
   }
   50% {
-    color: #C49A6C;
-    text-shadow: 0 0 10px rgba(196,154,108,0.65);
+    color: #7AC143;
+    text-shadow: 0 0 10px rgba(122,193,67,0.65);
   }
 }
 
@@ -76,11 +77,11 @@ body {
 
 @keyframes tan-glow {
   0%, 100% {
-    box-shadow: 0 0 10px 2px rgba(196,154,108,0.35), 0 4px 16px rgba(196,154,108,0.2);
+    box-shadow: 0 0 10px 2px rgba(122,193,67,0.35), 0 4px 16px rgba(122,193,67,0.2);
     transform: translateY(0);
   }
   50% {
-    box-shadow: 0 0 28px 8px rgba(196,154,108,0.7), 0 8px 28px rgba(196,154,108,0.45);
+    box-shadow: 0 0 28px 8px rgba(122,193,67,0.7), 0 8px 28px rgba(122,193,67,0.45);
     transform: translateY(-3px);
   }
 }

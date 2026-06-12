@@ -18,14 +18,14 @@ export default function Schedule() {
     <section
       id="schedule"
       className="relative py-16 md:py-24"
-      style={{ background: "linear-gradient(135deg, #0c1c12 0%, #09142a 100%)" }}
+      style={{ background: "linear-gradient(135deg, #001A3D 0%, #002255 100%)" }}
     >
       {/* Field line texture */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(46,125,50,0.022) 40px, rgba(46,125,50,0.022) 41px)",
+            "repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(0,61,165,0.04) 40px, rgba(0,61,165,0.04) 41px)",
         }}
       />
 

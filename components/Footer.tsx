@@ -2,12 +2,12 @@ import Image from "next/image";
 import { siteConfig } from "@/lib/config";
 
 const quickLinks = [
-  { href: "#about",    label: "About the Yard Goats" },
-  { href: "#teams",    label: "Our Teams" },
-  { href: "#schedule", label: "From the Dugout" },
-  { href: "#sponsors", label: "Step Up to the Plate" },
-  { href: "#gallery",  label: "Game Day Photos" },
-  { href: "#contact",  label: "Get Involved" },
+  { href: "/#about",    label: "About the Yard Goats" },
+  { href: "/teams",     label: "Our Teams" },
+  { href: "/schedule",  label: "From the Dugout" },
+  { href: "/#sponsors", label: "Step Up to the Plate" },
+  { href: "/#gallery",  label: "Game Day Photos" },
+  { href: "/#contact",  label: "Get Involved" },
 ];
 
 const extLinks = [

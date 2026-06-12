@@ -3,5 +3,5 @@ export const siteConfig = {
   register:    "https://form.jotform.com/261348363828162",
   gameChanger: "#",   // replace with your GameChanger schedule URL
   ncs:         "#",   // replace with your NCS events URL
-  email:       "paradiseyardgoats@email.com",
+  email:       "paradiseyardgoats@gmail.com",
 };

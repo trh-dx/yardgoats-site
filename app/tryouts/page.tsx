@@ -132,18 +132,18 @@ export default function TryoutsPage() {
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(to right, rgba(8,17,31,0.97) 0%, rgba(8,17,31,0.93) 38%, rgba(8,17,31,0.72) 62%, rgba(8,17,31,0.45) 100%)",
+                "linear-gradient(to right, rgba(0,26,61,0.97) 0%, rgba(0,26,61,0.93) 38%, rgba(0,26,61,0.72) 62%, rgba(0,26,61,0.45) 100%)",
             }}
           />
           {/* Top fade for nav blend */}
           <div
             className="absolute inset-x-0 top-0 h-28 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, rgba(8,17,31,0.65) 0%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(0,26,61,0.65) 0%, transparent 100%)" }}
           />
           {/* Bottom fade into green facts bar */}
           <div
             className="absolute inset-x-0 bottom-0 h-20 pointer-events-none"
-            style={{ background: "linear-gradient(to top, rgba(8,17,31,0.6) 0%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to top, rgba(0,26,61,0.6) 0%, transparent 100%)" }}
           />
 
           {/* Content */}
@@ -199,7 +199,7 @@ export default function TryoutsPage() {
         </section>
 
         {/* Key Facts Bar */}
-        <div className="bg-green py-5">
+        <div className="py-5" style={{ backgroundColor: "#003DA5" }}>
           <div className="max-w-[1180px] mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
@@ -210,7 +210,7 @@ export default function TryoutsPage() {
               ].map((f) => (
                 <div key={f.label} className="flex items-center gap-3">
                   {f.icon ? (
-                    <span className="text-[1.35rem]">{f.icon}</span>
+                    <span className="w-7 h-7 flex-shrink-0 flex items-center justify-center text-[1.5rem]">{f.icon}</span>
                   ) : (
                     <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                       <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="white" strokeWidth="1.6"/>
@@ -225,14 +225,14 @@ export default function TryoutsPage() {
                     </svg>
                   )}
                   <div>
-                    <div className="text-[0.65rem] font-[family-name:var(--font-barlow)] font-bold uppercase tracking-[2px] text-navy mb-0.5">
+                    <div className="text-[0.75rem] font-[family-name:var(--font-barlow)] font-bold uppercase tracking-[2px] text-navy mb-0.5">
                       {f.label}
                     </div>
-                    <div className="text-white font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] leading-tight">
+                    <div className="text-white font-[family-name:var(--font-barlow)] font-bold text-[1.05rem] leading-tight">
                       {f.val}
                     </div>
                     {f.sub && (
-                      <div className="text-white/75 font-[family-name:var(--font-barlow)] text-[0.88rem] leading-tight">
+                      <div className="text-white/75 font-[family-name:var(--font-barlow)] text-[0.97rem] leading-tight">
                         {f.sub}
                       </div>
                     )}
@@ -258,8 +258,8 @@ export default function TryoutsPage() {
 
             <div className="flex flex-wrap justify-center gap-8">
               {[
-                { ages: "7U & 8U", time: "12:00 PM", end: "12:45 PM", bg: "#00A651" },
-                { ages: "9U",      time: "1:00 PM",  end: "1:45 PM",  bg: "#C49A6C" },
+                { ages: "7U & 8U", time: "12:00 PM", end: "12:45 PM", bg: "#7AC143" },
+                { ages: "9U",      time: "1:00 PM",  end: "1:45 PM",  bg: "#003DA5" },
                 { ages: "11U",     time: "2:00 PM",  end: "2:45 PM",  bg: "#B3261E" },
               ].map((slot) => (
                 <div key={slot.ages} className="relative flex-shrink-0" style={{ width: "clamp(150px, 42vw, 190px)", height: "clamp(190px, 53vw, 240px)" }}>

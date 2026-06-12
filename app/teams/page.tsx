@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/lib/config";
+import SpotlightCards from "@/components/SpotlightCards";
+import CoachCards from "@/components/CoachCards";
 
 export const metadata: Metadata = {
   title: "Teams | Paradise Yard Goats Baseball",
@@ -81,6 +83,7 @@ const spotlightPlayers = [
     name: "Player Name",
     position: "Shortstop",
     team: "11U Yard Goats",
+    badge: "Hustle Award",
     highlight:
       "Has demonstrated outstanding effort and leadership throughout the season while continuing to raise the level of every player around them. A true team-first competitor who leads by example.",
   },
@@ -88,6 +91,7 @@ const spotlightPlayers = [
     name: "Player Name",
     position: "Catcher",
     team: "9U Yard Goats",
+    badge: "Gold Glove",
     highlight:
       "Improved dramatically behind the plate this season through patience and hard work. The kind of player every team is better for having — attitude and effort, every single day.",
   },
@@ -95,6 +99,7 @@ const spotlightPlayers = [
     name: "Player Name",
     position: "Pitcher / OF",
     team: "8U Yard Goats",
+    badge: "Practice Leader",
     highlight:
       "Shows maturity beyond their years with composure on the mound and infectious energy in the dugout. One of the most coachable players on the roster — always asking what they can do better.",
   },
@@ -102,6 +107,7 @@ const spotlightPlayers = [
     name: "Player Name",
     position: "1B / Pitcher",
     team: "7U Yard Goats",
+    badge: "Teammate Award",
     highlight:
       "In their first season of organized baseball, this player has become someone teammates look to for encouragement. Pure heart and hustle from the first inning to the last.",
   },
@@ -171,7 +177,7 @@ export default function TeamsPage() {
   return (
     <>
       <Nav />
-      <main style={{ backgroundColor: "#08111F", color: "#F8F6F0" }}>
+      <main style={{ backgroundColor: "#001A3D", color: "#F8F6F0" }}>
 
         {/* ─── SECTION 1 · HERO ─────────────────────────────────────── */}
         <section
@@ -190,18 +196,18 @@ export default function TeamsPage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(120deg, rgba(8,17,31,0.97) 0%, rgba(0,166,81,0.42) 45%, rgba(8,17,31,0.93) 100%)",
+                "linear-gradient(120deg, rgba(0,26,61,0.97) 0%, rgba(0,61,165,0.42) 45%, rgba(0,26,61,0.93) 100%)",
             }}
           />
           {/* Top vignette */}
           <div
             className="absolute inset-x-0 top-0 h-40 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, rgba(8,17,31,0.6), transparent)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(0,26,61,0.6), transparent)" }}
           />
           {/* Bottom fade */}
           <div
             className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
-            style={{ background: "linear-gradient(to top, #08111F, transparent)" }}
+            style={{ background: "linear-gradient(to top, #001A3D, transparent)" }}
           />
 
           <div
@@ -215,7 +221,7 @@ export default function TeamsPage() {
             >
               <Link href="/" className="hover:text-white/60 transition-colors">Home</Link>
               <span>›</span>
-              <span style={{ color: "#D4AF37" }}>Teams</span>
+              <span style={{ color: "#7AC143" }}>Teams</span>
             </div>
 
             <div className="max-w-[680px]">
@@ -223,9 +229,9 @@ export default function TeamsPage() {
               <div
                 className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.72rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
                 style={{
-                  color: "#D4AF37",
-                  backgroundColor: "rgba(8,17,31,0.75)",
-                  border: "1px solid rgba(212,175,55,0.35)",
+                  color: "#7AC143",
+                  backgroundColor: "rgba(0,26,61,0.75)",
+                  border: "1px solid rgba(122,193,67,0.35)",
                 }}
               >
                 Paradise Yard Goats Baseball · Paradise, TX
@@ -237,7 +243,7 @@ export default function TeamsPage() {
                 style={{ fontSize: "clamp(2.8rem, 6.5vw, 5.5rem)", letterSpacing: "0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9)", lineHeight: 1.1 }}
               >
                 <span className="text-white">Built on Dirt.</span><br />
-                <span style={{ color: "#D4AF37" }}>Driven by Development.</span>
+                <span style={{ color: "#7AC143" }}>Driven by Development.</span>
               </h1>
 
               {/* Support text */}
@@ -253,7 +259,7 @@ export default function TeamsPage() {
                 <a
                   href="#teams"
                   className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0"
-                  style={{ backgroundColor: "#D4AF37", color: "#1A1A1A", border: "2px solid #D4AF37" }}
+                  style={{ backgroundColor: "#7AC143", color: "#000000", border: "2px solid #7AC143" }}
                 >
                   View Teams
                 </a>
@@ -273,14 +279,14 @@ export default function TeamsPage() {
         <section
           id="teams"
           className="py-16 md:py-24"
-          style={{ backgroundColor: "#0a1525", scrollMarginTop: "68px" }}
+          style={{ backgroundColor: "#001A3D", scrollMarginTop: "68px" }}
         >
           <div className="max-w-[1180px] mx-auto px-6">
 
             <div className="text-center mb-12">
               <span
                 className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
-                style={{ color: "#D4AF37" }}
+                style={{ color: "#7AC143" }}
               >
                 2026 Season
               </span>
@@ -290,7 +296,7 @@ export default function TeamsPage() {
               >
                 Our Teams
               </h2>
-              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#D4AF37" }} />
+              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#7AC143" }} />
               <p
                 className="text-[0.95rem] leading-relaxed max-w-[520px] mx-auto"
                 style={{ color: "rgba(255,255,255,0.45)" }}
@@ -303,17 +309,17 @@ export default function TeamsPage() {
               {teamCards.map((team) => (
                 <div
                   key={team.age}
-                  className="rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 border border-[rgba(212,175,55,0.18)] hover:border-[rgba(212,175,55,0.55)] shadow-[0_4px_28px_rgba(0,0,0,0.45)] hover:shadow-[0_24px_64px_rgba(212,175,55,0.1),0_4px_28px_rgba(0,0,0,0.5)]"
+                  className="rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2 border border-[rgba(122,193,67,0.18)] hover:border-[rgba(122,193,67,0.55)] shadow-[0_4px_28px_rgba(0,0,0,0.45)] hover:shadow-[0_24px_64px_rgba(122,193,67,0.1),0_4px_28px_rgba(0,0,0,0.5)]"
                   style={{ backgroundColor: "#0f1f35" }}
                 >
                   {/* Gold top stripe */}
-                  <div style={{ height: "3px", background: "linear-gradient(to right, #D4AF37, #E8CC65, #D4AF37)" }} />
+                  <div style={{ height: "3px", background: "linear-gradient(to right, #7AC143, #94D45A, #7AC143)" }} />
 
                   {/* Photo area */}
                   <div
                     className="relative overflow-hidden flex flex-col items-center justify-center"
                     style={{
-                      background: "linear-gradient(160deg, #00A651 0%, #0d2419 100%)",
+                      background: "linear-gradient(160deg, #A7A8AA 0%, #001A3D 100%)",
                       aspectRatio: "4 / 3",
                     }}
                   >
@@ -328,7 +334,7 @@ export default function TeamsPage() {
                     {/* Age badge */}
                     <div
                       className="absolute top-3 right-3 font-[family-name:var(--font-bebas)] text-[1.1rem] px-2.5 py-0.5 rounded-sm"
-                      style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}
+                      style={{ backgroundColor: "#7AC143", color: "#000000" }}
                     >
                       {team.age}
                     </div>
@@ -354,7 +360,7 @@ export default function TeamsPage() {
                     </h3>
                     <div
                       className="font-[family-name:var(--font-barlow)] font-bold text-[0.67rem] tracking-[2.5px] uppercase mb-4"
-                      style={{ color: "#D4AF37" }}
+                      style={{ color: "#7AC143" }}
                     >
                       {team.format}
                     </div>
@@ -378,14 +384,14 @@ export default function TeamsPage() {
                     <div className="flex gap-2">
                       <a
                         href="/#teams"
-                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-colors hover:bg-[#E8CC65]"
-                        style={{ backgroundColor: "#D4AF37", color: "#1A1A1A" }}
+                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-colors hover:bg-[#94D45A]"
+                        style={{ backgroundColor: "#7AC143", color: "#000000" }}
                       >
                         View Team
                       </a>
                       <a
                         href="/#contact"
-                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-all hover:border-[rgba(212,175,55,0.55)] hover:text-[#D4AF37]"
+                        className="flex-1 text-center font-[family-name:var(--font-barlow)] font-bold text-[0.73rem] tracking-[1.5px] uppercase py-2 rounded-sm transition-all hover:border-[rgba(122,193,67,0.55)] hover:text-[#7AC143]"
                         style={{
                           color: "rgba(255,255,255,0.55)",
                           border: "1px solid rgba(255,255,255,0.13)",
@@ -402,13 +408,20 @@ export default function TeamsPage() {
         </section>
 
         {/* ─── SECTION 3 · MEET THE COACHES ─────────────────────────── */}
-        <section className="py-16 md:py-24" style={{ backgroundColor: "#0d1b2e" }}>
-          <div className="max-w-[1180px] mx-auto px-6">
+        <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#002255" }}>
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(circle at 1px 1px, rgba(160,120,70,0.12) 1px, transparent 0)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+          <div className="relative max-w-[1180px] mx-auto px-6">
 
             <div className="text-center mb-12">
               <span
                 className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
-                style={{ color: "#D4AF37" }}
+                style={{ color: "#7AC143" }}
               >
                 The Coaching Staff
               </span>
@@ -418,7 +431,7 @@ export default function TeamsPage() {
               >
                 Coaches Who Care
               </h2>
-              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#D4AF37" }} />
+              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#7AC143" }} />
               <p
                 className="text-[0.95rem] leading-relaxed max-w-[480px] mx-auto"
                 style={{ color: "rgba(255,255,255,0.45)" }}
@@ -427,88 +440,18 @@ export default function TeamsPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {coachCards.map((coach, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl overflow-hidden transition-all duration-300 hover:border-[rgba(212,175,55,0.3)] hover:-translate-y-1"
-                  style={{
-                    backgroundColor: "#121e30",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                  }}
-                >
-                  {/* Photo area */}
-                  <div
-                    className="pt-8 pb-5 flex flex-col items-center"
-                    style={{
-                      background: "linear-gradient(to bottom, rgba(0,166,81,0.18) 0%, transparent 100%)",
-                    }}
-                  >
-                    <div
-                      className="w-24 h-24 rounded-full flex items-center justify-center mb-3"
-                      style={{
-                        background: "linear-gradient(140deg, #00A651, #0d2419)",
-                        border: "2px solid rgba(212,175,55,0.3)",
-                      }}
-                    >
-                      <svg className="w-10 h-10" fill="none" viewBox="0 0 40 40" style={{ color: "rgba(255,255,255,0.2)" }}>
-                        <circle cx="20" cy="14" r="7" stroke="currentColor" strokeWidth="1.75"/>
-                        <path d="M4 38 C4 28 11 23 20 23 C29 23 36 28 36 38" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
-                      </svg>
-                    </div>
-                    <h3
-                      className="font-[family-name:var(--font-bebas)] text-white leading-none mb-0.5"
-                      style={{ fontSize: "1.65rem" }}
-                    >
-                      {coach.name}
-                    </h3>
-                    <div
-                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.67rem] tracking-[2px] uppercase"
-                      style={{ color: "#D4AF37" }}
-                    >
-                      {coach.team}
-                    </div>
-                  </div>
-
-                  <div className="px-6 pb-7">
-                    <p
-                      className="text-[0.88rem] leading-relaxed mb-4"
-                      style={{ color: "rgba(255,255,255,0.48)" }}
-                    >
-                      {coach.bio}
-                    </p>
-
-                    <div
-                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.65rem] tracking-[2px] uppercase mb-3"
-                      style={{ color: "rgba(255,255,255,0.28)" }}
-                    >
-                      {coach.years} Years Coaching
-                    </div>
-
-                    <blockquote
-                      className="text-[0.84rem] italic leading-relaxed pl-3"
-                      style={{
-                        color: "rgba(255,255,255,0.5)",
-                        borderLeft: "2px solid #D4AF37",
-                      }}
-                    >
-                      &ldquo;{coach.quote}&rdquo;
-                    </blockquote>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <CoachCards coaches={coachCards} />
           </div>
         </section>
 
         {/* ─── SECTION 4 · PLAYER SPOTLIGHTS ────────────────────────── */}
-        <section className="py-16 md:py-24" style={{ backgroundColor: "#0a1525" }}>
+        <section className="py-16 md:py-24" style={{ backgroundColor: "#001A3D" }}>
           <div className="max-w-[1180px] mx-auto px-6">
 
             <div className="text-center mb-12">
               <span
                 className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
-                style={{ color: "#D4AF37" }}
+                style={{ color: "#7AC143" }}
               >
                 Player Recognition
               </span>
@@ -518,7 +461,7 @@ export default function TeamsPage() {
               >
                 Player Spotlights
               </h2>
-              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#D4AF37" }} />
+              <div className="w-12 h-[3px] rounded mx-auto mb-5" style={{ backgroundColor: "#7AC143" }} />
               <p
                 className="text-[0.95rem] leading-relaxed max-w-[480px] mx-auto"
                 style={{ color: "rgba(255,255,255,0.45)" }}
@@ -527,53 +470,12 @@ export default function TeamsPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {spotlightPlayers.map((player, i) => (
-                <div
-                  key={i}
-                  className="flex rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,175,55,0.28)]"
-                  style={{
-                    backgroundColor: "#121e30",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                  }}
-                >
-                  {/* Action photo */}
-                  <div
-                    className="w-[90px] flex-shrink-0 flex items-center justify-center relative overflow-hidden"
-                    style={{ background: "linear-gradient(180deg, #00A651 0%, #0a1f10 100%)" }}
-                  >
-                    <span style={{ fontSize: "1.75rem", opacity: 0.15 }}>⚾</span>
-                  </div>
-
-                  {/* Info */}
-                  <div className="p-5 flex-1 min-w-0">
-                    <div
-                      className="font-[family-name:var(--font-barlow)] font-bold text-[0.64rem] tracking-[2.5px] uppercase mb-1"
-                      style={{ color: "#D4AF37" }}
-                    >
-                      {player.position} &nbsp;·&nbsp; {player.team}
-                    </div>
-                    <h3
-                      className="font-[family-name:var(--font-bebas)] text-white leading-none mb-2"
-                      style={{ fontSize: "1.4rem" }}
-                    >
-                      {player.name}
-                    </h3>
-                    <p
-                      className="text-[0.84rem] leading-relaxed"
-                      style={{ color: "rgba(255,255,255,0.48)" }}
-                    >
-                      {player.highlight}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <SpotlightCards players={spotlightPlayers} />
           </div>
         </section>
 
         {/* ─── SECTION 5 · DEVELOPMENT PHILOSOPHY ──────────────────── */}
-        <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#0b1827" }}>
+        <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "#002255" }}>
           {/* Dirt dot texture */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -591,7 +493,7 @@ export default function TeamsPage() {
               <div>
                 <span
                   className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
-                  style={{ color: "#D4AF37" }}
+                  style={{ color: "#7AC143" }}
                 >
                   Our Philosophy
                 </span>
@@ -600,9 +502,9 @@ export default function TeamsPage() {
                   style={{ fontSize: "clamp(2.8rem, 8vw, 5.5rem)" }}
                 >
                   From the{" "}
-                  <span style={{ color: "#D4AF37" }}>Dirt Up</span>
+                  <span style={{ color: "#7AC143" }}>Dirt Up</span>
                 </h2>
-                <div className="w-12 h-[3px] rounded" style={{ backgroundColor: "#D4AF37" }} />
+                <div className="w-12 h-[3px] rounded" style={{ backgroundColor: "#7AC143" }} />
               </div>
               <div className="lg:pb-2">
                 <p
@@ -621,17 +523,17 @@ export default function TeamsPage() {
               {pillars.map((p) => (
                 <div
                   key={p.title}
-                  className="rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(212,175,55,0.4)]"
+                  className="rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(122,193,67,0.4)]"
                   style={{
                     backgroundColor: "rgba(255,255,255,0.025)",
-                    border: "1px solid rgba(212,175,55,0.14)",
+                    border: "1px solid rgba(122,193,67,0.14)",
                   }}
                 >
                   <div
                     className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
                     style={{
-                      backgroundColor: "rgba(212,175,55,0.09)",
-                      color: "#D4AF37",
+                      backgroundColor: "rgba(122,193,67,0.09)",
+                      color: "#7AC143",
                     }}
                   >
                     {p.icon}
@@ -655,60 +557,65 @@ export default function TeamsPage() {
         </section>
 
         {/* ─── SECTION 6 · JOIN THE HERD CTA ────────────────────────── */}
-        <section className="relative py-20 md:py-32 overflow-hidden">
-          <Image
-            src="/images/baseball-tryout-image.png"
-            alt=""
-            fill
-            className="object-cover object-center"
-          />
-          {/* Sunset-toned green overlay */}
+        <section className="relative py-24 md:py-40 overflow-hidden"
+          style={{
+            background: "radial-gradient(ellipse 90% 85% at center, #003DA5 0%, #002255 60%, #001A3D 100%)",
+          }}
+        >
+          {/* Top fade — bridges from S5 #002255 */}
           <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(150deg, rgba(8,17,31,0.94) 0%, rgba(0,166,81,0.85) 50%, rgba(8,17,31,0.94) 100%)",
-            }}
+            className="absolute inset-x-0 top-0 h-32 pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, #002255, transparent)" }}
           />
-          {/* Top + bottom vignette */}
-          <div
-            className="absolute inset-x-0 top-0 h-20 pointer-events-none"
-            style={{ background: "linear-gradient(to bottom, #08111F, transparent)" }}
-          />
+          {/* Logo watermark — shifted up so face aligns with headline */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            style={{ transform: "translateY(-12%)" }}
+          >
+            <Image
+              src="/yardgoatsimage.png"
+              alt=""
+              width={680}
+              height={680}
+              className="object-contain select-none"
+              style={{ opacity: 0.07, filter: "grayscale(1)" }}
+            />
+          </div>
 
           <div className="relative max-w-[680px] mx-auto px-6 text-center">
+            {/* Badge */}
             <div
               className="inline-flex items-center font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
               style={{
-                color: "#D4AF37",
-                backgroundColor: "rgba(212,175,55,0.08)",
-                border: "1px solid rgba(212,175,55,0.22)",
+                color: "#7AC143",
+                backgroundColor: "rgba(122,193,67,0.1)",
+                border: "1px solid rgba(122,193,67,0.55)",
               }}
             >
               Open to All Skill Levels
             </div>
 
+            {/* Headline */}
             <h2
               className="font-[family-name:var(--font-bebas)] leading-none text-white mb-4"
               style={{ fontSize: "clamp(3rem, 9vw, 6rem)" }}
             >
-              Ready to Join{" "}
-              <span style={{ color: "#D4AF37" }}>the Goats?</span>
+              Ready to Join<br />
+              <span style={{ color: "#7AC143" }}>The Goats?</span>
             </h2>
 
+            {/* Body — two clean lines, no orphan */}
             <p
-              className="text-[1rem] leading-relaxed mb-8 max-w-[460px] mx-auto"
+              className="text-[1rem] leading-relaxed mb-8 max-w-[380px] mx-auto"
               style={{ color: "rgba(255,255,255,0.52)" }}
             >
-              We&apos;re always looking for players who want to learn, compete, and grow in a positive
-              baseball environment. There&apos;s a spot on this team for you.
+              We&apos;re always looking for players who want to learn, compete, and grow — there&apos;s a spot on this team for you.
             </p>
 
             <div className="flex gap-3 justify-center flex-wrap">
               <Link
                 href="/tryouts"
-                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:bg-[#E8CC65]"
-                style={{ backgroundColor: "#D4AF37", color: "#1A1A1A", border: "2px solid #D4AF37" }}
+                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:bg-[#94D45A]"
+                style={{ backgroundColor: "#7AC143", color: "#000000", border: "2px solid #7AC143" }}
               >
                 Register for Tryouts
               </Link>

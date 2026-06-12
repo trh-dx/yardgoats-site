@@ -55,8 +55,8 @@ export default function Contact() {
             </h3>
             {[
               { icon: "📍", label: "Location", val: "Paradise, Texas" },
-              { icon: "✉️", label: "Email", val: "paradiseyardgoats@email.com", href: "mailto:paradiseyardgoats@email.com" },
-              { icon: "📅", label: "Season", val: "Spring & Summer 2025" },
+              { icon: "✉️", label: "Email", val: "paradiseyardgoats@gmail.com", href: "mailto:paradiseyardgoats@gmail.com" },
+              { icon: "📅", label: "Season", val: "Summer & Fall 2026" },
             ].map((d) => (
               <div key={d.label} className="flex items-start gap-3 mb-4">
                 <span className="text-[1.15rem] mt-0.5">{d.icon}</span>
