@@ -24,11 +24,11 @@ export default function TeamCards({ teams }: { teams: Team[] }) {
           {/* Green top stripe */}
           <div style={{ height: "3px", background: "linear-gradient(to right, #7AC143, #94D45A, #7AC143)" }} />
 
-          <div className="p-6 pb-7">
+          <div className="p-4 pb-5 sm:p-6 sm:pb-7">
             {/* Age */}
             <div
               className="font-[family-name:var(--font-bebas)] leading-[0.88] tracking-wide mb-0.5 text-center"
-              style={{ fontSize: "4.2rem", color: "#001A3D" }}
+              style={{ fontSize: "clamp(2.8rem, 8vw, 4.2rem)", color: "#001A3D" }}
             >
               {team.age}
             </div>

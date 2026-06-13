@@ -145,7 +145,7 @@ export default function TeamsPage() {
         {/* ─── SECTION 1 · HERO ─────────────────────────────────────── */}
         <section
           className="relative overflow-hidden"
-          style={{ minHeight: "clamp(540px, 88vh, 780px)", paddingTop: "68px" }}
+          style={{ minHeight: "clamp(400px, 88vh, 780px)", paddingTop: "68px" }}
         >
           <Image
             src="/images/baseball-tryout-image.png"
@@ -175,7 +175,7 @@ export default function TeamsPage() {
 
           <div
             className="relative max-w-[1180px] mx-auto px-6 flex flex-col justify-center"
-            style={{ minHeight: "clamp(540px, 88vh, 780px)" }}
+            style={{ minHeight: "clamp(400px, 88vh, 780px)" }}
           >
             {/* Breadcrumb */}
             <div

@@ -80,12 +80,18 @@ export default function Schedule() {
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                {["Date", "Event", "Location", "Team", "Time"].map((h) => (
+                {[
+                  { label: "Date",     cls: "" },
+                  { label: "Event",    cls: "" },
+                  { label: "Location", cls: "hidden sm:table-cell" },
+                  { label: "Team",     cls: "" },
+                  { label: "Time",     cls: "hidden xs:table-cell" },
+                ].map((h) => (
                   <th
-                    key={h}
-                    className="bg-green/14 text-green-lt font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[2px] uppercase px-4 py-3 text-left border-b border-green/30"
+                    key={h.label}
+                    className={`bg-green/14 text-green-lt font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[2px] uppercase px-4 py-3 text-left border-b border-green/30 ${h.cls}`}
                   >
-                    {h}
+                    {h.label}
                   </th>
                 ))}
               </tr>
@@ -105,13 +111,13 @@ export default function Schedule() {
                         </span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-[0.9rem] text-gray-lt border-b border-white/5">
+                    <td className="hidden sm:table-cell px-4 py-3 text-[0.9rem] text-gray-lt border-b border-white/5">
                       {row.location}
                     </td>
                     <td className="px-4 py-3 text-[0.9rem] text-gray-lt border-b border-white/5 whitespace-nowrap">
                       {row.team}
                     </td>
-                    <td className="px-4 py-3 text-[0.9rem] text-gray-lt border-b border-white/5 whitespace-nowrap">
+                    <td className="hidden xs:table-cell px-4 py-3 text-[0.9rem] text-gray-lt border-b border-white/5 whitespace-nowrap">
                       {row.time}
                     </td>
                   </tr>

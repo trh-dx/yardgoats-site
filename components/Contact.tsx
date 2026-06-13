@@ -46,7 +46,7 @@ export default function Contact() {
           <div className="w-[52px] h-[3px] bg-red rounded mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-14">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-14">
 
           {/* Info */}
           <div>
@@ -87,7 +87,7 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <div className="bg-charcoal rounded-xl p-8 border border-white/8">
+          <div className="bg-charcoal rounded-xl p-5 sm:p-8 border border-white/8">
             {sent ? (
               <div className="text-center py-12">
                 <div className="text-[3.5rem] mb-4">⚾</div>

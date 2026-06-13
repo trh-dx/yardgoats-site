@@ -21,7 +21,7 @@ export default function Footer() {
     <footer className="bg-[#050c17] border-t-2 border-green/22 pt-12 pb-8">
       <div className="max-w-[1180px] mx-auto px-6">
 
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr] gap-10 mb-10">
 
           {/* Brand */}
           <div>
@@ -87,7 +87,7 @@ export default function Footer() {
 
         <div className="border-t border-white/6 pt-6 flex justify-between items-center flex-wrap gap-2">
           <p className="text-[0.77rem] text-[#4a5568]">
-            &copy; 2025 Paradise Yard Goats Baseball{" "}
+            &copy; 2026 Paradise Yard Goats Baseball{" "}
             <span className="text-tan">•</span> Paradise, Texas
           </p>
           <p className="text-[0.77rem] text-[#4a5568]">

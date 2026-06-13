@@ -45,7 +45,7 @@ export default function SchedulePage() {
         {/* ─── SECTION 1 · HERO ─────────────────────────────────────── */}
         <section
           className="relative overflow-hidden"
-          style={{ minHeight: "clamp(480px, 72vh, 680px)", paddingTop: "68px" }}
+          style={{ minHeight: "clamp(380px, 72vh, 680px)", paddingTop: "68px" }}
         >
           <Image
             src="/images/baseball-tryout-image.png"
@@ -72,7 +72,7 @@ export default function SchedulePage() {
 
           <div
             className="relative max-w-[1180px] mx-auto px-6 flex flex-col justify-center"
-            style={{ minHeight: "clamp(480px, 72vh, 680px)" }}
+            style={{ minHeight: "clamp(380px, 72vh, 680px)" }}
           >
             {/* Breadcrumb */}
             <div
@@ -101,7 +101,7 @@ export default function SchedulePage() {
               <h1
                 className="font-[family-name:var(--font-bebas)] leading-none text-white tracking-wide mb-5"
                 style={{
-                  fontSize: "clamp(3.5rem, 9vw, 7rem)",
+                  fontSize: "clamp(2.5rem, 9vw, 7rem)",
                   letterSpacing: "0.02em",
                   textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9)",
                 }}
@@ -173,7 +173,7 @@ export default function SchedulePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
               {tournaments.map((t, i) => (
                 <div
                   key={i}
@@ -234,7 +234,7 @@ export default function SchedulePage() {
               {/* GameChanger */}
               <a
                 href={siteConfig.gameChanger}
-                className="group rounded-xl p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(122,193,67,0.4)]"
+                className="group rounded-xl p-5 sm:p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(122,193,67,0.4)]"
                 style={{ backgroundColor: "#0f1f35", border: "1px solid rgba(255,255,255,0.07)" }}
               >
                 <div
@@ -265,7 +265,7 @@ export default function SchedulePage() {
               {/* NCS Events */}
               <a
                 href={siteConfig.ncs}
-                className="group rounded-xl p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(122,193,67,0.4)]"
+                className="group rounded-xl p-5 sm:p-8 flex items-start gap-5 border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(122,193,67,0.4)]"
                 style={{ backgroundColor: "#0f1f35", border: "1px solid rgba(255,255,255,0.07)" }}
               >
                 <div
