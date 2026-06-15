@@ -76,7 +76,7 @@ export default function SchedulePage() {
           >
             {/* Breadcrumb */}
             <div
-              className="absolute font-[family-name:var(--font-barlow)] text-[0.72rem] tracking-[1.5px] uppercase flex items-center gap-2"
+              className="absolute font-barlow text-[0.72rem] tracking-[1.5px] uppercase flex items-center gap-2"
               style={{ top: "2.5rem", left: "1.5rem", color: "rgba(255,255,255,0.35)" }}
             >
               <Link href="/" className="hover:text-white/60 transition-colors">Home</Link>
@@ -87,7 +87,7 @@ export default function SchedulePage() {
             <div className="max-w-[680px]" style={{ paddingTop: "4rem" }}>
               {/* Eyebrow badge */}
               <div
-                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.72rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
+                className="inline-flex items-center gap-2 font-barlow font-bold text-[0.72rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
                 style={{
                   color: "#7AC143",
                   backgroundColor: "rgba(0,26,61,0.75)",
@@ -99,7 +99,7 @@ export default function SchedulePage() {
 
               {/* Headline */}
               <h1
-                className="font-[family-name:var(--font-bebas)] leading-none text-white tracking-wide mb-5"
+                className="font-bebas leading-none text-white tracking-wide mb-5"
                 style={{
                   fontSize: "clamp(2.5rem, 9vw, 7rem)",
                   letterSpacing: "0.02em",
@@ -111,7 +111,7 @@ export default function SchedulePage() {
               </h1>
 
               <div
-                className="font-[family-name:var(--font-barlow)] font-bold italic text-[1.05rem] leading-[2] mb-6"
+                className="font-barlow font-bold italic text-[1.05rem] leading-[2] mb-6"
                 style={{ color: "rgba(255,255,255,0.65)" }}
               >
                 Every game matters.<br />
@@ -130,14 +130,14 @@ export default function SchedulePage() {
               <div className="flex flex-wrap gap-3">
                 <a
                   href="#schedule"
-                  className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0"
+                  className="inline-flex items-center gap-2 font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0"
                   style={{ backgroundColor: "#7AC143", color: "#000000", border: "2px solid #7AC143" }}
                 >
                   View Schedule
                 </a>
                 <a
                   href={siteConfig.gameChanger}
-                  className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0 hover:border-white/70"
+                  className="inline-flex items-center gap-2 font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 active:translate-y-0 hover:border-white/70"
                   style={{ color: "#fff", border: "2px solid rgba(255,255,255,0.3)" }}
                 >
                   GameChanger Live
@@ -153,13 +153,13 @@ export default function SchedulePage() {
 
             <div className="text-center mb-10">
               <span
-                className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
+                className="font-barlow font-bold text-[0.75rem] tracking-[4px] uppercase block mb-2"
                 style={{ color: "#7AC143" }}
               >
                 2026 Season
               </span>
               <h2
-                className="font-[family-name:var(--font-bebas)] leading-none text-white mb-3"
+                className="font-bebas leading-none text-white mb-3"
                 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
               >
                 Tournament Calendar
@@ -183,13 +183,13 @@ export default function SchedulePage() {
                   <div style={{ height: "3px", background: "linear-gradient(to right, #7AC143, #E8CC65, #7AC143)" }} />
                   <div className="p-6">
                     <div
-                      className="inline-block font-[family-name:var(--font-barlow)] font-bold text-[0.62rem] tracking-[2.5px] uppercase px-2 py-0.5 rounded-sm mb-3"
+                      className="inline-block font-barlow font-bold text-[0.62rem] tracking-[2.5px] uppercase px-2 py-0.5 rounded-sm mb-3"
                       style={{ backgroundColor: "rgba(122,193,67,0.12)", color: "#7AC143", border: "1px solid rgba(122,193,67,0.25)" }}
                     >
                       {t.type}
                     </div>
                     <h3
-                      className="font-[family-name:var(--font-bebas)] text-white leading-none mb-4"
+                      className="font-bebas text-white leading-none mb-4"
                       style={{ fontSize: "1.55rem" }}
                     >
                       {t.name}
@@ -245,7 +245,7 @@ export default function SchedulePage() {
                 </div>
                 <div>
                   <h3
-                    className="font-[family-name:var(--font-bebas)] text-white leading-none mb-1"
+                    className="font-bebas text-white leading-none mb-1"
                     style={{ fontSize: "1.4rem" }}
                   >
                     GameChanger
@@ -254,7 +254,7 @@ export default function SchedulePage() {
                     Live scoring, stats, and play-by-play for every Yard Goats game. Follow your player from anywhere.
                   </p>
                   <span
-                    className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[2px] uppercase"
+                    className="font-barlow font-bold text-[0.75rem] tracking-[2px] uppercase"
                     style={{ color: "#7AC143" }}
                   >
                     Open GameChanger →
@@ -276,7 +276,7 @@ export default function SchedulePage() {
                 </div>
                 <div>
                   <h3
-                    className="font-[family-name:var(--font-bebas)] text-white leading-none mb-1"
+                    className="font-bebas text-white leading-none mb-1"
                     style={{ fontSize: "1.4rem" }}
                   >
                     NCS Events
@@ -285,7 +285,7 @@ export default function SchedulePage() {
                     Tournament brackets, event details, and registration info for all NCS-sanctioned Yard Goats events.
                   </p>
                   <span
-                    className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[2px] uppercase"
+                    className="font-barlow font-bold text-[0.75rem] tracking-[2px] uppercase"
                     style={{ color: "#7AC143" }}
                   >
                     View NCS Events →
@@ -320,7 +320,7 @@ export default function SchedulePage() {
 
           <div className="relative max-w-[680px] mx-auto px-6 text-center">
             <div
-              className="inline-flex items-center font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
+              className="inline-flex items-center font-barlow font-bold text-[0.7rem] tracking-[4px] uppercase mb-5 px-3 py-1.5 rounded-sm"
               style={{
                 color: "#7AC143",
                 backgroundColor: "rgba(122,193,67,0.08)",
@@ -330,7 +330,7 @@ export default function SchedulePage() {
               Open to All Skill Levels
             </div>
             <h2
-              className="font-[family-name:var(--font-bebas)] leading-none text-white mb-4"
+              className="font-bebas leading-none text-white mb-4"
               style={{ fontSize: "clamp(3rem, 9vw, 6rem)" }}
             >
               Want to Be on{" "}
@@ -345,14 +345,14 @@ export default function SchedulePage() {
             <div className="flex gap-3 justify-center flex-wrap">
               <Link
                 href="/tryouts"
-                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:bg-[#E8CC65]"
+                className="inline-flex items-center gap-2 font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:bg-[#E8CC65]"
                 style={{ backgroundColor: "#7AC143", color: "#000000", border: "2px solid #7AC143" }}
               >
                 Register for Tryouts
               </Link>
               <a
                 href="/#contact"
-                className="inline-flex items-center gap-2 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:border-white/70"
+                className="inline-flex items-center gap-2 font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:border-white/70"
                 style={{ color: "#fff", border: "2px solid rgba(255,255,255,0.3)" }}
               >
                 Contact Our Coaches

@@ -34,10 +34,10 @@ export default function Schedule() {
         {/* Header */}
         <div className="flex justify-between items-end mb-6 flex-wrap gap-4">
           <div>
-            <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
+            <span className="font-barlow font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
               2026 Season
             </span>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
+            <h2 className="font-bebas text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
               From the <span className="text-tan">Dugout</span>
             </h2>
             <div className="w-[52px] h-[3px] bg-red rounded" />
@@ -45,13 +45,13 @@ export default function Schedule() {
           <div className="flex gap-4 flex-wrap">
             <a
               href={siteConfig.gameChanger}
-              className="font-[family-name:var(--font-barlow)] font-bold text-[0.84rem] tracking-wide uppercase text-tan border-b border-transparent hover:border-tan transition-all flex items-center gap-1.5"
+              className="font-barlow font-bold text-[0.84rem] tracking-wide uppercase text-tan border-b border-transparent hover:border-tan transition-all flex items-center gap-1.5"
             >
               ⏱ GameChanger
             </a>
             <a
               href={siteConfig.ncs}
-              className="font-[family-name:var(--font-barlow)] font-bold text-[0.84rem] tracking-wide uppercase text-tan border-b border-transparent hover:border-tan transition-all flex items-center gap-1.5"
+              className="font-barlow font-bold text-[0.84rem] tracking-wide uppercase text-tan border-b border-transparent hover:border-tan transition-all flex items-center gap-1.5"
             >
               📅 NCS Events
             </a>
@@ -64,7 +64,7 @@ export default function Schedule() {
             <button
               key={div}
               onClick={() => setActive(div)}
-              className={`font-[family-name:var(--font-barlow)] font-bold text-[0.82rem] tracking-[1.5px] uppercase px-5 py-2 rounded border-2 transition-all cursor-pointer ${
+              className={`font-barlow font-bold text-[0.82rem] tracking-[1.5px] uppercase px-5 py-2 rounded border-2 transition-all cursor-pointer ${
                 active === div
                   ? "bg-green text-white border-green shadow-[0_4px_16px_rgba(46,125,50,0.4)]"
                   : "bg-transparent text-gray-lt border-white/20 hover:border-green/60 hover:text-white"
@@ -89,7 +89,7 @@ export default function Schedule() {
                 ].map((h) => (
                   <th
                     key={h.label}
-                    className={`bg-green/14 text-green-lt font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[2px] uppercase px-4 py-3 text-left border-b border-green/30 ${h.cls}`}
+                    className={`bg-green/14 text-green-lt font-barlow font-bold text-[0.78rem] tracking-[2px] uppercase px-4 py-3 text-left border-b border-green/30 ${h.cls}`}
                   >
                     {h.label}
                   </th>
@@ -136,7 +136,7 @@ export default function Schedule() {
         <div className="text-center">
           <a
             href={siteConfig.gameChanger}
-            className="inline-flex items-center gap-2 bg-green text-white font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-green text-white font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:-translate-y-0.5"
           >
             View Full Schedule on GameChanger
           </a>

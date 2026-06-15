@@ -1,6 +1,6 @@
 # Paradise Yard Goats Baseball — Website
 
-Official website for the Paradise Yard Goats Baseball organization based in Paradise, Texas.  
+Official website for the Paradise Yard Goats Baseball organization.  
 Teams: **7U · 8U · 9U · 11U**
 
 **GitHub:** https://github.com/trh-dx/yardgoats-site  
@@ -14,9 +14,9 @@ Teams: **7U · 8U · 9U · 11U**
 |---|---|---|
 | Next.js | 16 | Framework, App Router |
 | React | 19 | UI components |
-| Tailwind CSS | 4 | Styling via `@theme` tokens (no config file) |
+| Tailwind CSS | 4 | Styling via `@theme` tokens — no config file |
 | TypeScript | 5 | Type safety |
-| next/font | built-in | Google Fonts — zero layout shift |
+| next/font | built-in | Google Fonts with zero layout shift |
 
 ---
 
@@ -36,7 +36,7 @@ npm run build
 npm start
 ```
 
-Dev server runs on port 3000 by default. If that port is in use:
+Dev server runs on **port 3000** by default. To use a different port:
 
 ```bash
 npm run dev -- -p 3001
@@ -49,43 +49,143 @@ npm run dev -- -p 3001
 ```
 yardgoats-site/
 ├── app/
-│   ├── globals.css           # Tailwind v4 @theme brand tokens + CSS animations
-│   ├── layout.tsx            # Root layout — fonts, metadata, html/body
-│   ├── page.tsx              # Home page — imports and orders all sections
+│   ├── globals.css           # Tailwind v4 @theme brand tokens, named font utilities, CSS animations
+│   ├── layout.tsx            # Root layout — fonts (Bebas Neue, Inter, Permanent Marker), metadata
+│   ├── page.tsx              # Home page — Hero, Feature Bar, Teams Grid, CTA, Footer
 │   ├── teams/
-│   │   └── page.tsx          # Teams page — divisions, coaches, spotlights, philosophy, CTA
+│   │   └── page.tsx          # Teams page — hero, filter tabs, team cards, CTA band
 │   ├── schedule/
-│   │   └── page.tsx          # Schedule page — tournament calendar, full schedule, external links
+│   │   └── page.tsx          # Schedule page — tournament calendar, full schedule table
 │   └── tryouts/
-│       └── page.tsx          # Tryouts page — schedule, divisions, register CTA
+│       └── page.tsx          # Tryouts page — see Page Map below
 ├── components/
-│   ├── Nav.tsx               # Sticky nav, mobile hamburger, active-page detection
-│   ├── Hero.tsx              # Full-viewport hero with animated logo and CTA
-│   ├── Scoreboard.tsx        # Stats strip: location, age groups, level, support
-│   ├── StitchDivider.tsx     # Red baseball stitch SVG divider
-│   ├── About.tsx             # About section with value cards
-│   ├── Teams.tsx             # Team cards component (homepage)
-│   ├── CoachCards.tsx        # Coach cards — Client Component (hover effects)
-│   ├── SpotlightCards.tsx    # Player spotlight cards — Client Component (hover effects)
-│   ├── Schedule.tsx          # Game/tournament schedule table with division filters
-│   ├── Sponsors.tsx          # Single / Double / Triple / Home Run sponsor packages
-│   ├── Gallery.tsx           # Game day photo grid with placeholders
+│   ├── Nav.tsx               # Sticky nav — logo, links, JOIN THE HERD button, mobile hamburger
+│   ├── Footer.tsx            # 4-column footer — brand, quick links, social, contact
+│   ├── TeamsGrid.tsx         # Client component — filter tabs + team cards (Teams page)
+│   ├── TeamCards.tsx         # Team card grid (used by schedule/other pages)
+│   ├── CoachCards.tsx        # Coach cards — hover glow (Client Component)
+│   ├── SpotlightCards.tsx    # Player spotlight cards (Client Component)
+│   ├── Hero.tsx              # Legacy hero component
+│   ├── About.tsx             # About section
 │   ├── Contact.tsx           # Contact form with validation (Client Component)
-│   └── Footer.tsx            # Logo, quick links, external links, copyright
+│   ├── Schedule.tsx          # Game/tournament schedule table
+│   ├── Scoreboard.tsx        # Stats strip — location, age groups, level
+│   ├── Sponsors.tsx          # Sponsor tier cards
+│   ├── Gallery.tsx           # Game day photo grid
+│   ├── Reel.tsx              # Highlight reel component
+│   └── StitchDivider.tsx     # Baseball stitch SVG section divider
 ├── lib/
-│   ├── config.ts             # All external URLs — edit here to update every link
-│   └── data.ts               # All site content — edit here to update the site
+│   ├── config.ts             # All external URLs — edit once, updates every button site-wide
+│   └── data.ts               # All site content — teams, schedule, sponsors, gallery
 └── public/
-    ├── yardgoatsimage.png    # Team logo (goat mascot)
+    ├── yardgoatsimage.png         # Team logo (goat mascot)
     └── images/
-        └── baseball-tryout-image.png  # Hero banner photo (Teams, Schedule, Tryouts pages)
+        ├── baseball-tryout-image.png  # Baseball on infield dirt — used in hero/CTA backgrounds
+        ├── 7u-card.png                # 7U team card photo (helmet + ball)
+        └── 8u-card.png                # 8U team card photo (glove on grass)
 ```
 
 ---
 
-## Updating External Links
+## Design System
 
-All external URLs live in **`lib/config.ts`**. Update once and every button on the site updates automatically.
+### Colors
+
+Defined in `app/globals.css` under `@theme`. Tailwind utilities are generated automatically — no config file needed.
+
+| Token | Hex | Tailwind class | Role |
+|---|---|---|---|
+| `--color-deep-navy` | `#07111F` | `bg-deep-navy` | Page background, hero overlay |
+| `--color-charcoal` | `#0F172A` | `bg-charcoal` | Card backgrounds |
+| `--color-slate` | `#1E293B` | `bg-slate` | Card borders, icon backgrounds |
+| `--color-royal-blue` | `#003DA5` | `bg-royal-blue` | Feature bar, CTA bands, accents |
+| `--color-darker-blue` | `#002B7F` | `bg-darker-blue` | Hover states on blue elements |
+| `--color-green` | `#7AC143` | `bg-green` | Primary accent — buttons, badges, active states |
+| `--color-green-dk` | `#5A9132` | `bg-green-dk` | Green hover states |
+| `--color-green-lt` | `#94D45A` | `bg-green-lt` | Light green tints |
+| `--color-muted-gray` | `#94A3B8` | `text-muted-gray` | Body copy, labels, subtitles |
+| `--color-light-gray` | `#CBD5E1` | `text-light-gray` | Secondary text |
+
+**Color usage rules:**
+- Green is used **only as an accent** — buttons, badges, active indicators
+- Royal blue is used for **section bands and borders** (feature bar, CTA bands, card hover borders)
+- Deep navy / charcoal are the **primary dark backgrounds**
+
+### Fonts
+
+Loaded via `next/font/google` in `app/layout.tsx`. Named utility classes are defined in `app/globals.css` under `@layer utilities`. Use only the named classes below — Tailwind v4 has a known bug where arbitrary font-family values trigger invalid wildcard CSS generation that breaks the build.
+
+| Font | CSS variable | Utility class | Used for |
+|---|---|---|---|
+| Bebas Neue | `--font-bebas` | `font-bebas` | Page titles, section headings, team ages, card titles |
+| Inter | `--font-inter` | `font-inter` | Body copy, nav links, buttons, labels, descriptions |
+| Permanent Marker | `--font-marker` | `font-marker` | Accent / script lines — "Welcome To", "Develop. Compete. Win." |
+| Barlow Condensed | `--font-barlow` | `font-barlow` | Schedule page headers and labels |
+
+```tsx
+// Usage example
+<h1 className="font-bebas">Yard Goats</h1>
+<p  className="font-marker text-green">Welcome To</p>
+<p  className="font-inter">Body copy here</p>
+```
+
+### Animations
+
+Defined as `@keyframes` in `app/globals.css`:
+
+| Class | Effect |
+|---|---|
+| `.nav-pulse` | Alternating green glow — Tryouts link in Nav when not on that page |
+| `.logo-float` | Gentle continuous float — decorative logo usage |
+
+---
+
+## Page Map
+
+### Home (`/`)
+
+| Section | Description |
+|---|---|
+| **Hero** | Full-screen — baseball stadium image, dark left-heavy overlay, "Welcome To / Yard Goats / Baseball" headline, two CTA buttons |
+| **Feature Bar** | Royal blue strip — 3 columns: Compete Nationwide · Player Development · Built on Trust & Grit |
+| **Teams Grid** | Dark section — 4 cards (7U, 8U, 9U, 11U) with age, label, View Team button |
+| **Join The Herd CTA** | Baseball-on-dirt background — Permanent Marker accent, massive headline, Register button |
+
+### Teams (`/teams`)
+
+| Section | Description |
+|---|---|
+| **Hero** | Photo background with royal-blue tinted overlay — "Our Teams" + "Develop. Compete. Win." + breadcrumb |
+| **Filter Tabs + Cards** | `TeamsGrid.tsx` (client) — All Teams / 7U / 8U / 9U / 11U filter; dark cards with image, age badge, title, description, Learn More button |
+| **CTA Band** | Royal blue — logo + "Ready to Join the Herd?" + Register for Tryouts button |
+
+### Tryouts (`/tryouts`)
+
+| Section | Description |
+|---|---|
+| **Header** | Baseball image background, breadcrumb, green accent line, "2026 YG TRYOUTS" title, subline |
+| **Info Strip** | Royal blue bar — Date (July 12) · Location (The Goat Yard, Pecan St, Paradise TX) · Age Groups (7U · 8U · 9U · 11U) |
+| **Upcoming Tryouts** | 3 cards — 7U & 8U (12:00–12:45PM) · 9U (1:00–1:45PM) · 11U (2:00–2:45PM) — each with age group and Register Now button |
+| **What To Expect** | Numbered steps 01–04: Show Up · Warm Up · Skills Evaluation · Hear Back |
+| **What To Bring** | Checklist with green circle checkmarks + gear note |
+| **Bottom CTA** | Green banner — logo, "Think You Have What It Takes?", Register Now button |
+
+### Schedule (`/schedule`)
+
+| Section | Description |
+|---|---|
+| **Hero** | Photo background |
+| **Tournament Calendar** | Upcoming tournament cards |
+| **Full Schedule Table** | Filterable by division — data from `lib/data.ts` |
+| **External Links** | GameChanger + NCS Events |
+
+---
+
+## Updating Content
+
+### External links — `lib/config.ts`
+
+All external URLs live in one file. Update once and every button on the site updates.
 
 ```ts
 export const siteConfig = {
@@ -97,22 +197,11 @@ export const siteConfig = {
 };
 ```
 
-| Key | Used in |
-|---|---|
-| `facebook` | Nav, Hero, Gallery, Contact, Footer, Tryouts |
-| `register` | Tryouts page — banner button + schedule section |
-| `gameChanger` | Schedule page, Schedule component, Footer |
-| `ncs` | Schedule page, Schedule component, Footer |
-| `email` | Contact section, Footer |
+### Schedule, teams, sponsors — `lib/data.ts`
 
----
+All schedule rows, team descriptions, sponsor tiers, and gallery placeholders are in `lib/data.ts`. No component edits needed.
 
-## Updating Content
-
-All schedule rows, team info, sponsor packages, and gallery items live in **`lib/data.ts`**. Edit that file — no component changes needed.
-
-### Add or edit a schedule game
-
+**Add a game:**
 ```ts
 {
   date: "Aug 2",
@@ -124,24 +213,7 @@ All schedule rows, team info, sponsor packages, and gallery items live in **`lib
 },
 ```
 
-Set `isTournament: true` to show the "Tournament" badge in the table.
-
-### Add or edit a team
-
-```ts
-{
-  age: "12U",
-  name: "12U Yard Goats",
-  description: "Competitive tournament baseball for older players.",
-  tag: "Tournament",
-},
-```
-
-Current divisions: **7U · 8U · 9U · 11U**
-
-### Update sponsor packages
-
-Four tiers are defined in `lib/data.ts`:
+**Sponsor tiers:**
 
 | Tier | Name | Price |
 |---|---|---|
@@ -150,145 +222,60 @@ Four tiers are defined in `lib/data.ts`:
 | Triple Play | Triple | $1,000 |
 | Premier Partner | Home Run | $2,000+ |
 
-Set `featured: true` to highlight a package with the red "Featured" badge.
+Set `featured: true` to highlight a tier with the Featured badge.
 
----
+### Tryouts page — `app/tryouts/page.tsx`
 
-## Tryouts Page
-
-The tryouts page lives at `/tryouts` (`app/tryouts/page.tsx`). Key content to keep updated each year:
+All tryout content is inline at the top of the file.
 
 | Item | Where to edit |
 |---|---|
-| Tryout year ("2026 YG Tryouts") | `<h1>` in the Page Header section |
-| Date in facts bar | `val: "July 12th"` in the Key Facts array |
-| Location name & address | `val: "The Goat Yard"` / `sub: "Pecan St, Paradise, TX"` |
-| Time slots per division | slot objects in the Tryout Schedule section |
-| Division details (age, format, highlights) | `divisions` array near top of file |
+| Page title / year | `<h1>` in the header section |
+| Subline | `<p>` beneath the `<h1>` |
+| Info strip (date, location, age groups) | The "Info Strip" `<div>` — hardcoded strings |
+| Tryout cards | `tryouts` array — `age`, `time` fields |
+| What To Expect steps | Inline array inside the "process steps" column |
+| What To Bring list | Inline array inside the "bring checklist" column |
 | Register link | `siteConfig.register` in `lib/config.ts` |
-
----
-
-## Animations
-
-Defined as CSS `@keyframes` in `app/globals.css` and applied via utility classes:
-
-| Class | Effect | Used on |
-|---|---|---|
-| `.logo-float` | Entrance bounce + continuous gentle float | Hero logo |
-| `.btn-glow` | Pulsing green glow + lift | "View Tryout Info" button on Hero |
-| `.nav-pulse` | Alternating green color glow | Tryouts link in Nav (when not on Tryouts page) |
-
----
-
-## Brand Colors
-
-Defined in `app/globals.css` under `@theme`. Official Yard Goats palette.
-
-| Token | Hex | Tailwind class |
-|---|---|---|
-| `--color-navy` | `#001A3D` | `bg-navy`, `text-navy` |
-| `--color-navy-mid` | `#002255` | `bg-navy-mid`, `text-navy-mid` |
-| `--color-royal-blue` | `#003DA5` | `bg-royal-blue`, `text-royal-blue` |
-| `--color-green` | `#7AC143` | `bg-green`, `text-green` |
-| `--color-green-lt` | `#94D45A` | `bg-green-lt`, `text-green-lt` |
-| `--color-green-dk` | `#5A9132` | `bg-green-dk`, `text-green-dk` |
-| `--color-red` | `#B3261E` | `bg-red`, `text-red` |
-| `--color-gray` | `#A7A8AA` | `bg-gray`, `text-gray` |
-| `--color-gray-lt` | `#D0D1D2` | `bg-gray-lt`, `text-gray-lt` |
-| `--color-white` | `#F8F7F2` | `bg-white`, `text-white` |
-
-Section background pattern (Teams page):
-- `#001A3D` — base navy (S2 Our Teams, S4 Spotlights)
-- `#002255` — mid navy (S3 Coaches, S5 Philosophy)
-
----
-
-## Fonts
-
-Loaded via `next/font/google` in `app/layout.tsx`.
-
-| Font | CSS variable | Used for |
-|---|---|---|
-| Bebas Neue | `--font-bebas` | Section titles, hero headline, card names |
-| Barlow Condensed | `--font-barlow` | Labels, buttons, nav, badges |
-| DM Sans | `--font-dm-sans` | Body copy, form inputs, descriptions |
-
-Apply in JSX: `className="font-[family-name:var(--font-bebas)]"`
-
----
-
-## Page & Section Map
-
-### Home page (`/`)
-
-| Section ID | Component | Nav label |
-|---|---|---|
-| `#home` | `Hero.tsx` | — |
-| `#about` | `About.tsx` | About |
-| `#schedule` | `Schedule.tsx` | — |
-| `#sponsors` | `Sponsors.tsx` | Sponsors |
-| `#gallery` | `Gallery.tsx` | Photos |
-| `#contact` | `Contact.tsx` | Get Involved |
-
-### Teams page (`/teams`)
-
-| Section | Description |
-|---|---|
-| Hero | "Built on Dirt. Driven by Development." — photo background |
-| Team Directory | 7U, 8U, 9U, 11U cards with coach, format, record |
-| Meet the Coaches | `CoachCards.tsx` — bio, years, quote, hover glow |
-| Player Spotlights | `SpotlightCards.tsx` — recognition cards with badge, position, team |
-| Development Philosophy | Four pillars: Skills, Teamwork, Confidence, Sportsmanship |
-| Join the Herd CTA | Radial gradient + logo watermark, Register + Contact buttons |
-
-### Schedule page (`/schedule`)
-
-| Section | Description |
-|---|---|
-| Hero | "From the Dugout" — photo background |
-| Tournament Calendar | Key tournament cards with dates, location, teams |
-| Full Schedule Table | Filterable by division — pulls from `lib/data.ts` |
-| External Links | GameChanger live scoring + NCS Events cards |
-| Join CTA | Register for Tryouts + Contact buttons with logo watermark |
-
-### Tryouts page (`/tryouts`)
-
-| Section | Description |
-|---|---|
-| Banner header | Full-width photo background, title, Register CTA |
-| Key facts bar | Date, location, age groups, cost — Royal Blue ribbon |
-| Tryout schedule | July 12th, home-plate time cards per division |
-| Age divisions | 7U, 8U, 9U, 11U cards with format + highlights |
-| What to Expect | 4-step process |
-| What to Bring | Checklist |
-| CTA | Register + Facebook + Contact buttons |
 
 ---
 
 ## Client Components
 
-Pages use Server Components by default. The following are `"use client"` components that require interactivity:
+Pages use Server Components by default (preserves `metadata` exports). These components require `"use client"`:
 
-| Component | Why client |
+| Component | Why |
 |---|---|
-| `CoachCards.tsx` | `onMouseEnter`/`onMouseLeave` for border hover glow |
-| `SpotlightCards.tsx` | `onMouseEnter`/`onMouseLeave` for border hover glow |
-| `Contact.tsx` | Form state + validation |
-| `Nav.tsx` | `usePathname` for active link detection |
+| `Nav.tsx` | `usePathname` for active-link detection, scroll listener, mobile open state |
+| `TeamsGrid.tsx` | `useState` for filter tab selection |
+| `CoachCards.tsx` | Hover glow via mouse event handlers |
+| `SpotlightCards.tsx` | Hover glow via mouse event handlers |
+| `Contact.tsx` | Form field state + validation |
 
 ---
 
 ## Swapping in Real Photos
 
 ### Team logo
-Replace `public/yardgoatsimage.png`. Keep the same filename, or update the `src` prop in `Nav.tsx`, `Hero.tsx`, `Footer.tsx`, and `app/tryouts/page.tsx`.
+Replace `public/yardgoatsimage.png`. Keep the same filename, or update the `src` in `Nav.tsx` and `Footer.tsx`.
 
-### Tryouts banner
-Replace `public/images/baseball-tryout-image.png` with any wide landscape photo. The gradient overlay handles contrast automatically.
+### Hero / background photos
+All hero sections reference images in `public/images/`. Drop in a wider landscape photo and update the `src` in the relevant page file. The gradient overlays handle contrast automatically.
+
+### Team card photos
+The Teams page uses these card images:
+
+| Card | Current file | Replace with |
+|---|---|---|
+| 7U | `public/images/7u-card.png` | Action photo of 7U players |
+| 8U | `public/images/8u-card.png` | Action photo of 8U players |
+| 9U | `public/images/baseball-tryout-image.png` | Action photo of 9U players |
+| 11U | `public/images/baseball-tryout-image.png` | Action photo of 11U players |
+
+Update the `image` field in the `TEAMS` array inside `components/TeamsGrid.tsx`.
 
 ### Gallery photos
-In `components/Gallery.tsx`, replace the placeholder `<span>` blocks with real images:
+In `components/Gallery.tsx`, replace placeholder blocks with:
 
 ```tsx
 import Image from "next/image";
@@ -297,23 +284,14 @@ import Image from "next/image";
 
 Add photos to `public/photos/`.
 
-### Sponsor logos
-In `components/Sponsors.tsx`:
-
-```tsx
-<Image src="/sponsors/acme.png" alt="Acme Co" width={160} height={80} className="object-contain" />
-```
-
 ---
 
 ## Deployment
 
 ### Vercel (recommended)
 1. Push to GitHub
-2. Import at vercel.com — Vercel auto-detects Next.js
-3. Deploy — no config needed
-
-Auto-deploys on every push to `main`.
+2. Import at vercel.com — Vercel auto-detects Next.js, no config needed
+3. Auto-deploys on every push to `main`
 
 ### Static export (Netlify, GitHub Pages, S3)
 
@@ -325,11 +303,12 @@ const nextConfig: NextConfig = {
 };
 ```
 
-Run `npm run build` and upload the `/out` folder.
+Run `npm run build` — upload the `/out` folder.
 
 ---
 
 ## Contact
 
-Paradise Yard Goats Baseball — Paradise, Texas  
-Email: paradiseyardgoats@gmail.com
+Paradise Yard Goats Baseball  
+Email: paradiseyardgoats@gmail.com  
+Facebook: https://www.facebook.com/p/Paradise-Yard-Goats-61575015420696/

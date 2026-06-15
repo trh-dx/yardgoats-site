@@ -1,91 +1,64 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy:        #001A3D;
-  --color-navy-mid:    #002255;
-  --color-royal-blue:  #003DA5;
-  --color-green:       #7AC143;
-  --color-green-lt:    #94D45A;
-  --color-green-dk:    #5A9132;
-  --color-tan:         #7AC143;
-  --color-tan-lt:      #94D45A;
-  --color-red:         #B3261E;
-  --color-red-dk:      #8c1d17;
-  --color-charcoal:    #002255;
-  --color-gray:        #A7A8AA;
-  --color-gray-lt:     #D0D1D2;
-  --color-white:       #F8F7F2;
+  /* ── Design System Colors ─────────────────────────────────── */
+  --color-deep-navy:     #07111F;
+  --color-charcoal:      #0F172A;
+  --color-slate:         #1E293B;
+  --color-royal-blue:    #003DA5;
+  --color-darker-blue:   #002B7F;
+  --color-green:         #7AC143;
+  --color-green-dk:      #5A9132;
+  --color-green-lt:      #94D45A;
+  --color-muted-gray:    #94A3B8;
+  --color-light-gray:    #CBD5E1;
 
-  --font-display:    var(--font-bebas);
-  --font-condensed:  var(--font-barlow);
-  --font-body:       var(--font-dm-sans);
+  /* ── Legacy aliases (keeps existing pages compiling) ─────── */
+  --color-navy:          #07111F;
+  --color-navy-mid:      #0F172A;
+  --color-royal-blue:    #003DA5;
+  --color-tan:           #7AC143;
+  --color-tan-lt:        #94D45A;
+  --color-red:           #B3261E;
+  --color-red-dk:        #8c1d17;
+  --color-gray:          #94A3B8;
+  --color-gray-lt:       #CBD5E1;
+  --color-white:         #FFFFFF;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* Named font utilities — avoids Tailwind v4 arbitrary-value wildcard bug */
+@layer utilities {
+  .font-bebas  { font-family: var(--font-bebas); }
+  .font-inter  { font-family: var(--font-inter); }
+  .font-marker { font-family: var(--font-marker); }
+  .font-barlow { font-family: var(--font-barlow); }
+}
+
 body {
-  background-color: #001A3D;
-  color: #F8F7F2;
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  background-color: #07111F;
+  color: #FFFFFF;
+  font-family: var(--font-inter), Inter, sans-serif;
   overflow-x: hidden;
 }
 
-/* Scroll offset for fixed nav */
+/* Offset for fixed nav */
 [id] {
   scroll-margin-top: 72px;
 }
 
-@keyframes logo-entrance {
-  0%   { opacity: 0; transform: scale(0.45); }
-  65%  { opacity: 1; transform: scale(1.1);  }
-  100% { opacity: 1; transform: scale(1);    }
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes nav-pulse {
+  0%, 100% { color: #94A3B8; text-shadow: none; }
+  50%       { color: #7AC143; text-shadow: 0 0 10px rgba(122,193,67,0.6); }
 }
+.nav-pulse { animation: nav-pulse 2s ease-in-out infinite; }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(-1deg);
-    filter: drop-shadow(0 8px 36px rgba(0,0,0,0.7));
-  }
-  50% {
-    transform: translateY(-14px) rotate(1deg);
-    filter: drop-shadow(0 22px 44px rgba(0,0,0,0.5));
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
 }
-
-.logo-float {
-  animation:
-    logo-entrance 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) both,
-    float 3.6s ease-in-out 0.75s infinite;
-}
-
-@keyframes nav-pulse {
-  0%, 100% {
-    color: #D0D1D2;
-    text-shadow: none;
-  }
-  50% {
-    color: #7AC143;
-    text-shadow: 0 0 10px rgba(122,193,67,0.65);
-  }
-}
-
-.nav-pulse {
-  animation: nav-pulse 2s ease-in-out infinite;
-}
-
-@keyframes tan-glow {
-  0%, 100% {
-    box-shadow: 0 0 10px 2px rgba(122,193,67,0.35), 0 4px 16px rgba(122,193,67,0.2);
-    transform: translateY(0);
-  }
-  50% {
-    box-shadow: 0 0 28px 8px rgba(122,193,67,0.7), 0 8px 28px rgba(122,193,67,0.45);
-    transform: translateY(-3px);
-  }
-}
-
-.btn-glow {
-  animation: tan-glow 2s ease-in-out infinite;
-}
+.logo-float { animation: float 3.5s ease-in-out infinite; }

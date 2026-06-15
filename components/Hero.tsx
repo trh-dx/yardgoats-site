@@ -46,14 +46,14 @@ export default function Hero() {
 
         <div className="flex items-center gap-2.5 mb-4">
           <span className="block w-8 h-px bg-tan" />
-          <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.82rem] tracking-[5px] uppercase text-tan">
+          <span className="font-barlow font-bold text-[0.82rem] tracking-[5px] uppercase text-tan">
             Paradise, Texas
           </span>
           <span className="block w-8 h-px bg-tan" />
         </div>
 
         <h1
-          className="font-[family-name:var(--font-bebas)] leading-[0.87] tracking-wide mb-6"
+          className="font-bebas leading-[0.87] tracking-wide mb-6"
           style={{ fontSize: "clamp(3.6rem, 10.5vw, 8.8rem)" }}
         >
           <span className="block text-white">Paradise</span>
@@ -71,19 +71,19 @@ export default function Hero() {
         <div className="flex gap-3 justify-center flex-wrap">
           <a
             href="#sponsors"
-            className="inline-flex items-center gap-2 bg-red text-white font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-red hover:bg-red-dk hover:border-red-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)]"
+            className="inline-flex items-center gap-2 bg-red text-white font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-red hover:bg-red-dk hover:border-red-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)]"
           >
             Become a Sponsor
           </a>
           <a
             href="/tryouts"
-            className="btn-glow inline-flex items-center gap-2 bg-tan text-navy font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-tan hover:brightness-110 hover:[animation-play-state:paused] transition-all"
+            className="btn-glow inline-flex items-center gap-2 bg-tan text-navy font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-tan hover:brightness-110 hover:[animation-play-state:paused] transition-all"
           >
             View Tryout Info
           </a>
           <a
             href="#schedule"
-            className="inline-flex items-center gap-2 bg-green text-white font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(46,125,50,0.4)]"
+            className="inline-flex items-center gap-2 bg-green text-white font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(46,125,50,0.4)]"
           >
             Follow the Season
           </a>

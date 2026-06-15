@@ -12,10 +12,10 @@ export default function About() {
 
           {/* Text */}
           <div>
-            <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
+            <span className="font-barlow font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
               Who We Are
             </span>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
+            <h2 className="font-bebas text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
               About the <span className="text-tan">Yard Goats</span>
             </h2>
             <div className="w-[52px] h-[3px] bg-green rounded mb-7" />
@@ -32,7 +32,7 @@ export default function About() {
                   className="bg-green/8 border border-green/20 rounded-lg p-4 text-center hover:bg-green/16 hover:border-green hover:-translate-y-1 transition-all"
                 >
                   <div className="text-[1.7rem] mb-1.5">{v.icon}</div>
-                  <h4 className="font-[family-name:var(--font-barlow)] font-bold text-[0.8rem] tracking-[1.5px] uppercase text-green-lt">
+                  <h4 className="font-barlow font-bold text-[0.8rem] tracking-[1.5px] uppercase text-green-lt">
                     {v.label}
                   </h4>
                 </div>
@@ -53,7 +53,7 @@ export default function About() {
               <span className="text-[4rem] opacity-20 mb-2">⚾</span>
               <span className="text-[0.7rem] text-gray tracking-[2px] uppercase">Team Photo</span>
             </div>
-            <div className="absolute bottom-[-13px] right-[-13px] bg-tan text-navy font-[family-name:var(--font-bebas)] text-[1.1rem] tracking-wide px-4 py-2 rounded-md shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+            <div className="absolute bottom-[-13px] right-[-13px] bg-tan text-navy font-bebas text-[1.1rem] tracking-wide px-4 py-2 rounded-md shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
               Paradise, TX ⚾
             </div>
           </div>

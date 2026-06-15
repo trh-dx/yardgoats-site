@@ -45,13 +45,13 @@ export default function CoachCards({ coaches }: { coaches: CoachCard[] }) {
               </svg>
             </div>
             <h3
-              className="font-[family-name:var(--font-bebas)] text-white leading-none mb-0.5"
+              className="font-bebas text-white leading-none mb-0.5"
               style={{ fontSize: "1.65rem" }}
             >
               {coach.name}
             </h3>
             <div
-              className="font-[family-name:var(--font-barlow)] font-bold text-[0.67rem] tracking-[2px] uppercase"
+              className="font-barlow font-bold text-[0.67rem] tracking-[2px] uppercase"
               style={{ color: "#7AC143" }}
             >
               {coach.team}
@@ -67,7 +67,7 @@ export default function CoachCards({ coaches }: { coaches: CoachCard[] }) {
             </p>
 
             <div
-              className="font-[family-name:var(--font-barlow)] font-bold text-[0.65rem] tracking-[2px] uppercase mb-3"
+              className="font-barlow font-bold text-[0.65rem] tracking-[2px] uppercase mb-3"
               style={{ color: "rgba(255,255,255,0.28)" }}
             >
               {coach.years} Years Coaching

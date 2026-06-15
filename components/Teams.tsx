@@ -7,10 +7,10 @@ export default function Teams() {
 
         {/* Header */}
         <div className="text-center mb-3">
-          <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-green block mb-2">
+          <span className="font-barlow font-bold text-[0.78rem] tracking-[4px] uppercase text-green block mb-2">
             Travel &amp; Rec Baseball
           </span>
-          <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
+          <h2 className="font-bebas text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
             Yard Goats <span className="text-green">Teams</span>
           </h2>
           <div className="w-[52px] h-[3px] bg-red rounded mx-auto" />
@@ -37,12 +37,12 @@ export default function Teams() {
                 </div>
 
                 {/* Age number */}
-                <div className="font-[family-name:var(--font-bebas)] text-[4.2rem] leading-[0.88] text-navy tracking-wide mb-0.5">
+                <div className="font-bebas text-[4.2rem] leading-[0.88] text-navy tracking-wide mb-0.5">
                   {team.age}
                 </div>
 
                 {/* Team label */}
-                <div className="font-[family-name:var(--font-barlow)] font-bold text-[0.7rem] tracking-[3px] uppercase text-green mb-3.5">
+                <div className="font-barlow font-bold text-[0.7rem] tracking-[3px] uppercase text-green mb-3.5">
                   Yard Goats
                 </div>
 
@@ -54,7 +54,7 @@ export default function Teams() {
                 {/* CTA */}
                 <a
                   href="#contact"
-                  className="block text-center text-navy border-2 border-navy rounded-md py-2.5 px-4 font-[family-name:var(--font-barlow)] font-bold text-[0.8rem] tracking-[1.5px] uppercase hover:bg-navy hover:text-white transition-all duration-300"
+                  className="block text-center text-navy border-2 border-navy rounded-md py-2.5 px-4 font-barlow font-bold text-[0.8rem] tracking-[1.5px] uppercase hover:bg-navy hover:text-white transition-all duration-300"
                 >
                   Ask About Openings
                 </a>
@@ -71,7 +71,7 @@ export default function Teams() {
           </p>
           <a
             href="#sponsors"
-            className="shrink-0 bg-green text-white border-2 border-green rounded px-7 py-3 font-[family-name:var(--font-barlow)] font-bold text-[0.95rem] tracking-[1.5px] uppercase hover:bg-green-dk hover:border-green-dk transition-all duration-300 whitespace-nowrap"
+            className="shrink-0 bg-green text-white border-2 border-green rounded px-7 py-3 font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase hover:bg-green-dk hover:border-green-dk transition-all duration-300 whitespace-nowrap"
           >
             Become a Sponsor
           </a>

@@ -27,7 +27,7 @@ export default function TeamCards({ teams }: { teams: Team[] }) {
           <div className="p-4 pb-5 sm:p-6 sm:pb-7">
             {/* Age */}
             <div
-              className="font-[family-name:var(--font-bebas)] leading-[0.88] tracking-wide mb-0.5 text-center"
+              className="font-bebas leading-[0.88] tracking-wide mb-0.5 text-center"
               style={{ fontSize: "clamp(2.8rem, 8vw, 4.2rem)", color: "#001A3D" }}
             >
               {team.age}
@@ -35,7 +35,7 @@ export default function TeamCards({ teams }: { teams: Team[] }) {
 
             {/* Team label */}
             <div
-              className="font-[family-name:var(--font-barlow)] font-bold text-[1rem] tracking-[3px] uppercase mb-3.5 text-center"
+              className="font-barlow font-bold text-[1rem] tracking-[3px] uppercase mb-3.5 text-center"
               style={{ color: "#001A3D" }}
             >
               Yard Goats

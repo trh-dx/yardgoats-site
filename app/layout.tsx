@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Barlow_Condensed, DM_Sans } from "next/font/google";
+import { Bebas_Neue, Inter, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -8,23 +8,22 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas",
 });
 
-const barlowCondensed = Barlow_Condensed({
-  weight: ["400", "600", "700", "800"],
-  style: ["normal", "italic"],
+const inter = Inter({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-barlow",
+  variable: "--font-inter",
 });
 
-const dmSans = DM_Sans({
-  weight: ["300", "400", "500", "600"],
+const permanentMarker = Permanent_Marker({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-marker",
 });
 
 export const metadata: Metadata = {
-  title: "Paradise Yard Goats Baseball | Paradise, TX",
+  title: "Paradise Yard Goats Baseball",
   description:
-    "Youth baseball built on teamwork, grit, development, and community pride in Paradise, Texas. 7U, 8U, and 10U teams.",
+    "Developing athletes. Building character. Competing everywhere. Youth travel baseball in Paradise, California.",
 };
 
 export default function RootLayout({
@@ -33,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebasNeue.variable} ${barlowCondensed.variable} ${dmSans.variable}`}
+      className={`${bebasNeue.variable} ${inter.variable} ${permanentMarker.variable}`}
     >
       <body className="min-h-screen flex flex-col antialiased">{children}</body>
     </html>
