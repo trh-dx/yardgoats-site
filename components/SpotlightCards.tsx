@@ -38,13 +38,13 @@ export default function SpotlightCards({ players }: { players: SpotlightPlayer[]
             <div className="p-5 flex-1 min-w-0">
               <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
                 <div
-                  className="font-[family-name:var(--font-barlow)] font-bold text-[0.64rem] tracking-[2.5px] uppercase"
+                  className="font-barlow font-bold text-[0.64rem] tracking-[2.5px] uppercase"
                   style={{ color: "#7AC143" }}
                 >
                   {player.position} &nbsp;·&nbsp; {player.team}
                 </div>
                 <span
-                  className="font-[family-name:var(--font-barlow)] font-bold text-[0.58rem] tracking-[1.5px] uppercase px-2 py-0.5 rounded-sm flex-shrink-0"
+                  className="font-barlow font-bold text-[0.58rem] tracking-[1.5px] uppercase px-2 py-0.5 rounded-sm flex-shrink-0"
                   style={{
                     color: "#7AC143",
                     backgroundColor: "rgba(122,193,67,0.08)",
@@ -55,7 +55,7 @@ export default function SpotlightCards({ players }: { players: SpotlightPlayer[]
                 </span>
               </div>
               <h3
-                className="font-[family-name:var(--font-bebas)] text-white leading-none mb-2"
+                className="font-bebas text-white leading-none mb-2"
                 style={{ fontSize: "1.4rem" }}
               >
                 {player.name}

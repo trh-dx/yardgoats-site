@@ -37,10 +37,10 @@ export default function Contact() {
       <div className="max-w-[1180px] mx-auto px-6">
 
         <div className="text-center mb-12">
-          <span className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
+          <span className="font-barlow font-bold text-[0.78rem] tracking-[4px] uppercase text-tan block mb-2">
             Join the Team
           </span>
-          <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
+          <h2 className="font-bebas text-[clamp(2.5rem,5vw,3.9rem)] leading-none text-white mb-3">
             Get <span className="text-tan">Involved</span>
           </h2>
           <div className="w-[52px] h-[3px] bg-red rounded mx-auto" />
@@ -50,7 +50,7 @@ export default function Contact() {
 
           {/* Info */}
           <div>
-            <h3 className="font-[family-name:var(--font-bebas)] text-[1.85rem] text-white mb-6">
+            <h3 className="font-bebas text-[1.85rem] text-white mb-6">
               Connect With Us
             </h3>
             {[
@@ -91,7 +91,7 @@ export default function Contact() {
             {sent ? (
               <div className="text-center py-12">
                 <div className="text-[3.5rem] mb-4">⚾</div>
-                <h4 className="font-[family-name:var(--font-bebas)] text-[2.2rem] text-green-lt mb-2">
+                <h4 className="font-bebas text-[2.2rem] text-green-lt mb-2">
                   You're in the Lineup!
                 </h4>
                 <p className="text-gray">Thanks for reaching out — we'll be in touch soon.</p>
@@ -100,14 +100,14 @@ export default function Contact() {
               <form onSubmit={submit} noValidate>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block font-[family-name:var(--font-barlow)] font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
+                    <label className="block font-barlow font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
                       Parent / Guardian Name *
                     </label>
                     <input type="text" placeholder="Full name" value={fields.pName} onChange={set("pName")} className={inputCls("pName")} />
                     {errors.pName && <span className="text-red text-[0.73rem] mt-1 block">{errors.pName}</span>}
                   </div>
                   <div>
-                    <label className="block font-[family-name:var(--font-barlow)] font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
+                    <label className="block font-barlow font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
                       Email Address *
                     </label>
                     <input type="email" placeholder="your@email.com" value={fields.pEmail} onChange={set("pEmail")} className={inputCls("pEmail")} />
@@ -117,13 +117,13 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block font-[family-name:var(--font-barlow)] font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
+                    <label className="block font-barlow font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
                       Phone Number
                     </label>
                     <input type="tel" placeholder="(940) 000-0000" value={fields.pPhone} onChange={set("pPhone")} className={inputCls("pPhone")} />
                   </div>
                   <div>
-                    <label className="block font-[family-name:var(--font-barlow)] font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
+                    <label className="block font-barlow font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
                       Player Age
                     </label>
                     <select value={fields.pAge} onChange={set("pAge")} className={inputCls("pAge") + " cursor-pointer"}>
@@ -136,7 +136,7 @@ export default function Contact() {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block font-[family-name:var(--font-barlow)] font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
+                  <label className="block font-barlow font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
                     I'm Interested In *
                   </label>
                   <select value={fields.pInt} onChange={set("pInt")} className={inputCls("pInt") + " cursor-pointer"}>
@@ -149,7 +149,7 @@ export default function Contact() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block font-[family-name:var(--font-barlow)] font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
+                  <label className="block font-barlow font-bold text-[0.77rem] tracking-[1.5px] uppercase text-gray mb-1.5">
                     Message *
                   </label>
                   <textarea
@@ -164,7 +164,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-red text-white font-[family-name:var(--font-barlow)] font-bold text-[1.05rem] tracking-[2px] uppercase py-3.5 rounded border-2 border-red hover:bg-red-dk hover:border-red-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)]"
+                  className="w-full bg-red text-white font-barlow font-bold text-[1.05rem] tracking-[2px] uppercase py-3.5 rounded border-2 border-red hover:bg-red-dk hover:border-red-dk transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)]"
                 >
                   Send It In ⚾
                 </button>

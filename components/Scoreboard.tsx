@@ -16,7 +16,7 @@ export default function Scoreboard() {
               i < cells.length - 1 ? "border-r border-white/8 last:border-r-0" : ""
             }`}
           >
-            <div className="font-[family-name:var(--font-bebas)] text-[1.55rem] text-white tracking-wide leading-none">
+            <div className="font-bebas text-[1.55rem] text-white tracking-wide leading-none">
               {cell.val.map((part, j) => {
                 const isRed   = cell.redIdx === j;
                 const isGreen = Array.isArray(cell.greenIdx) && cell.greenIdx.includes(j);

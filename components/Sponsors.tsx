@@ -139,13 +139,13 @@ export default function Sponsors() {
         {/* ── Header ── */}
         <div className="text-center max-w-[720px] mx-auto mb-4">
           <span
-            className="font-[family-name:var(--font-barlow)] font-bold text-[0.78rem] tracking-[4px] uppercase block mb-2"
+            className="font-barlow font-bold text-[0.78rem] tracking-[4px] uppercase block mb-2"
             style={{ color: "#7AC143" }}
           >
             Make an Impact
           </span>
           <h2
-            className="font-[family-name:var(--font-bebas)] leading-none text-white mb-3"
+            className="font-bebas leading-none text-white mb-3"
             style={{ fontSize: "clamp(2.2rem,4.5vw,3.5rem)" }}
           >
             Step Up to the Plate for{" "}
@@ -158,7 +158,7 @@ export default function Sponsors() {
             and player development.
           </p>
           <p
-            className="font-[family-name:var(--font-barlow)] font-bold text-[0.88rem] leading-relaxed italic"
+            className="font-barlow font-bold text-[0.88rem] leading-relaxed italic"
             style={{ color: "rgba(122,193,67,0.8)" }}
           >
             Your sponsorship helps local kids play more baseball, represent Paradise, and keep costs manageable for families.
@@ -208,7 +208,7 @@ export default function Sponsors() {
                 {/* Badge pill — floats above card */}
                 {s.badge && (
                   <span
-                    className="absolute left-1/2 -translate-x-1/2 font-[family-name:var(--font-barlow)] font-bold text-[0.62rem] tracking-[2px] uppercase px-3 py-1 rounded-b-md whitespace-nowrap z-10"
+                    className="absolute left-1/2 -translate-x-1/2 font-barlow font-bold text-[0.62rem] tracking-[2px] uppercase px-3 py-1 rounded-b-md whitespace-nowrap z-10"
                     style={{
                       top: s.stripeH,
                       background: s.badge.bg,
@@ -231,7 +231,7 @@ export default function Sponsors() {
 
                   {/* Tier label */}
                   <div
-                    className="font-[family-name:var(--font-barlow)] font-bold text-[0.68rem] tracking-[3px] uppercase text-center mb-0.5"
+                    className="font-barlow font-bold text-[0.68rem] tracking-[3px] uppercase text-center mb-0.5"
                     style={{ color: s.accent }}
                   >
                     {pkg.tier}
@@ -239,7 +239,7 @@ export default function Sponsors() {
 
                   {/* Package name */}
                   <div
-                    className="font-[family-name:var(--font-bebas)] text-white text-center leading-none mb-1"
+                    className="font-bebas text-white text-center leading-none mb-1"
                     style={{ fontSize: s.nameSize }}
                   >
                     {pkg.name}
@@ -247,7 +247,7 @@ export default function Sponsors() {
 
                   {/* Price */}
                   <div
-                    className="font-[family-name:var(--font-bebas)] leading-none text-center"
+                    className="font-bebas leading-none text-center"
                     style={{ fontSize: s.priceSize, color: s.priceColor }}
                   >
                     {pkg.price}
@@ -292,7 +292,7 @@ export default function Sponsors() {
                   {/* CTA button */}
                   <a
                     href="#contact"
-                    className="block w-full text-center font-[family-name:var(--font-barlow)] font-bold tracking-[1.5px] uppercase rounded-sm transition-all duration-200 hover:-translate-y-0.5"
+                    className="block w-full text-center font-barlow font-bold tracking-[1.5px] uppercase rounded-sm transition-all duration-200 hover:-translate-y-0.5"
                     style={{
                       padding: pkg.name === "Home Run" ? "0.75rem 1rem" : "0.62rem 1rem",
                       fontSize: pkg.name === "Home Run" ? "0.86rem" : "0.8rem",
@@ -320,7 +320,7 @@ export default function Sponsors() {
           <div className="flex items-center gap-4 mb-5">
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             <h3
-              className="font-[family-name:var(--font-barlow)] font-bold text-[0.75rem] tracking-[3px] uppercase whitespace-nowrap"
+              className="font-barlow font-bold text-[0.75rem] tracking-[3px] uppercase whitespace-nowrap"
               style={{ color: "#A7A8AA" }}
             >
               Our Current Sponsors
