@@ -86,18 +86,6 @@ export default function Nav() {
                     }`}
                   >
                     {l.label}
-                    {l.dropdown && (
-                      <svg
-                        className="w-2.5 h-2.5 mt-0.5"
-                        viewBox="0 0 10 6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                      >
-                        <path d="M1 1l4 4 4-4" />
-                      </svg>
-                    )}
                   </Link>
                 </li>
               );
