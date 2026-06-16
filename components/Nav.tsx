@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { href: "/teams",     label: "Teams" },
   { href: "/tryouts",   label: "Tryouts" },
   { href: "/about",     label: "About"   },
-  { href: "/#sponsors", label: "Sponsors" },
+  { href: "/sponsors",   label: "Sponsors" },
   { href: "/contact",   label: "Contact" },
 ];
 
@@ -52,14 +52,14 @@ export default function Nav() {
               className="rounded-full object-cover ring-2 ring-green/30"
               priority
             />
-            <div className="flex flex-col leading-none">
+            <div className="flex flex-col items-center leading-none">
               <span
                 className="text-[0.52rem] font-inter font-bold tracking-[3px] uppercase text-green"
               >
                 Paradise
               </span>
               <span
-                className="font-bebas text-[1.35rem] text-white tracking-[1px] leading-tight"
+                className="font-bebas text-[1.6rem] text-white tracking-[1px] leading-tight"
               >
                 Yard Goats
               </span>
@@ -95,7 +95,7 @@ export default function Nav() {
           {/* ── CTA + hamburger ──────────────────────── */}
           <div className="flex items-center gap-3">
             <Link
-              href="/#sponsors"
+              href="/sponsors"
               className="hidden md:inline-flex items-center border border-royal-blue text-white hover:bg-royal-blue font-inter font-bold text-[0.75rem] tracking-[2px] uppercase px-5 py-2.5 rounded transition-colors whitespace-nowrap"
             >
               Become a Sponsor

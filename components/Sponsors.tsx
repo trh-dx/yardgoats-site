@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { sponsors } from "@/lib/data";
 
 // ── Baseball stitch SVG divider ───────────────────────────────────────
@@ -152,17 +153,35 @@ export default function Sponsors() {
             <span style={{ color: "#7AC143" }}>Local Youth Baseball</span>
           </h2>
           <div className="w-[52px] h-[3px] bg-red rounded mx-auto mb-4" />
-          <p className="text-gray leading-relaxed mb-3">
+          <p className="text-gray leading-relaxed mb-5">
             Paradise Yard Goats depends on the support of local families, businesses, and community
-            sponsors. Sponsorships help cover tournament fees, uniforms, equipment, practice needs,
-            and player development.
+            sponsors. Your sponsorship helps fund:
           </p>
-          <p
-            className="font-barlow font-bold text-[0.88rem] leading-relaxed italic"
-            style={{ color: "rgba(122,193,67,0.8)" }}
-          >
-            Your sponsorship helps local kids play more baseball, represent Paradise, and keep costs manageable for families.
-          </p>
+          <div className="grid grid-cols-2 gap-3 max-w-[520px] mx-auto">
+            {[
+              { label: "Equipment", icon: (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              )},
+              { label: "Tournament Fees", icon: (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M8 21h8M12 17v4M17 3H7L5 9c0 3.87 3.13 7 7 7s7-3.13 7-7l-2-6z"/><path d="M5 9H3M19 9h2"/></svg>
+              )},
+              { label: "Practice Facilities", icon: (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              )},
+              { label: "Player Development", icon: (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              )},
+            ].map(({ label, icon }) => (
+              <div
+                key={label}
+                className="flex items-center gap-2.5 rounded-lg px-4 py-3"
+                style={{ background: "rgba(122,193,67,0.07)", border: "1px solid rgba(122,193,67,0.2)" }}
+              >
+                <span style={{ color: "#7AC143" }}>{icon}</span>
+                <span className="font-barlow font-bold text-white text-[0.85rem] tracking-wide">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* ── Sponsor cards ── */}
@@ -328,28 +347,94 @@ export default function Sponsors() {
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-            {Array.from({ length: 5 }, (_, i) => (
-              <div
-                key={i}
-                className="aspect-[2/1] rounded-lg flex items-center justify-center text-[0.65rem] tracking-wide uppercase"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px dashed rgba(255,255,255,0.1)",
-                  color: "rgba(167,168,170,0.5)",
-                }}
-              >
-                Sponsor
-              </div>
-            ))}
+            {/* AmeriDream */}
+            <div
+              className="relative aspect-[2/1] rounded-lg overflow-hidden"
+              style={{ background: "#ffffff", border: "1px solid rgba(255,255,255,0.15)" }}
+            >
+              <Image
+                src="/images/sponsors/AMERIDREAM FOR WEB.jpg"
+                alt="AmeriDream"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* GTG */}
+            <div
+              className="relative aspect-[2/1] rounded-lg overflow-hidden"
+              style={{ background: "#ffffff", border: "1px solid rgba(255,255,255,0.15)" }}
+            >
+              <Image
+                src="/images/sponsors/GTG Logo.png"
+                alt="GTG"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* Elite Metal Fabricators */}
+            <div
+              className="relative aspect-[2/1] rounded-lg overflow-hidden"
+              style={{ background: "#ffffff", border: "1px solid rgba(255,255,255,0.15)" }}
+            >
+              <Image
+                src="/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png"
+                alt="Elite Metal Fabricators"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* Edward Jones */}
+            <div
+              className="relative aspect-[2/1] rounded-lg overflow-hidden"
+              style={{ background: "#FFD100", border: "1px solid rgba(255,209,0,0.3)" }}
+            >
+              <Image
+                src="/images/sponsors/Edward Jones.png"
+                alt="Edward Jones"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* Wise Powder Coating */}
+            <div
+              className="relative aspect-[2/1] rounded-lg overflow-hidden"
+              style={{ background: "#ffffff", border: "1px solid rgba(255,255,255,0.15)" }}
+            >
+              <Image
+                src="/images/sponsors/Wise Powder Coating.JPEG"
+                alt="Wise Powder Coating"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* ECS */}
+            <div
+              className="relative aspect-[2/1] rounded-lg overflow-hidden"
+              style={{ background: "#ffffff", border: "1px solid rgba(255,255,255,0.15)" }}
+            >
+              <Image
+                src="/images/sponsors/ECS-2.png"
+                alt="ECS"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* Your Logo Here */}
             <div
               className="aspect-[2/1] rounded-lg flex items-center justify-center text-[0.65rem] tracking-wide uppercase"
               style={{
                 background: "rgba(122,193,67,0.04)",
-                border: "1px dashed rgba(122,193,67,0.25)",
-                color: "rgba(122,193,67,0.6)",
+                border: "1px dashed rgba(122,193,67,0.35)",
+                color: "rgba(122,193,67,0.7)",
               }}
             >
-              Your Logo
+              Your Logo Here
             </div>
           </div>
         </div>
