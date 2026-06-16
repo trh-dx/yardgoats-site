@@ -11,7 +11,6 @@ const QUICK_LINKS = [
   { href: "/contact",   label: "Contact"  },
 ];
 
-const AGE_GROUPS = ["7U", "8U", "9U", "11U"];
 
 const SPONSOR_LINKS = [
   { href: "/#sponsors", label: "Our Sponsors"    },
@@ -119,7 +118,7 @@ export default function Footer() {
           <div className="px-8 pb-8 lg:pb-0">
             <ColHeading>Age Groups</ColHeading>
             <ul className="space-y-3">
-              {AGE_GROUPS.map((age) => <ColLink key={age} href="/teams" label={age} />)}
+              <ColLink href="/teams" label="7U - 11U" />
             </ul>
           </div>
 

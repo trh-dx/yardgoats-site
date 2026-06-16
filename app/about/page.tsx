@@ -144,7 +144,7 @@ export default function AboutPage() {
                   style={{ fontSize: "clamp(2.6rem, 5vw, 3.8rem)" }}
                 >
                   Developing Players.<br />
-                  <span className="text-green">Building Men.</span>
+                  <span className="text-green">Building Character.</span>
                 </h2>
                 <div className="w-12 h-[3px] rounded mb-8" style={{ backgroundColor: "#B3261E" }} />
 

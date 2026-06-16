@@ -26,7 +26,7 @@ const TEAMS = [
   },
   {
     age: "11U",
-    title: "Dominate",
+    title: "Elevate",
     description: "Advanced training. Championship mindset.",
     image: "/images/baseball-tryout-image.png",
   },

@@ -210,7 +210,7 @@ export default function TeamsPage() {
 
                 {/* Pipe-separated subtext */}
                 <div className="flex flex-wrap items-center gap-2 mt-1 mb-3">
-                  {["Find your team.", "Build your confidence.", "Compete with the best."].map((item, i, arr) => (
+                  {["Find your team.", "Build your confidence.", "Have Fun."].map((item, i, arr) => (
                     <span key={item} className="flex items-center gap-2">
                       <span className="font-inter text-white/70" style={{ fontSize: "0.88rem" }}>{item}</span>
                       {i < arr.length - 1 && <span className="text-green">|</span>}
