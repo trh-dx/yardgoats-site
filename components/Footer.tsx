@@ -6,7 +6,7 @@ const QUICK_LINKS = [
   { href: "/",          label: "Home"     },
   { href: "/teams",     label: "Teams"    },
   { href: "/tryouts",   label: "Tryouts"  },
-  { href: "/#sponsors", label: "Sponsors" },
+  { href: "/sponsors",  label: "Sponsors" },
   { href: "/about",     label: "About"    },
   { href: "/contact",   label: "Contact"  },
 ];
