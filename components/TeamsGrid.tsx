@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,17 +32,9 @@ const TEAMS = [
   },
 ] as const;
 
-const FILTERS = ["All Teams", "7U", "8U", "9U", "11U"] as const;
-type Filter = (typeof FILTERS)[number];
-
 // ── Component ─────────────────────────────────────────────────────────
 
 export default function TeamsGrid() {
-  const [active, setActive] = useState<Filter>("All Teams");
-
-  const visible =
-    active === "All Teams" ? TEAMS : TEAMS.filter((t) => t.age === active);
-
   return (
     <section className="bg-deep-navy py-16 md:py-20">
       <div className="max-w-[1280px] mx-auto px-5">
@@ -64,27 +55,9 @@ export default function TeamsGrid() {
           </p>
         </div>
 
-        {/* ── Filter tabs ─────────────────────────────────────── */}
-        <div className="flex flex-wrap gap-2 mb-10" role="group" aria-label="Filter teams by age">
-          {FILTERS.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActive(f)}
-              aria-pressed={active === f}
-              className={`font-inter font-bold text-[0.75rem] tracking-[2px] uppercase px-5 py-2.5 rounded border transition-all duration-200 ${
-                active === f
-                  ? "bg-green border-green text-white"
-                  : "bg-transparent border-slate text-muted-gray hover:border-green/60 hover:text-white"
-              }`}
-            >
-              {f}
-            </button>
-          ))}
-        </div>
-
         {/* ── Cards grid ──────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {visible.map((team) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {TEAMS.map((team) => (
             <article
               key={team.age}
               className="group flex flex-col bg-charcoal border border-slate rounded-lg overflow-hidden
@@ -93,7 +66,7 @@ export default function TeamsGrid() {
                          transition-all duration-300"
             >
               {/* ── Image area ──────────────────────────── */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-[220px] overflow-hidden">
                 <Image
                   src={team.image}
                   alt={`${team.age} team`}

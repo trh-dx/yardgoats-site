@@ -183,43 +183,67 @@ export default function TeamsPage() {
         {/* ════════════════════════════════════════════════════════════
             BOTTOM CTA BAND
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-royal-blue py-9">
-          <div className="max-w-[1280px] mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <section className="py-14" style={{ backgroundColor: "#040C17" }}>
 
-            {/* Logo + copy */}
-            <div className="flex items-center gap-4">
+          <div className="max-w-[1280px] mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-8">
+
+            {/* Left — logo + copy */}
+            <div className="flex items-center gap-5">
               <Image
                 src="/yardgoatsimage.png"
                 alt="Yard Goats"
-                width={48}
-                height={48}
-                className="rounded-full shrink-0 ring-2 ring-white/20"
+                width={72}
+                height={72}
+                className="rounded-full shrink-0 ring-2 ring-green/30"
               />
               <div>
+                {/* Headline */}
                 <h2
                   className="font-bebas text-white leading-none tracking-wide"
-                  style={{ fontSize: "clamp(1.3rem, 3vw, 1.9rem)" }}
+                  style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
                 >
-                  Ready to Join the Goats?
+                  Ready to Join{" "}
+                  <span className="font-marker text-green" style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)" }}>
+                    The Goats?
+                  </span>
                 </h2>
-                <p className="font-inter text-white/65 text-sm mt-0.5">
-                  Find a team. Get better. Compete with the best.
-                </p>
+
+                {/* Pipe-separated subtext */}
+                <div className="flex flex-wrap items-center gap-2 mt-1 mb-3">
+                  {["Find your team.", "Build your confidence.", "Compete with the best."].map((item, i, arr) => (
+                    <span key={item} className="flex items-center gap-2">
+                      <span className="font-inter text-white/70" style={{ fontSize: "0.88rem" }}>{item}</span>
+                      {i < arr.length - 1 && <span className="text-green">|</span>}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Age groups */}
+                <div className="flex items-center gap-2 font-bebas text-white tracking-widest" style={{ fontSize: "1.4rem" }}>
+                  {["7U", "8U", "9U", "11U"].map((age, i, arr) => (
+                    <span key={age} className="flex items-center gap-2">
+                      <span>{age}</span>
+                      {i < arr.length - 1 && <span className="text-green" style={{ fontSize: "0.6rem" }}>★</span>}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* CTA */}
+            {/* Right — CTA */}
             <Link
               href="/tryouts"
-              className="shrink-0 inline-flex items-center bg-green hover:bg-green-dk text-white
-                         font-inter font-bold text-[0.8rem] tracking-[2px] uppercase
-                         px-7 py-3 rounded transition-colors duration-200 whitespace-nowrap"
+              className="shrink-0 inline-flex items-center gap-3 bg-green hover:bg-green-dk text-white
+                         font-inter font-bold text-[0.85rem] tracking-[2px] uppercase
+                         px-9 py-4 rounded transition-colors duration-200 whitespace-nowrap"
             >
               Register for Tryouts
+              <span aria-hidden="true">&rarr;</span>
             </Link>
 
           </div>
         </section>
+        <div className="h-[3px] bg-green w-full" />
 
       </main>
       <Footer />
