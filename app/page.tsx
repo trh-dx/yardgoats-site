@@ -39,12 +39,20 @@ export default function HomePage() {
             priority
           />
 
-          {/* Left-heavy dark overlay — text side nearly opaque, image side breathes */}
+          {/* Desktop overlay — left-heavy so image breathes on the right */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none hidden lg:block"
             style={{
               background:
                 "linear-gradient(105deg, rgba(7,17,31,0.97) 0%, rgba(7,17,31,0.90) 40%, rgba(7,17,31,0.60) 70%, rgba(7,17,31,0.30) 100%)",
+            }}
+          />
+          {/* Mobile overlay — softer so the field image remains visible */}
+          <div
+            className="absolute inset-0 pointer-events-none block lg:hidden"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(7,17,31,0.55) 0%, rgba(7,17,31,0.82) 60%, rgba(7,17,31,0.95) 100%)",
             }}
           />
           {/* Bottom fade into feature bar */}
@@ -89,7 +97,7 @@ export default function HomePage() {
               {/* Tagline */}
               <div
                 className="mt-6 font-inter text-muted-gray tracking-[2.5px] leading-loose"
-                style={{ fontSize: "clamp(0.7rem, 1.2vw, 0.85rem)" }}
+                style={{ fontSize: "clamp(0.9rem, 1.4vw, 1rem)" }}
               >
                 <p>Youth baseball built on teamwork, grit, development, and community pride in Paradise, Texas.</p>
               </div>

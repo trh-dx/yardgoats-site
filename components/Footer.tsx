@@ -181,7 +181,7 @@ export default function Footer() {
         {/* ── Bottom bar ────────────────────────────────────────── */}
         <div className="border-t border-white/6 pt-4">
           <p className="text-center font-inter text-muted-gray" style={{ fontSize: "0.72rem" }}>
-            © 2024 Paradise Yard Goats Baseball. All Rights Reserved.
+            © 2026 Paradise Yard Goats Baseball. All Rights Reserved.
           </p>
         </div>
 
