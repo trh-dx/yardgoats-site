@@ -21,9 +21,28 @@ const permanentMarker = Permanent_Marker({
 });
 
 export const metadata: Metadata = {
-  title: "Paradise Yard Goats Baseball",
+  metadataBase: new URL("https://paradiseyardgoats.club"),
+  title: {
+    default: "Paradise Yard Goats Baseball | Paradise, TX",
+    template: "%s | Paradise Yard Goats Baseball",
+  },
   description:
-    "Developing athletes. Building character. Competing everywhere. Youth travel baseball in Paradise, California.",
+    "Youth travel baseball in Paradise, Texas — 7U through 11U. Developing athletes, building character, and competing everywhere.",
+  openGraph: {
+    type: "website",
+    siteName: "Paradise Yard Goats Baseball",
+    title: "Paradise Yard Goats Baseball | Paradise, TX",
+    description:
+      "Youth travel baseball in Paradise, Texas — 7U through 11U. Developing athletes, building character, and competing everywhere.",
+    images: [{ url: "/yardgoatsimage.png", width: 512, height: 512, alt: "Paradise Yard Goats Baseball" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Paradise Yard Goats Baseball | Paradise, TX",
+    description:
+      "Youth travel baseball in Paradise, Texas — 7U through 11U. Developing athletes, building character, and competing everywhere.",
+    images: ["/yardgoatsimage.png"],
+  },
 };
 
 export default function RootLayout({

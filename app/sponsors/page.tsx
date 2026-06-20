@@ -7,7 +7,7 @@ import SponsorPackages from "@/components/SponsorPackages";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Sponsors | Paradise Yard Goats Baseball",
+  title: "Sponsors",
   description:
     "Partner with Paradise Yard Goats Baseball. Your sponsorship funds equipment, tournament fees, practice facilities, and player development for local youth baseball.",
 };
@@ -113,13 +113,16 @@ const WHY_PARTNER = [
   },
 ];
 
-const SPONSOR_LOGOS = [
-  { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg",                                   alt: "AmeriDream",            bg: "#ffffff" },
-  { src: "/images/sponsors/GTG Logo.png",                                              alt: "GTG",                   bg: "#ffffff" },
-  { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png",   alt: "Elite Metal Fabricators", bg: "#ffffff" },
-  { src: "/images/sponsors/Edward Jones.png",                                          alt: "Edward Jones",          bg: "#FFD100" },
-  { src: "/images/sponsors/Wise Powder Coating.JPEG",                                  alt: "Wise Powder Coating",   bg: "#ffffff" },
-  { src: "/images/sponsors/ECS-2.png",                                                 alt: "ECS",                   bg: "#ffffff" },
+const PREMIER_LOGOS = [
+  { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg",                                  alt: "AmeriDream",              bg: "#ffffff" },
+  { src: "/images/sponsors/GTG Logo.png",                                             alt: "GTG",                     bg: "#ffffff" },
+  { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png",  alt: "Elite Metal Fabricators",  bg: "#ffffff" },
+];
+
+const SUPPORTING_LOGOS = [
+  { src: "/images/sponsors/Edward Jones.png",          alt: "Edward Jones",        bg: "#FFD100" },
+  { src: "/images/sponsors/Wise Powder Coating.JPEG",  alt: "Wise Powder Coating", bg: "#ffffff" },
+  { src: "/images/sponsors/ECS-2.png",                 alt: "ECS",                 bg: "#ffffff" },
 ];
 
 export default function SponsorsPage() {
@@ -354,36 +357,69 @@ export default function SponsorsPage() {
         <section className="bg-deep-navy py-12 md:py-16">
           <div className="max-w-[1280px] mx-auto px-6">
 
-            <div className="flex items-center gap-4 mb-6">
+            {/* Premier */}
+            <div className="flex items-center gap-4 mb-5">
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
               <span
-                className="font-inter font-bold text-[0.75rem] tracking-[3px] uppercase text-center"
+                className="font-inter font-bold text-[0.72rem] tracking-[3px] uppercase whitespace-nowrap"
                 style={{ color: "#7AC143" }}
               >
-                Proudly Supported By Local Businesses
+                Premier Sponsors
               </span>
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-              {SPONSOR_LOGOS.map(({ src, alt, bg }) => (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+              {PREMIER_LOGOS.map(({ src, alt, bg }) => (
                 <div
                   key={alt}
-                  className="relative aspect-[2/1] rounded-lg overflow-hidden"
+                  className="relative aspect-[2/1] rounded-xl overflow-hidden ring-1 ring-white/20"
+                  style={{ background: bg }}
+                >
+                  <div className="absolute inset-3">
+                    <Image src={src} alt={alt} fill className="object-contain" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Supporting */}
+            <div className="flex items-center gap-4 mb-5">
+              <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
+              <span
+                className="font-inter font-bold text-[0.72rem] tracking-[3px] uppercase whitespace-nowrap"
+                style={{ color: "#A7A8AA" }}
+              >
+                Supporting Sponsors
+              </span>
+              <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {SUPPORTING_LOGOS.map(({ src, alt, bg }) => (
+                <div
+                  key={alt}
+                  className="relative aspect-[3/1] rounded-lg overflow-hidden"
                   style={{ background: bg, border: "1px solid rgba(255,255,255,0.12)" }}
                 >
-                  <Image src={src} alt={alt} fill className="object-contain" />
+                  <div className="absolute inset-2">
+                    <Image src={src} alt={alt} fill className="object-contain" />
+                  </div>
                 </div>
               ))}
               <div
-                className="aspect-[2/1] rounded-lg flex items-center justify-center text-[0.65rem] tracking-wide uppercase"
+                className="aspect-[3/1] rounded-lg flex flex-col items-center justify-center gap-1 text-center px-3"
                 style={{
                   background: "rgba(122,193,67,0.04)",
                   border: "1px dashed rgba(122,193,67,0.35)",
-                  color: "rgba(122,193,67,0.7)",
                 }}
               >
-                Your Logo Here
+                <span className="font-inter font-bold text-[0.65rem] tracking-wide uppercase" style={{ color: "rgba(122,193,67,0.7)" }}>
+                  Your Logo Here
+                </span>
+                <span className="font-inter text-[0.62rem]" style={{ color: "rgba(167,168,170,0.6)" }}>
+                  Join our team of sponsors!
+                </span>
               </div>
             </div>
 
@@ -399,22 +435,6 @@ export default function SponsorsPage() {
               className="rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8"
               style={{ background: "#0a1628", border: "1px solid rgba(122,193,67,0.22)" }}
             >
-
-              {/* Logo placeholder */}
-              <div
-                className="w-full md:w-auto md:flex-shrink-0 flex flex-col items-center justify-center gap-1 rounded-lg px-6 py-5 text-center"
-                style={{ border: "1.5px dashed rgba(122,193,67,0.5)", minWidth: "168px" }}
-              >
-                <span
-                  className="font-inter font-bold uppercase tracking-[2px] text-green"
-                  style={{ fontSize: "0.72rem" }}
-                >
-                  Your Logo Here
-                </span>
-                <span className="font-inter text-muted-gray" style={{ fontSize: "0.72rem" }}>
-                  Join our team of partners!
-                </span>
-              </div>
 
               {/* Text */}
               <div className="flex-1 text-center md:text-left">

@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const cells = [
   { val: ["Paradise, ", "TX"],   redIdx: 1, label: "Home Base" },
   { val: ["7U", " · ", "8U", " · ", "9U", " · ", "11U"], greenIdx: [0, 2, 4, 6], label: "Age Groups" },
@@ -5,16 +9,33 @@ const cells = [
   { val: ["Community ", "Supported"], greenIdx: [1], label: "Powered By" },
 ];
 
+const STAGGER_MS = 150;
+
 export default function Scoreboard() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.25 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="bg-charcoal border-t-[3px] border-b-[3px] border-green">
+    <div className="bg-charcoal border-t-[3px] border-b-[3px] border-green" ref={ref}>
       <div className="grid grid-cols-2 md:grid-cols-4 max-w-[1180px] mx-auto">
         {cells.map((cell, i) => (
           <div
             key={i}
-            className={`flex flex-col items-center text-center px-5 py-4 ${
+            className={`flex flex-col items-center text-center px-5 py-4 transition-all duration-700 ease-out ${
               i < cells.length - 1 ? "border-r border-white/8 last:border-r-0" : ""
-            }`}
+            } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
+            style={{ transitionDelay: visible ? `${i * STAGGER_MS}ms` : "0ms" }}
           >
             <div className="font-bebas text-[1.55rem] text-white tracking-wide leading-none">
               {cell.val.map((part, j) => {

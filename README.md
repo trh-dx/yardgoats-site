@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — hero, teams by age group, simplified sponsors strip with CTA to /sponsors, tryout CTA |
+| `/` | Homepage — hero with tryout date callout, teams by age group, tiered sponsors strip, tryout CTA |
 | `/teams` | Team roster and age group breakdown |
 | `/tryouts` | Tryout dates, what to expect, what to bring |
 | `/schedule` | Game and tournament schedule |
@@ -74,7 +74,8 @@ See `.claude/skills/yardgoats-design-system/` for the full design system referen
 
 - Headline: "Support Local Players. Grow Your Local Brand."
 - Supporting copy about what sponsorships fund
-- Current sponsor logo strip (6 logos + "Your Logo Here" placeholder)
+- **Premier Sponsors** — AmeriDream, GTG, Elite Metal Fabricators displayed at `aspect-[2/1]` in a 3-column row
+- **Supporting Sponsors** — Edward Jones, Wise Powder Coating, ECS displayed at `aspect-[3/1]` (visually smaller) in a 3-column row below
 - "Packages starting at $250" callout
 - Single CTA button → `/sponsors`
 
@@ -89,22 +90,45 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
 3. **Stats** — 250+ players, 10+ tournaments, 1 mission, COUNTLESS memories
 4. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Home Run ($2,000+)
 5. **Why Partner** — 4-reason grid inside a bordered card
-6. **Logo Wall** — "Proudly Supported By Local Businesses" with current sponsor logos
-7. **CTA Banner** — "Want to become a sponsor?" with email link
+6. **Logo Wall** — Tiered display matching the homepage sponsor strip:
+   - **Premier Sponsors** — AmeriDream, GTG, Elite Metal Fabricators at `aspect-[2/1]` in a 3-column row
+   - **Supporting Sponsors** — Edward Jones, Wise Powder Coating, ECS at `aspect-[3/1]` in a 4-column row, with a "Your Logo Here / Join our team of sponsors!" dashed placeholder as the fourth slot
+7. **CTA Banner** — "Want to become a sponsor?" with email link (no logo placeholder)
 
 ### Adding a Sponsor Logo
 
-Drop the logo file in `public/images/sponsors/` and add an entry to the `SPONSOR_LOGOS` array in `app/sponsors/page.tsx`:
+To add a **Premier** sponsor, drop the logo in `public/images/sponsors/` and add an entry to `PREMIER_LOGOS` in `app/sponsors/page.tsx` and the premier grid in `components/Sponsors.tsx`:
 
 ```ts
 { src: "/images/sponsors/your-logo.png", alt: "Business Name", bg: "#ffffff" }
 ```
+
+To add a **Supporting** sponsor, add to `SUPPORTING_LOGOS` in `app/sponsors/page.tsx` and the supporting grid in `components/Sponsors.tsx`.
 
 Set `bg` to match the logo's intended background color (white for most, or a brand color).
 
 ### Updating Sponsor Packages
 
 Package names, prices, and perks are defined in `lib/data.ts` under `export const sponsors`. Tier-specific card styling (colors, shadows, badges) lives in the `cfg` object in `components/SponsorPackages.tsx`.
+
+## SEO & Metadata
+
+Metadata is managed via the Next.js App Router `metadata` export.
+
+- **`app/layout.tsx`** — sets `metadataBase` (`https://paradiseyardgoats.club`), a title template (`%s | Paradise Yard Goats Baseball`), a default description, and `openGraph` / `twitter` card defaults for every page
+- **`app/page.tsx`** — overrides with a home-specific title (`"Home"`) and description
+- **`app/tryouts/page.tsx`** — overrides with a tryouts-specific title and description including the July 12 date
+
+To add metadata to a new page, export a `Metadata` object — the title template in `layout.tsx` will automatically append the site name:
+
+```ts
+export const metadata: Metadata = {
+  title: "Page Name",
+  description: "Page-specific description.",
+};
+```
+
+Update `metadataBase` in `app/layout.tsx` if the domain changes.
 
 ## Mobile Considerations
 
