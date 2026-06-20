@@ -161,26 +161,6 @@ export default function TeamsPage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════
-            SPONSOR BANNER
-        ════════════════════════════════════════════════════════════ */}
-        <div className="bg-deep-navy py-8">
-          <div className="max-w-[1280px] mx-auto px-6">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border border-green/20 rounded-xl px-8 py-6" style={{ background: "rgba(122,193,67,0.04)" }}>
-              <p className="font-inter text-white/70 leading-relaxed max-w-[580px]" style={{ fontSize: "0.97rem" }}>
-                Sponsorships help support uniforms, equipment, tournament fees, practice needs, and player development across all Yard Goats teams.
-              </p>
-              <a
-                href="/#sponsors"
-                className="flex-shrink-0 bg-green hover:bg-green-dk text-white font-inter font-bold uppercase tracking-[2px] px-8 py-3.5 rounded transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
-                style={{ fontSize: "0.8rem" }}
-              >
-                Become a Sponsor
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* ════════════════════════════════════════════════════════════
             BOTTOM CTA BAND
         ════════════════════════════════════════════════════════════ */}
         <section className="py-14" style={{ backgroundColor: "#040C17" }}>

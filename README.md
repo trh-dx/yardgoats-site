@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | Route | Description |
 |---|---|
 | `/` | Homepage — hero with tryout date callout, teams by age group, tiered sponsors strip, tryout CTA |
-| `/teams` | Team roster and age group breakdown |
+| `/teams` | Age group cards with tag badges (Coach Pitch / Kid Pitch / Tournament), player spotlights, CTA band |
 | `/tryouts` | Tryout dates, what to expect, what to bring |
 | `/schedule` | Game and tournament schedule |
 | `/about` | Organization story and coaches |
@@ -42,7 +42,7 @@ components/           # Shared UI components
   Scoreboard.tsx      # Homepage score/stats bar
   Sponsors.tsx        # Homepage sponsors strip — headline, logo wall, starting price, CTA to /sponsors
   SponsorPackages.tsx # Interactive pricing cards used on /sponsors (client component)
-  TeamsGrid.tsx       # Teams page age-group cards (7U, 8U, 9U, 11U)
+  TeamsGrid.tsx       # Teams page age-group cards (7U, 8U, 9U, 11U) — imports from lib/data.ts
   Schedule.tsx        # Schedule table/list
 lib/
   data.ts             # Teams, schedule, and sponsor package data
@@ -136,6 +136,9 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 - **Overlay** — two separate overlays: desktop uses a left-heavy 105deg gradient (`lg:block`); mobile uses a softer vertical gradient (`block lg:hidden`) so the baseball field image remains visible on small screens
 - **Tagline** — `clamp(0.9rem, 1.4vw, 1rem)` — readable at all sizes (minimum 14.4px)
 
+### Teams Page (`/teams`)
+- **Bottom CTA tagline** — "Find your team. Build your confidence. Have Fun." stacks vertically on mobile (`flex-col`) with pipes hidden; restores to inline pipe-separated row on `sm+`
+
 ### Sponsors Page (`/sponsors`)
 - **Benefits grid** — 2-col on mobile, 4-col on `md`
 - **Stats bar** — 2-col on mobile with row/column separators, 4-col on `md`
@@ -148,6 +151,21 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 ## Data
 
 All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`. Site-wide links and contact info are in `lib/config.ts`.
+
+### Teams data shape
+
+```ts
+{
+  age: "9U",
+  name: "9U Yard Goats",
+  title: "Compete",           // card headline
+  description: "...",         // card body copy
+  tag: "Kid Pitch",           // badge rendered top-right of card image
+  image: "/images/...",       // card photo
+}
+```
+
+`TeamsGrid.tsx` imports directly from `lib/data.ts` — update team details here only.
 
 ## Commands
 

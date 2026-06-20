@@ -2,26 +2,34 @@ export const teams = [
   {
     age: "7U",
     name: "7U Yard Goats",
+    title: "Foundations",
     description: "Fundamentals, teamwork, base running, and learning the game.",
     tag: "Coach Pitch",
+    image: "/images/7u-card.png",
   },
   {
     age: "8U",
     name: "8U Yard Goats",
+    title: "Development",
     description: "Confidence, field awareness, hitting mechanics, and game experience.",
     tag: "Coach Pitch",
+    image: "/images/8u-card.png",
   },
   {
     age: "9U",
     name: "9U Yard Goats",
+    title: "Compete",
     description: "Competitive reps, stronger fundamentals, pitching development, and tournament play.",
     tag: "Kid Pitch",
+    image: "/images/baseball-tryout-image.png",
   },
   {
     age: "11U",
     name: "11U Yard Goats",
+    title: "Elevate",
     description: "Advanced development, leadership, competition, and preparing for higher levels of baseball.",
     tag: "Tournament",
+    image: "/images/baseball-tryout-image.png",
   },
 ];
 

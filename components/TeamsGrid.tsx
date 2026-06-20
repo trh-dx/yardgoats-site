@@ -1,38 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-
-// ── Data ──────────────────────────────────────────────────────────────
-
-const TEAMS = [
-  {
-    age: "7U",
-    title: "Foundations",
-    description: "Learning the game. Building the future.",
-    image: "/images/7u-card.png",
-  },
-  {
-    age: "8U",
-    title: "Development",
-    description: "Building skills. Building confidence.",
-    image: "/images/8u-card.png",
-  },
-  {
-    age: "9U",
-    title: "Compete",
-    description: "Working together. Competing harder.",
-    image: "/images/baseball-tryout-image.png",
-  },
-  {
-    age: "11U",
-    title: "Elevate",
-    description: "Advanced training. Championship mindset.",
-    image: "/images/baseball-tryout-image.png",
-  },
-] as const;
-
-// ── Component ─────────────────────────────────────────────────────────
+import { teams } from "@/lib/data";
 
 export default function TeamsGrid() {
   return (
@@ -57,7 +26,7 @@ export default function TeamsGrid() {
 
         {/* ── Cards grid ──────────────────────────────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {TEAMS.map((team) => (
+          {teams.map((team) => (
             <article
               key={team.age}
               className="group flex flex-col bg-charcoal border border-slate rounded-lg overflow-hidden
@@ -73,7 +42,7 @@ export default function TeamsGrid() {
                   fill
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                {/* Gradient scrim — dark bottom so text over it is legible */}
+                {/* Gradient scrim */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
@@ -91,6 +60,16 @@ export default function TeamsGrid() {
                   }}
                 >
                   {team.age}
+                </span>
+                {/* Tag badge */}
+                <span
+                  className="absolute top-3 right-3 font-inter font-bold text-white/90 uppercase tracking-[1px] rounded px-2.5 py-0.5"
+                  style={{
+                    fontSize: "0.65rem",
+                    backgroundColor: "rgba(7,17,31,0.75)",
+                  }}
+                >
+                  {team.tag}
                 </span>
               </div>
 
