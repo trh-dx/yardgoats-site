@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — hero, teams by age group, sponsors section, tryout CTA |
+| `/` | Homepage — hero, teams by age group, simplified sponsors strip with CTA to /sponsors, tryout CTA |
 | `/teams` | Team roster and age group breakdown |
 | `/tryouts` | Tryout dates, what to expect, what to bring |
 | `/schedule` | Game and tournament schedule |
@@ -38,11 +38,11 @@ app/                  # Next.js App Router pages
     page.tsx          # Dedicated sponsors page
 components/           # Shared UI components
   Nav.tsx             # Fixed top navigation (Sponsors link → /sponsors)
-  Footer.tsx          # Site footer
+  Footer.tsx          # Site footer (5-col grid; Age Groups shows "7U - 11U")
   Scoreboard.tsx      # Homepage score/stats bar
-  Sponsors.tsx        # Homepage sponsors section
+  Sponsors.tsx        # Homepage sponsors strip — headline, logo wall, starting price, CTA to /sponsors
   SponsorPackages.tsx # Interactive pricing cards used on /sponsors (client component)
-  TeamCards.tsx       # Team display cards
+  TeamsGrid.tsx       # Teams page age-group cards (7U, 8U, 9U, 11U)
   Schedule.tsx        # Schedule table/list
 lib/
   data.ts             # Teams, schedule, and sponsor package data
@@ -67,6 +67,18 @@ Key colors:
 - Red `#B3261E` — section heading dividers
 
 See `.claude/skills/yardgoats-design-system/` for the full design system reference.
+
+## Homepage Sponsors Section
+
+`components/Sponsors.tsx` is a lightweight strip on the homepage designed to drive traffic to `/sponsors`:
+
+- Headline: "Support Local Players. Grow Your Local Brand."
+- Supporting copy about what sponsorships fund
+- Current sponsor logo strip (6 logos + "Your Logo Here" placeholder)
+- "Packages starting at $250" callout
+- Single CTA button → `/sponsors`
+
+The full tier breakdown lives on the dedicated sponsors page (see below).
 
 ## Sponsors Page
 
