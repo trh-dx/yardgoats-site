@@ -108,8 +108,11 @@ Package names, prices, and perks are defined in `lib/data.ts` under `export cons
 
 ## Mobile Considerations
 
-The `/sponsors` page is fully responsive. Key breakpoints:
+### Homepage Hero
+- **Overlay** — two separate overlays: desktop uses a left-heavy 105deg gradient (`lg:block`); mobile uses a softer vertical gradient (`block lg:hidden`) so the baseball field image remains visible on small screens
+- **Tagline** — `clamp(0.9rem, 1.4vw, 1rem)` — readable at all sizes (minimum 14.4px)
 
+### Sponsors Page (`/sponsors`)
 - **Benefits grid** — 2-col on mobile, 4-col on `md`
 - **Stats bar** — 2-col on mobile with row/column separators, 4-col on `md`
 - **Sponsorship packages** — 1-col on mobile, 2-col on `sm`, 4-col on `xl`
