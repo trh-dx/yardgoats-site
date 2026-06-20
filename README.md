@@ -160,12 +160,18 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
   name: "9U Yard Goats",
   title: "Compete",           // card headline
   description: "...",         // card body copy
-  tag: "Kid Pitch",           // badge rendered top-right of card image
-  image: "/images/...",       // card photo
+  tag: "Kid Pitch",           // pill badge shown below coach name (Coach Pitch / Kid Pitch / Tournament)
+  coach: "Jesse Woskowicz",   // rendered as "Coach: Name" in the card header
+  wins: 8,                    // used to display record and calculate win pct
+  losses: 4,
 }
 ```
 
-`TeamsGrid.tsx` imports directly from `lib/data.ts` — update team details here only.
+All fields are used by `TeamsGrid.tsx` — update team details here only. `coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0.
+
+### TeamsGrid card design
+
+Cards use no photo — the header area shows "Paradise / Yard Goats" as a title with the age badge top-right, coach name, and tag pill. The card body shows the title, description, a record / win pct row, and a green "View Roster" button at the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
 
 ## Commands
 

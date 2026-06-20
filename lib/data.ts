@@ -5,7 +5,9 @@ export const teams = [
     title: "Foundations",
     description: "Fundamentals, teamwork, base running, and learning the game.",
     tag: "Coach Pitch",
-    image: "/images/7u-card.png",
+    coach: "TBD",
+    wins: 0,
+    losses: 0,
   },
   {
     age: "8U",
@@ -13,7 +15,9 @@ export const teams = [
     title: "Development",
     description: "Confidence, field awareness, hitting mechanics, and game experience.",
     tag: "Coach Pitch",
-    image: "/images/8u-card.png",
+    coach: "TBD",
+    wins: 0,
+    losses: 0,
   },
   {
     age: "9U",
@@ -21,7 +25,9 @@ export const teams = [
     title: "Compete",
     description: "Competitive reps, stronger fundamentals, pitching development, and tournament play.",
     tag: "Kid Pitch",
-    image: "/images/baseball-tryout-image.png",
+    coach: "TBD",
+    wins: 0,
+    losses: 0,
   },
   {
     age: "11U",
@@ -29,7 +35,9 @@ export const teams = [
     title: "Elevate",
     description: "Advanced development, leadership, competition, and preparing for higher levels of baseball.",
     tag: "Tournament",
-    image: "/images/baseball-tryout-image.png",
+    coach: "Jesse Woskowicz",
+    wins: 8,
+    losses: 4,
   },
 ];
 
