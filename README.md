@@ -171,7 +171,7 @@ All fields are used by `TeamsGrid.tsx` — update team details here only. `coach
 
 ### TeamsGrid card design
 
-Cards use no photo — the header area shows "Paradise / Yard Goats" as a title with the age badge top-right, coach name, and tag pill. The card body shows the title, description, a record / win pct row, and a green "View Roster" button at the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
+Cards display in a 3-column grid (2-col tablet, 1-col mobile) with no photo. The header area shows "Paradise / Yard Goats" as a title with the age badge top-right, coach name, and tag pill. The card body shows the title, description, a record / win pct row (stats stretch full card width, split equally), and a green "View Roster" button at the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
 
 ## Commands
 

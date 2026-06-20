@@ -25,7 +25,7 @@ export default function TeamsGrid() {
         </div>
 
         {/* ── Cards grid ──────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {teams.map((team) => (
             <article
               key={team.age}
@@ -136,21 +136,21 @@ export default function TeamsGrid() {
                 </p>
 
                 {"wins" in team && "losses" in team && (
-                  <div className="flex items-center gap-4 pt-3 border-t border-slate mb-4">
-                    <div>
+                  <div className="flex items-center pt-3 border-t border-slate mb-4">
+                    <div className="flex-1 text-center">
                       <div className="font-inter font-bold uppercase tracking-[2px] text-white/40 mb-0.5" style={{ fontSize: "0.6rem" }}>
                         Record
                       </div>
-                      <div className="font-bebas text-white leading-none" style={{ fontSize: "1.9rem" }}>
+                      <div className="font-bebas text-white leading-none" style={{ fontSize: "2.8rem" }}>
                         {team.wins}-{team.losses}
                       </div>
                     </div>
-                    <div className="w-px h-8 bg-slate" />
-                    <div>
+                    <div className="w-px h-10 bg-slate" />
+                    <div className="flex-1 text-center">
                       <div className="font-inter font-bold uppercase tracking-[2px] text-white/40 mb-0.5" style={{ fontSize: "0.6rem" }}>
                         Win Pct
                       </div>
-                      <div className="font-bebas text-green leading-none" style={{ fontSize: "1.9rem" }}>
+                      <div className="font-bebas text-green leading-none" style={{ fontSize: "2.8rem" }}>
                         {team.wins + team.losses === 0 ? "—" : `.${Math.round((team.wins / (team.wins + team.losses)) * 1000)}`}
                       </div>
                     </div>
