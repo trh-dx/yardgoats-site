@@ -96,7 +96,7 @@ export default function HomePage() {
               </h1>
 
               {/* "YOUTH BASEBALL" — white with green accent bar */}
-              <div className="-mt-3 w-fit">
+              <div className="mt-1 md:-mt-3 w-fit">
                 <p
                   className="font-bebas text-white leading-none"
                   style={{
