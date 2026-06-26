@@ -6,12 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { href: "/",          label: "Home",     exact: true  },
-  { href: "/teams",     label: "Teams" },
-  { href: "/tryouts",   label: "Tryouts" },
-  { href: "/about",     label: "About"   },
-  { href: "/sponsors",   label: "Sponsors" },
-  { href: "/contact",   label: "Contact" },
+  { href: "/",               label: "Home",          exact: true },
+  { href: "/teams",          label: "Teams" },
+  { href: "/tryouts",        label: "Tryouts" },
+  { href: "/field-rentals",  label: "Field Rentals" },
+  { href: "/about",          label: "About" },
+  { href: "/sponsors",       label: "Sponsors" },
+  { href: "/contact",        label: "Contact" },
 ];
 
 export default function Nav() {

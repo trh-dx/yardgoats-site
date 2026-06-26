@@ -26,6 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `/teams` | Age group cards with tag badges (Coach Pitch / Kid Pitch / Tournament), player spotlights, CTA band |
 | `/tryouts` | Tryout dates, what to expect, what to bring |
 | `/schedule` | Game and tournament schedule |
+| `/field-rentals` | Field rental page — availability strip, rental option cards, rules checklist, booking CTA |
 | `/about` | Organization story and coaches |
 | `/sponsors` | Full sponsors page — hero, benefits, stats, packages, why partner, logo wall, CTA |
 | `/contact` | Contact form and info |
@@ -37,8 +38,8 @@ app/                  # Next.js App Router pages
   sponsors/
     page.tsx          # Dedicated sponsors page
 components/           # Shared UI components
-  Nav.tsx             # Fixed top navigation (Sponsors link → /sponsors)
-  Footer.tsx          # Site footer (5-col grid; Age Groups shows "7U - 11U")
+  Nav.tsx             # Fixed top navigation (links: Home, Teams, Tryouts, Field Rentals, About, Sponsors, Contact)
+  Footer.tsx          # Site footer (5-col grid; Quick Links includes Field Rentals; Age Groups shows "7U - 11U")
   Scoreboard.tsx      # Homepage score/stats bar
   Sponsors.tsx        # Homepage sponsors strip — headline, logo wall, starting price, CTA to /sponsors
   SponsorPackages.tsx # Interactive pricing cards used on /sponsors (client component)
@@ -147,6 +148,36 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 - **Logo wall label** — wraps naturally on small screens (no `whitespace-nowrap`)
 - **CTA banner** — stacks vertically on mobile (`flex-col`), logo placeholder stretches full width; switches to horizontal row on `md`
 - **YG logo image in hero** — hidden below `lg` breakpoint to keep hero clean on mobile
+
+## Field Rentals Page
+
+`/field-rentals` uses the Swift / RunSwiftApp booking system — no custom booking logic is built into the site. All booking buttons point to `siteConfig.fieldRentals` and open in a new tab.
+
+Page sections (top to bottom):
+
+1. **Hero** — "Rent The Goat Yard" with subtitle, green primary button (booking URL), white outline "Rental Rules" button (anchor-scrolls to rules section)
+2. **Availability strip** — Royal blue band with calendar icon, description, and "Open Booking Calendar" button
+3. **Rental Options** — 4 cards in a 1→2→4 column responsive grid (Team Practice, Private Lesson, Weekend Block, Event/Tournament), each with a "Book Now" button
+4. **Rental Rules** — Checklist section with green checkmark circles (anchor target `#rental-rules`)
+5. **Bottom CTA** — Green banner with logo and "Book Field Time" button
+
+### Updating the Booking URL
+
+The Swift booking URL is stored in `lib/config.ts` under `siteConfig.fieldRentals`. Update it there and all buttons on the page update automatically.
+
+```ts
+fieldRentals: "https://book.runswiftapp.com/facilities/the-goat-yard"
+```
+
+### Adding or Editing Rental Rules
+
+Rules are defined in the `rentalRules` array at the top of `app/field-rentals/page.tsx`. Add, remove, or reorder items there.
+
+### Adding or Editing Rental Option Cards
+
+Cards are defined in the `rentalOptions` array at the top of `app/field-rentals/page.tsx`. Each card has a `title` and `desc`.
+
+---
 
 ## Data
 
