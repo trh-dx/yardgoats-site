@@ -25,14 +25,13 @@ export default function TeamsGrid() {
         </div>
 
         {/* ── Cards grid ──────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {teams.map((team) => (
+        <div className="grid grid-cols-6 gap-3">
+          {teams.map((team, index) => {
+            const colStart = index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : "";
+            return (
             <article
-              key={team.age}
-              className="group flex flex-col bg-charcoal border border-royal-blue/30 rounded-lg overflow-hidden
-                         hover:border-royal-blue/70
-                         hover:shadow-[0_0_28px_rgba(0,61,165,0.35)]
-                         transition-all duration-300"
+              key={`${team.age}-${team.coach}`}
+              className={`col-span-6 sm:col-span-3 lg:col-span-2 ${colStart} group flex flex-col bg-charcoal border border-royal-blue/30 rounded-lg overflow-hidden hover:border-royal-blue/70 hover:shadow-[0_0_28px_rgba(0,61,165,0.35)] transition-all duration-300`}
             >
               {/* ── Image area ──────────────────────────── */}
               {"image" in team ? (
@@ -76,16 +75,27 @@ export default function TeamsGrid() {
               ) : (
                 <div className="relative px-5 pt-5 pb-4" style={{ borderBottom: "1px solid #1E293B" }}>
                   {/* Age badge — top right */}
-                  <span
-                    className="absolute top-4 right-4 font-bebas text-white tracking-widest rounded px-3 py-0.5"
-                    style={{
-                      fontSize: "1.05rem",
-                      lineHeight: 1.6,
-                      backgroundColor: "rgba(122,193,67,0.92)",
-                    }}
+                  <div
+                    className="absolute top-4 right-4 font-bebas text-white tracking-widest rounded overflow-hidden flex flex-col items-center"
+                    style={{ minWidth: "68px", border: "2px solid #7AC143" }}
                   >
-                    {team.age}
-                  </span>
+                    {/* Green top — age */}
+                    <div
+                      className="w-full text-center px-3 py-1"
+                      style={{ backgroundColor: "#7AC143", fontSize: "1.3rem", lineHeight: 1.3 }}
+                    >
+                      {team.age}
+                    </div>
+                    {/* Dark navy bottom — team label (11U only) */}
+                    {"teamLabel" in team && (
+                      <div
+                        className={`w-full text-center px-2 ${team.age === "11U" ? "py-1" : "py-px"}`}
+                        style={{ backgroundColor: "#0F172A", fontSize: "0.68rem", lineHeight: 1.6, letterSpacing: "0.14em" }}
+                      >
+                        {(team as { teamLabel: string }).teamLabel}
+                      </div>
+                    )}
+                  </div>
 
                   {/* Title */}
                   <p
@@ -141,7 +151,7 @@ export default function TeamsGrid() {
                       <div className="font-inter font-bold uppercase tracking-[2px] text-white/40 mb-0.5" style={{ fontSize: "0.6rem" }}>
                         Record
                       </div>
-                      <div className="font-bebas text-white leading-none" style={{ fontSize: "2.8rem" }}>
+                      <div className="font-bebas text-white leading-none" style={{ fontSize: "2rem" }}>
                         {team.wins}-{team.losses}
                       </div>
                     </div>
@@ -150,7 +160,7 @@ export default function TeamsGrid() {
                       <div className="font-inter font-bold uppercase tracking-[2px] text-white/40 mb-0.5" style={{ fontSize: "0.6rem" }}>
                         Win Pct
                       </div>
-                      <div className="font-bebas text-green leading-none" style={{ fontSize: "2.8rem" }}>
+                      <div className="font-bebas text-green leading-none" style={{ fontSize: "2rem" }}>
                         {team.wins + team.losses === 0 ? "—" : `.${Math.round((team.wins / (team.wins + team.losses)) * 1000)}`}
                       </div>
                     </div>
@@ -166,7 +176,8 @@ export default function TeamsGrid() {
                 </a>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
 
       </div>

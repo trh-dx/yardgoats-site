@@ -211,17 +211,32 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
   title: "Compete",           // card headline
   description: "...",         // card body copy
   tag: "Kid Pitch",           // pill badge shown below coach name (Coach Pitch / Kid Pitch / Tournament)
-  coach: "Jesse Woskowicz",   // rendered as "Coach: Name" in the card header
+  coach: "Jake Smith",        // rendered as "Coach: Name" in the card header
+  teamLabel: "SMITH",         // optional — adds a dark navy strip below the green age badge (used for 11U only)
   wins: 8,                    // used to display record and calculate win pct
   losses: 4,
 }
 ```
 
-All fields are used by `TeamsGrid.tsx` — update team details here only. `coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0.
+`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams).
+
+### Current teams
+
+| Age | Coach | teamLabel | Tag |
+|---|---|---|---|
+| 7U | Shawn Leach | — | Coach Pitch |
+| 8U | Trey Miller | — | Coach Pitch |
+| 9U | Jake Smith | — | Kid Pitch |
+| 11U | Jesse Woskowicz | WOSKO | Tournament |
+| 11U | Collin White | WHITE | Tournament |
 
 ### TeamsGrid card design
 
-Cards display in a 3-column grid (2-col tablet, 1-col mobile) with no photo. The header area shows "Paradise / Yard Goats" as a title with the age badge top-right, coach name, and tag pill. The card body shows the title, description, a record / win pct row (stats stretch full card width, split equally), and a green "View Roster" button at the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
+Cards use a 6-column CSS grid so the layout can be controlled precisely. The first three cards (7U, 8U, 9U) each span 2 of 6 columns, filling the row. The two 11U cards each span 2 columns with explicit `col-start` values (2 and 4) so they are centered below the top row with one empty column on each side.
+
+The card header shows "Paradise / Yard Goats" with the age badge top-right, coach name, and tag pill. The age badge is a split two-tone design: green top section with the age, and — when `teamLabel` is set — a dark navy bottom strip with the label. A green border wraps the entire badge.
+
+The card body shows the title, description, a record / win pct row, and a green "View Roster" button pinned to the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
 
 ## Commands
 
