@@ -88,7 +88,7 @@ export default function FieldRentalsPage() {
               className="font-bebas text-white leading-none tracking-wide"
               style={{ fontSize: "clamp(4rem, 10vw, 7.5rem)" }}
             >
-              RENT THE <span className="text-green">GOAT YARD</span>
+              RENT <span className="text-green">THE GOAT YARD</span>
             </h1>
 
             <p

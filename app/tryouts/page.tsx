@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const tryouts = [
-  { age: "7U & 8U", time: "12:00PM - 12:45PM" },
-  { age: "9U",      time: "1:00PM - 1:45PM" },
-  { age: "11U",     time: "2:00PM - 2:45PM" },
+  { age: "7U & 8U", time: "12:00P - 12:45P" },
+  { age: "9U",      time: "1:00P - 1:45P" },
+  { age: "11U",     time: "2:00P - 2:45P" },
 ];
 
 
@@ -169,7 +169,11 @@ export default function TryoutsPage() {
                       className="font-inter font-semibold text-white mb-6"
                       style={{ fontSize: "0.85rem" }}
                     >
-                      {t.time}
+                      {t.time.split("P").map((part, i, arr) =>
+                        i < arr.length - 1
+                          ? <span key={i}>{part}<span style={{ fontSize: "0.65rem" }}>P</span></span>
+                          : <span key={i}>{part}</span>
+                      )}
                     </p>
 
                     {/* CTA button */}
