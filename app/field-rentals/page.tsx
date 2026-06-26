@@ -152,7 +152,7 @@ export default function FieldRentalsPage() {
                 </h2>
                 <p className="font-inter text-white/80" style={{ fontSize: "0.92rem" }}>
                   Field availability and rental requests are managed through our online booking system.
-                  Use the button below to view open times and request your field rental.
+                  Use the button to view open times and request your field rental.
                 </p>
               </div>
 
