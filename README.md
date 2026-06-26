@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — hero with tryout date callout, teams by age group, tiered sponsors strip, tryout CTA |
+| `/` | Homepage — hero ("Home of The / Paradise Yard Goats / Youth Baseball") with tryout callout, teams by age group, sponsors strip, tryout CTA |
 | `/teams` | Age group cards with tag badges (Coach Pitch / Kid Pitch / Tournament), player spotlights, CTA band |
 | `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring |
 | `/schedule` | Game and tournament schedule |
@@ -135,7 +135,10 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 
 ### Homepage Hero
 - **Overlay** — two separate overlays: desktop uses a left-heavy 105deg gradient (`lg:block`); mobile uses a softer vertical gradient (`block lg:hidden`) so the baseball field image remains visible on small screens
-- **Tagline** — `clamp(0.9rem, 1.4vw, 1rem)` — readable at all sizes (minimum 14.4px)
+- **"Home of The"** — Permanent Marker font in green, `clamp(1.23rem, 2.8vw, 1.78rem)`
+- **"Paradise Yard Goats"** — Bebas Neue in white, `clamp(3rem, 9vw, 9rem)`, `whitespace-nowrap`
+- **"Youth Baseball"** — Bebas Neue in white with a thin royal-blue text stroke (`0.5px`) and subtle blue drop shadow accent; green `3px` bar sits underneath via a `w-fit` wrapper div
+- **Tagline** — `clamp(0.85rem, 1.4vw, 1rem)`, `tracking-[0.8px]`, `leading-relaxed` — tightened from earlier wider spacing for better readability on mobile
 
 ### Teams Page (`/teams`)
 - **Bottom CTA tagline** — "Find your team. Build your confidence. Have Fun." stacks vertically on mobile (`flex-col`) with pipes hidden; restores to inline pipe-separated row on `sm+`

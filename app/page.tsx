@@ -82,36 +82,41 @@ export default function HomePage() {
               {/* "HOME OF" — accent script */}
               <p
                 className="font-marker text-green mb-1"
-                style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)" }}
+                style={{ fontSize: "clamp(1.23rem, 2.8vw, 1.78rem)" }}
               >
-                Home of
+                Home of The
               </p>
 
-              {/* "THE YARD GOATS" — display */}
+              {/* "PARADISE YARD GOATS" — display */}
               <h1
                 className="font-bebas text-white leading-none tracking-wide whitespace-nowrap"
                 style={{ fontSize: "clamp(3rem, 9vw, 9rem)" }}
               >
-                The Yard Goats
+                Paradise Yard Goats
               </h1>
 
-              {/* "BASEBALL" — royal blue display */}
-              <p
-                className="font-bebas text-royal-blue leading-none -mt-1"
-                style={{
-                  fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
-                  letterSpacing: "0.12em",
-                }}
-              >
-                Baseball
-              </p>
+              {/* "YOUTH BASEBALL" — white with green accent bar */}
+              <div className="-mt-3 w-fit">
+                <p
+                  className="font-bebas text-white leading-none"
+                  style={{
+                    fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                    letterSpacing: "0.12em",
+                    WebkitTextStroke: "0.5px #003DA5",
+                    textShadow: "1px 2px 0 rgba(0, 61, 165, 0.28)",
+                  }}
+                >
+                  Youth Baseball
+                </p>
+                <div className="h-[3px] bg-green rounded mt-1" />
+              </div>
 
               {/* Tagline */}
               <div
-                className="mt-6 font-inter text-muted-gray tracking-[2.5px] leading-loose"
-                style={{ fontSize: "clamp(0.9rem, 1.4vw, 1rem)" }}
+                className="mt-6 font-inter text-muted-gray tracking-[0.8px] leading-relaxed"
+                style={{ fontSize: "clamp(0.85rem, 1.4vw, 1rem)" }}
               >
-                <p>Youth baseball built on teamwork, grit, development, and community pride in Paradise, Texas.</p>
+                <p>Built on teamwork, grit, development, and community pride in Paradise, Texas.</p>
               </div>
 
               {/* CTA buttons */}
