@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 |---|---|
 | `/` | Homepage — hero with tryout date callout, teams by age group, tiered sponsors strip, tryout CTA |
 | `/teams` | Age group cards with tag badges (Coach Pitch / Kid Pitch / Tournament), player spotlights, CTA band |
-| `/tryouts` | Tryout dates, what to expect, what to bring |
+| `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring |
 | `/schedule` | Game and tournament schedule |
 | `/field-rentals` | Field rental page — availability strip, rental option cards, rules checklist, booking CTA |
 | `/about` | Organization story and coaches |
@@ -148,6 +148,22 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 - **Logo wall label** — wraps naturally on small screens (no `whitespace-nowrap`)
 - **CTA banner** — stacks vertically on mobile (`flex-col`), logo placeholder stretches full width; switches to horizontal row on `md`
 - **YG logo image in hero** — hidden below `lg` breakpoint to keep hero clean on mobile
+
+## Tryouts Page
+
+The tryout schedule is defined in the `tryouts` array at the top of `app/tryouts/page.tsx`. Each entry has an `age` label and a `time` string:
+
+```ts
+{ age: "7U & 8U", time: "12:00P - 12:45P" },
+{ age: "9U",      time: "1:00P - 1:45P"   },
+{ age: "11U",     time: "2:00P - 2:45P"   },
+```
+
+Each card displays a green clock icon, the age group in large Bebas Neue, and the time with the `P` suffix rendered slightly smaller. The register button links to `siteConfig.register`.
+
+To add or remove a time slot, add or remove an entry from the `tryouts` array — the card grid adjusts automatically.
+
+---
 
 ## Field Rentals Page
 

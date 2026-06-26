@@ -156,13 +156,19 @@ export default function TryoutsPage() {
                     {/* Age group */}
                     <span
                       className="font-bebas text-green tracking-widest mb-4"
-                      style={{ fontSize: "clamp(2.2rem, 4vw, 2.8rem)" }}
+                      style={{ fontSize: "clamp(2.6rem, 4.5vw, 3.4rem)" }}
                     >
                       {t.age}
                     </span>
 
                     {/* Divider */}
                     <div className="w-10 h-px bg-royal-blue/50 mb-4" />
+
+                    {/* Clock icon */}
+                    <svg className="w-7 h-7 text-green mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
 
                     {/* Time */}
                     <p
