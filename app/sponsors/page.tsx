@@ -359,6 +359,23 @@ export default function SponsorsPage() {
         <section className="bg-deep-navy py-12 md:py-16">
           <div className="max-w-[1280px] mx-auto px-6">
 
+            {/* Heading */}
+            <div className="text-center mb-10">
+              <h2
+                className="font-bebas text-white leading-none"
+                style={{ fontSize: "clamp(2.8rem, 7vw, 5rem)" }}
+              >
+                Our Proud <span className="text-green">Sponsors</span>
+              </h2>
+              <div className="flex items-center justify-center gap-3 mt-2">
+                <div className="h-[2px] w-14 bg-green rounded" />
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#7AC143" aria-hidden>
+                  <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z" />
+                </svg>
+                <div className="h-[2px] w-14 bg-green rounded" />
+              </div>
+            </div>
+
             {/* Premier */}
             <div className="flex items-center gap-4 mb-5">
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
