@@ -145,6 +145,7 @@ export default function TeamsGrid() {
                   {team.description}
                 </p>
 
+
                 {"wins" in team && "losses" in team && (
                   <div className="flex items-center pt-3 border-t border-slate mb-4">
                     <div className="flex-1 text-center">

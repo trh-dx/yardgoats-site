@@ -223,13 +223,13 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
 
 ### Current teams
 
-| Age | Coach | teamLabel | Tag |
-|---|---|---|---|
-| 7U | Shawn Leach | — | Coach Pitch |
-| 8U | Trey Miller | — | Coach Pitch |
-| 9U | Jake Smith | — | Kid Pitch |
-| 11U | Jesse Woskowicz | WOSKO | Tournament |
-| 11U | Collin White | WHITE | Tournament |
+| Age | Coach | teamLabel | Tag | Record |
+|---|---|---|---|---|
+| 7U | Shawn Leach | — | Coach Pitch | 0-0 |
+| 8U | Trey Miller | — | Coach Pitch | 0-0 |
+| 9U | Jake Smith | — | Kid Pitch | 0-0 |
+| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 |
+| 11U | Collin White | WHITE | Tournament | 0-0 |
 
 ### TeamsGrid card design
 

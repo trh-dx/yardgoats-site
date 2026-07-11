@@ -37,8 +37,8 @@ export const teams = [
     tag: "Tournament",
     coach: "Jesse Woskowicz",
     teamLabel: "WOSKO",
-    wins: 8,
-    losses: 4,
+    wins: 0,
+    losses: 0,
   },
   {
     age: "11U",
