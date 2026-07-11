@@ -128,10 +128,10 @@ Pages that include the brand name in their title use `title: { absolute: "..." }
 | `/teams` | Youth Baseball Teams \| Paradise Yard Goats | Yes |
 | `/field-rentals` | Baseball Field Rentals in Paradise, TX \| The Goat Yard | Yes |
 | `/sponsors` | Youth Baseball Sponsorships \| Paradise Yard Goats | Yes |
-| `/about` | About Us \| Paradise Yard Goats Baseball | No (template) |
+| `/about` | About Paradise Yard Goats Baseball | Yes |
 | `/tryouts` | Tryouts \| Paradise Yard Goats Baseball | No (template) |
 | `/schedule` | Schedule \| Paradise Yard Goats Baseball | No (template) |
-| `/contact` | Contact \| Paradise Yard Goats Baseball | No (template) |
+| `/contact` | Contact Paradise Yard Goats Baseball | Yes (via contact/layout.tsx) |
 
 To add metadata to a new page, export a `Metadata` object. If the title already contains the brand name, use `absolute` to skip the template:
 

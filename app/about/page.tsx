@@ -6,8 +6,11 @@ import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "About Us | Paradise Yard Goats Baseball",
-  description: "Learn about the Paradise Yard Goats — our mission, coaches, and commitment to developing players and building character through competitive youth baseball.",
+  title: {
+    absolute: "About Paradise Yard Goats Baseball",
+  },
+  description:
+    "Learn about the Paradise Yard Goats mission, coaching philosophy, player development approach, and commitment to youth baseball in Paradise, Texas.",
 };
 
 const features = [
