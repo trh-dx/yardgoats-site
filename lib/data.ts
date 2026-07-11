@@ -22,7 +22,7 @@ export const teams = [
   {
     age: "9U",
     name: "9U Yard Goats",
-    title: "Compete",
+    title: "Challenge",
     description: "Competitive reps, stronger fundamentals, pitching development, and tournament play.",
     tag: "Kid Pitch",
     coach: "Jake Smith",

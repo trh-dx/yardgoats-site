@@ -40,6 +40,68 @@ const rentalRules = [
   "Additional rules may apply depending on rental type.",
 ];
 
+const facilityFeatures = [
+  {
+    title: "Lighted Field",
+    desc: "Practice day or night with full field lighting",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M12 15v6M9 21h6" />
+        <path d="M7 7h10l-1.5 8h-7L7 7z" />
+        <path d="M12 4V2M6 5l1.5 1.5M18 5l-1.5 1.5" />
+      </svg>
+    ),
+  },
+  {
+    title: "Turf & Infield",
+    desc: "Well-maintained turf and infield surface",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M12 2L22 12L12 22L2 12Z" />
+        <circle cx="12" cy="4" r="1" fill="currentColor" stroke="none" />
+        <circle cx="20" cy="12" r="1" fill="currentColor" stroke="none" />
+        <circle cx="12" cy="20" r="1" fill="currentColor" stroke="none" />
+        <circle cx="4" cy="12" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
+  {
+    title: "Dugouts",
+    desc: "Covered dugouts for players and coaches",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M2 10l10-7 10 7" />
+        <path d="M4 10v9h16v-9" />
+        <path d="M8 19v-5h8v5" />
+      </svg>
+    ),
+  },
+  {
+    title: "Parking",
+    desc: "Ample parking for teams and families",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M5 17H3v-7l2-5h14l2 5v7h-2" />
+        <circle cx="7.5" cy="17.5" r="1.5" />
+        <circle cx="16.5" cy="17.5" r="1.5" />
+        <path d="M5 10h14" />
+      </svg>
+    ),
+  },
+  {
+    title: "Restrooms",
+    desc: "Clean facilities on-site",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <circle cx="8" cy="5" r="2" />
+        <path d="M5 22v-8H3l2-6h6l2 6h-2v8" />
+        <circle cx="17" cy="5" r="2" />
+        <path d="M14 11h6l-1 3h-1v7h-2v-7h-1l-1-3z" />
+      </svg>
+    ),
+  },
+];
+
 export default function FieldRentalsPage() {
   return (
     <>
@@ -81,14 +143,14 @@ export default function FieldRentalsPage() {
               className="font-bebas tracking-[3px] text-green mb-2"
               style={{ fontSize: "clamp(0.9rem, 2vw, 1.1rem)" }}
             >
-              THE GOAT YARD — PARADISE, TEXAS
+              THE GOAT YARD
             </p>
 
             <h1
               className="font-bebas text-white leading-none tracking-wide"
               style={{ fontSize: "clamp(4rem, 10vw, 7.5rem)" }}
             >
-              RENT <span className="text-green">THE GOAT YARD</span>
+              Baseball Field <span className="text-green">Rentals</span>
             </h1>
 
             <p
@@ -174,6 +236,53 @@ export default function FieldRentalsPage() {
             </div>
           </div>
         </div>
+
+        {/* ── Facility Features ────────────────────────────────────── */}
+        <section className="bg-charcoal py-16 md:py-24">
+          <div className="max-w-[1280px] mx-auto px-6">
+
+            <div className="text-center mb-12">
+              <span
+                className="font-inter font-bold uppercase tracking-[3px] text-green block mb-2"
+                style={{ fontSize: "0.72rem" }}
+              >
+                Facility Features
+              </span>
+              <h2
+                className="font-bebas text-white leading-none"
+                style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}
+              >
+                Quality Facilities for Development
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+              {facilityFeatures.map((feat) => (
+                <div key={feat.title} className="flex flex-col items-center text-center">
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-green mb-4"
+                    style={{ background: "rgba(0,61,165,0.18)", border: "1.5px solid rgba(0,61,165,0.4)" }}
+                  >
+                    {feat.icon}
+                  </div>
+                  <h3
+                    className="font-bebas text-white tracking-wide mb-1"
+                    style={{ fontSize: "1.1rem" }}
+                  >
+                    {feat.title}
+                  </h3>
+                  <p
+                    className="font-inter text-muted-gray leading-relaxed"
+                    style={{ fontSize: "0.82rem" }}
+                  >
+                    {feat.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
 
         {/* ── Rental Options ───────────────────────────────────────── */}
         <section className="bg-deep-navy py-20 md:py-28">

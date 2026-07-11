@@ -8,20 +8,20 @@ export default function TeamsGrid() {
     <section className="bg-deep-navy py-16 md:py-20">
       <div className="max-w-[1280px] mx-auto px-5">
 
-        {/* ── Heading ─────────────────────────────────────────── */}
-        <div className="mb-10">
+        {/* ── Team Overview header ────────────────────────────── */}
+        <div className="text-center mb-10">
+          <span
+            className="font-inter font-bold uppercase tracking-[3px] text-green block mb-2"
+            style={{ fontSize: "0.72rem" }}
+          >
+            Team Overview
+          </span>
           <h2
-            className="font-bebas text-white leading-none mb-3"
-            style={{ fontSize: "clamp(2.2rem, 4vw, 3rem)" }}
+            className="font-bebas text-white leading-none"
+            style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}
           >
-            Travel <span className="text-green">Baseball</span>
+            Meet Our <span className="text-green">Teams</span>
           </h2>
-          <p
-            className="font-inter text-muted-gray leading-relaxed max-w-[640px]"
-            style={{ fontSize: "0.97rem" }}
-          >
-            From early fundamentals to competitive tournament play, Paradise Yard Goats teams help players grow with confidence, effort, and a love for the game.
-          </p>
         </div>
 
         {/* ── Cards grid ──────────────────────────────────────── */}
@@ -113,7 +113,7 @@ export default function TeamsGrid() {
 
                   {"coach" in team && (
                     <p className="font-inter text-white/55 mb-2" style={{ fontSize: "0.75rem" }}>
-                      <span className="text-white/35 uppercase tracking-[1.5px]" style={{ fontSize: "0.62rem" }}>Coach: </span>
+                      <span className="font-bold text-white/70 uppercase tracking-[1.5px]" style={{ fontSize: "0.62rem" }}>Coach: </span>
                       {(team as { coach: string }).coach}
                     </p>
                   )}

@@ -23,13 +23,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | Route | Description |
 |---|---|
 | `/` | Homepage — hero ("Home of The / Paradise Yard Goats / Youth Baseball") with tryout callout, teams by age group, sponsors strip, tryout CTA |
-| `/teams` | Age group cards with tag badges (Coach Pitch / Kid Pitch / Tournament), player spotlights, CTA band |
+| `/teams` | Hero: "5 Teams. / One Goat Nation." — age group cards (Team Overview header, 5 cards), player spotlights (hidden), CTA band |
 | `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring |
 | `/schedule` | Game and tournament schedule |
-| `/field-rentals` | Field rental page — availability strip, rental option cards, rules checklist, booking CTA |
+| `/field-rentals` | Field rental page — "Baseball Field Rentals" hero, availability strip, facility features, rental option cards, rules checklist, booking CTA |
 | `/about` | Organization story and coaches |
 | `/sponsors` | Full sponsors page — hero, benefits, stats, packages, why partner, logo wall, CTA |
-| `/contact` | Contact form and info |
+| `/contact` | "Contact Paradise Yard Goats Baseball" — contact form and info |
 
 ## Project Structure
 
@@ -174,11 +174,12 @@ To add or remove a time slot, add or remove an entry from the `tryouts` array �
 
 Page sections (top to bottom):
 
-1. **Hero** — "Rent The Goat Yard" with subtitle, green primary button (booking URL), white outline "Rental Rules" button (anchor-scrolls to rules section)
+1. **Hero** — "Baseball Field Rentals" (white + green) with "THE GOAT YARD" eyebrow, subtitle, green primary button (booking URL), white outline "Rental Rules" button (anchor-scrolls to rules section)
 2. **Availability strip** — Royal blue band with calendar icon, description, and "Open Booking Calendar" button
-3. **Rental Options** — 4 cards in a 1→2→4 column responsive grid (Team Practice, Private Lesson, Weekend Block, Event/Tournament), each with a "Book Now" button
-4. **Rental Rules** — Checklist section with green checkmark circles (anchor target `#rental-rules`)
-5. **Bottom CTA** — Green banner with logo and "Book Field Time" button
+3. **Facility Features** — 5-column grid (Lighted Field, Turf & Infield, Dugouts, Parking, Restrooms) with icon, title, and description
+4. **Rental Options** — 4 cards in a 1→2→4 column responsive grid (Team Practice, Private Lesson, Weekend Block, Event/Tournament), each with a "Book Now" button
+5. **Rental Rules** — Checklist section with green checkmark circles (anchor target `#rental-rules`)
+6. **Bottom CTA** — Green banner with logo and "Book Field Time" button
 
 ### Updating the Booking URL
 
@@ -208,7 +209,7 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
 {
   age: "9U",
   name: "9U Yard Goats",
-  title: "Compete",           // card headline
+  title: "Challenge",         // card headline
   description: "...",         // card body copy
   tag: "Kid Pitch",           // pill badge shown below coach name (Coach Pitch / Kid Pitch / Tournament)
   coach: "Jake Smith",        // rendered as "Coach: Name" in the card header

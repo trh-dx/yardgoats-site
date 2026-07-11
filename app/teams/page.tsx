@@ -63,6 +63,14 @@ export default function TeamsPage() {
               <span className="text-green">Teams</span>
             </nav>
 
+            {/* Eyebrow */}
+            <p
+              className="font-bebas tracking-[3px] text-green mb-2"
+              style={{ fontSize: "clamp(0.9rem, 2vw, 1.1rem)" }}
+            >
+              Paradise Yard Goats Baseball.
+            </p>
+
             {/* Headline */}
             <h1
               className="font-bebas text-white leading-none"
@@ -71,22 +79,23 @@ export default function TeamsPage() {
                 textShadow: "0 4px 24px rgba(0,0,0,0.7)",
               }}
             >
-              Our Club
+              5 Teams.
             </h1>
-
-            {/* Accent */}
             <p
-              className="font-marker text-green mt-1"
-              style={{ fontSize: "clamp(1rem, 2.5vw, 1.6rem)" }}
+              className="font-bebas text-green leading-none"
+              style={{
+                fontSize: "clamp(3.8rem, 9vw, 7.5rem)",
+                textShadow: "0 4px 24px rgba(0,0,0,0.7)",
+              }}
             >
-              Built on Dirt. Driven by Development.
+              One Goat Nation.
             </p>
 
             <p
               className="font-inter text-white/70 mt-4 max-w-[520px]"
               style={{ fontSize: "clamp(0.9rem, 1.8vw, 1.05rem)", lineHeight: "1.65" }}
             >
-              Developing North Texas ballplayers through hard work, competition, and a passion for the game.
+              From early fundamentals to competitive travel tournament play, Paradise Yard Goats teams help players grow with confidence, effort, and a love for the game.
             </p>
 
           </div>
@@ -98,9 +107,9 @@ export default function TeamsPage() {
         <TeamsGrid />
 
         {/* ════════════════════════════════════════════════════════════
-            PLAYER SPOTLIGHTS
+            PLAYER SPOTLIGHTS — hidden until real data is ready
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-charcoal py-20 md:py-28">
+        {false && <section className="bg-charcoal py-20 md:py-28">
           <div className="max-w-[1280px] mx-auto px-6">
 
             {/* Header */}
@@ -158,7 +167,7 @@ export default function TeamsPage() {
             ]} />
 
           </div>
-        </section>
+        </section>}
 
         {/* ════════════════════════════════════════════════════════════
             BOTTOM CTA BAND

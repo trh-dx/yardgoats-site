@@ -136,7 +136,7 @@ export default function ContactPage() {
               className="font-bebas text-white leading-none tracking-wide"
               style={{ fontSize: "clamp(4rem, 10vw, 7.5rem)" }}
             >
-              Contact <span className="text-green">Us</span>
+              Contact <span className="text-green">Paradise Yard Goats Baseball</span>
             </h1>
           </div>
         </section>
