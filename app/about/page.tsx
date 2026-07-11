@@ -31,7 +31,7 @@ const features = [
       </svg>
     ),
     title: "Competitive Schedule",
-    body: "We play the best, to be the best — tournaments and top-tier competition.",
+    body: "We seek strong competition because meaningful challenges help our players grow.",
   },
   {
     icon: (
