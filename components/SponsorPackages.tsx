@@ -80,7 +80,7 @@ const cfg: Record<string, {
     accent: "#E05C55", priceColor: "#E05C55",
     stitch: "rgba(179,38,30,0.28)",
     topGlow: "radial-gradient(ellipse 85% 55% at 50% 0%,rgba(179,38,30,0.18) 0%,transparent 100%)",
-    badge: { text: "Premier Sponsor", bg: "rgba(179,38,30,0.15)", color: "#F07070", border: "rgba(179,38,30,0.48)" },
+    badge: { text: "Diamond Sponsor", bg: "rgba(179,38,30,0.15)", color: "#F07070", border: "rgba(179,38,30,0.48)" },
     iconSize: "3rem", nameSize: "2.7rem", priceSize: "4.4rem", priceSufSize: "2.5rem",
     padTop: "pt-10", lift: "-10px",
     btnBg: "#B3261E", btnColor: "#ffffff", btnBorder: "#B3261E",

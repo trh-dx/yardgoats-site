@@ -116,15 +116,15 @@ const WHY_PARTNER = [
 ];
 
 const PREMIER_LOGOS = [
-  { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg",                                  alt: "AmeriDream",              bg: "#ffffff" },
-  { src: "/images/sponsors/GTG Logo.png",                                             alt: "GTG",                     bg: "#ffffff" },
-  { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png",  alt: "Elite Metal Fabricators",  bg: "#ffffff" },
+  { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg",                                  alt: "AmeriDream",              bg: "#ffffff", href: "#" },
+  { src: "/images/sponsors/GTG Logo.png",                                             alt: "GTG",                     bg: "#ffffff", href: "#" },
+  { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png",  alt: "Elite Metal Fabricators",  bg: "#ffffff", href: "#" },
 ];
 
 const SUPPORTING_LOGOS = [
-  { src: "/images/sponsors/Edward Jones.png",          alt: "Edward Jones",        bg: "#FFD100" },
-  { src: "/images/sponsors/Wise Powder Coating.JPEG",  alt: "Wise Powder Coating", bg: "#ffffff" },
-  { src: "/images/sponsors/ECS-2.png",                 alt: "ECS",                 bg: "#ffffff" },
+  { src: "/images/sponsors/Edward Jones.png",          alt: "Edward Jones",        bg: "#FFD100", href: "#" },
+  { src: "/images/sponsors/Wise Powder Coating.JPEG",  alt: "Wise Powder Coating", bg: "#ffffff", href: "#" },
+  { src: "/images/sponsors/ECS-2.png",                 alt: "ECS",                 bg: "#ffffff", href: "#" },
 ];
 
 export default function SponsorsPage() {
@@ -366,22 +366,35 @@ export default function SponsorsPage() {
                 className="font-inter font-bold text-[0.72rem] tracking-[3px] uppercase whitespace-nowrap"
                 style={{ color: "#7AC143" }}
               >
-                Premier Sponsors
+                Diamond Sponsors
               </span>
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-              {PREMIER_LOGOS.map(({ src, alt, bg }) => (
-                <div
+              {PREMIER_LOGOS.map(({ src, alt, bg, href }) => (
+                <a
                   key={alt}
-                  className="relative aspect-[2/1] rounded-xl overflow-hidden ring-1 ring-white/20"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-[2/1] rounded-xl overflow-hidden ring-1 ring-white/20 block"
                   style={{ background: bg }}
                 >
                   <div className="absolute inset-3">
                     <Image src={src} alt={alt} fill className="object-contain" />
                   </div>
-                </div>
+                  <div className="absolute inset-0 flex items-end justify-center pb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ background: "linear-gradient(to top, rgba(7,17,31,0.82) 0%, transparent 65%)" }}>
+                    <span className="flex items-center gap-1.5 font-inter font-bold uppercase tracking-[1.5px] text-white" style={{ fontSize: "0.72rem" }}>
+                      Visit Sponsor
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                    </span>
+                  </div>
+                </a>
               ))}
             </div>
 
@@ -398,16 +411,29 @@ export default function SponsorsPage() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {SUPPORTING_LOGOS.map(({ src, alt, bg }) => (
-                <div
+              {SUPPORTING_LOGOS.map(({ src, alt, bg, href }) => (
+                <a
                   key={alt}
-                  className="relative aspect-[3/1] rounded-lg overflow-hidden"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-[3/1] rounded-lg overflow-hidden block"
                   style={{ background: bg, border: "1px solid rgba(255,255,255,0.12)" }}
                 >
                   <div className="absolute inset-2">
                     <Image src={src} alt={alt} fill className="object-contain" />
                   </div>
-                </div>
+                  <div className="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ background: "linear-gradient(to top, rgba(7,17,31,0.82) 0%, transparent 65%)" }}>
+                    <span className="flex items-center gap-1.5 font-inter font-bold uppercase tracking-[1.5px] text-white" style={{ fontSize: "0.65rem" }}>
+                      Visit Sponsor
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                    </span>
+                  </div>
+                </a>
               ))}
               <div
                 className="aspect-[3/1] rounded-lg flex flex-col items-center justify-center gap-1 text-center px-3"

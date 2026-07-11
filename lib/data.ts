@@ -139,7 +139,7 @@ export const sponsors = [
     cta: "Sponsor at $1,000",
   },
   {
-    tier: "Premier Partner",
+    tier: "Diamond Sponsor",
     name: "Home Run",
     price: "$2,000",
     priceSuffix: "+",
@@ -150,7 +150,7 @@ export const sponsors = [
       "All Triple perks",
     ],
     featured: true,
-    cta: "Become a Premier Sponsor",
+    cta: "Become a Diamond Sponsor",
   },
 ];
 

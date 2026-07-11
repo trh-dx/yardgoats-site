@@ -75,7 +75,7 @@ See `.claude/skills/yardgoats-design-system/` for the full design system referen
 
 - Headline: "Support Local Players. Grow Your Local Brand."
 - Supporting copy about what sponsorships fund
-- **Premier Sponsors** — AmeriDream, GTG, Elite Metal Fabricators displayed at `aspect-[2/1]` in a 3-column row
+- **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators displayed at `aspect-[2/1]` in a 3-column row
 - **Supporting Sponsors** — Edward Jones, Wise Powder Coating, ECS displayed at `aspect-[3/1]` (visually smaller) in a 3-column row below
 - "Packages starting at $250" callout
 - Single CTA button → `/sponsors`
@@ -92,19 +92,21 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
 4. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Home Run ($2,000+)
 5. **Why Partner** — 4-reason grid inside a bordered card
 6. **Logo Wall** — Tiered display matching the homepage sponsor strip:
-   - **Premier Sponsors** — AmeriDream, GTG, Elite Metal Fabricators at `aspect-[2/1]` in a 3-column row
+   - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators at `aspect-[2/1]` in a 3-column row
    - **Supporting Sponsors** — Edward Jones, Wise Powder Coating, ECS at `aspect-[3/1]` in a 4-column row, with a "Your Logo Here / Join our team of sponsors!" dashed placeholder as the fourth slot
 7. **CTA Banner** — "Want to become a sponsor?" with email link (no logo placeholder)
 
 ### Adding a Sponsor Logo
 
-To add a **Premier** sponsor, drop the logo in `public/images/sponsors/` and add an entry to `PREMIER_LOGOS` in `app/sponsors/page.tsx` and the premier grid in `components/Sponsors.tsx`:
+To add a **Diamond** sponsor, drop the logo in `public/images/sponsors/` and add an entry to `PREMIER_LOGOS` in `app/sponsors/page.tsx` and the diamond grid in `components/Sponsors.tsx`:
 
 ```ts
-{ src: "/images/sponsors/your-logo.png", alt: "Business Name", bg: "#ffffff" }
+{ src: "/images/sponsors/your-logo.png", alt: "Business Name", bg: "#ffffff", href: "https://their-website.com" }
 ```
 
 To add a **Supporting** sponsor, add to `SUPPORTING_LOGOS` in `app/sponsors/page.tsx` and the supporting grid in `components/Sponsors.tsx`.
+
+Each sponsor card shows a **"Visit Sponsor"** hover overlay with an external link icon. The `href` field controls the link — set to `"#"` as a placeholder until the real URL is known.
 
 Set `bg` to match the logo's intended background color (white for most, or a brand color).
 
