@@ -6,9 +6,11 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Field Rentals",
+  title: {
+    absolute: "Baseball Field Rentals in Paradise, TX | The Goat Yard",
+  },
   description:
-    "Reserve The Goat Yard in Paradise, Texas for team practices, private lessons, small group workouts, and baseball events.",
+    "Reserve field time at The Goat Yard in Paradise, Texas for baseball practices, private lessons, small group workouts, and events.",
 };
 
 const rentalOptions = [

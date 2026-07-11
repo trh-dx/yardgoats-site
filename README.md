@@ -117,14 +117,34 @@ Package names, prices, and perks are defined in `lib/data.ts` under `export cons
 Metadata is managed via the Next.js App Router `metadata` export.
 
 - **`app/layout.tsx`** — sets `metadataBase` (`https://paradiseyardgoats.club`), a title template (`%s | Paradise Yard Goats Baseball`), a default description, and `openGraph` / `twitter` card defaults for every page
-- **`app/page.tsx`** — overrides with a home-specific title (`"Home"`) and description
-- **`app/tryouts/page.tsx`** — overrides with a tryouts-specific title and description including the July 12 date
 
-To add metadata to a new page, export a `Metadata` object — the title template in `layout.tsx` will automatically append the site name:
+Pages that include the brand name in their title use `title: { absolute: "..." }` to bypass the layout template and avoid duplication.
+
+### Current page metadata
+
+| Page | Title | Uses absolute? |
+|---|---|---|
+| `/` | Paradise Yard Goats Baseball \| Youth Baseball in Paradise, TX | Yes |
+| `/teams` | Youth Baseball Teams \| Paradise Yard Goats | Yes |
+| `/field-rentals` | Baseball Field Rentals in Paradise, TX \| The Goat Yard | Yes |
+| `/sponsors` | Youth Baseball Sponsorships \| Paradise Yard Goats | Yes |
+| `/about` | About Us \| Paradise Yard Goats Baseball | No (template) |
+| `/tryouts` | Tryouts \| Paradise Yard Goats Baseball | No (template) |
+| `/schedule` | Schedule \| Paradise Yard Goats Baseball | No (template) |
+| `/contact` | Contact \| Paradise Yard Goats Baseball | No (template) |
+
+To add metadata to a new page, export a `Metadata` object. If the title already contains the brand name, use `absolute` to skip the template:
 
 ```ts
+// Simple (template appends site name)
 export const metadata: Metadata = {
   title: "Page Name",
+  description: "Page-specific description.",
+};
+
+// Absolute (full title, no template)
+export const metadata: Metadata = {
+  title: { absolute: "Full Title | Paradise Yard Goats" },
   description: "Page-specific description.",
 };
 ```

@@ -7,9 +7,11 @@ import SponsorPackages from "@/components/SponsorPackages";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Sponsors",
+  title: {
+    absolute: "Youth Baseball Sponsorships | Paradise Yard Goats",
+  },
   description:
-    "Partner with Paradise Yard Goats Baseball. Your sponsorship funds equipment, tournament fees, practice facilities, and player development for local youth baseball.",
+    "Support Paradise Yard Goats Baseball through local sponsorship opportunities that help fund equipment, tournament fees, facilities, and player development.",
 };
 
 const BENEFITS = [

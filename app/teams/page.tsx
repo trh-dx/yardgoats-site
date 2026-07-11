@@ -7,9 +7,11 @@ import TeamsGrid from "@/components/TeamsGrid";
 import SpotlightCards from "@/components/SpotlightCards";
 
 export const metadata: Metadata = {
-  title: "Our Club | Paradise Yard Goats Baseball",
+  title: {
+    absolute: "Youth Baseball Teams | Paradise Yard Goats",
+  },
   description:
-    "Meet the Paradise Yard Goats — 7U, 8U, 9U, and 11U youth travel baseball. Built on Dirt. Driven by Development.",
+    "Meet the Paradise Yard Goats baseball teams serving players from 7U through 11U in Paradise, Texas.",
 };
 
 export default function TeamsPage() {

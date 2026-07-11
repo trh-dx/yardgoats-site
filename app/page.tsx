@@ -7,13 +7,15 @@ import Scoreboard from "@/components/Scoreboard";
 import Sponsors from "@/components/Sponsors";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: {
+    absolute: "Paradise Yard Goats Baseball | Youth Baseball in Paradise, TX",
+  },
   description:
-    "Paradise Yard Goats Baseball — youth travel baseball in Paradise, TX for ages 7U through 11U. Teamwork, grit, development, and community pride.",
+    "Paradise Yard Goats is a youth baseball organization in Paradise, Texas, helping players ages 7U through 11U grow through teamwork, development, and competitive baseball.",
   openGraph: {
-    title: "Paradise Yard Goats Baseball | Paradise, TX",
+    title: "Paradise Yard Goats Baseball | Youth Baseball in Paradise, TX",
     description:
-      "Youth travel baseball in Paradise, TX for ages 7U–11U. Built on teamwork, grit, development, and community pride.",
+      "Paradise Yard Goats is a youth baseball organization in Paradise, Texas, helping players ages 7U through 11U grow through teamwork, development, and competitive baseball.",
   },
 };
 
