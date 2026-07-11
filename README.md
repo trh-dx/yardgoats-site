@@ -87,14 +87,14 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
 `/sponsors` is a full dedicated page with these sections (top to bottom):
 
 1. **Hero** — "Invest in Players / Impact the Community" with YG logo
-2. **Benefits** — 4-icon grid (Tournament Fees, Equipment, Practice Facilities, Player Development)
-3. **Stats** — 250+ players, 10+ tournaments, 1 mission, COUNTLESS memories
-4. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Home Run ($2,000+)
-5. **Why Partner** — 4-reason grid inside a bordered card
-6. **Logo Wall** — Tiered display matching the homepage sponsor strip:
+2. **Logo Wall** — "Our Proud Sponsors" heading with star divider, then tiered display:
    - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators at `aspect-[2/1]` in a 3-column row
-   - **Supporting Sponsors** — Edward Jones, Wise Powder Coating, ECS at `aspect-[3/1]` in a 4-column row, with a "Your Logo Here / Join our team of sponsors!" dashed placeholder as the fourth slot
-7. **CTA Banner** — "Want to become a sponsor?" with email link (no logo placeholder)
+   - **Supporting Sponsors** — Edward Jones, Wise Powder Coating, ECS at `aspect-[3/1]` in a 4-column row, with a "Your Logo Here" dashed placeholder as the fourth slot
+3. **Benefits** — 4-icon grid (Tournament Fees, Equipment, Practice Facilities, Player Development)
+4. **Stats** — 250+ players, 10+ tournaments, 1 mission, COUNTLESS memories
+5. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Home Run ($2,000+)
+6. **Why Partner** — 4-reason grid inside a bordered card
+7. **CTA Banner** — "Want to become a sponsor?" with email link
 
 ### Adding a Sponsor Logo
 
