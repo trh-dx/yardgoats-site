@@ -125,7 +125,7 @@ Pages that include the brand name in their title use `title: { absolute: "..." }
 | Page | Title | Uses absolute? |
 |---|---|---|
 | `/` | Paradise Yard Goats Baseball \| Youth Baseball in Paradise, TX | Yes |
-| `/teams` | Youth Baseball Teams \| Paradise Yard Goats | Yes |
+| `/teams` | Youth Baseball Teams \| Paradise Yard Goats Baseball | No (template) |
 | `/field-rentals` | Baseball Field Rentals in Paradise, TX \| The Goat Yard | Yes |
 | `/sponsors` | Youth Baseball Sponsorships \| Paradise Yard Goats | Yes |
 | `/about` | About Paradise Yard Goats Baseball | Yes |

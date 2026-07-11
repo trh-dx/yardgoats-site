@@ -7,9 +7,7 @@ import TeamsGrid from "@/components/TeamsGrid";
 import SpotlightCards from "@/components/SpotlightCards";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Youth Baseball Teams | Paradise Yard Goats",
-  },
+  title: "Youth Baseball Teams",
   description:
     "Meet the Paradise Yard Goats baseball teams serving players from 7U through 11U in Paradise, Texas.",
 };
