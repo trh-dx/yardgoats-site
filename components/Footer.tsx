@@ -5,7 +5,6 @@ import { siteConfig } from "@/lib/config";
 const QUICK_LINKS = [
   { href: "/",               label: "Home"          },
   { href: "/teams",          label: "Teams"         },
-  { href: "/tryouts",        label: "Tryouts"       },
   { href: "/field-rentals",  label: "Field Rentals" },
   { href: "/sponsors",       label: "Sponsors"      },
   { href: "/about",          label: "About"         },

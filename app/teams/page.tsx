@@ -219,17 +219,6 @@ export default function TeamsPage() {
               </div>
             </div>
 
-            {/* Right — CTA */}
-            <Link
-              href="/tryouts"
-              className="shrink-0 inline-flex items-center gap-3 bg-green hover:bg-green-dk text-white
-                         font-inter font-bold text-[0.85rem] tracking-[2px] uppercase
-                         px-9 py-4 rounded transition-colors duration-200 whitespace-nowrap"
-            >
-              Register for Tryouts
-              <span aria-hidden="true">&rarr;</span>
-            </Link>
-
           </div>
         </section>
         <div className="h-[3px] bg-green w-full" />

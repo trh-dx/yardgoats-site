@@ -54,7 +54,7 @@ const contactDetails = [
       </svg>
     ),
     label: "Season",
-    value: "Summer & Fall 2026",
+    value: "Fall 2026",
     href: null,
   },
 ];

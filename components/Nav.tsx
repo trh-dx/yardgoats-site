@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { href: "/",               label: "Home",          exact: true },
   { href: "/teams",          label: "Teams" },
-  { href: "/tryouts",        label: "Tryouts" },
   { href: "/field-rentals",  label: "Field Rentals" },
   { href: "/about",          label: "About" },
   { href: "/sponsors",       label: "Sponsors" },
@@ -101,13 +100,6 @@ export default function Nav() {
             >
               Become a Sponsor
             </Link>
-            <Link
-              href="/tryouts"
-              className="hidden md:inline-flex items-center bg-green hover:bg-green-dk text-white font-inter font-bold text-[0.75rem] tracking-[2px] uppercase px-5 py-2.5 rounded transition-colors whitespace-nowrap"
-            >
-              Join The Goats
-            </Link>
-
             {/* Hamburger */}
             <button
               className="lg:hidden flex flex-col justify-center gap-1.5 p-1.5 cursor-pointer"
@@ -153,13 +145,6 @@ export default function Nav() {
               </Link>
             );
           })}
-          <Link
-            href="/tryouts"
-            onClick={close}
-            className="mt-4 text-center bg-green text-white font-inter font-bold text-[0.8rem] tracking-[2px] uppercase py-3 rounded hover:bg-green-dk transition-colors"
-          >
-            Join The Goats
-          </Link>
         </div>
       )}
     </>

@@ -129,42 +129,7 @@ export default function HomePage() {
                 >
                   Our Teams
                 </Link>
-                <Link
-                  href="/tryouts"
-                  className="inline-flex items-center bg-green hover:bg-green-dk text-white font-inter font-bold text-[0.8rem] tracking-[2px] uppercase px-7 py-3 rounded transition-colors duration-200"
-                >
-                  Join The Goats
-                </Link>
               </div>
-
-              {/* Tryout date callout */}
-              <Link
-                href="/tryouts"
-                className="inline-flex items-center gap-3 mt-6 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-green/40 rounded px-4 py-2.5 transition-all duration-200 group"
-              >
-                <svg
-                  className="w-4 h-4 text-green shrink-0"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden
-                >
-                  <rect x="3" y="4" width="18" height="17" rx="2.5" />
-                  <line x1="3" y1="9" x2="21" y2="9" />
-                  <line x1="8" y1="2" x2="8" y2="6.5" />
-                  <line x1="16" y1="2" x2="16" y2="6.5" />
-                </svg>
-                <span className="font-inter text-[0.8rem] text-white/75">
-                  <span className="text-green font-bold">Tryouts: July 12</span>
-                  {" · "}The Goat Yard, Paradise TX
-                </span>
-                <span className="font-inter text-[0.75rem] text-green/70 group-hover:text-green transition-colors ml-1">
-                  Details →
-                </span>
-              </Link>
 
             </div>
           </div>
@@ -239,79 +204,6 @@ export default function HomePage() {
             SECTION 4 · SPONSORS
         ════════════════════════════════════════════════════════════ */}
         <Sponsors />
-
-        {/* ════════════════════════════════════════════════════════════
-            SECTION 5 · JOIN THE GOATS CTA
-        ════════════════════════════════════════════════════════════ */}
-        <section className="relative py-24 md:py-36 overflow-hidden">
-
-          {/* Background — baseball/dirt image */}
-          <Image
-            src="/images/baseball-tryout-image.png"
-            alt=""
-            fill
-            className="object-cover object-center"
-          />
-
-          {/* Dark overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(7,17,31,0.96) 0%, rgba(7,17,31,0.88) 55%, rgba(7,17,31,0.65) 100%)",
-            }}
-          />
-          {/* Top fade */}
-          <div
-            className="absolute inset-x-0 top-0 h-20 pointer-events-none"
-            style={{
-              background: "linear-gradient(to bottom, #07111F 0%, transparent 100%)",
-            }}
-          />
-
-          {/* Content */}
-          <div className="relative z-10 max-w-[1280px] mx-auto px-5">
-            <div className="max-w-[680px]">
-
-              {/* Accent line */}
-              <p
-                className="font-marker text-green mb-2"
-                style={{ fontSize: "clamp(1rem, 2.2vw, 1.4rem)" }}
-              >
-                Think You Have What It Takes?
-              </p>
-
-              {/* Main headline */}
-              <h2
-                className="font-bebas text-white leading-none"
-                style={{ fontSize: "clamp(4rem, 10vw, 8.5rem)" }}
-              >
-                Join The Goats
-              </h2>
-
-              {/* Divider accent */}
-              <div className="w-16 h-[3px] bg-green rounded my-6" />
-
-              {/* Supporting copy */}
-              <p
-                className="font-inter text-white/70 leading-relaxed mb-8 max-w-[480px]"
-                style={{ fontSize: "clamp(0.9rem, 1.6vw, 1.05rem)" }}
-              >
-                Open to players ages 7–11. Tryouts are July 12 at The Goat Yard in Paradise, TX — no experience required, just a good attitude and a willingness to compete.
-              </p>
-
-              {/* CTA button */}
-              <Link
-                href="/tryouts"
-                className="inline-flex items-center bg-green hover:bg-green-dk text-white font-inter font-bold text-[0.85rem] tracking-[2px] uppercase px-8 py-4 rounded transition-colors duration-200"
-              >
-                Register For Tryouts
-              </Link>
-
-            </div>
-          </div>
-        </section>
-
 
       </main>
       <Footer />

@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: {
@@ -161,14 +160,6 @@ export default function AboutPage() {
                     on fundamentals, effort, sportsmanship, and love for the game.
                   </p>
                 </div>
-
-                <Link
-                  href="/tryouts"
-                  className="inline-flex items-center gap-2 bg-green hover:bg-green-dk text-white font-inter font-bold uppercase tracking-[2px] px-8 py-3.5 rounded transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ fontSize: "0.8rem" }}
-                >
-                  Join The Goats
-                </Link>
               </div>
 
               {/* RIGHT — Feature list */}
@@ -314,41 +305,6 @@ export default function AboutPage() {
               ))}
             </div>
 
-          </div>
-        </section>
-
-        {/* ── BOTTOM CTA BANNER ───────────────────────────────────── */}
-        <section style={{ backgroundColor: "#7AC143" }} className="py-8">
-          <div className="max-w-[1280px] mx-auto px-6">
-            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-              <Image
-                src="/yardgoatsimage.png"
-                alt="Yard Goats"
-                width={60}
-                height={60}
-                className="rounded-full object-cover flex-shrink-0 ring-2 ring-white/30"
-              />
-              <div className="flex-1 text-center sm:text-left">
-                <p
-                  className="font-bebas text-white tracking-wide leading-tight"
-                  style={{ fontSize: "clamp(1.4rem, 3vw, 1.9rem)" }}
-                >
-                  Think You Have What It Takes?
-                </p>
-                <p className="font-inter text-white/85 mt-0.5" style={{ fontSize: "0.9rem" }}>
-                  Tryouts are open — come show us what you&apos;ve got.
-                </p>
-              </div>
-              <a
-                href={siteConfig.register}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 font-inter font-bold uppercase tracking-[2px] text-white px-8 py-3 rounded transition-all hover:opacity-90 hover:-translate-y-0.5"
-                style={{ fontSize: "0.8rem", backgroundColor: "#07111F", border: "2px solid #07111F" }}
-              >
-                Register Now
-              </a>
-            </div>
           </div>
         </section>
 

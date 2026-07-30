@@ -22,9 +22,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — hero ("Home of The / Paradise Yard Goats / Youth Baseball") with tryout callout, teams by age group, sponsors strip, tryout CTA |
+| `/` | Homepage — hero ("Home of The / Paradise Yard Goats / Youth Baseball"), teams by age group, sponsors strip |
 | `/teams` | Hero: "5 Teams. / One Goat Nation." — age group cards (Team Overview header, 5 cards), player spotlights (hidden), CTA band |
-| `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring |
+| `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring — **page still exists but is no longer linked from anywhere on the site** (see [Hidden Tryouts Info](#hidden-tryouts-info)) |
 | `/schedule` | Game and tournament schedule |
 | `/field-rentals` | Field rental page — "Baseball Field Rentals" hero, availability strip, facility features, rental option cards, rules checklist, booking CTA |
 | `/about` | Organization story and coaches |
@@ -38,7 +38,7 @@ app/                  # Next.js App Router pages
   sponsors/
     page.tsx          # Dedicated sponsors page
 components/           # Shared UI components
-  Nav.tsx             # Fixed top navigation (links: Home, Teams, Tryouts, Field Rentals, About, Sponsors, Contact)
+  Nav.tsx             # Fixed top navigation (links: Home, Teams, Field Rentals, About, Sponsors, Contact — Tryouts link removed, see Hidden Tryouts Info)
   Footer.tsx          # Site footer (5-col grid; Quick Links includes Field Rentals; Age Groups shows "7U - 11U")
   Scoreboard.tsx      # Homepage score/stats bar
   Sponsors.tsx        # Homepage sponsors strip — headline, logo wall, starting price, CTA to /sponsors
@@ -92,7 +92,7 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
    - **Supporting Sponsors** — Edward Jones, Wise Powder Coating, ECS at `aspect-[3/1]` in a 4-column row, with a "Your Logo Here" dashed placeholder as the fourth slot
 3. **Benefits** — 4-icon grid (Tournament Fees, Equipment, Practice Facilities, Player Development)
 4. **Stats** — 250+ players, 10+ tournaments, 1 mission, COUNTLESS memories
-5. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Home Run ($2,000+)
+5. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Grand Slam ($2,000+)
 6. **Why Partner** — 4-reason grid inside a bordered card
 7. **CTA Banner** — "Want to become a sponsor?" with email link
 
@@ -187,6 +187,25 @@ The tryout schedule is defined in the `tryouts` array at the top of `app/tryouts
 Each card displays a green clock icon, the age group in large Bebas Neue, and the time with the `P` suffix rendered slightly smaller. The register button links to `siteConfig.register`.
 
 To add or remove a time slot, add or remove an entry from the `tryouts` array — the card grid adjusts automatically.
+
+### Hidden Tryouts Info
+
+The `/tryouts` route and its page content are still fully live in `app/tryouts/page.tsx` — nothing was deleted. What changed is that **every link pointing to it was removed** across the site, so the page is now only reachable by typing the URL directly. This was a deliberate site-wide "hide" (not a takedown) — reintroducing a link anywhere below (`href="/tryouts"`) is enough to make it discoverable again.
+
+Removed links and CTAs, by file:
+
+| File | What was removed |
+|---|---|
+| `components/Nav.tsx` | "Tryouts" nav item (desktop + mobile menu); desktop "Join The Goats" CTA button; mobile "Join The Goats" CTA button |
+| `components/Footer.tsx` | "Tryouts" entry from the Quick Links column |
+| `app/page.tsx` (Home) | Hero "Join The Goats" button; "Tryouts: July 12" date callout under the hero; the entire Section 5 "Join The Goats CTA" band ("Think You Have What It Takes?" / "Join The Goats" headline, tryout date copy, "Register For Tryouts" button, background image) |
+| `app/teams/page.tsx` | "Register for Tryouts" button in the bottom CTA band |
+| `app/schedule/page.tsx` | "Register for Tryouts" button in the bottom CTA section (the "Contact Our Coaches" button next to it was kept) |
+| `app/about/page.tsx` | "Join The Goats" button in the mission section; the entire "BOTTOM CTA BANNER" section ("Think You Have What It Takes?" headline, "Tryouts are open — come show us what you've got." copy, "Register Now" button linking to `siteConfig.register`) |
+
+Untouched (left as-is, since they don't link to `/tryouts`):
+- Plain-text mentions of "tryouts" that aren't links (e.g. homepage hero copy, schedule page supporting copy, contact form dropdown option "Register a Player / Ask About Tryouts")
+- `app/contact/layout.tsx` metadata description mentioning tryouts
 
 ---
 

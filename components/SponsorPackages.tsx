@@ -71,7 +71,7 @@ const cfg: Record<string, {
     btnBg: "#7AC143", btnColor: "#000000", btnBorder: "#7AC143",
     btnHoverBg: "#94D45A",
   },
-  "Home Run": {
+  "Grand Slam": {
     stripe: "#B3261E", stripeH: "4px",
     bg: "linear-gradient(160deg,#170608 0%,#0e0b1c 100%)",
     borderI: "rgba(179,38,30,0.48)", borderH: "rgba(179,38,30,0.88)", borderW: "2px",
@@ -92,7 +92,7 @@ const icons: Record<string, string> = {
   Single:     "⚾",
   Double:     "🏅",
   Triple:     "⭐",
-  "Home Run": "🏆",
+  "Grand Slam": "🏆",
 };
 
 export default function SponsorPackages() {
@@ -197,8 +197,8 @@ export default function SponsorPackages() {
                 href="/contact"
                 className="block w-full text-center font-inter font-bold tracking-[1.5px] uppercase rounded-sm transition-all duration-200 hover:-translate-y-0.5"
                 style={{
-                  padding: pkg.name === "Home Run" ? "0.75rem 1rem" : "0.62rem 1rem",
-                  fontSize: pkg.name === "Home Run" ? "0.86rem" : "0.8rem",
+                  padding: pkg.name === "Grand Slam" ? "0.75rem 1rem" : "0.62rem 1rem",
+                  fontSize: pkg.name === "Grand Slam" ? "0.86rem" : "0.8rem",
                   backgroundColor: s.btnBg,
                   color: s.btnColor,
                   border: `2px solid ${s.btnBorder}`,

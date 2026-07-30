@@ -343,13 +343,6 @@ export default function SchedulePage() {
               Register for tryouts and earn your spot on one of our 2026 Yard Goats teams.
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
-              <Link
-                href="/tryouts"
-                className="inline-flex items-center gap-2 font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:bg-[#E8CC65]"
-                style={{ backgroundColor: "#7AC143", color: "#000000", border: "2px solid #7AC143" }}
-              >
-                Register for Tryouts
-              </Link>
               <a
                 href="/#contact"
                 className="inline-flex items-center gap-2 font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded transition-all hover:-translate-y-0.5 hover:border-white/70"

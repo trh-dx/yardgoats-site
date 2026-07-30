@@ -405,7 +405,7 @@ export default function SponsorsPage() {
         {/* ════════════════════════════════════════════════════════════
             SPONSORSHIP PACKAGES
         ════════════════════════════════════════════════════════════ */}
-        <section id="packages" className="bg-deep-navy py-16 md:py-20">
+        <section id="packages" className="bg-deep-navy pt-16 md:pt-20 pb-8 md:pb-10">
           <div className="max-w-[1280px] mx-auto px-6">
 
             {/* Section heading */}
@@ -427,7 +427,7 @@ export default function SponsorsPage() {
         {/* ════════════════════════════════════════════════════════════
             WHY PARTNER
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy py-16 md:py-20">
+        <section className="bg-deep-navy pt-8 md:pt-10 pb-8 md:pb-10">
           <div className="max-w-[1280px] mx-auto px-6">
             <div
               className="rounded-xl p-6 md:p-10 lg:p-16"
@@ -474,7 +474,7 @@ export default function SponsorsPage() {
         {/* ════════════════════════════════════════════════════════════
             CTA BANNER
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy py-10 md:py-14">
+        <section className="bg-deep-navy pt-4 md:pt-6 pb-10 md:pb-14">
           <div className="max-w-[1280px] mx-auto px-6">
             <div
               className="rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8"
