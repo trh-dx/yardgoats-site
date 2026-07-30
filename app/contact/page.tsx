@@ -130,7 +130,7 @@ export default function ContactPage() {
               className="font-bebas tracking-[3px] text-green mb-2"
               style={{ fontSize: "clamp(0.9rem, 2vw, 1.1rem)" }}
             >
-              Join the team. Get involved.
+              CONNECT. SUPPORT. GET INVOLVED.
             </p>
             <h1
               className="font-bebas text-white leading-none tracking-wide"
