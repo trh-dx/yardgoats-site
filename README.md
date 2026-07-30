@@ -257,20 +257,21 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
   teamLabel: "SMITH",         // optional — adds a dark navy strip below the green age badge (used for 11U only)
   wins: 8,                    // used to display record and calculate win pct
   losses: 4,
+  gameChangerUrl: "https://web.gc.com/teams/...", // optional — renders a royal-blue "View on GameChanger →" button below "View Roster"
 }
 ```
 
-`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams).
+`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams). `gameChangerUrl` is optional — only the two 11U teams currently have it; the button is omitted entirely for teams without it.
 
 ### Current teams
 
-| Age | Coach | teamLabel | Tag | Record |
-|---|---|---|---|---|
-| 7U | Shawn Leach | — | Coach Pitch | 0-0 |
-| 8U | Trey Miller | — | Coach Pitch | 0-0 |
-| 9U | Jake Smith | — | Kid Pitch | 0-0 |
-| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 |
-| 11U | Collin White | WHITE | Tournament | 0-0 |
+| Age | Coach | teamLabel | Tag | Record | GameChanger |
+|---|---|---|---|---|---|
+| 7U | Shawn Leach | — | Coach Pitch | 0-0 | — |
+| 8U | Trey Miller | — | Coach Pitch | 0-0 | — |
+| 9U | Jake Smith | — | Kid Pitch | 0-0 | — |
+| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 | `web.gc.com/teams/DqLSuG5ean8F` |
+| 11U | Collin White | WHITE | Tournament | 0-0 | `web.gc.com/teams/KGndr0H8M79A` |
 
 ### TeamsGrid card design
 
@@ -279,6 +280,8 @@ Cards use a 6-column CSS grid so the layout can be controlled precisely. The fir
 The card header shows "Paradise / Yard Goats" with the age badge top-right, coach name, and tag pill. The age badge is a split two-tone design: green top section with the age, and — when `teamLabel` is set — a dark navy bottom strip with the label. A green border wraps the entire badge.
 
 The card body shows the title, description, a record / win pct row, and a green "View Roster" button pinned to the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
+
+When a team has `gameChangerUrl` set, a second button — "View on GameChanger →" — renders directly below "View Roster" (royal blue `#003DA5`, darkening to `#002B7F` on hover, same shape/typography as "View Roster"). It opens the link in a new tab (`target="_blank"`). Currently only the two 11U cards (Wosko, White) have this button.
 
 ## Commands
 

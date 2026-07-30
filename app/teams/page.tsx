@@ -169,60 +169,6 @@ export default function TeamsPage() {
           </div>
         </section>}
 
-        {/* ════════════════════════════════════════════════════════════
-            BOTTOM CTA BAND
-        ════════════════════════════════════════════════════════════ */}
-        <section className="py-14" style={{ backgroundColor: "#040C17" }}>
-
-          <div className="max-w-[1280px] mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-8">
-
-            {/* Left — logo + copy */}
-            <div className="flex items-center gap-5">
-              <Image
-                src="/yardgoatsimage.png"
-                alt="Yard Goats"
-                width={72}
-                height={72}
-                className="rounded-full shrink-0 ring-2 ring-green/30"
-              />
-              <div>
-                {/* Headline */}
-                <h2
-                  className="font-bebas text-white leading-none tracking-wide"
-                  style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
-                >
-                  Ready to Join{" "}
-                  <span className="font-marker text-green" style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)" }}>
-                    The Goats?
-                  </span>
-                </h2>
-
-                {/* Pipe-separated subtext */}
-                <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-0.5 sm:gap-2 mt-1 mb-3">
-                  {["Find your team.", "Build your confidence.", "Have Fun."].map((item, i, arr) => (
-                    <span key={item} className="flex items-center gap-2">
-                      <span className="font-inter text-white/70" style={{ fontSize: "0.88rem" }}>{item}</span>
-                      {i < arr.length - 1 && <span className="text-green hidden sm:inline">|</span>}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Age groups */}
-                <div className="flex items-center gap-2 font-bebas text-white tracking-widest" style={{ fontSize: "1.4rem" }}>
-                  {["7U", "8U", "9U", "11U"].map((age, i, arr) => (
-                    <span key={age} className="flex items-center gap-2">
-                      <span>{age}</span>
-                      {i < arr.length - 1 && <span className="text-green" style={{ fontSize: "0.6rem" }}>★</span>}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
-        <div className="h-[3px] bg-green w-full" />
-
       </main>
       <Footer />
     </>

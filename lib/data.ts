@@ -39,6 +39,7 @@ export const teams = [
     teamLabel: "WOSKO",
     wins: 0,
     losses: 0,
+    gameChangerUrl: "https://web.gc.com/teams/DqLSuG5ean8F/live?pid=Copy&c=team_share_link",
   },
   {
     age: "11U",
@@ -50,6 +51,7 @@ export const teams = [
     teamLabel: "WHITE",
     wins: 0,
     losses: 0,
+    gameChangerUrl: "https://web.gc.com/teams/KGndr0H8M79A/live?pid=Copy&c=team_share_link",
   },
 ];
 

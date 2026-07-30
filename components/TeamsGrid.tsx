@@ -175,6 +175,18 @@ export default function TeamsGrid() {
                 >
                   View Roster
                 </a>
+
+                {"gameChangerUrl" in team && (
+                  <a
+                    href={(team as { gameChangerUrl: string }).gameChangerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-royal-blue hover:bg-darker-blue text-white font-inter font-bold uppercase tracking-[2px] py-2.5 rounded transition-all duration-200 hover:-translate-y-0.5 mt-2"
+                    style={{ fontSize: "0.75rem" }}
+                  >
+                    View on GameChanger →
+                  </a>
+                )}
               </div>
             </article>
             );
