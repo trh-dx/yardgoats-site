@@ -177,15 +177,22 @@ export default function TeamsGrid() {
                 </a>
 
                 {"gameChangerUrl" in team && (
-                  <a
-                    href={(team as { gameChangerUrl: string }).gameChangerUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center bg-royal-blue hover:bg-darker-blue text-white font-inter font-bold uppercase tracking-[2px] py-2.5 rounded transition-all duration-200 hover:-translate-y-0.5 mt-2"
-                    style={{ fontSize: "0.75rem" }}
-                  >
-                    View on GameChanger →
-                  </a>
+                  <>
+                    <a
+                      href={(team as { gameChangerUrl: string }).gameChangerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center bg-royal-blue hover:bg-darker-blue text-white font-inter font-bold uppercase tracking-[2px] py-2.5 rounded transition-all duration-200 hover:-translate-y-0.5 mt-2"
+                      style={{ fontSize: "0.75rem" }}
+                    >
+                      {(team as { gameChangerLabel?: string }).gameChangerLabel ?? "View on GameChanger"} →
+                    </a>
+                    {"gameChangerSubtext" in team && (
+                      <p className="text-center text-white/40 font-inter mt-1.5" style={{ fontSize: "0.65rem" }}>
+                        {(team as { gameChangerSubtext: string }).gameChangerSubtext}
+                      </p>
+                    )}
+                  </>
                 )}
               </div>
             </article>

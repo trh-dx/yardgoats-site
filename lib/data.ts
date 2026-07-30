@@ -40,6 +40,8 @@ export const teams = [
     wins: 0,
     losses: 0,
     gameChangerUrl: "https://web.gc.com/teams/DqLSuG5ean8F/live?pid=Copy&c=team_share_link",
+    gameChangerLabel: "Team Schedule and Roster",
+    gameChangerSubtext: "Powered by GameChanger",
   },
   {
     age: "11U",

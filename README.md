@@ -257,21 +257,23 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
   teamLabel: "SMITH",         // optional — adds a dark navy strip below the green age badge (used for 11U only)
   wins: 8,                    // used to display record and calculate win pct
   losses: 4,
-  gameChangerUrl: "https://web.gc.com/teams/...", // optional — renders a royal-blue "View on GameChanger →" button below "View Roster"
+  gameChangerUrl: "https://web.gc.com/teams/...",     // optional — renders a royal-blue GameChanger button below "View Roster"
+  gameChangerLabel: "Team Schedule and Roster",       // optional — overrides the button text (defaults to "View on GameChanger" if omitted); arrow is always appended
+  gameChangerSubtext: "Powered by GameChanger",       // optional — small caption rendered under the GameChanger button
 }
 ```
 
-`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams). `gameChangerUrl` is optional — only the two 11U teams currently have it; the button is omitted entirely for teams without it.
+`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams). `gameChangerUrl` is optional — only the two 11U teams currently have it; the button is omitted entirely for teams without it. `gameChangerLabel` and `gameChangerSubtext` are optional and only take effect when `gameChangerUrl` is set.
 
 ### Current teams
 
-| Age | Coach | teamLabel | Tag | Record | GameChanger |
-|---|---|---|---|---|---|
-| 7U | Shawn Leach | — | Coach Pitch | 0-0 | — |
-| 8U | Trey Miller | — | Coach Pitch | 0-0 | — |
-| 9U | Jake Smith | — | Kid Pitch | 0-0 | — |
-| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 | `web.gc.com/teams/DqLSuG5ean8F` |
-| 11U | Collin White | WHITE | Tournament | 0-0 | `web.gc.com/teams/KGndr0H8M79A` |
+| Age | Coach | teamLabel | Tag | Record | GameChanger button text | GameChanger link |
+|---|---|---|---|---|---|---|
+| 7U | Shawn Leach | — | Coach Pitch | 0-0 | — | — |
+| 8U | Trey Miller | — | Coach Pitch | 0-0 | — | — |
+| 9U | Jake Smith | — | Kid Pitch | 0-0 | — | — |
+| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 | "Team Schedule and Roster" + "Powered by GameChanger" subtext | `web.gc.com/teams/DqLSuG5ean8F` |
+| 11U | Collin White | WHITE | Tournament | 0-0 | "View on GameChanger" (default, no subtext) | `web.gc.com/teams/KGndr0H8M79A` |
 
 ### TeamsGrid card design
 
@@ -281,7 +283,7 @@ The card header shows "Paradise / Yard Goats" with the age badge top-right, coac
 
 The card body shows the title, description, a record / win pct row, and a green "View Roster" button pinned to the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
 
-When a team has `gameChangerUrl` set, a second button — "View on GameChanger →" — renders directly below "View Roster" (royal blue `#003DA5`, darkening to `#002B7F` on hover, same shape/typography as "View Roster"). It opens the link in a new tab (`target="_blank"`). Currently only the two 11U cards (Wosko, White) have this button.
+When a team has `gameChangerUrl` set, a second button renders directly below "View Roster" (royal blue `#003DA5`, darkening to `#002B7F` on hover, same shape/typography as "View Roster"). It opens the link in a new tab (`target="_blank"`). The button text is `gameChangerLabel` if set, otherwise defaults to "View on GameChanger" — an arrow (`→`) is always appended. If `gameChangerSubtext` is set, a small caption renders below the button. Currently the Wosko card uses the custom label + subtext ("Team Schedule and Roster" / "Powered by GameChanger"), while the White card uses the default label with no subtext.
 
 ## Commands
 
