@@ -54,9 +54,18 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) {
-      console.error("Contact route: Resend returned an error:", error);
+      console.error("Contact route: Resend returned an error:", {
+        name: error.name,
+        message: error.message,
+        statusCode: error.statusCode,
+      });
       return NextResponse.json(
-        { error: "Failed to send message. Please try again." },
+        {
+          error: "Failed to send message. Please try again.",
+          resend_name: error.name,
+          resend_message: error.message,
+          resend_statusCode: error.statusCode,
+        },
         { status: 500 }
       );
     }
