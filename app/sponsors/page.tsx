@@ -119,12 +119,13 @@ const PREMIER_LOGOS = [
   { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg",                                  alt: "AmeriDream",              bg: "#ffffff", href: "#" },
   { src: "/images/sponsors/GTG Logo.png",                                             alt: "GTG",                     bg: "#ffffff", href: "#" },
   { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png",  alt: "Elite Metal Fabricators",  bg: "#ffffff", href: "#" },
+  { src: "/images/sponsors/Edward Jones.png",                                         alt: "Edward Jones",             bg: "#FFD100", href: "#" },
 ];
 
 const SUPPORTING_LOGOS = [
-  { src: "/images/sponsors/Edward Jones.png",          alt: "Edward Jones",        bg: "#FFD100", href: "#" },
-  { src: "/images/sponsors/Wise Powder Coating.JPEG",  alt: "Wise Powder Coating", bg: "#ffffff", href: "#" },
-  { src: "/images/sponsors/ECS-2.png",                 alt: "ECS",                 bg: "#ffffff", href: "#" },
+  { src: "/images/sponsors/Wise Powder Coating.JPEG",  alt: "Wise Powder Coating", bg: "#ffffff", href: "#", inset: "inset-2" },
+  { src: "/images/sponsors/ECS-2.png",                 alt: "ECS",                 bg: "#ffffff", href: "#", inset: "inset-2" },
+  { src: "/images/sponsors/kmb-machine-logo-transparent.png", alt: "KMB",           bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.8 },
 ];
 
 export default function SponsorsPage() {
@@ -186,8 +187,9 @@ export default function SponsorsPage() {
                 className="font-inter text-muted-gray max-w-[500px]"
                 style={{ fontSize: "clamp(0.9rem, 1.8vw, 1rem)", lineHeight: "1.8" }}
               >
-                Your sponsorship helps fund essential resources, reduce costs for families, and create
-                opportunities for our players to succeed on and off the field.
+                As a registered 501(c)(3) nonprofit organization, your sponsorship directly supports youth
+                athletes by helping provide equipment, uniforms, field improvements, and player development
+                opportunities.
               </p>
             </div>
 
@@ -250,14 +252,14 @@ export default function SponsorsPage() {
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
               {PREMIER_LOGOS.map(({ src, alt, bg, href }) => (
                 <a
                   key={alt}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative aspect-[2/1] rounded-xl overflow-hidden ring-1 ring-white/20 block"
+                  className="group relative aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block"
                   style={{ background: bg }}
                 >
                   <div className="absolute inset-3">
@@ -289,17 +291,17 @@ export default function SponsorsPage() {
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {SUPPORTING_LOGOS.map(({ src, alt, bg, href }) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {SUPPORTING_LOGOS.map(({ src, alt, bg, href, inset, scale }) => (
                 <a
                   key={alt}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative aspect-[3/1] rounded-lg overflow-hidden block"
+                  className="group relative aspect-[4/1] rounded-lg overflow-hidden block"
                   style={{ background: bg, border: "1px solid rgba(255,255,255,0.12)" }}
                 >
-                  <div className="absolute inset-2">
+                  <div className={`absolute ${inset}`} style={scale ? { transform: `scale(${scale})` } : undefined}>
                     <Image src={src} alt={alt} fill className="object-contain" />
                   </div>
                   <div className="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ background: "linear-gradient(to top, rgba(7,17,31,0.82) 0%, transparent 65%)" }}>
@@ -314,20 +316,6 @@ export default function SponsorsPage() {
                   </div>
                 </a>
               ))}
-              <div
-                className="aspect-[3/1] rounded-lg flex flex-col items-center justify-center gap-1 text-center px-3"
-                style={{
-                  background: "rgba(122,193,67,0.04)",
-                  border: "1px dashed rgba(122,193,67,0.35)",
-                }}
-              >
-                <span className="font-inter font-bold text-[0.65rem] tracking-wide uppercase" style={{ color: "rgba(122,193,67,0.7)" }}>
-                  Your Logo Here
-                </span>
-                <span className="font-inter text-[0.62rem]" style={{ color: "rgba(167,168,170,0.6)" }}>
-                  Join our team of sponsors!
-                </span>
-              </div>
             </div>
 
           </div>

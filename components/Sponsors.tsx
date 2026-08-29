@@ -75,19 +75,20 @@ export default function Sponsors() {
             </span>
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-10">
             {[
-              { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg", alt: "AmeriDream", href: "#" },
-              { src: "/images/sponsors/GTG Logo.png", alt: "GTG", href: "#" },
-              { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png", alt: "Elite Metal Fabricators", href: "#" },
-            ].map(({ src, alt, href }) => (
+              { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg", alt: "AmeriDream", bg: "#ffffff", href: "#" },
+              { src: "/images/sponsors/GTG Logo.png", alt: "GTG", bg: "#ffffff", href: "#" },
+              { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png", alt: "Elite Metal Fabricators", bg: "#ffffff", href: "#" },
+              { src: "/images/sponsors/Edward Jones.png", alt: "Edward Jones", bg: "#FFD100", href: "#" },
+            ].map(({ src, alt, bg, href }) => (
               <a
                 key={alt}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[2/1] rounded-xl overflow-hidden ring-1 ring-white/20 block"
-                style={{ background: "#ffffff" }}
+                className="group relative aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block"
+                style={{ background: bg }}
               >
                 <div className="absolute inset-3">
                   <Image src={src} alt={alt} fill className="object-contain" />
@@ -117,21 +118,21 @@ export default function Sponsors() {
             </span>
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
           </div>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {[
-              { src: "/images/sponsors/Edward Jones.png", alt: "Edward Jones", bg: "#FFD100", border: "rgba(255,209,0,0.3)", href: "#" },
-              { src: "/images/sponsors/Wise Powder Coating.JPEG", alt: "Wise Powder Coating", bg: "#ffffff", border: "rgba(255,255,255,0.15)", href: "#" },
-              { src: "/images/sponsors/ECS-2.png", alt: "ECS", bg: "#ffffff", border: "rgba(255,255,255,0.15)", href: "#" },
-            ].map(({ src, alt, bg, border, href }) => (
+              { src: "/images/sponsors/Wise Powder Coating.JPEG", alt: "Wise Powder Coating", bg: "#ffffff", href: "#", inset: "inset-2" },
+              { src: "/images/sponsors/ECS-2.png", alt: "ECS", bg: "#ffffff", href: "#", inset: "inset-2" },
+              { src: "/images/sponsors/kmb-machine-logo-transparent.png", alt: "KMB", bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.8 },
+            ].map(({ src, alt, bg, href, inset, scale }) => (
               <a
                 key={alt}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[3/1] rounded-lg overflow-hidden block"
-                style={{ background: bg, border: `1px solid ${border}` }}
+                className="group relative aspect-[4/1] rounded-lg overflow-hidden block"
+                style={{ background: bg, border: "1px solid rgba(255,255,255,0.12)" }}
               >
-                <div className="absolute inset-2">
+                <div className={`absolute ${inset}`} style={scale ? { transform: `scale(${scale})` } : undefined}>
                   <Image src={src} alt={alt} fill className="object-contain" />
                 </div>
                 <div className="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ background: "linear-gradient(to top, rgba(7,17,31,0.82) 0%, transparent 65%)" }}>
