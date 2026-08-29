@@ -60,15 +60,18 @@ const contactDetails = [
 ];
 
 export default function ContactPage() {
-  const [fields, setFields] = useState<Fields>({ pName: "", pEmail: "", pPhone: "", pAge: "", pInt: "", pMsg: "" });
+  const EMPTY: Fields = { pName: "", pEmail: "", pPhone: "", pAge: "", pInt: "", pMsg: "" };
+  const [fields, setFields] = useState<Fields>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
+  const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const set = (k: keyof Fields) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
       setFields((f) => ({ ...f, [k]: e.target.value }));
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     const errs: Errors = {};
     if (!fields.pName.trim())                                     errs.pName  = "Please enter your name.";
@@ -76,7 +79,28 @@ export default function ContactPage() {
     if (!fields.pInt)                                             errs.pInt   = "Please select an interest.";
     if (!fields.pMsg.trim())                                      errs.pMsg   = "Please enter a message.";
     setErrors(errs);
-    if (Object.keys(errs).length === 0) setSent(true);
+    if (Object.keys(errs).length > 0) return;
+
+    setSending(true);
+    setServerError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setServerError(data.error ?? "Something went wrong. Please try again.");
+      } else {
+        setFields(EMPTY);
+        setSent(true);
+      }
+    } catch {
+      setServerError("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   }
 
   const inputBase =
@@ -332,13 +356,19 @@ export default function ContactPage() {
                       {errors.pMsg && <span className="text-red text-[0.72rem] mt-1 block">{errors.pMsg}</span>}
                     </div>
 
+                    {/* Server error */}
+                    {serverError && (
+                      <p className="font-inter text-red text-[0.82rem] text-center">{serverError}</p>
+                    )}
+
                     {/* Submit */}
                     <button
                       type="submit"
-                      className="w-full bg-red text-white font-inter font-bold uppercase tracking-[2px] py-4 rounded transition-all duration-200 hover:bg-red-dk hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)]"
+                      disabled={sending}
+                      className="w-full bg-red text-white font-inter font-bold uppercase tracking-[2px] py-4 rounded transition-all duration-200 hover:bg-red-dk hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
                       style={{ fontSize: "0.85rem" }}
                     >
-                      Send It In ⚾
+                      {sending ? "Sending…" : "Send It In ⚾"}
                     </button>
 
                   </form>
