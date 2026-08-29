@@ -3,13 +3,6 @@ import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
   try {
-    // Temporary diagnostic — remove after confirming env visibility
-    console.log("[contact] VERCEL_ENV:", process.env.VERCEL_ENV);
-    console.log("[contact] VERCEL_TARGET_ENV:", process.env.VERCEL_TARGET_ENV);
-    console.log("[contact] VERCEL_GIT_COMMIT_SHA:", process.env.VERCEL_GIT_COMMIT_SHA);
-    console.log("[contact] RESEND_API_KEY exists:", !!process.env.RESEND_API_KEY);
-    console.log("[contact] process.env keys containing RESEND:", Object.keys(process.env).filter(k => k.includes("RESEND")));
-
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error("Contact route: RESEND_API_KEY is not set.");
@@ -60,12 +53,7 @@ export async function POST(req: NextRequest) {
         statusCode: error.statusCode,
       });
       return NextResponse.json(
-        {
-          error: "Failed to send message. Please try again.",
-          resend_name: error.name,
-          resend_message: error.message,
-          resend_statusCode: error.statusCode,
-        },
+        { error: "Failed to send message. Please try again." },
         { status: 500 }
       );
     }
