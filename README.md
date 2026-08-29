@@ -240,6 +240,54 @@ Cards are defined in the `rentalOptions` array at the top of `app/field-rentals/
 
 ---
 
+## Contact Form
+
+`/contact` is a server-side wired contact form. Submissions POST to `app/api/contact/route.ts`, which sends email via [Resend](https://resend.com).
+
+### Email configuration
+
+| Field | Value |
+|---|---|
+| To | `paradiseyardgoats@gmail.com` |
+| From | `Paradise Yard Goats <forms@paradiseyardgoats.club>` |
+| Reply-To | Visitor's submitted email address |
+| Subject | `New Contact Form: {interest}` |
+
+### Environment variable
+
+`RESEND_API_KEY` must be set as a Vercel Secret scoped to **Production**. It is read only via `process.env.RESEND_API_KEY` in the server-side route — never exposed to the client. The variable is not needed locally unless testing email sending; the form will return a safe error message if it is missing.
+
+### Form fields
+
+| Field | Required |
+|---|---|
+| Parent / Guardian / Sponsor Name | Yes |
+| Email Address | Yes |
+| Phone Number | No |
+| Player Age | No |
+| I'm Interested In | Yes |
+| Message | Yes |
+
+### Form states
+
+- **Sending** — button shows "Sending…" and is disabled to prevent duplicate submissions
+- **Success** — form clears and a "Message Received!" confirmation screen replaces the form
+- **Error** — a red error message appears above the submit button; form remains editable
+
+### API route error handling (`app/api/contact/route.ts`)
+
+Every failure path returns JSON — there is no blank 500 response:
+
+| Condition | Response |
+|---|---|
+| `RESEND_API_KEY` missing | 500 `{ error: "Server email configuration is missing." }` |
+| Malformed request body | 400 `{ error: "Invalid request body." }` |
+| Missing required fields | 400 `{ error: "Missing required fields." }` |
+| Resend API error | 500 `{ error: "Failed to send message. Please try again." }` (name/message/statusCode logged server-side only) |
+| Unexpected exception | 500 `{ error: "An unexpected error occurred. Please try again." }` |
+
+---
+
 ## Data
 
 All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`. Site-wide links and contact info are in `lib/config.ts`.
