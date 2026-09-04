@@ -124,9 +124,10 @@ const PREMIER_LOGOS = [
 ];
 
 const SUPPORTING_LOGOS = [
-  { src: "/images/sponsors/Wise Powder Coating.JPEG",  alt: "Wise Powder Coating", bg: "#ffffff", href: "#", inset: "inset-2" },
-  { src: "/images/sponsors/ECS-2.png",                 alt: "ECS",                 bg: "#ffffff", href: "#", inset: "inset-2" },
-  { src: "/images/sponsors/kmb-machine-logo-transparent.png", alt: "KMB",           bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.8 },
+  { src: "/images/sponsors/Wise Powder Coating.JPEG",                    alt: "Wise Powder Coating",           bg: "#ffffff", href: "#", inset: "inset-2" },
+  { src: "/images/sponsors/ECS-2.png",                                   alt: "ECS",                           bg: "#ffffff", href: "#", inset: "inset-2" },
+  { src: "/images/sponsors/kmb-machine-logo-transparent.png",            alt: "KMB",                           bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.8 },
+  { src: "/images/sponsors/Consolidated-Wellsite-Services-sponsor.png",  alt: "Consolidated Wellsite Services", bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.2 },
 ];
 
 export default function SponsorsPage() {
