@@ -75,8 +75,8 @@ See `.claude/skills/yardgoats-design-system/` for the full design system referen
 
 - Headline: "Support Local Players. Grow Your Local Brand."
 - Supporting copy about what sponsorships fund
-- **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones displayed at `aspect-[3/2]` in a 2-col mobile / 4-col xl grid
-- **Supporting Sponsors** — Wise Powder Coating, ECS, KMB displayed at `aspect-[4/1]` in a 2-col mobile / 3-col sm grid (KMB uses `inset-0` for larger logo display)
+- **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR displayed at `aspect-[3/2]` in a 2-col mobile / 3-col sm / 5-col xl grid
+- **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services displayed at `aspect-[4/1]` in a 2-col mobile / 3-col sm grid (KMB uses `scale: 1.8`; Consolidated Wellsite Services uses `scale: 1.2`)
 - "Packages starting at $250" callout
 - Single CTA button → `/sponsors`
 
@@ -88,8 +88,8 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
 
 1. **Hero** — "Invest in Players / Impact the Community" with YG logo
 2. **Logo Wall** — "Our Proud Sponsors" heading with star divider, then tiered display:
-   - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones at `aspect-[3/2]` in a 2-col mobile / 4-col xl grid
-   - **Supporting Sponsors** — Wise Powder Coating, ECS, KMB at `aspect-[4/1]` in a 3-column grid (KMB uses `inset-0` for larger logo display)
+   - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR at `aspect-[3/2]` in a 2-col mobile / 3-col sm / 5-col xl grid
+   - **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services at `aspect-[4/1]` in a 2-col mobile / 3-col sm grid (KMB `scale: 1.8`; Consolidated Wellsite Services `scale: 1.2`)
 3. **Benefits** — 4-icon grid (Tournament Fees, Equipment, Practice Facilities, Player Development)
 4. **Stats** — 250+ players, 10+ tournaments, 1 mission, COUNTLESS memories
 5. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Grand Slam ($2,000+)
