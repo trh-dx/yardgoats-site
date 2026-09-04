@@ -41,7 +41,7 @@ export default function HomePage() {
             SECTION 1 · HERO
         ════════════════════════════════════════════════════════════ */}
         <section
-          className="relative min-h-[85vh] flex items-start overflow-hidden"
+          className="relative min-h-[78vh] flex items-start overflow-hidden"
           style={{ paddingTop: "70px" }}
         >
           {/* Background — baseball stadium/field */}
