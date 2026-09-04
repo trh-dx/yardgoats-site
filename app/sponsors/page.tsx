@@ -118,8 +118,9 @@ const WHY_PARTNER = [
 const PREMIER_LOGOS = [
   { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg",                                  alt: "AmeriDream",              bg: "#ffffff", href: "#" },
   { src: "/images/sponsors/GTG Logo.png",                                             alt: "GTG",                     bg: "#ffffff", href: "#" },
-  { src: "/images/sponsors/Elite Metal Fabricators, Inc_Logo Phone Number.pdf.png",  alt: "Elite Metal Fabricators",  bg: "#ffffff", href: "#" },
+  { src: "/images/sponsors/elite-metal-fabricators.png",                             alt: "Elite Metal Fabricators",  bg: "#ffffff", href: "#" },
   { src: "/images/sponsors/Edward Jones.png",                                         alt: "Edward Jones",             bg: "#FFD100", href: "#" },
+  { src: "/images/sponsors/TLR Logo.png",                                             alt: "TLR",                     bg: "#ffffff", href: "#" },
 ];
 
 const SUPPORTING_LOGOS = [
@@ -252,7 +253,7 @@ export default function SponsorsPage() {
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             </div>
 
-            <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">
               {PREMIER_LOGOS.map(({ src, alt, bg, href }) => (
                 <a
                   key={alt}
