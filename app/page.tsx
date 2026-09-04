@@ -41,7 +41,7 @@ export default function HomePage() {
             SECTION 1 · HERO
         ════════════════════════════════════════════════════════════ */}
         <section
-          className="relative min-h-screen flex items-center overflow-hidden"
+          className="relative min-h-[85vh] flex items-start overflow-hidden"
           style={{ paddingTop: "70px" }}
         >
           {/* Background — baseball stadium/field */}
@@ -78,7 +78,7 @@ export default function HomePage() {
           />
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1280px] mx-auto px-5 w-full py-16">
+          <div className="relative z-10 max-w-[1280px] mx-auto px-5 w-full pt-10 pb-16">
             <div className="max-w-[580px]">
 
               {/* "HOME OF" — accent script */}
