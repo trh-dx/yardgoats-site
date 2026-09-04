@@ -92,7 +92,11 @@ export default function HomePage() {
               {/* "PARADISE YARD GOATS" — display */}
               <h1
                 className="font-bebas text-white leading-none tracking-wide whitespace-nowrap"
-                style={{ fontSize: "clamp(3rem, 9vw, 9rem)" }}
+                style={{
+                  fontSize: "clamp(3rem, 9vw, 9rem)",
+                  WebkitTextStroke: "2.5px #1A5FD4",
+                  textShadow: "2px 3px 6px rgba(0,0,0,0.55)",
+                }}
               >
                 Paradise Yard Goats
               </h1>
