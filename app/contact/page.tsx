@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -8,6 +8,16 @@ import Footer from "@/components/Footer";
 
 type Fields = { pName: string; pEmail: string; pPhone: string; pAge: string; pInt: string; pMsg: string };
 type Errors = Partial<Record<keyof Fields, string>>;
+
+const FIELD_IDS: Record<keyof Fields, string> = {
+  pName:  "contact-name",
+  pEmail: "contact-email",
+  pPhone: "contact-phone",
+  pAge:   "contact-age",
+  pInt:   "contact-interest",
+  pMsg:   "contact-message",
+};
+const REQUIRED_ORDER: (keyof Fields)[] = ["pName", "pEmail", "pInt", "pMsg"];
 
 const socials = [
   {
@@ -66,20 +76,32 @@ export default function ContactPage() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [serverError, setServerError] = useState("");
+  const successRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (sent) successRef.current?.focus();
+  }, [sent]);
 
   const set = (k: keyof Fields) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
       setFields((f) => ({ ...f, [k]: e.target.value }));
+      if (errors[k]) setErrors((errs) => ({ ...errs, [k]: undefined }));
+    };
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (sending) return;
     const errs: Errors = {};
     if (!fields.pName.trim())                                     errs.pName  = "Please enter your name.";
     if (!fields.pEmail.trim() || !fields.pEmail.includes("@"))   errs.pEmail = "Please enter a valid email.";
     if (!fields.pInt)                                             errs.pInt   = "Please select an interest.";
     if (!fields.pMsg.trim())                                      errs.pMsg   = "Please enter a message.";
     setErrors(errs);
-    if (Object.keys(errs).length > 0) return;
+    const firstInvalid = REQUIRED_ORDER.find((k) => errs[k]);
+    if (firstInvalid) {
+      document.getElementById(FIELD_IDS[firstInvalid])?.focus();
+      return;
+    }
 
     setSending(true);
     setServerError("");
@@ -104,9 +126,23 @@ export default function ContactPage() {
   }
 
   const inputBase =
-    "w-full bg-white/5 border rounded-md px-4 py-3 text-white text-[0.93rem] outline-none transition-all placeholder:text-white/25 focus:border-royal-blue focus:ring-1 focus:ring-royal-blue/40";
+    "w-full bg-white/5 border rounded-md px-4 py-2.5 text-white text-base outline-none transition-all placeholder:text-white/35 focus:border-green focus:ring-2 focus:ring-green/40";
   const inputCls = (k: keyof Fields) =>
-    `${inputBase} ${errors[k] ? "border-red/70" : "border-white/12"}`;
+    `${inputBase} ${errors[k] ? "border-[#F07070]" : "border-white/15"}`;
+  const labelCls =
+    "block font-inter font-bold text-[0.72rem] uppercase tracking-[1.5px] text-white/60 mb-2";
+  const a11y = (k: keyof Fields) => ({
+    id: FIELD_IDS[k],
+    "aria-invalid": errors[k] ? true : undefined,
+    "aria-describedby": errors[k] ? `${FIELD_IDS[k]}-error` : undefined,
+  });
+  const errorText = (k: keyof Fields) =>
+    errors[k] && (
+      <p id={`${FIELD_IDS[k]}-error`} className="font-inter text-[#F07070] text-[0.78rem] mt-1.5">
+        {errors[k]}
+      </p>
+    );
+  const req = <span className="text-[#F07070]" aria-hidden>*</span>;
 
   return (
     <>
@@ -114,10 +150,7 @@ export default function ContactPage() {
       <main>
 
         {/* ── PAGE HEADER ─────────────────────────────────────────── */}
-        <section
-          className="relative overflow-hidden pt-[70px]"
-          style={{ minHeight: "clamp(300px, 50vh, 420px)" }}
-        >
+        <section className="relative overflow-hidden pt-[70px]">
           <Image
             src="https://images.unsplash.com/photo-1651002488585-1ed4a57f5d76?auto=format&fit=crop&w=1920&q=80"
             alt=""
@@ -139,12 +172,9 @@ export default function ContactPage() {
             style={{ background: "linear-gradient(to bottom, transparent, #07111F)" }}
           />
 
-          <div
-            className="relative max-w-[1280px] mx-auto px-6 py-12 flex flex-col justify-end"
-            style={{ minHeight: "inherit" }}
-          >
+          <div className="relative max-w-[1280px] mx-auto px-6 py-8 md:py-12">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-6">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-4">
               <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
               <span>&rsaquo;</span>
               <span className="text-green">Contact</span>
@@ -158,37 +188,208 @@ export default function ContactPage() {
             </p>
             <h1
               className="font-bebas text-white leading-none tracking-wide"
-              style={{ fontSize: "clamp(4rem, 10vw, 7.5rem)" }}
+              style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
             >
-              Contact <span className="text-green">Paradise Yard Goats Baseball</span>
+              Contact the <span className="text-green">Yard Goats</span>
             </h1>
           </div>
         </section>
 
-        {/* ── MAIN CONTENT ────────────────────────────────────────── */}
-        <section className="bg-deep-navy py-20 md:py-28">
+        {/* ── MAIN CONTENT ──────────────────────────────────────────
+            DOM order is intro → form → details so mobile and keyboard order
+            match; on lg the grid moves details under the intro in column 1. */}
+        <section className="bg-deep-navy pb-10 md:pb-14">
           <div className="max-w-[1280px] mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-14 lg:gap-20">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] lg:grid-rows-[auto_1fr] gap-y-7 lg:gap-x-12 lg:gap-y-8 items-start">
 
-              {/* LEFT — Info */}
-              <div>
+              {/* Intro */}
+              <div className="lg:col-start-1 lg:row-start-1">
                 <h2
                   className="font-bebas text-white leading-none mb-3"
                   style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)" }}
                 >
                   Get In Touch
                 </h2>
-                <div className="w-10 h-[3px] rounded mb-6" style={{ backgroundColor: "#B3261E" }} />
+                <div className="w-10 h-[3px] rounded mb-4" style={{ backgroundColor: "#B3261E" }} />
                 <p
-                  className="font-inter text-muted-gray leading-relaxed mb-10"
+                  className="font-inter text-muted-gray leading-relaxed"
                   style={{ fontSize: "0.97rem" }}
                 >
                   Have a question or want more information about our program? Reach out — we&apos;d
                   love to connect.
                 </p>
+                {/* Details sit below the form on mobile, so surface the email here */}
+                <p className="lg:hidden font-inter text-muted-gray mt-3" style={{ fontSize: "0.93rem" }}>
+                  Prefer email?{" "}
+                  <a href="mailto:paradiseyardgoats@gmail.com" className="text-white underline decoration-green/60 underline-offset-2 hover:text-green">
+                    paradiseyardgoats@gmail.com
+                  </a>
+                </p>
+              </div>
 
-                {/* Contact details */}
-                <div className="space-y-5 mb-10">
+              {/* Form */}
+              <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 bg-charcoal border border-white/8 rounded-xl p-5 sm:p-6 lg:p-8">
+                {sent ? (
+                  <div role="status" className="text-center py-12">
+                    <div className="text-[3.5rem] mb-4" aria-hidden>⚾</div>
+                    <h3
+                      ref={successRef}
+                      tabIndex={-1}
+                      className="font-bebas text-green leading-none mb-2 outline-none"
+                      style={{ fontSize: "2.4rem" }}
+                    >
+                      Message Received!
+                    </h3>
+                    <p className="font-inter text-muted-gray" style={{ fontSize: "0.93rem" }}>
+                      Thanks for reaching out — we&apos;ll get back to you soon.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={submit} noValidate aria-label="Contact form" className="space-y-5">
+
+                    <p className="font-inter text-white/50" style={{ fontSize: "0.78rem" }}>
+                      Fields marked <span className="text-[#F07070]">*</span> are required.
+                    </p>
+
+                    {/* Name + Email */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-4">
+                      <div>
+                        <label htmlFor={FIELD_IDS.pName} className={labelCls}>
+                          Parent / Guardian / Sponsor Name {req}
+                        </label>
+                        <input
+                          {...a11y("pName")}
+                          name="pName"
+                          type="text"
+                          autoComplete="name"
+                          required
+                          placeholder="Full name"
+                          value={fields.pName}
+                          onChange={set("pName")}
+                          className={inputCls("pName")}
+                        />
+                        {errorText("pName")}
+                      </div>
+                      <div>
+                        <label htmlFor={FIELD_IDS.pEmail} className={labelCls}>
+                          Email Address {req}
+                        </label>
+                        <input
+                          {...a11y("pEmail")}
+                          name="pEmail"
+                          type="email"
+                          autoComplete="email"
+                          required
+                          placeholder="your@email.com"
+                          value={fields.pEmail}
+                          onChange={set("pEmail")}
+                          className={inputCls("pEmail")}
+                        />
+                        {errorText("pEmail")}
+                      </div>
+                    </div>
+
+                    {/* Phone + Player Age */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-4">
+                      <div>
+                        <label htmlFor={FIELD_IDS.pPhone} className={labelCls}>
+                          Phone Number
+                        </label>
+                        <input
+                          {...a11y("pPhone")}
+                          name="pPhone"
+                          type="tel"
+                          autoComplete="tel"
+                          placeholder="(940) 000-0000"
+                          value={fields.pPhone}
+                          onChange={set("pPhone")}
+                          className={inputCls("pPhone")}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor={FIELD_IDS.pAge} className={labelCls}>
+                          Player Age
+                        </label>
+                        <select
+                          {...a11y("pAge")}
+                          name="pAge"
+                          autoComplete="off"
+                          value={fields.pAge}
+                          onChange={set("pAge")}
+                          className={`${inputCls("pAge")} cursor-pointer`}
+                        >
+                          <option value="">Select age</option>
+                          {["6 years old","7 years old","8 years old","9 years old","10 years old","11+ years old"].map((a) => (
+                            <option key={a} value={a} className="bg-charcoal">{a}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* I'm Interested In */}
+                    <div>
+                      <label htmlFor={FIELD_IDS.pInt} className={labelCls}>
+                        I&apos;m Interested In {req}
+                      </label>
+                      <select
+                        {...a11y("pInt")}
+                        name="pInt"
+                        autoComplete="off"
+                        required
+                        value={fields.pInt}
+                        onChange={set("pInt")}
+                        className={`${inputCls("pInt")} cursor-pointer`}
+                      >
+                        <option value="">Select interest</option>
+                        {["Register a Player / Ask About Tryouts","Sponsorship","General Question"].map((o) => (
+                          <option key={o} value={o} className="bg-charcoal">{o}</option>
+                        ))}
+                      </select>
+                      {errorText("pInt")}
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <label htmlFor={FIELD_IDS.pMsg} className={labelCls}>
+                        Message {req}
+                      </label>
+                      <textarea
+                        {...a11y("pMsg")}
+                        name="pMsg"
+                        required
+                        placeholder="Tell us about your player, your business, or how you'd like to get involved…"
+                        value={fields.pMsg}
+                        onChange={set("pMsg")}
+                        className={`${inputCls("pMsg")} block h-[150px] min-h-[120px] resize-y`}
+                      />
+                      {errorText("pMsg")}
+                    </div>
+
+                    {/* Server error */}
+                    {serverError && (
+                      <p role="alert" className="font-inter text-[#F07070] text-[0.85rem] text-center">
+                        {serverError}
+                      </p>
+                    )}
+
+                    {/* Submit */}
+                    <button
+                      type="submit"
+                      disabled={sending}
+                      aria-disabled={sending}
+                      className="w-full bg-green text-deep-navy font-inter font-bold uppercase tracking-[2px] py-3.5 rounded transition-all duration-200 hover:bg-green-lt hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+                      style={{ fontSize: "0.85rem" }}
+                    >
+                      {sending ? "Sending…" : "Send Message"}
+                    </button>
+
+                  </form>
+                )}
+              </div>
+
+              {/* Contact details */}
+              <div className="lg:col-start-1 lg:row-start-2">
+                <div className="space-y-4 mb-7">
                   {contactDetails.map((d) => (
                     <div key={d.label} className="flex items-start gap-4">
                       <div
@@ -245,134 +446,6 @@ export default function ContactPage() {
                     ))}
                   </div>
                 </div>
-              </div>
-
-              {/* RIGHT — Form */}
-              <div className="bg-charcoal border border-white/8 rounded-xl p-7 sm:p-10">
-                {sent ? (
-                  <div className="text-center py-16">
-                    <div className="text-[3.5rem] mb-4">⚾</div>
-                    <h3 className="font-bebas text-green leading-none mb-2" style={{ fontSize: "2.4rem" }}>
-                      Message Received!
-                    </h3>
-                    <p className="font-inter text-muted-gray" style={{ fontSize: "0.93rem" }}>
-                      Thanks for reaching out — we&apos;ll get back to you soon.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={submit} noValidate className="space-y-4">
-
-                    {/* Parent/Guardian Name + Email */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block font-inter font-bold text-[0.72rem] uppercase tracking-[1.5px] text-white/50 mb-1.5">
-                          Parent / Guardian / Sponsor Name <span className="text-red/80">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Full name"
-                          value={fields.pName}
-                          onChange={set("pName")}
-                          className={inputCls("pName")}
-                        />
-                        {errors.pName && <span className="text-red text-[0.72rem] mt-1 block">{errors.pName}</span>}
-                      </div>
-                      <div>
-                        <label className="block font-inter font-bold text-[0.72rem] uppercase tracking-[1.5px] text-white/50 mb-1.5">
-                          Email Address <span className="text-red/80">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="your@email.com"
-                          value={fields.pEmail}
-                          onChange={set("pEmail")}
-                          className={inputCls("pEmail")}
-                        />
-                        {errors.pEmail && <span className="text-red text-[0.72rem] mt-1 block">{errors.pEmail}</span>}
-                      </div>
-                    </div>
-
-                    {/* Phone + Player Age */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block font-inter font-bold text-[0.72rem] uppercase tracking-[1.5px] text-white/50 mb-1.5">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          placeholder="(940) 000-0000"
-                          value={fields.pPhone}
-                          onChange={set("pPhone")}
-                          className={inputCls("pPhone")}
-                        />
-                      </div>
-                      <div>
-                        <label className="block font-inter font-bold text-[0.72rem] uppercase tracking-[1.5px] text-white/50 mb-1.5">
-                          Player Age
-                        </label>
-                        <select
-                          value={fields.pAge}
-                          onChange={set("pAge")}
-                          className={`${inputCls("pAge")} cursor-pointer`}
-                        >
-                          <option value="">Select age</option>
-                          {["6 years old","7 years old","8 years old","9 years old","10 years old","11+ years old"].map((a) => (
-                            <option key={a} value={a} className="bg-charcoal">{a}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* I'm Interested In */}
-                    <div>
-                      <label className="block font-inter font-bold text-[0.72rem] uppercase tracking-[1.5px] text-white/50 mb-1.5">
-                        I&apos;m Interested In <span className="text-red/80">*</span>
-                      </label>
-                      <select
-                        value={fields.pInt}
-                        onChange={set("pInt")}
-                        className={`${inputCls("pInt")} cursor-pointer`}
-                      >
-                        <option value="">Select interest</option>
-                        {["Register a Player / Ask About Tryouts","Sponsorship","General Question"].map((o) => (
-                          <option key={o} value={o} className="bg-charcoal">{o}</option>
-                        ))}
-                      </select>
-                      {errors.pInt && <span className="text-red text-[0.72rem] mt-1 block">{errors.pInt}</span>}
-                    </div>
-
-                    {/* Message */}
-                    <div>
-                      <label className="block font-inter font-bold text-[0.72rem] uppercase tracking-[1.5px] text-white/50 mb-1.5">
-                        Message <span className="text-red/80">*</span>
-                      </label>
-                      <textarea
-                        rows={5}
-                        placeholder="Tell us about your player, your business, or how you'd like to get involved…"
-                        value={fields.pMsg}
-                        onChange={set("pMsg")}
-                        className={`${inputCls("pMsg")} resize-y min-h-[115px]`}
-                      />
-                      {errors.pMsg && <span className="text-red text-[0.72rem] mt-1 block">{errors.pMsg}</span>}
-                    </div>
-
-                    {/* Server error */}
-                    {serverError && (
-                      <p className="font-inter text-red text-[0.82rem] text-center">{serverError}</p>
-                    )}
-
-                    {/* Submit */}
-                    <button
-                      type="submit"
-                      disabled={sending}
-                      className="w-full bg-red text-white font-inter font-bold uppercase tracking-[2px] py-4 rounded transition-all duration-200 hover:bg-red-dk hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(179,38,30,0.4)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
-                      style={{ fontSize: "0.85rem" }}
-                    >
-                      {sending ? "Sending…" : "Send It In ⚾"}
-                    </button>
-
-                  </form>
-                )}
               </div>
 
             </div>

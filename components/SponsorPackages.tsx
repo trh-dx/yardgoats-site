@@ -105,7 +105,7 @@ export default function SponsorPackages() {
         return (
           <div
             key={pkg.name}
-            className="relative rounded-xl transition-[transform] duration-300"
+            className="relative flex flex-col rounded-xl transition-[transform] duration-300"
             style={{
               background: s.bg,
               border: `${s.borderW} solid ${s.borderI}`,
@@ -150,7 +150,7 @@ export default function SponsorPackages() {
             )}
 
             {/* Content */}
-            <div className={`relative px-6 pb-7 ${s.padTop}`}>
+            <div className={`relative flex-1 flex flex-col px-6 pb-7 ${s.padTop}`}>
               <div className="text-center mb-2" style={{ fontSize: s.iconSize }}>{icons[pkg.name]}</div>
               <div
                 className="font-inter font-bold text-[0.68rem] tracking-[3px] uppercase text-center mb-0.5"
@@ -195,7 +195,7 @@ export default function SponsorPackages() {
 
               <a
                 href="/contact"
-                className="block w-full text-center font-inter font-bold tracking-[1.5px] uppercase rounded-sm transition-all duration-200 hover:-translate-y-0.5"
+                className="mt-auto block w-full text-center font-inter font-bold tracking-[1.5px] uppercase rounded-sm transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   padding: pkg.name === "Grand Slam" ? "0.75rem 1rem" : "0.62rem 1rem",
                   fontSize: pkg.name === "Grand Slam" ? "0.86rem" : "0.8rem",

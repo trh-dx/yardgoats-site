@@ -127,7 +127,7 @@ const SUPPORTING_LOGOS = [
   { src: "/images/sponsors/Wise Powder Coating.JPEG",                    alt: "Wise Powder Coating",           bg: "#ffffff", href: "https://wisepowdercoating.com/", inset: "inset-2" },
   { src: "/images/sponsors/ECS-2.png",                                   alt: "ECS",                           bg: "#ffffff", href: "https://engineandcompressor.com/", inset: "inset-2" },
   { src: "/images/sponsors/kmb-machine-logo-transparent.png",            alt: "KMB",                           bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.8 },
-  { src: "/images/sponsors/Consolidated-Wellsite-Services-sponsor.png",  alt: "Consolidated Wellsite Services", bg: "#ffffff", href: "https://www.linkedin.com/company/consolidated-wellsite-services", inset: "inset-0", scale: 1.2 },
+  { src: "/images/sponsors/Consolidated-Wellsite-Services-sponsor.png",  alt: "Consolidated Wellsite Services", bg: "#ffffff", href: "https://www.linkedin.com/company/consolidated-wellsite-services", inset: "inset-0", scale: 1.1 },
 ];
 
 export default function SponsorsPage() {
@@ -159,18 +159,18 @@ export default function SponsorsPage() {
             }}
           />
 
-          <div className="relative max-w-[1280px] mx-auto px-6 py-20 md:py-28 flex items-center gap-10 md:gap-16">
+          <div className="relative max-w-[1280px] mx-auto px-6 pt-10 pb-8 md:pt-16 md:pb-10 flex items-center gap-10 md:gap-16">
 
             {/* Text */}
             <div className="flex-1 max-w-[640px]">
               {/* Breadcrumb */}
-              <nav className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-8">
+              <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-6">
                 <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
                 <span>&rsaquo;</span>
                 <span className="text-green">Sponsors</span>
               </nav>
 
-              <h1 className="leading-none mb-6">
+              <h1 className="leading-none mb-5">
                 <span
                   className="font-bebas text-white block"
                   style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}
@@ -193,12 +193,23 @@ export default function SponsorsPage() {
                 athletes by helping provide equipment, uniforms, field improvements, and player development
                 opportunities.
               </p>
+
+              <a
+                href="#packages"
+                className="inline-flex items-center gap-2 mt-7 bg-green hover:bg-green-lt text-deep-navy font-inter font-bold uppercase tracking-[2px] px-7 py-3 rounded transition-all duration-200 hover:-translate-y-0.5"
+                style={{ fontSize: "0.8rem" }}
+              >
+                View Sponsorship Packages
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+              </a>
             </div>
 
             {/* YG baseball */}
             <div
               className="hidden lg:block flex-shrink-0 relative"
-              style={{ width: "320px", height: "320px" }}
+              style={{ width: "280px", height: "280px" }}
             >
               <div
                 className="absolute pointer-events-none"
@@ -222,11 +233,11 @@ export default function SponsorsPage() {
         {/* ════════════════════════════════════════════════════════════
             LOGO WALL
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy py-12 md:py-16">
+        <section className="bg-deep-navy pt-2">
           <div className="max-w-[1280px] mx-auto px-6">
 
             {/* Heading */}
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <h2
                 className="font-bebas text-white leading-none"
                 style={{ fontSize: "clamp(2.8rem, 7vw, 5rem)" }}
@@ -243,7 +254,7 @@ export default function SponsorsPage() {
             </div>
 
             {/* Diamond */}
-            <div className="flex items-center gap-4 mb-5">
+            <div className="flex items-center gap-4 mb-6">
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
               <span
                 className="font-inter font-bold text-[0.72rem] tracking-[3px] uppercase whitespace-nowrap"
@@ -254,14 +265,15 @@ export default function SponsorsPage() {
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">
+            {/* Flex-wrap (not grid) so a partial last row centers instead of leaving an orphan hugging the left */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
               {PREMIER_LOGOS.map(({ src, alt, bg, href }) => (
                 <a
                   key={alt}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block"
+                  className="group relative w-[calc(50%-8px)] sm:w-[calc(33.333%-10.667px)] xl:w-[calc(20%-12.8px)] aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block"
                   style={{ background: bg }}
                 >
                   <div className="absolute inset-3">
@@ -282,7 +294,7 @@ export default function SponsorsPage() {
             </div>
 
             {/* Supporting */}
-            <div className="flex items-center gap-4 mb-5">
+            <div className="flex items-center gap-4 mb-6">
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
               <span
                 className="font-inter font-bold text-[0.72rem] tracking-[3px] uppercase whitespace-nowrap"
@@ -293,14 +305,14 @@ export default function SponsorsPage() {
               <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               {SUPPORTING_LOGOS.map(({ src, alt, bg, href, inset, scale }) => (
                 <a
                   key={alt}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative aspect-[4/1] rounded-lg overflow-hidden block"
+                  className="group relative w-[calc(50%-6px)] lg:w-[calc(25%-9px)] aspect-[5/2] sm:aspect-[4/1] lg:aspect-[3/1] rounded-lg overflow-hidden block"
                   style={{ background: bg, border: "1px solid rgba(255,255,255,0.12)" }}
                 >
                   <div className={`absolute ${inset}`} style={scale ? { transform: `scale(${scale})` } : undefined}>
@@ -324,9 +336,9 @@ export default function SponsorsPage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════
-            BENEFITS
+            COMMUNITY IMPACT — funding categories + stats
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy py-12 md:py-16">
+        <section className="bg-deep-navy py-8 md:py-12">
           <div className="max-w-[1280px] mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
               {BENEFITS.map(({ label, body, icon }) => (
@@ -352,16 +364,9 @@ export default function SponsorsPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* ════════════════════════════════════════════════════════════
-            STATS
-        ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy py-10 md:py-14">
-          <div className="max-w-[1280px] mx-auto px-6">
             <div
-              className="rounded-xl grid grid-cols-2 md:grid-cols-4"
+              className="mt-8 rounded-xl grid grid-cols-2 md:grid-cols-4"
               style={{ border: "1px solid rgba(0,61,165,0.3)", background: "#0a1628" }}
             >
               {STATS.map(({ value, label }, i) => (
@@ -395,11 +400,15 @@ export default function SponsorsPage() {
         {/* ════════════════════════════════════════════════════════════
             SPONSORSHIP PACKAGES
         ════════════════════════════════════════════════════════════ */}
-        <section id="packages" className="bg-deep-navy pt-16 md:pt-20 pb-8 md:pb-10">
+        <section className="bg-deep-navy pt-2 md:pt-3">
           <div className="max-w-[1280px] mx-auto px-6">
 
-            {/* Section heading */}
-            <div className="flex items-center justify-center gap-5 mb-10">
+            {/* Section heading — inline scroll margin because the global [id] rule (72px) is unlayered and would beat a Tailwind utility */}
+            <div
+              id="packages"
+              className="flex items-center justify-center gap-5 mb-6 md:mb-8"
+              style={{ scrollMarginTop: "96px" }}
+            >
               <div className="w-16 h-px" style={{ background: "rgba(255,255,255,0.1)" }} />
               <h2
                 className="font-bebas text-white tracking-[5px] whitespace-nowrap"
@@ -417,21 +426,21 @@ export default function SponsorsPage() {
         {/* ════════════════════════════════════════════════════════════
             WHY PARTNER
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy pt-8 md:pt-10 pb-8 md:pb-10">
+        <section className="bg-deep-navy pt-10 md:pt-12">
           <div className="max-w-[1280px] mx-auto px-6">
             <div
-              className="rounded-xl p-6 md:p-10 lg:p-16"
+              className="rounded-xl p-6 md:p-8"
               style={{ border: "1px solid rgba(0,61,165,0.28)", background: "#0a1628" }}
             >
               <h2
-                className="font-bebas text-white text-center leading-none mb-10"
+                className="font-bebas text-white text-center leading-none mb-6 md:mb-8"
                 style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
               >
                 Why Partner with the{" "}
                 <span className="text-green">Yard Goats?</span>
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                 {WHY_PARTNER.map(({ title, body, icon }) => (
                   <div key={title} className="flex gap-4">
                     <div
@@ -464,7 +473,7 @@ export default function SponsorsPage() {
         {/* ════════════════════════════════════════════════════════════
             CTA BANNER
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy pt-4 md:pt-6 pb-10 md:pb-14">
+        <section className="bg-deep-navy pt-10 pb-12 md:pb-16">
           <div className="max-w-[1280px] mx-auto px-6">
             <div
               className="rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8"

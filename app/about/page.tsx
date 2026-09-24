@@ -73,10 +73,7 @@ export default function AboutPage() {
       <main>
 
         {/* ── PAGE HEADER ─────────────────────────────────────────── */}
-        <section
-          className="relative overflow-hidden pt-[70px]"
-          style={{ minHeight: "clamp(300px, 50vh, 420px)" }}
-        >
+        <section className="relative overflow-hidden pt-[70px]">
           <Image
             src="/images/baseball-tryout-image.png"
             alt=""
@@ -99,12 +96,9 @@ export default function AboutPage() {
             style={{ background: "linear-gradient(to bottom, transparent, #07111F)" }}
           />
 
-          <div
-            className="relative max-w-[1280px] mx-auto px-6 py-12 flex flex-col justify-end"
-            style={{ minHeight: "inherit" }}
-          >
+          <div className="relative max-w-[1280px] mx-auto px-6 py-10 md:py-16">
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-6">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-4">
               <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
               <span>&rsaquo;</span>
               <span className="text-green">About</span>
@@ -112,7 +106,7 @@ export default function AboutPage() {
 
             {/* Accent eyebrow */}
             <p
-              className="font-bebas tracking-[3px] text-green mb-2"
+              className="font-bebas tracking-[3px] text-green mb-4"
               style={{ fontSize: "clamp(0.9rem, 2vw, 1.1rem)" }}
             >
               More than baseball.
@@ -121,7 +115,7 @@ export default function AboutPage() {
             {/* Title */}
             <h1
               className="font-bebas text-white leading-none tracking-wide"
-              style={{ fontSize: "clamp(4rem, 10vw, 7.5rem)" }}
+              style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
             >
               About <span className="text-green">The Yard Goats</span>
             </h1>
@@ -129,9 +123,9 @@ export default function AboutPage() {
         </section>
 
         {/* ── MAIN CONTENT ────────────────────────────────────────── */}
-        <section className="bg-deep-navy py-20 md:py-28">
+        <section className="bg-deep-navy pb-5 md:pb-8">
           <div className="max-w-[1280px] mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-12 items-start">
 
               {/* LEFT — Mission */}
               <div>
@@ -142,15 +136,15 @@ export default function AboutPage() {
                   Our Mission
                 </span>
                 <h2
-                  className="font-bebas text-white leading-none mb-3"
+                  className="font-bebas text-white leading-none mb-2"
                   style={{ fontSize: "clamp(2.6rem, 5vw, 3.8rem)" }}
                 >
                   Developing Players.<br />
                   <span className="text-green">Building Character.</span>
                 </h2>
-                <div className="w-12 h-[3px] rounded mb-8" style={{ backgroundColor: "#B3261E" }} />
+                <div className="w-12 h-[3px] rounded mb-3" style={{ backgroundColor: "#B3261E" }} />
 
-                <div className="space-y-5 mb-10">
+                <div className="space-y-5">
                   <p
                     className="font-inter text-muted-gray leading-relaxed"
                     style={{ fontSize: "1rem" }}
@@ -163,7 +157,7 @@ export default function AboutPage() {
               </div>
 
               {/* RIGHT — Feature list */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {features.map((f) => (
                   <div
                     key={f.title}
@@ -199,11 +193,11 @@ export default function AboutPage() {
         </section>
 
         {/* ── PHILOSOPHY ──────────────────────────────────────────── */}
-        <section className="bg-charcoal py-20 md:py-28">
+        <section className="bg-charcoal pt-5 pb-10 md:pt-8 md:pb-14">
           <div className="max-w-[1280px] mx-auto px-6">
 
             {/* Top — headline + body */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-12 items-start mb-6 md:mb-8">
               <div>
                 <span
                   className="font-inter font-bold uppercase tracking-[3px] text-green block mb-3"
@@ -280,17 +274,17 @@ export default function AboutPage() {
               ].map((p) => (
                 <div
                   key={p.title}
-                  className="flex flex-col items-center text-center rounded-xl p-7 border border-white/8 hover:border-green/30 transition-colors duration-200"
+                  className="flex flex-col items-center text-center rounded-xl p-5 md:p-6 border border-white/8 hover:border-green/30 transition-colors duration-200"
                   style={{ background: "rgba(255,255,255,0.03)" }}
                 >
                   <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center text-green mb-5"
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-green mb-4"
                     style={{ background: "rgba(122,193,67,0.1)", border: "1px solid rgba(122,193,67,0.25)" }}
                   >
                     {p.icon}
                   </div>
                   <h3
-                    className="font-bebas text-white tracking-wide mb-3"
+                    className="font-bebas text-white tracking-wide mb-2"
                     style={{ fontSize: "1.25rem" }}
                   >
                     {p.title}

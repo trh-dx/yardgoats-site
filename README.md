@@ -28,7 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `/schedule` | Game and tournament schedule |
 | `/field-rentals` | Field rental page — "Baseball Field Rentals" hero, availability strip, facility features, rental option cards, rules checklist, booking CTA |
 | `/about` | Organization story and coaches |
-| `/sponsors` | Full sponsors page — hero, benefits, stats, packages, why partner, logo wall, CTA |
+| `/sponsors` | Full sponsors page — hero, logo wall, community impact (benefits + stats), packages, why partner, CTA |
 | `/contact` | "Contact Paradise Yard Goats Baseball" — contact form and info |
 
 ## Project Structure
@@ -86,15 +86,32 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
 
 `/sponsors` is a full dedicated page with these sections (top to bottom):
 
-1. **Hero** — "Invest in Players / Impact the Community" with YG logo
-2. **Logo Wall** — "Our Proud Sponsors" heading with star divider, then tiered display:
-   - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR at `aspect-[3/2]` in a 2-col mobile / 3-col sm / 5-col xl grid
-   - **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services at `aspect-[4/1]` in a 2-col mobile / 3-col sm grid (KMB `scale: 1.8`; Consolidated Wellsite Services `scale: 1.2`)
-3. **Benefits** — 4-icon grid (Tournament Fees, Equipment, Practice Facilities, Player Development)
-4. **Stats** — 250+ players, 10+ tournaments, 1 mission, COUNTLESS memories
-5. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Grand Slam ($2,000+)
-6. **Why Partner** — 4-reason grid inside a bordered card
-7. **CTA Banner** — "Want to become a sponsor?" with email link
+1. **Hero** — "Invest in Players / Impact the Community" with YG logo (280px, `lg+` only) and a green **"View Sponsorship Packages ↓"** button (navy text on green) that jumps to `#packages`
+2. **Logo Wall** — "Our Proud Sponsors" heading with star divider, then tiered display. Both tiers use `flex flex-wrap justify-center` (not grid) so a partial last row is centered instead of left-aligned:
+   - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR at `aspect-[3/2]`; 2 per row mobile / 3 on sm / 5 on xl
+   - **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services; 2×2 on mobile/tablet, one row of 4 on `lg`. Card aspect `5/2` mobile → `4/1` sm → `3/1` lg (KMB `scale: 1.8`; Consolidated Wellsite Services `scale: 1.1` — higher clips the top of its icon)
+3. **Community Impact** — one section holding the 4-icon benefits grid (Tournament Fees, Equipment, Practice Facilities, Player Development) and, 32px below it, the stats bar (250+ players, 10+ tournaments, 1 mission, COUNTLESS memories)
+4. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Grand Slam ($2,000+). `id="packages"` sits on the heading with an inline `scrollMarginTop: 96px` (inline because the global `[id] { scroll-margin-top: 72px }` rule in `globals.css` is unlayered and overrides Tailwind `scroll-mt-*` utilities). Card buttons are bottom-aligned via flex column + `mt-auto`
+5. **Why Partner** — 4-reason grid inside a bordered card
+6. **CTA Banner** — "Want to become a sponsor?" with email link
+
+### Sponsors page spacing
+
+Spacing was tightened on 2026-09-24. Adjacent sections split the gap between them (one side carries it, the other is ~0) so paddings don't stack. Measured visible gaps:
+
+| Gap | Desktop | Mobile |
+|---|---|---|
+| Hero top padding (below nav) | 64px | 40px |
+| Hero button → "Our Proud Sponsors" | 48px | 40px |
+| Heading / tier labels / logo grids | 24–32px | 24–32px |
+| Supporting logos → benefits | 48px | 32px |
+| Benefits → stats | 32px | 32px |
+| Stats → packages heading | 60px | 40px |
+| Packages heading → cards | 32px | 24px |
+| Cards → Why Partner panel | 48px | 40px |
+| Why Partner inner padding | 32px | 24px |
+| Why Partner → CTA banner | 40px | 40px |
+| CTA banner → footer | 64px | 48px |
 
 The footer's "Our Sponsors" and "Become a Sponsor" links (`SPONSOR_LINKS` in `components/Footer.tsx`) both point to `/sponsors`.
 
@@ -183,10 +200,11 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 - **Bottom CTA tagline** — "Find your team. Build your confidence. Have Fun." stacks vertically on mobile (`flex-col`) with pipes hidden; restores to inline pipe-separated row on `sm+`
 
 ### Sponsors Page (`/sponsors`)
+- **Supporting sponsors** — 2×2 on mobile and tablet, single row of 4 on `lg`
 - **Benefits grid** — 2-col on mobile, 4-col on `md`
 - **Stats bar** — 2-col on mobile with row/column separators, 4-col on `md`
 - **Sponsorship packages** — 1-col on mobile, 2-col on `sm`, 4-col on `xl`
-- **Why Partner card** — padding scales: `p-6` mobile → `p-10` md → `p-16` lg
+- **Why Partner card** — padding `p-6` mobile → `p-8` md
 - **Logo wall label** — wraps naturally on small screens (no `whitespace-nowrap`)
 - **CTA banner** — stacks vertically on mobile (`flex-col`), logo placeholder stretches full width; switches to horizontal row on `md`
 - **YG logo image in hero** — hidden below `lg` breakpoint to keep hero clean on mobile
