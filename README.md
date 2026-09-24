@@ -75,8 +75,9 @@ See `.claude/skills/yardgoats-design-system/` for the full design system referen
 
 - Headline: "Support Local Players. Grow Your Local Brand."
 - Supporting copy about what sponsorships fund
-- **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR displayed at `aspect-[3/2]` in a 2-col mobile / 3-col sm / 5-col xl grid
-- **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services displayed at `aspect-[4/1]` in a 2-col mobile / 3-col sm grid (KMB uses `scale: 1.8`; Consolidated Wellsite Services uses `scale: 1.2`)
+- **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR at `aspect-[3/2]`; 2 per row mobile / 3 on sm / 5 on xl
+- **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services; 2×2 on mobile/tablet, one row of 4 on `lg`. Card aspect `5/2` mobile → `4/1` sm → `3/1` lg (KMB `scale: 1.8`; Consolidated Wellsite Services `scale: 1.1`)
+- Both tiers use `flex flex-wrap justify-center` so a partial last row is centered — card layout matches `/sponsors` exactly; keep the two in sync
 - "Packages starting at $250" callout
 - Single CTA button → `/sponsors`
 

@@ -75,7 +75,8 @@ export default function Sponsors() {
             </span>
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 mb-10">
+          {/* Flex-wrap (not grid) so a partial last row centers instead of leaving an orphan hugging the left */}
+          <div className="flex flex-wrap justify-center gap-4 mb-10">
             {[
               { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg", alt: "AmeriDream", bg: "#ffffff", href: "https://ameridreammtg.com/" },
               { src: "/images/sponsors/GTG Logo.png", alt: "GTG", bg: "#ffffff", href: "https://gtgsi.com/" },
@@ -88,7 +89,7 @@ export default function Sponsors() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block"
+                className="group relative w-[calc(50%-8px)] sm:w-[calc(33.333%-10.667px)] xl:w-[calc(20%-12.8px)] aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block"
                 style={{ background: bg }}
               >
                 <div className="absolute inset-3">
@@ -119,19 +120,19 @@ export default function Sponsors() {
             </span>
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {[
               { src: "/images/sponsors/Wise Powder Coating.JPEG", alt: "Wise Powder Coating", bg: "#ffffff", href: "https://wisepowdercoating.com/", inset: "inset-2" },
               { src: "/images/sponsors/ECS-2.png", alt: "ECS", bg: "#ffffff", href: "https://engineandcompressor.com/", inset: "inset-2" },
               { src: "/images/sponsors/kmb-machine-logo-transparent.png", alt: "KMB", bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.8 },
-              { src: "/images/sponsors/Consolidated-Wellsite-Services-sponsor.png", alt: "Consolidated Wellsite Services", bg: "#ffffff", href: "https://www.linkedin.com/company/consolidated-wellsite-services", inset: "inset-0", scale: 1.2 },
+              { src: "/images/sponsors/Consolidated-Wellsite-Services-sponsor.png", alt: "Consolidated Wellsite Services", bg: "#ffffff", href: "https://www.linkedin.com/company/consolidated-wellsite-services", inset: "inset-0", scale: 1.1 },
             ].map(({ src, alt, bg, href, inset, scale }) => (
               <a
                 key={alt}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[4/1] rounded-lg overflow-hidden block"
+                className="group relative w-[calc(50%-6px)] lg:w-[calc(25%-9px)] aspect-[5/2] sm:aspect-[4/1] lg:aspect-[3/1] rounded-lg overflow-hidden block"
                 style={{ background: bg, border: "1px solid rgba(255,255,255,0.12)" }}
               >
                 <div className={`absolute ${inset}`} style={scale ? { transform: `scale(${scale})` } : undefined}>
