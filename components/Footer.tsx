@@ -13,8 +13,8 @@ const QUICK_LINKS = [
 
 
 const SPONSOR_LINKS = [
-  { href: "/#sponsors", label: "Our Sponsors"    },
-  { href: "/#sponsors", label: "Become a Sponsor" },
+  { href: "/sponsors", label: "Our Sponsors"    },
+  { href: "/sponsors", label: "Become a Sponsor" },
 ];
 
 function ColHeading({ children }: { children: React.ReactNode }) {

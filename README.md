@@ -39,7 +39,7 @@ app/                  # Next.js App Router pages
     page.tsx          # Dedicated sponsors page
 components/           # Shared UI components
   Nav.tsx             # Fixed top navigation (links: Home, Teams, Field Rentals, About, Sponsors, Contact — Tryouts link removed, see Hidden Tryouts Info)
-  Footer.tsx          # Site footer (5-col grid; Quick Links includes Field Rentals; Age Groups shows "7U - 11U")
+  Footer.tsx          # Site footer (5-col grid; Quick Links includes Field Rentals; Age Groups shows "7U - 11U"; Sponsors links "Our Sponsors" and "Become a Sponsor" both go to /sponsors)
   Scoreboard.tsx      # Homepage score/stats bar
   Sponsors.tsx        # Homepage sponsors strip — headline, logo wall, starting price, CTA to /sponsors
   SponsorPackages.tsx # Interactive pricing cards used on /sponsors (client component)
@@ -96,6 +96,8 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
 6. **Why Partner** — 4-reason grid inside a bordered card
 7. **CTA Banner** — "Want to become a sponsor?" with email link
 
+The footer's "Our Sponsors" and "Become a Sponsor" links (`SPONSOR_LINKS` in `components/Footer.tsx`) both point to `/sponsors`.
+
 ### Adding a Sponsor Logo
 
 To add a **Diamond** sponsor, drop the logo in `public/images/sponsors/` and add an entry to `PREMIER_LOGOS` in `app/sponsors/page.tsx` and the diamond grid in `components/Sponsors.tsx`:
@@ -106,7 +108,21 @@ To add a **Diamond** sponsor, drop the logo in `public/images/sponsors/` and add
 
 To add a **Supporting** sponsor, add to `SUPPORTING_LOGOS` in `app/sponsors/page.tsx` and the supporting grid in `components/Sponsors.tsx`.
 
-Each sponsor card shows a **"Visit Sponsor"** hover overlay with an external link icon. The `href` field controls the link — set to `"#"` as a placeholder until the real URL is known.
+Each sponsor card shows a **"Visit Sponsor"** hover overlay with an external link icon and opens the `href` in a new tab. Use `"#"` as a placeholder until the real URL is known. Links must be updated in both `app/sponsors/page.tsx` and `components/Sponsors.tsx`.
+
+### Current sponsor links
+
+| Sponsor | Tier | Link |
+|---|---|---|
+| AmeriDream | Diamond | `https://ameridreammtg.com/` |
+| GTG | Diamond | `https://gtgsi.com/` |
+| Elite Metal Fabricators | Diamond | `https://www.elitemetalfabinc.com/` |
+| Edward Jones | Diamond | `#` — **still needed** |
+| TLR | Diamond | `https://tlrwelding.com/` |
+| Wise Powder Coating | Supporting | `https://wisepowdercoating.com/` |
+| ECS | Supporting | `https://engineandcompressor.com/` |
+| KMB | Supporting | `#` — **still needed** |
+| Consolidated Wellsite Services | Supporting | `https://www.linkedin.com/company/consolidated-wellsite-services` (LinkedIn page) |
 
 Set `bg` to match the logo's intended background color (white for most, or a brand color).
 
@@ -156,9 +172,10 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 ## Mobile Considerations
 
 ### Homepage Hero
+- **Section height** — `min-h-[78vh]` on mobile, `lg:min-h-[85vh]` on desktop; `items-start` so content sits near the top and the scoreboard strip is visible at the bottom of the initial viewport without scrolling
 - **Overlay** — two separate overlays: desktop uses a left-heavy 105deg gradient (`lg:block`); mobile uses a softer vertical gradient (`block lg:hidden`) so the baseball field image remains visible on small screens
 - **"Home of The"** — Permanent Marker font in green, `clamp(1.23rem, 2.8vw, 1.78rem)`
-- **"Paradise Yard Goats"** — Bebas Neue in white, `clamp(3rem, 9vw, 9rem)`, `whitespace-nowrap`
+- **"Paradise Yard Goats"** — Bebas Neue in white, `clamp(3rem, 9vw, 9rem)`, `whitespace-nowrap`; blue outline (`WebkitTextStroke: 2.5px #1A5FD4`) and subtle dark drop shadow (`textShadow: 2px 3px 6px rgba(0,0,0,0.55)`) for athletic wordmark treatment
 - **"Youth Baseball"** — Bebas Neue in white with a thin royal-blue text stroke (`0.5px`) and subtle blue drop shadow accent; green `3px` bar sits underneath via a `w-fit` wrapper div
 - **Tagline** — `clamp(0.85rem, 1.4vw, 1rem)`, `tracking-[0.8px]`, `leading-relaxed` — tightened from earlier wider spacing for better readability on mobile
 
@@ -305,23 +322,21 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
   teamLabel: "SMITH",         // optional — adds a dark navy strip below the green age badge (used for 11U only)
   wins: 8,                    // used to display record and calculate win pct
   losses: 4,
-  gameChangerUrl: "https://web.gc.com/teams/...",     // optional — renders a royal-blue GameChanger button below "View Roster"
-  gameChangerLabel: "Team Schedule and Roster",       // optional — overrides the button text (defaults to "View on GameChanger" if omitted); arrow is always appended
-  gameChangerSubtext: "Powered by GameChanger",       // optional — small caption rendered under the GameChanger button
+  gameChangerUrl: "https://web.gc.com/teams/...",     // renders the "Team Schedule and Roster →" button at the bottom of the card
 }
 ```
 
-`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams). `gameChangerUrl` is optional — only the two 11U teams currently have it; the button is omitted entirely for teams without it. `gameChangerLabel` and `gameChangerSubtext` are optional and only take effect when `gameChangerUrl` is set.
+`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams). `gameChangerUrl` is set for every team; if a new team is added without it, that card simply shows no button.
 
 ### Current teams
 
-| Age | Coach | teamLabel | Tag | Record | GameChanger button text | GameChanger link |
-|---|---|---|---|---|---|---|
-| 7U | Shawn Leach | — | Coach Pitch | 0-0 | — | — |
-| 8U | Trey Miller | — | Coach Pitch | 0-0 | — | — |
-| 9U | Jake Smith | — | Kid Pitch | 0-0 | — | — |
-| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 | "Team Schedule and Roster" + "Powered by GameChanger" subtext | `web.gc.com/teams/DqLSuG5ean8F` |
-| 11U | Collin White | WHITE | Tournament | 0-0 | "View on GameChanger" (default, no subtext) | `web.gc.com/teams/KGndr0H8M79A` |
+| Age | Coach | teamLabel | Tag | Record | GameChanger link |
+|---|---|---|---|---|---|
+| 7U | Shawn Leach | — | Coach Pitch | 0-0 | `web.gc.com/teams/InZdFM6CqmpU` |
+| 8U | Trey Miller | — | Coach Pitch | 0-0 | `web.gc.com/teams/BW734FfgNW4Y` |
+| 9U | Jake Smith | — | Kid Pitch | 0-0 | `web.gc.com/teams/41nZoo07ilol` |
+| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 | `web.gc.com/teams/DqLSuG5ean8F` |
+| 11U | Collin White | WHITE | Tournament | 0-0 | `web.gc.com/teams/KGndr0H8M79A` |
 
 ### TeamsGrid card design
 
@@ -329,9 +344,9 @@ Cards use a 6-column CSS grid so the layout can be controlled precisely. The fir
 
 The card header shows "Paradise / Yard Goats" with the age badge top-right, coach name, and tag pill. The age badge is a split two-tone design: green top section with the age, and — when `teamLabel` is set — a dark navy bottom strip with the label. A green border wraps the entire badge.
 
-The card body shows the title, description, a record / win pct row, and a green "View Roster" button pinned to the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow. The "View Roster" button links to `#` — update the `href` in `TeamsGrid.tsx` when roster pages are ready.
+The card body shows the title, description, a record / win pct row, and a "Team Schedule and Roster →" button pinned to the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow.
 
-When a team has `gameChangerUrl` set, a second button renders directly below "View Roster" (royal blue `#003DA5`, darkening to `#002B7F` on hover, same shape/typography as "View Roster"). It opens the link in a new tab (`target="_blank"`). The button text is `gameChangerLabel` if set, otherwise defaults to "View on GameChanger" — an arrow (`→`) is always appended. If `gameChangerSubtext` is set, a small caption renders below the button. Currently the Wosko card uses the custom label + subtext ("Team Schedule and Roster" / "Powered by GameChanger"), while the White card uses the default label with no subtext.
+The "Team Schedule and Roster →" button is royal blue (`#003DA5`, darkening to `#002B7F` on hover) and opens the team's `gameChangerUrl` in a new tab. A small "Powered by GameChanger" caption renders below it. The button text and caption are the same on every card and are set in `TeamsGrid.tsx`.
 
 ## Commands
 

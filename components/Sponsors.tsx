@@ -77,11 +77,11 @@ export default function Sponsors() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 mb-10">
             {[
-              { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg", alt: "AmeriDream", bg: "#ffffff", href: "#" },
-              { src: "/images/sponsors/GTG Logo.png", alt: "GTG", bg: "#ffffff", href: "#" },
-              { src: "/images/sponsors/elite-metal-fabricators.png", alt: "Elite Metal Fabricators", bg: "#ffffff", href: "#" },
+              { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg", alt: "AmeriDream", bg: "#ffffff", href: "https://ameridreammtg.com/" },
+              { src: "/images/sponsors/GTG Logo.png", alt: "GTG", bg: "#ffffff", href: "https://gtgsi.com/" },
+              { src: "/images/sponsors/elite-metal-fabricators.png", alt: "Elite Metal Fabricators", bg: "#ffffff", href: "https://www.elitemetalfabinc.com/" },
               { src: "/images/sponsors/Edward Jones.png", alt: "Edward Jones", bg: "#FFD100", href: "#" },
-              { src: "/images/sponsors/TLR Logo.png", alt: "TLR", bg: "#ffffff", href: "#" },
+              { src: "/images/sponsors/TLR Logo.png", alt: "TLR", bg: "#ffffff", href: "https://tlrwelding.com/" },
             ].map(({ src, alt, bg, href }) => (
               <a
                 key={alt}
@@ -121,10 +121,10 @@ export default function Sponsors() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {[
-              { src: "/images/sponsors/Wise Powder Coating.JPEG", alt: "Wise Powder Coating", bg: "#ffffff", href: "#", inset: "inset-2" },
-              { src: "/images/sponsors/ECS-2.png", alt: "ECS", bg: "#ffffff", href: "#", inset: "inset-2" },
+              { src: "/images/sponsors/Wise Powder Coating.JPEG", alt: "Wise Powder Coating", bg: "#ffffff", href: "https://wisepowdercoating.com/", inset: "inset-2" },
+              { src: "/images/sponsors/ECS-2.png", alt: "ECS", bg: "#ffffff", href: "https://engineandcompressor.com/", inset: "inset-2" },
               { src: "/images/sponsors/kmb-machine-logo-transparent.png", alt: "KMB", bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.8 },
-              { src: "/images/sponsors/Consolidated-Wellsite-Services-sponsor.png", alt: "Consolidated Wellsite Services", bg: "#ffffff", href: "#", inset: "inset-0", scale: 1.2 },
+              { src: "/images/sponsors/Consolidated-Wellsite-Services-sponsor.png", alt: "Consolidated Wellsite Services", bg: "#ffffff", href: "https://www.linkedin.com/company/consolidated-wellsite-services", inset: "inset-0", scale: 1.2 },
             ].map(({ src, alt, bg, href, inset, scale }) => (
               <a
                 key={alt}

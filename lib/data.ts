@@ -8,6 +8,7 @@ export const teams = [
     coach: "Shawn Leach",
     wins: 0,
     losses: 0,
+    gameChangerUrl: "https://web.gc.com/teams/InZdFM6CqmpU",
   },
   {
     age: "8U",
@@ -18,6 +19,7 @@ export const teams = [
     coach: "Trey Miller",
     wins: 0,
     losses: 0,
+    gameChangerUrl: "https://web.gc.com/teams/BW734FfgNW4Y",
   },
   {
     age: "9U",
@@ -28,6 +30,7 @@ export const teams = [
     coach: "Jake Smith",
     wins: 0,
     losses: 0,
+    gameChangerUrl: "https://web.gc.com/teams/41nZoo07ilol",
   },
   {
     age: "11U",
@@ -40,8 +43,6 @@ export const teams = [
     wins: 0,
     losses: 0,
     gameChangerUrl: "https://web.gc.com/teams/DqLSuG5ean8F/live?pid=Copy&c=team_share_link",
-    gameChangerLabel: "Team Schedule and Roster",
-    gameChangerSubtext: "Powered by GameChanger",
   },
   {
     age: "11U",
