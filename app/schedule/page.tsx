@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Schedule | Paradise Yard Goats Baseball",
   description:
     "View the full 2026 Paradise Yard Goats game schedule — regular season games, tournaments, and events for all divisions.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/schedule`,
+  },
 };
 
 const tournaments = [

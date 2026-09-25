@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config";
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
   title: "Youth Baseball Teams",
   description:
     "Meet the Paradise Yard Goats baseball teams serving players from 7U through 11U in Paradise, Texas.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/teams`,
+  },
 };
 
 export default function TeamsPage() {
@@ -79,7 +83,7 @@ export default function TeamsPage() {
                 textShadow: "0 4px 24px rgba(0,0,0,0.7)",
               }}
             >
-              5 Teams.
+              6 Teams.
             </h1>
             <p
               className="font-bebas text-green leading-none"

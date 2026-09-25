@@ -32,7 +32,7 @@ export default function Scoreboard() {
         {cells.map((cell, i) => (
           <div
             key={i}
-            className={`flex flex-col items-center text-center px-5 py-4 transition-all duration-700 ease-out ${
+            className={`flex flex-col items-center text-center px-5 py-3 transition-all duration-700 ease-out ${
               i < cells.length - 1 ? "border-r border-white/8 last:border-r-0" : ""
             } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
             style={{ transitionDelay: visible ? `${i * STAGGER_MS}ms` : "0ms" }}

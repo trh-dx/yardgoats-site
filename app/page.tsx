@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config";
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -16,6 +17,9 @@ export const metadata: Metadata = {
     title: "Paradise Yard Goats Baseball | Youth Baseball in Paradise, TX",
     description:
       "Paradise Yard Goats is a youth baseball organization in Paradise, Texas, helping players ages 7U through 11U grow through teamwork, development, and competitive baseball.",
+  },
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/`,
   },
 };
 
@@ -147,11 +151,11 @@ export default function HomePage() {
         {/* ════════════════════════════════════════════════════════════
             SECTION 3 · TEAMS BY AGE GROUP
         ════════════════════════════════════════════════════════════ */}
-        <section className="bg-deep-navy py-20 md:py-28">
+        <section className="bg-deep-navy py-12 md:py-16">
           <div className="max-w-[1280px] mx-auto px-5">
 
             {/* Header */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <p
                 className="font-inter font-bold text-green uppercase tracking-[4px] mb-2"
                 style={{ fontSize: "0.72rem" }}
@@ -172,7 +176,7 @@ export default function HomePage() {
               {TEAMS.map((team) => (
                 <div
                   key={team.age}
-                  className="group flex flex-col items-center text-center bg-charcoal border border-slate hover:border-green/40 rounded-lg px-6 py-8 transition-all duration-300 hover:-translate-y-1"
+                  className="group flex flex-col items-center text-center bg-charcoal border border-slate hover:border-green/40 rounded-lg px-6 py-6 transition-all duration-300 hover:-translate-y-1"
                 >
                   {/* Age */}
                   <span
@@ -184,7 +188,7 @@ export default function HomePage() {
 
                   {/* Label */}
                   <span
-                    className="font-inter font-bold text-white uppercase tracking-[2px] mt-2 mb-6"
+                    className="font-inter font-bold text-white uppercase tracking-[2px] mt-2 mb-5"
                     style={{ fontSize: "clamp(0.6rem, 1.2vw, 0.72rem)" }}
                   >
                     {team.label}

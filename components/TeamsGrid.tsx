@@ -26,12 +26,11 @@ export default function TeamsGrid() {
 
         {/* ── Cards grid ──────────────────────────────────────── */}
         <div className="grid grid-cols-6 gap-3">
-          {teams.map((team, index) => {
-            const colStart = index === 3 ? "lg:col-start-2" : index === 4 ? "lg:col-start-4" : "";
+          {teams.map((team) => {
             return (
             <article
               key={`${team.age}-${team.coach}`}
-              className={`col-span-6 sm:col-span-3 lg:col-span-2 ${colStart} group flex flex-col bg-charcoal border border-royal-blue/30 rounded-lg overflow-hidden hover:border-royal-blue/70 hover:shadow-[0_0_28px_rgba(0,61,165,0.35)] transition-all duration-300`}
+              className={`col-span-6 sm:col-span-3 lg:col-span-2 group flex flex-col bg-charcoal border border-royal-blue/30 rounded-lg overflow-hidden hover:border-royal-blue/70 hover:shadow-[0_0_28px_rgba(0,61,165,0.35)] transition-all duration-300`}
             >
               {/* ── Image area ──────────────────────────── */}
               {"image" in team ? (
@@ -141,32 +140,9 @@ export default function TeamsGrid() {
                   {team.title}
                 </h3>
 
-                <p className="font-inter text-muted-gray text-[0.84rem] leading-relaxed flex-1 mb-4">
+                <p className="font-inter text-muted-gray text-[0.84rem] leading-relaxed flex-1 mb-3">
                   {team.description}
                 </p>
-
-
-                {"wins" in team && "losses" in team && (
-                  <div className="flex items-center pt-3 border-t border-slate mb-4">
-                    <div className="flex-1 text-center">
-                      <div className="font-inter font-bold uppercase tracking-[2px] text-white/40 mb-0.5" style={{ fontSize: "0.6rem" }}>
-                        Record
-                      </div>
-                      <div className="font-bebas text-white leading-none" style={{ fontSize: "2rem" }}>
-                        {team.wins}-{team.losses}
-                      </div>
-                    </div>
-                    <div className="w-px h-10 bg-slate" />
-                    <div className="flex-1 text-center">
-                      <div className="font-inter font-bold uppercase tracking-[2px] text-white/40 mb-0.5" style={{ fontSize: "0.6rem" }}>
-                        Win Pct
-                      </div>
-                      <div className="font-bebas text-green leading-none" style={{ fontSize: "2rem" }}>
-                        {team.wins + team.losses === 0 ? "—" : `.${Math.round((team.wins / (team.wins + team.losses)) * 1000)}`}
-                      </div>
-                    </div>
-                  </div>
-                )}
 
                 {"gameChangerUrl" in team && (
                   <>

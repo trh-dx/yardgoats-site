@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Tryouts",
   description:
     "Your opportunity starts here. Tryout info for 7U, 8U, 9U, and 11U teams in Paradise, Texas. July 12 at The Goat Yard.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/tryouts`,
+  },
 };
 
 const tryouts = [

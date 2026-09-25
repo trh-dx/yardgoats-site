@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/config";
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
   },
   description:
     "Learn about the Paradise Yard Goats mission, coaching philosophy, player development approach, and commitment to youth baseball in Paradise, Texas.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/about`,
+  },
 };
 
 const features = [

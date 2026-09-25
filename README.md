@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | Route | Description |
 |---|---|
 | `/` | Homepage — hero ("Home of The / Paradise Yard Goats / Youth Baseball"), teams by age group, sponsors strip |
-| `/teams` | Hero: "5 Teams. / One Goat Nation." — age group cards (Team Overview header, 5 cards), player spotlights (hidden), CTA band |
+| `/teams` | Hero: "6 Teams. / One Goat Nation." — age group cards (Team Overview header, 6 cards), player spotlights (hidden), CTA band |
 | `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring — **page still exists but is no longer linked from anywhere on the site** (see [Hidden Tryouts Info](#hidden-tryouts-info)) |
 | `/schedule` | Game and tournament schedule |
 | `/field-rentals` | Field rental page — "Baseball Field Rentals" hero, availability strip, facility features, rental option cards, rules checklist, booking CTA |
@@ -207,6 +207,25 @@ export const metadata: Metadata = {
 
 Update `metadataBase` in `app/layout.tsx` if the domain changes.
 
+### Canonical URLs
+
+Every public route sets a self-referencing canonical via `alternates.canonical`, built from `siteConfig.siteUrl` (`https://www.paradiseyardgoats.club`, in `lib/config.ts`). The URLs are absolute, so preview deployments still point at production. The root layout deliberately sets **no** canonical, so no page can inherit the homepage's.
+
+| Route | Canonical | Set in |
+|---|---|---|
+| `/` | `https://www.paradiseyardgoats.club` | `app/page.tsx` |
+| `/teams` | `…/teams` | `app/teams/page.tsx` |
+| `/sponsors` | `…/sponsors` | `app/sponsors/page.tsx` |
+| `/about` | `…/about` | `app/about/page.tsx` |
+| `/contact` | `…/contact` | `app/contact/layout.tsx` (page is a client component) |
+| `/field-rentals` | `…/field-rentals` | `app/field-rentals/page.tsx` |
+| `/schedule` | `…/schedule` | `app/schedule/page.tsx` |
+| `/tryouts` | `…/tryouts` | `app/tryouts/page.tsx` (unlinked but live) |
+
+- No `trailingSlash` in `next.config.ts`, so canonicals have no trailing slash. Next.js renders the root as the bare origin (no `/`); that is equivalent and expected.
+- Query strings (e.g. `utm_*`, `fbclid`) and `#fragments` never appear in the canonical.
+- **New page?** Add `alternates: { canonical: \`${siteConfig.siteUrl}/your-path\` }` to its `metadata` (or its `layout.tsx` if the page is `"use client"`).
+
 ## Mobile Considerations
 
 ### Homepage Hero
@@ -216,6 +235,20 @@ Update `metadataBase` in `app/layout.tsx` if the domain changes.
 - **"Paradise Yard Goats"** — Bebas Neue in white, `clamp(3rem, 9vw, 9rem)`, `whitespace-nowrap`; blue outline (`WebkitTextStroke: 2.5px #1A5FD4`) and subtle dark drop shadow (`textShadow: 2px 3px 6px rgba(0,0,0,0.55)`) for athletic wordmark treatment
 - **"Youth Baseball"** — Bebas Neue in white with a thin royal-blue text stroke (`0.5px`) and subtle blue drop shadow accent; green `3px` bar sits underneath via a `w-fit` wrapper div
 - **Tagline** — `clamp(0.85rem, 1.4vw, 1rem)`, `tracking-[0.8px]`, `leading-relaxed` — tightened from earlier wider spacing for better readability on mobile
+
+### Homepage below the hero
+Spacing below the hero was tightened on 2026-09-25 (hero itself deliberately untouched — verified pixel-identical before/after on desktop and mobile). Page is ~270px shorter on desktop, ~230px on mobile.
+
+| Area | Before | After |
+|---|---|---|
+| Scoreboard strip cells | `py-4` | `py-3` |
+| Teams section padding | `py-20 md:py-28` | `py-12 md:py-16` |
+| Teams header → cards | `mb-12` | `mb-8` |
+| Team card padding / label gap | `py-8` / `mb-6` | `py-6` / `mb-5` |
+| Sponsors section padding (also the gap into the footer) | `py-20 md:py-28` | `py-12 md:py-16` |
+| Sponsors header / Diamond row / logo block gaps | `mb-12` / `mb-10` / `mb-10` | `mb-8` / `mb-8` / `mb-8` |
+
+`Footer.tsx` is shared by every page, so the footer transition was shortened from the Sponsors side only.
 
 ### Teams Page (`/teams`)
 - **Bottom CTA tagline** — "Find your team. Build your confidence. Have Fun." stacks vertically on mobile (`flex-col`) with pipes hidden; restores to inline pipe-separated row on `sm+`
@@ -359,31 +392,30 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
   tag: "Kid Pitch",           // pill badge shown below coach name (Coach Pitch / Kid Pitch / Tournament)
   coach: "Jake Smith",        // rendered as "Coach: Name" in the card header
   teamLabel: "SMITH",         // optional — adds a dark navy strip below the green age badge (used for 11U only)
-  wins: 8,                    // used to display record and calculate win pct
-  losses: 4,
   gameChangerUrl: "https://web.gc.com/teams/...",     // renders the "Team Schedule and Roster →" button at the bottom of the card
 }
 ```
 
-`coach`, `wins`, and `losses` are optional; omitting them hides those elements from the card. Win pct is calculated automatically; displays `—` when both wins and losses are 0. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the two 11U teams). `gameChangerUrl` is set for every team; if a new team is added without it, that card simply shows no button.
+`coach` is optional; omitting it hides the coach line. Team records / win pct were removed from the cards on 2026-09-25 (static 0-0 values would not be maintained) — records live on each team’s GameChanger page. `teamLabel` is optional — only add it when multiple teams share the same age group (currently the three 11U teams). `gameChangerUrl` is set for every team; if a new team is added without it, that card simply shows no button.
 
 ### Current teams
 
-| Age | Coach | teamLabel | Tag | Record | GameChanger link |
-|---|---|---|---|---|---|
-| 7U | Shawn Leach | — | Coach Pitch | 0-0 | `web.gc.com/teams/InZdFM6CqmpU` |
-| 8U | Trey Miller | — | Coach Pitch | 0-0 | `web.gc.com/teams/BW734FfgNW4Y` |
-| 9U | Jake Smith | — | Kid Pitch | 0-0 | `web.gc.com/teams/41nZoo07ilol` |
-| 11U | Jesse Woskowicz | WOSKO | Tournament | 0-0 | `web.gc.com/teams/DqLSuG5ean8F` |
-| 11U | Collin White | WHITE | Tournament | 0-0 | `web.gc.com/teams/KGndr0H8M79A` |
+| Age | Coach | teamLabel | Tag | GameChanger link |
+|---|---|---|---|---|
+| 7U | Shawn Leach | — | Coach Pitch | `web.gc.com/teams/InZdFM6CqmpU` |
+| 8U | Trey Miller | — | Coach Pitch | `web.gc.com/teams/BW734FfgNW4Y` |
+| 9U | Jake Smith | — | Kid Pitch | `web.gc.com/teams/41nZoo07ilol` |
+| 11U | Jesse Woskowicz | WOSKO | Tournament | `web.gc.com/teams/DqLSuG5ean8F` |
+| 11U | Collin White | WHITE | Tournament | `web.gc.com/teams/KGndr0H8M79A` |
+| 11U | Dave Abernathy | ABERNATHY | Tournament | `web.gc.com/teams/yKaSf2NRJC1a` (added 2026-09-25; title "Rise") |
 
 ### TeamsGrid card design
 
-Cards use a 6-column CSS grid so the layout can be controlled precisely. The first three cards (7U, 8U, 9U) each span 2 of 6 columns, filling the row. The two 11U cards each span 2 columns with explicit `col-start` values (2 and 4) so they are centered below the top row with one empty column on each side.
+Cards use a 6-column CSS grid: each card spans 2 columns on `lg` (rows of 3), 3 columns on `sm` (rows of 2), and all 6 on mobile. With six teams this gives two full rows of three on desktop and three rows of two on tablet. (The old `col-start` centering for a 3 + 2 layout was removed when the sixth team was added — if the team count changes to one that leaves a partial row, re-add centering.)
 
-The card header shows "Paradise / Yard Goats" with the age badge top-right, coach name, and tag pill. The age badge is a split two-tone design: green top section with the age, and — when `teamLabel` is set — a dark navy bottom strip with the label. A green border wraps the entire badge.
+The card header shows "Paradise / Yard Goats" with the age badge top-right, coach name, and tag pill. The age badge is a split two-tone design: green top section with the age, and — when `teamLabel` is set — a dark navy bottom strip with the label (the badge widens to fit longer labels like ABERNATHY). A green border wraps the entire badge.
 
-The card body shows the title, description, a record / win pct row, and a "Team Schedule and Roster →" button pinned to the bottom. Cards have a royal blue border at rest that brightens on hover with a blue glow shadow.
+The card body shows the title, description, and a "Team Schedule and Roster →" button pinned to the bottom (description `flex-1` keeps buttons aligned across a row; `mb-3` gap between description and button). Cards have a royal blue border at rest that brightens on hover with a blue glow shadow.
 
 The "Team Schedule and Roster →" button is royal blue (`#003DA5`, darkening to `#002B7F` on hover) and opens the team's `gameChangerUrl` in a new tab. A small "Powered by GameChanger" caption renders below it. The button text and caption are the same on every card and are set in `TeamsGrid.tsx`.
 

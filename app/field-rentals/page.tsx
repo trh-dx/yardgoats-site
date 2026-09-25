@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   },
   description:
     "Reserve field time at The Goat Yard in Paradise, Texas for baseball practices, private lessons, small group workouts, and events.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/field-rentals`,
+  },
 };
 
 const rentalOptions = [

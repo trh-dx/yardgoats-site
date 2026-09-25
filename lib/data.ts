@@ -6,8 +6,6 @@ export const teams = [
     description: "Fundamentals, teamwork, base running, and learning the game.",
     tag: "Coach Pitch",
     coach: "Shawn Leach",
-    wins: 0,
-    losses: 0,
     gameChangerUrl: "https://web.gc.com/teams/InZdFM6CqmpU",
   },
   {
@@ -17,8 +15,6 @@ export const teams = [
     description: "Confidence, field awareness, hitting mechanics, and game experience.",
     tag: "Coach Pitch",
     coach: "Trey Miller",
-    wins: 0,
-    losses: 0,
     gameChangerUrl: "https://web.gc.com/teams/BW734FfgNW4Y",
   },
   {
@@ -28,8 +24,6 @@ export const teams = [
     description: "Competitive reps, stronger fundamentals, pitching development, and tournament play.",
     tag: "Kid Pitch",
     coach: "Jake Smith",
-    wins: 0,
-    losses: 0,
     gameChangerUrl: "https://web.gc.com/teams/41nZoo07ilol",
   },
   {
@@ -40,8 +34,6 @@ export const teams = [
     tag: "Tournament",
     coach: "Jesse Woskowicz",
     teamLabel: "WOSKO",
-    wins: 0,
-    losses: 0,
     gameChangerUrl: "https://web.gc.com/teams/DqLSuG5ean8F/live?pid=Copy&c=team_share_link",
   },
   {
@@ -52,9 +44,17 @@ export const teams = [
     tag: "Tournament",
     coach: "Collin White",
     teamLabel: "WHITE",
-    wins: 0,
-    losses: 0,
     gameChangerUrl: "https://web.gc.com/teams/KGndr0H8M79A/live?pid=Copy&c=team_share_link",
+  },
+  {
+    age: "11U",
+    name: "11U Yard Goats",
+    title: "Rise",
+    description: "Sharpening skills, strengthening leadership, and competing with confidence at the next level.",
+    tag: "Tournament",
+    coach: "Dave Abernathy",
+    teamLabel: "ABERNATHY",
+    gameChangerUrl: "https://web.gc.com/teams/yKaSf2NRJC1a/2026-fall-paradise-yard-goats-abernathy-11u/schedule",
   },
 ];
 

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   },
   description:
     "Support Paradise Yard Goats Baseball through local sponsorship opportunities that help fund equipment, tournament fees, facilities, and player development.",
+  alternates: {
+    canonical: `${siteConfig.siteUrl}/sponsors`,
+  },
 };
 
 const BENEFITS = [

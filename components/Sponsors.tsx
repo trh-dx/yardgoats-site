@@ -5,7 +5,7 @@ export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="relative py-20 md:py-28 overflow-hidden"
+      className="relative py-12 md:py-16 overflow-hidden"
       style={{ background: "#070c15" }}
     >
       {/* Stadium glow */}
@@ -40,7 +40,7 @@ export default function Sponsors() {
       <div className="relative max-w-[1180px] mx-auto px-6">
 
         {/* ── Header ── */}
-        <div className="text-center max-w-[680px] mx-auto mb-12">
+        <div className="text-center max-w-[680px] mx-auto mb-8">
           <span
             className="font-inter font-bold text-[0.72rem] tracking-[4px] uppercase block mb-3"
             style={{ color: "#7AC143" }}
@@ -64,7 +64,7 @@ export default function Sponsors() {
         </div>
 
         {/* ── Premier sponsors ── */}
-        <div className="mb-10">
+        <div className="mb-8">
           <div className="flex items-center gap-4 mb-5">
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
             <span
@@ -76,7 +76,7 @@ export default function Sponsors() {
             <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
           </div>
           {/* Flex-wrap (not grid) so a partial last row centers instead of leaving an orphan hugging the left */}
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
             {[
               { src: "/images/sponsors/AMERIDREAM FOR WEB.jpg", alt: "AmeriDream", bg: "#ffffff", href: "https://ameridreammtg.com/" },
               { src: "/images/sponsors/GTG Logo.png", alt: "GTG", bg: "#ffffff", href: "https://gtgsi.com/" },
