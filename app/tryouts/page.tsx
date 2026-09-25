@@ -303,13 +303,13 @@ export default function TryoutsPage() {
               {/* Text */}
               <div className="flex-1 text-center sm:text-left">
                 <p
-                  className="font-bebas text-white tracking-wide leading-tight"
+                  className="font-bebas text-deep-navy tracking-wide leading-tight"
                   style={{ fontSize: "clamp(1.4rem, 3vw, 1.9rem)" }}
                 >
                   THINK YOU HAVE WHAT IT TAKES?
                 </p>
                 <p
-                  className="font-inter text-white/85 mt-0.5"
+                  className="font-inter text-deep-navy/85 mt-0.5"
                   style={{ fontSize: "0.9rem" }}
                 >
                   Come compete. Earn your spot. Be a Yard Goat.

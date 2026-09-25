@@ -67,7 +67,24 @@ Key colors:
 - Deep navy `#07111F` — page background (used consistently throughout `/sponsors`)
 - Green `#7AC143` — primary accent
 - Royal blue `#003DA5` — structural/info elements
-- Red `#B3261E` — section heading dividers
+- Red `#B3261E` — section heading dividers (no longer used on `/about` or the homepage — the About Mission divider and the homepage sponsors-heading divider in `components/Sponsors.tsx` were switched to green `bg-green` on 2026-09-25)
+
+### Text on green (contrast rule)
+
+Never put white text on a solid green (`#7AC143`) background: it measures 2.20:1, which fails WCAG AA. Use `text-deep-navy` instead (8.60:1). For green buttons, hover with `hover:bg-green-lt` (navy on `#94D45A` = 10.66:1), not `hover:bg-green-dk` (white on it is 3.80:1, still failing). Secondary copy on a green band can use `text-deep-navy/85` (6.76:1).
+
+Corrected on 2026-09-25:
+
+| Page | Element | File |
+|---|---|---|
+| `/` | "Explore Sponsorships" button | `components/Sponsors.tsx` |
+| `/teams` | Green age badges (7U, 8U, 9U, all 11U; plus the image-card badge variant) | `components/TeamsGrid.tsx` |
+| `/sponsors` | "Let's Partner" CTA button | `app/sponsors/page.tsx` |
+| `/field-rentals` | "View Availability & Book Field Time" button; bottom green CTA band heading + copy | `app/field-rentals/page.tsx` |
+| `/tryouts` | Bottom green CTA band heading + copy | `app/tryouts/page.tsx` |
+| `/schedule` | Active division filter button; "View Full Schedule on GameChanger" button | `components/Schedule.tsx` |
+
+Royal-blue buttons keep white text (royal blue with white passes). Green text/lines on navy and translucent green tints are unaffected.
 
 See `.claude/skills/yardgoats-design-system/` for the full design system reference.
 
@@ -411,7 +428,7 @@ All editable content (teams, schedule, sponsor packages) lives in `lib/data.ts`.
 
 ### TeamsGrid card design
 
-Cards use a 6-column CSS grid: each card spans 2 columns on `lg` (rows of 3), 3 columns on `sm` (rows of 2), and all 6 on mobile. With six teams this gives two full rows of three on desktop and three rows of two on tablet. (The old `col-start` centering for a 3 + 2 layout was removed when the sixth team was added — if the team count changes to one that leaves a partial row, re-add centering.)
+Cards use a 6-column CSS grid: each card spans 2 columns on `lg` (rows of 3), 3 columns on `sm` (rows of 2), and all 6 on mobile. With six teams this gives two full rows of three on desktop and three rows of two on tablet. Card spacing is `gap-5 lg:gap-6` (20px mobile/tablet, 24px desktop, between both rows and columns). (The old `col-start` centering for a 3 + 2 layout was removed when the sixth team was added — if the team count changes to one that leaves a partial row, re-add centering.)
 
 The card header shows "Paradise / Yard Goats" with the age badge top-right, coach name, and tag pill. The age badge is a split two-tone design: green top section with the age, and — when `teamLabel` is set — a dark navy bottom strip with the label (the badge widens to fit longer labels like ABERNATHY). A green border wraps the entire badge.
 

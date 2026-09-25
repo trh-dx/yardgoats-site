@@ -197,7 +197,7 @@ export default function AboutPage() {
                   Developing Players.<br />
                   <span className="text-green">Building Character.</span>
                 </h2>
-                <div className="w-12 h-[3px] rounded mb-3" style={{ backgroundColor: "#B3261E" }} />
+                <div className="w-12 h-[3px] bg-green rounded mb-3" />
 
                 <div className="space-y-5">
                   <p

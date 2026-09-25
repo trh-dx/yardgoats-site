@@ -54,7 +54,7 @@ export default function Sponsors() {
             Support Local Players.{" "}
             <span style={{ color: "#7AC143" }}>Grow Your Local Brand.</span>
           </h2>
-          <div className="w-[52px] h-[3px] rounded mx-auto mb-5" style={{ background: "#B3261E" }} />
+          <div className="w-[52px] h-[3px] bg-green rounded mx-auto mb-5" />
           <p
             className="font-inter leading-relaxed"
             style={{ color: "rgba(167,168,170,0.85)", fontSize: "0.97rem" }}
@@ -163,7 +163,7 @@ export default function Sponsors() {
           </p>
           <Link
             href="/sponsors"
-            className="inline-flex items-center bg-green hover:bg-green-dk text-white font-inter font-bold text-[0.85rem] tracking-[2px] uppercase px-8 py-4 rounded transition-colors duration-200"
+            className="inline-flex items-center bg-green hover:bg-green-lt text-deep-navy font-inter font-bold text-[0.85rem] tracking-[2px] uppercase px-8 py-4 rounded transition-colors duration-200"
           >
             Explore Sponsorships
           </Link>

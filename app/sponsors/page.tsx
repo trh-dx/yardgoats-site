@@ -500,7 +500,7 @@ export default function SponsorsPage() {
               {/* Button */}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="flex-shrink-0 inline-flex items-center gap-2 bg-green hover:bg-green-dk text-white font-inter font-bold uppercase tracking-[2px] px-11 py-3.5 rounded transition-all duration-200 hover:-translate-y-0.5"
+                className="flex-shrink-0 inline-flex items-center gap-2 bg-green hover:bg-green-lt text-deep-navy font-inter font-bold uppercase tracking-[2px] px-11 py-3.5 rounded transition-all duration-200 hover:-translate-y-0.5"
                 style={{ fontSize: "0.82rem" }}
               >
                 Let&rsquo;s Partner

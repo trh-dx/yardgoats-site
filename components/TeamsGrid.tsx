@@ -25,7 +25,7 @@ export default function TeamsGrid() {
         </div>
 
         {/* ── Cards grid ──────────────────────────────────────── */}
-        <div className="grid grid-cols-6 gap-3">
+        <div className="grid grid-cols-6 gap-5 lg:gap-6">
           {teams.map((team) => {
             return (
             <article
@@ -51,7 +51,7 @@ export default function TeamsGrid() {
                   />
                   {/* Age badge */}
                   <span
-                    className="absolute top-3 left-3 font-bebas text-white tracking-widest rounded px-3 py-0.5"
+                    className="absolute top-3 left-3 font-bebas text-deep-navy tracking-widest rounded px-3 py-0.5"
                     style={{
                       fontSize: "1.05rem",
                       lineHeight: 1.6,
@@ -80,7 +80,7 @@ export default function TeamsGrid() {
                   >
                     {/* Green top — age */}
                     <div
-                      className="w-full text-center px-3 py-1"
+                      className="w-full text-center px-3 py-1 text-deep-navy"
                       style={{ backgroundColor: "#7AC143", fontSize: "1.3rem", lineHeight: 1.3 }}
                     >
                       {team.age}

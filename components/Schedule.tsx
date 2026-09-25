@@ -66,7 +66,7 @@ export default function Schedule() {
               onClick={() => setActive(div)}
               className={`font-barlow font-bold text-[0.82rem] tracking-[1.5px] uppercase px-5 py-2 rounded border-2 transition-all cursor-pointer ${
                 active === div
-                  ? "bg-green text-white border-green shadow-[0_4px_16px_rgba(46,125,50,0.4)]"
+                  ? "bg-green text-deep-navy border-green shadow-[0_4px_16px_rgba(46,125,50,0.4)]"
                   : "bg-transparent text-gray-lt border-white/20 hover:border-green/60 hover:text-white"
               }`}
             >
@@ -136,7 +136,7 @@ export default function Schedule() {
         <div className="text-center">
           <a
             href={siteConfig.gameChanger}
-            className="inline-flex items-center gap-2 bg-green text-white font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-green hover:bg-green-dk hover:border-green-dk transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-green text-deep-navy font-barlow font-bold text-[0.95rem] tracking-[1.5px] uppercase px-7 py-3 rounded border-2 border-green hover:bg-green-lt hover:border-green-lt transition-all hover:-translate-y-0.5"
           >
             View Full Schedule on GameChanger
           </a>

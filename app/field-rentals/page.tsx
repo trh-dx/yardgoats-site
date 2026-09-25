@@ -171,7 +171,7 @@ export default function FieldRentalsPage() {
                 href={siteConfig.fieldRentals}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green hover:bg-green-dk text-white font-inter font-bold text-[0.8rem] tracking-[2px] uppercase px-7 py-3 rounded transition-colors duration-200"
+                className="bg-green hover:bg-green-lt text-deep-navy font-inter font-bold text-[0.8rem] tracking-[2px] uppercase px-7 py-3 rounded transition-colors duration-200"
               >
                 View Availability &amp; Book Field Time
               </a>
@@ -420,12 +420,12 @@ export default function FieldRentalsPage() {
 
               <div className="flex-1 text-center sm:text-left">
                 <p
-                  className="font-bebas text-white tracking-wide leading-tight"
+                  className="font-bebas text-deep-navy tracking-wide leading-tight"
                   style={{ fontSize: "clamp(1.4rem, 3vw, 1.9rem)" }}
                 >
                   READY TO GET ON THE FIELD?
                 </p>
-                <p className="font-inter text-white/85 mt-0.5" style={{ fontSize: "0.9rem" }}>
+                <p className="font-inter text-deep-navy/85 mt-0.5" style={{ fontSize: "0.9rem" }}>
                   View available times and reserve your field rental through our online booking system.
                 </p>
               </div>
