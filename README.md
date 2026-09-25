@@ -69,6 +69,14 @@ Key colors:
 - Royal blue `#003DA5` — structural/info elements
 - Red `#B3261E` — section heading dividers (no longer used on `/about`, `/field-rentals` or the homepage — the About Mission divider, the Field Rental Rules divider, and the homepage sponsors-heading divider in `components/Sponsors.tsx` were switched to green `bg-green` on 2026-09-25)
 
+### Page column (`site-container`)
+
+Every page section, the nav and the footer use one shared utility, `site-container`, defined in `app/globals.css`: max width **1536px**, centered, side padding **20px** below 1024px and **40px** from 1024px up. Added 2026-09-25 (replaced a mix of `max-w-[1280px]`/`max-w-[1180px]` with `px-5`/`px-6`, which left the homepage strip 30px and sponsors 54px out of line with the nav, inner pages 4px off, and /schedule 54px off). Result: all content starts on the same left edge on every page — 20px on phones, 40px on laptops up to ~1616px wide, then centered (225px at 1920).
+
+- New sections: wrap content in `<div className="site-container">` — don't add a separate `max-w-[…] mx-auto px-…`.
+- To change the site width or margins, edit the utility once.
+- Unused legacy components (`About.tsx`, `Contact.tsx`, `Gallery.tsx`, `Reel.tsx`, `Teams.tsx`) still have the old `max-w-[1180px]`.
+
 ### Text on green (contrast rule)
 
 Never put white text on a solid green (`#7AC143`) background: it measures 2.20:1, which fails WCAG AA. Use `text-deep-navy` instead (8.60:1). For green buttons, hover with `hover:bg-green-lt` (navy on `#94D45A` = 10.66:1), not `hover:bg-green-dk` (white on it is 3.80:1, still failing). Secondary copy on a green band can use `text-deep-navy/85` (6.76:1).
@@ -250,8 +258,9 @@ Every public route sets a self-referencing canonical via `alternates.canonical`,
 - **Overlay** — two separate overlays: desktop uses a left-heavy 105deg gradient (`lg:block`); mobile uses a softer vertical gradient (`block lg:hidden`) so the baseball field image remains visible on small screens
 - **"Home of The"** — Permanent Marker font in green, `clamp(1.23rem, 2.8vw, 1.78rem)`
 - **"Paradise Yard Goats"** — Bebas Neue in white, `clamp(3rem, 9vw, 9rem)`, `whitespace-nowrap`; blue outline (`WebkitTextStroke: 2.5px #1A5FD4`) and subtle dark drop shadow (`textShadow: 2px 3px 6px rgba(0,0,0,0.55)`) for athletic wordmark treatment
-- **"Youth Baseball"** — Bebas Neue in white with a thin royal-blue text stroke (`0.5px`) and subtle blue drop shadow accent; green `3px` bar sits underneath via a `w-fit` wrapper div
-- **Tagline** — `clamp(0.85rem, 1.4vw, 1rem)`, `tracking-[0.8px]`, `leading-relaxed` — tightened from earlier wider spacing for better readability on mobile
+- **"Youth Baseball"** — Bebas Neue in blue `#1A5FD4` (same blue as the headline outline; changed from white on 2026-09-25 — royal blue `#003DA5` was too dark to read at ~2:1, `#1A5FD4` is ~3.3:1, passing AA for large text) with a thin royal-blue text stroke (`0.5px`) and subtle blue drop shadow accent. The green underline bar was removed on 2026-09-25.
+- **"Our Teams" button** — white text with a `#1A5FD4` blue outline (`border-[#1A5FD4]`, changed from white on 2026-09-25); hover still fills white with navy text
+- **Tagline** — "Competitive youth baseball — built on grit, confidence, and great teammates." (changed 2026-09-25 from "Built on teamwork, grit, development, and community pride in Paradise, Texas."). `text-light-gray` (`#CBD5E1`, 12.8:1; was muted gray `#94A3B8`), `clamp(0.9rem, 1.5vw, 1.125rem)` (up to 18px on desktop; was max 16px), `tracking-[0.8px]`, `leading-relaxed`. Top margin `mt-6 lg:mt-4` so the visible gap to "Youth Baseball" (~33–38px) stays just under the ~38px gap to the button.
 
 ### Homepage below the hero
 Spacing below the hero was tightened on 2026-09-25 (hero itself deliberately untouched — verified pixel-identical before/after on desktop and mobile). Page is ~270px shorter on desktop, ~230px on mobile.
@@ -266,6 +275,27 @@ Spacing below the hero was tightened on 2026-09-25 (hero itself deliberately unt
 | Sponsors header / Diamond row / logo block gaps | `mb-12` / `mb-10` / `mb-10` | `mb-8` / `mb-8` / `mb-8` |
 
 `Footer.tsx` is shared by every page, so the footer transition was shortened from the Sponsors side only.
+
+### Homepage quick-facts strip icons (`components/Scoreboard.tsx`)
+Each fact has a green inline-SVG line icon (Lucide shapes, no icon package — the project has none): Paradise, TX → map pin, Age Groups → users, Tournament Ball → trophy, Community Supported → heart. Icons are `aria-hidden`, `strokeWidth` 1.8, `shrink-0`, sized `w-7` → `md:w-8` → `lg:w-7` → `xl:w-9` (28px phones, 32px tablet, 28px at 1024px to keep "Community Supported" on one line, 36px from 1280px). Icon-to-text gap: 6px on phones (stacked), 14px tablet (`sm:gap-3.5`), 10px at 1024px (`lg:gap-2.5` — no room for more without wrapping "Community Supported"), 16px from 1280px (`xl:gap-4`).
+
+| Width | Grid | Icon placement |
+|---|---|---|
+| < 640px (phones) | 2 × 2 | Above the text, centered (no room beside it — "7U · 8U · 9U · 11U" would wrap) |
+| 640–1023px (tablet) | 2 × 2 | Left of the text, text left-aligned |
+| ≥ 1024px (desktop) | 1 row of 4 (`lg:grid-cols-4`) | Left of the text; `lg:px-2.5` keeps "Community Supported" on one line at 1024px |
+
+Values are all white and labels (Home Base, Age Groups, Level of Play, Powered By) are blue `#4A86E8` — changed 2026-09-25 from red/green value accents and gray labels. `#4A86E8` is a lighter tint of the hero blue: the labels are ~10px, so they need 4.5:1 on the charcoal strip (`#4A86E8` = 4.99:1; `#1A5FD4` would only be 3.09:1). The strip's top and bottom 3px borders are royal blue (`border-royal-blue`, changed from green on 2026-09-25). Vertical dividers sit only between cells (cells 0 and 2 below `lg`, cells 0–2 from `lg`) — no divider against the screen edge.
+
+### Homepage Teams by Age Group cards
+Restyled 2026-09-25 from a mockup (background kept plain navy — the mockup's texture was skipped on purpose):
+- **Card border** — `#1A5FD4` blue at 60% with a soft blue glow (`shadow-[0_0_18px_rgba(26,95,212,0.15)]`); hover goes to full blue and a stronger glow. Padding `px-4 sm:px-6` so two-line labels fit on phones.
+- **Label** (Develop Fundamentals, etc.) — Bebas Neue, white, `clamp(1.1rem, 2vw, 1.45rem)` (17.6px phones → 23px desktop), was tiny Inter at ~10–11px.
+- **VIEW TEAM button** — `#1A5FD4` blue outline, white text; hover fills blue (white on `#1A5FD4` = 5.8:1).
+- Age numbers stay green.
+
+### Section-label lines (homepage, /teams, /field-rentals)
+The "Our Teams" (`app/page.tsx`) and "Become a Sponsor" (`components/Sponsors.tsx`) eyebrow labels have a short green line on each side: `<span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />` in a `flex items-center justify-center gap-3 sm:gap-4` row. Also added (2026-09-25) to "Team Overview" (`components/TeamsGrid.tsx`, /teams) and "Facility Features" + "Reserve Your Time" (`app/field-rentals/page.tsx`). Applied only to these five centered labels — add per label on request, not site-wide.
 
 ### Teams Page (`/teams`)
 - **Bottom CTA tagline** — "Find your team. Build your confidence. Have Fun." stacks vertically on mobile (`flex-col`) with pipes hidden; restores to inline pipe-separated row on `sm+`

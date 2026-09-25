@@ -29,7 +29,7 @@ export default function Schedule() {
         }}
       />
 
-      <div className="relative z-10 max-w-[1180px] mx-auto px-6">
+      <div className="relative z-10 site-container">
 
         {/* Header */}
         <div className="flex justify-between items-end mb-6 flex-wrap gap-4">

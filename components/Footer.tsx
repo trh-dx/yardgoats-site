@@ -41,7 +41,7 @@ function ColLink({ href, label }: { href: string; label: string }) {
 export default function Footer() {
   return (
     <footer className="border-t border-royal-blue/20 pt-10 pb-5" style={{ backgroundColor: "#040C17" }}>
-      <div className="max-w-[1280px] mx-auto px-5">
+      <div className="site-container">
 
         {/* ── Main grid ─────────────────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-[auto_1px_1fr_1px_1fr_1px_1fr_1px_1.4fr] gap-0 mb-8 items-start">

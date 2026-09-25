@@ -38,6 +38,18 @@ html {
   .font-barlow { font-family: var(--font-barlow); }
 }
 
+/* Shared page column — nav, every section and footer use this so all left edges line up.
+   Change the width or side padding here, not per section. */
+@utility site-container {
+  width: 100%;
+  max-width: 1536px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
 body {
   background-color: #07111F;
   color: #FFFFFF;

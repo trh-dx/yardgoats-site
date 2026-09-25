@@ -37,16 +37,20 @@ export default function Sponsors() {
         style={{ background: "linear-gradient(to top, #001A3D, transparent)" }}
       />
 
-      <div className="relative max-w-[1180px] mx-auto px-6">
+      <div className="relative site-container">
 
         {/* ── Header ── */}
         <div className="text-center max-w-[680px] mx-auto mb-8">
-          <span
-            className="font-inter font-bold text-[0.72rem] tracking-[4px] uppercase block mb-3"
-            style={{ color: "#7AC143" }}
-          >
-            Become a Sponsor
-          </span>
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3">
+            <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+            <span
+              className="font-inter font-bold text-[0.72rem] tracking-[4px] uppercase"
+              style={{ color: "#7AC143" }}
+            >
+              Become a Sponsor
+            </span>
+            <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+          </div>
           <h2
             className="font-bebas leading-none text-white mb-4"
             style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)" }}

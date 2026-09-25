@@ -74,7 +74,7 @@ export default function SchedulePage() {
           />
 
           <div
-            className="relative max-w-[1180px] mx-auto px-6 flex flex-col justify-center"
+            className="relative site-container flex flex-col justify-center"
             style={{ minHeight: "clamp(380px, 72vh, 680px)" }}
           >
             {/* Breadcrumb */}
@@ -152,7 +152,7 @@ export default function SchedulePage() {
 
         {/* ─── SECTION 2 · TOURNAMENT HIGHLIGHTS ───────────────────── */}
         <section className="py-14 md:py-20" style={{ backgroundColor: "#0a1525" }}>
-          <div className="max-w-[1180px] mx-auto px-6">
+          <div className="site-container">
 
             <div className="text-center mb-10">
               <span
@@ -231,7 +231,7 @@ export default function SchedulePage() {
               backgroundSize: "20px 20px",
             }}
           />
-          <div className="relative max-w-[1180px] mx-auto px-6">
+          <div className="relative site-container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
               {/* GameChanger */}

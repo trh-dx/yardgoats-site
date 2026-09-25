@@ -6,16 +6,20 @@ import { teams } from "@/lib/data";
 export default function TeamsGrid() {
   return (
     <section className="bg-deep-navy py-16 md:py-20">
-      <div className="max-w-[1280px] mx-auto px-5">
+      <div className="site-container">
 
         {/* ── Team Overview header ────────────────────────────── */}
         <div className="text-center mb-10">
-          <span
-            className="font-inter font-bold uppercase tracking-[3px] text-green block mb-2"
-            style={{ fontSize: "0.72rem" }}
-          >
-            Team Overview
-          </span>
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2">
+            <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+            <span
+              className="font-inter font-bold uppercase tracking-[3px] text-green"
+              style={{ fontSize: "0.72rem" }}
+            >
+              Team Overview
+            </span>
+            <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+          </div>
           <h2
             className="font-bebas text-white leading-none"
             style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}

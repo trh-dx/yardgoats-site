@@ -134,7 +134,7 @@ export default function FieldRentalsPage() {
           />
 
           <div
-            className="relative max-w-[1280px] mx-auto px-6 py-12 flex flex-col justify-end"
+            className="relative site-container py-12 flex flex-col justify-end"
             style={{ minHeight: "inherit" }}
           >
             {/* Breadcrumb */}
@@ -187,7 +187,7 @@ export default function FieldRentalsPage() {
 
         {/* ── Field Availability Strip ──────────────────────────────── */}
         <div style={{ backgroundColor: "#003DA5" }} className="py-8">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
 
               {/* Calendar icon */}
@@ -244,15 +244,19 @@ export default function FieldRentalsPage() {
 
         {/* ── Facility Features ────────────────────────────────────── */}
         <section className="bg-charcoal py-12 md:py-16">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
 
             <div className="text-center mb-10">
-              <span
-                className="font-inter font-bold uppercase tracking-[3px] text-green block mb-2"
-                style={{ fontSize: "0.72rem" }}
-              >
-                Facility Features
-              </span>
+              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2">
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+                <span
+                  className="font-inter font-bold uppercase tracking-[3px] text-green"
+                  style={{ fontSize: "0.72rem" }}
+                >
+                  Facility Features
+                </span>
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+              </div>
               <h2
                 className="font-bebas text-white leading-none"
                 style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}
@@ -291,16 +295,20 @@ export default function FieldRentalsPage() {
 
         {/* ── Rental Options ───────────────────────────────────────── */}
         <section className="bg-deep-navy py-14 md:py-20">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
 
             {/* Section heading */}
             <div className="text-center mb-10">
-              <p
-                className="font-inter font-bold text-green uppercase tracking-[4px] mb-2"
-                style={{ fontSize: "0.72rem" }}
-              >
-                Reserve Your Time
-              </p>
+              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2">
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+                <p
+                  className="font-inter font-bold text-green uppercase tracking-[4px]"
+                  style={{ fontSize: "0.72rem" }}
+                >
+                  Reserve Your Time
+                </p>
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+              </div>
               <h2
                 className="font-bebas text-white leading-none tracking-wide"
                 style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}
@@ -357,7 +365,7 @@ export default function FieldRentalsPage() {
 
         {/* ── Rental Rules ─────────────────────────────────────────── */}
         <section id="rental-rules" className="bg-charcoal py-14 md:py-20">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="max-w-[720px]">
 
               <span
@@ -407,7 +415,7 @@ export default function FieldRentalsPage() {
 
         {/* ── Bottom CTA ───────────────────────────────────────────── */}
         <section style={{ backgroundColor: "#7AC143" }} className="py-8">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
 
               <Image

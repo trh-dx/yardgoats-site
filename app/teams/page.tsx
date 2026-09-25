@@ -53,7 +53,7 @@ export default function TeamsPage() {
           />
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1280px] mx-auto px-5 w-full py-12">
+          <div className="relative z-10 site-container w-full py-12">
 
             {/* Breadcrumb */}
             <nav
@@ -114,7 +114,7 @@ export default function TeamsPage() {
             PLAYER SPOTLIGHTS — hidden until real data is ready
         ════════════════════════════════════════════════════════════ */}
         {false && <section className="bg-charcoal py-20 md:py-28">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
 
             {/* Header */}
             <div className="text-center mb-14">

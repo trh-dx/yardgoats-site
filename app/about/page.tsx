@@ -100,7 +100,7 @@ export default function AboutPage() {
             style={{ background: "linear-gradient(to bottom, transparent, #07111F)" }}
           />
 
-          <div className="relative max-w-[1280px] mx-auto px-6 py-10 md:py-16">
+          <div className="relative site-container py-10 md:py-16">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-4">
               <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
@@ -128,7 +128,7 @@ export default function AboutPage() {
 
         {/* ── VIDEO ───────────────────────────────────────────────── */}
         <section aria-labelledby="about-video-heading" className="bg-deep-navy pb-10 md:pb-16">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-6 lg:gap-12 items-center">
 
               <div>
@@ -179,7 +179,7 @@ export default function AboutPage() {
 
         {/* ── MAIN CONTENT ────────────────────────────────────────── */}
         <section className="bg-deep-navy pb-5 md:pb-8">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-12 items-start">
 
               {/* LEFT — Mission */}
@@ -249,7 +249,7 @@ export default function AboutPage() {
 
         {/* ── PHILOSOPHY ──────────────────────────────────────────── */}
         <section className="bg-charcoal pt-5 pb-10 md:pt-8 md:pb-14">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
 
             {/* Top — headline + body */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-12 items-start mb-6 md:mb-8">

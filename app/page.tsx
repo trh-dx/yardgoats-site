@@ -82,7 +82,7 @@ export default function HomePage() {
           />
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1280px] mx-auto px-5 w-full pt-10 pb-16">
+          <div className="relative z-10 site-container w-full pt-10 pb-16">
             <div className="max-w-[580px]">
 
               {/* "HOME OF" — accent script */}
@@ -105,11 +105,12 @@ export default function HomePage() {
                 Paradise Yard Goats
               </h1>
 
-              {/* "YOUTH BASEBALL" — white with green accent bar */}
+              {/* "YOUTH BASEBALL" — blue (same #1A5FD4 as the headline outline) */}
               <div className="mt-1 md:-mt-3 w-fit">
                 <p
-                  className="font-bebas text-white leading-none"
+                  className="font-bebas leading-none"
                   style={{
+                    color: "#1A5FD4",
                     fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
                     letterSpacing: "0.12em",
                     WebkitTextStroke: "0.5px #003DA5",
@@ -118,22 +119,21 @@ export default function HomePage() {
                 >
                   Youth Baseball
                 </p>
-                <div className="h-[3px] bg-green rounded mt-1" />
               </div>
 
               {/* Tagline */}
               <div
-                className="mt-6 font-inter text-muted-gray tracking-[0.8px] leading-relaxed"
-                style={{ fontSize: "clamp(0.85rem, 1.4vw, 1rem)" }}
+                className="mt-6 lg:mt-4 font-inter text-light-gray tracking-[0.8px] leading-relaxed"
+                style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.125rem)" }}
               >
-                <p>Built on teamwork, grit, development, and community pride in Paradise, Texas.</p>
+                <p>Competitive youth baseball — built on grit, confidence, and great teammates.</p>
               </div>
 
               {/* CTA buttons */}
               <div className="flex flex-wrap gap-3 mt-8">
                 <Link
                   href="/teams"
-                  className="inline-flex items-center border-2 border-white text-white font-inter font-bold text-[0.8rem] tracking-[2px] uppercase px-7 py-3 rounded hover:bg-white hover:text-deep-navy transition-all duration-200"
+                  className="inline-flex items-center border-2 border-[#1A5FD4] text-white font-inter font-bold text-[0.8rem] tracking-[2px] uppercase px-7 py-3 rounded hover:bg-white hover:text-deep-navy transition-all duration-200"
                 >
                   Our Teams
                 </Link>
@@ -152,16 +152,20 @@ export default function HomePage() {
             SECTION 3 · TEAMS BY AGE GROUP
         ════════════════════════════════════════════════════════════ */}
         <section className="bg-deep-navy py-12 md:py-16">
-          <div className="max-w-[1280px] mx-auto px-5">
+          <div className="site-container">
 
             {/* Header */}
             <div className="text-center mb-8">
-              <p
-                className="font-inter font-bold text-green uppercase tracking-[4px] mb-2"
-                style={{ fontSize: "0.72rem" }}
-              >
-                Our Teams
-              </p>
+              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2">
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+                <p
+                  className="font-inter font-bold text-green uppercase tracking-[4px]"
+                  style={{ fontSize: "0.72rem" }}
+                >
+                  Our Teams
+                </p>
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+              </div>
               <h2
                 className="font-bebas text-white leading-none"
                 style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}
@@ -176,7 +180,7 @@ export default function HomePage() {
               {TEAMS.map((team) => (
                 <div
                   key={team.age}
-                  className="group flex flex-col items-center text-center bg-charcoal border border-slate hover:border-green/40 rounded-lg px-6 py-6 transition-all duration-300 hover:-translate-y-1"
+                  className="group flex flex-col items-center text-center bg-charcoal border border-[#1A5FD4]/60 hover:border-[#1A5FD4] shadow-[0_0_18px_rgba(26,95,212,0.15)] hover:shadow-[0_0_28px_rgba(26,95,212,0.35)] rounded-lg px-4 sm:px-6 py-6 transition-all duration-300 hover:-translate-y-1"
                 >
                   {/* Age */}
                   <span
@@ -188,8 +192,8 @@ export default function HomePage() {
 
                   {/* Label */}
                   <span
-                    className="font-inter font-bold text-white uppercase tracking-[2px] mt-2 mb-5"
-                    style={{ fontSize: "clamp(0.6rem, 1.2vw, 0.72rem)" }}
+                    className="font-bebas text-white uppercase tracking-[1.5px] leading-[1.1] mt-2 mb-5"
+                    style={{ fontSize: "clamp(1.1rem, 2vw, 1.45rem)" }}
                   >
                     {team.label}
                   </span>
@@ -197,7 +201,7 @@ export default function HomePage() {
                   {/* Button */}
                   <Link
                     href={team.href}
-                    className="mt-auto border border-white/60 text-white font-inter font-bold text-[0.7rem] tracking-[2px] uppercase px-5 py-2 rounded group-hover:border-green group-hover:text-green transition-colors duration-200"
+                    className="mt-auto border border-[#1A5FD4] text-white font-inter font-bold text-[0.7rem] tracking-[2px] uppercase px-5 py-2 rounded group-hover:bg-[#1A5FD4] transition-colors duration-200"
                   >
                     View Team
                   </Link>

@@ -40,7 +40,7 @@ export default function Nav() {
             : "bg-deep-navy/95 backdrop-blur-md"
         } border-b border-royal-blue/25`}
       >
-        <div className="max-w-[1280px] mx-auto px-5 w-full flex items-center justify-between gap-6">
+        <div className="site-container w-full flex items-center justify-between gap-6">
 
           {/* ── Logo ─────────────────────────────────── */}
           <Link href="/" onClick={close} className="flex items-center gap-3 shrink-0">

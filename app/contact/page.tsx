@@ -172,7 +172,7 @@ export default function ContactPage() {
             style={{ background: "linear-gradient(to bottom, transparent, #07111F)" }}
           />
 
-          <div className="relative max-w-[1280px] mx-auto px-6 py-8 md:py-12">
+          <div className="relative site-container py-8 md:py-12">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-4">
               <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
@@ -199,7 +199,7 @@ export default function ContactPage() {
             DOM order is intro → form → details so mobile and keyboard order
             match; on lg the grid moves details under the intro in column 1. */}
         <section className="bg-deep-navy pb-10 md:pb-14">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] lg:grid-rows-[auto_1fr] gap-y-7 lg:gap-x-12 lg:gap-y-8 items-start">
 
               {/* Intro */}

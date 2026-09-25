@@ -162,7 +162,7 @@ export default function SponsorsPage() {
             }}
           />
 
-          <div className="relative max-w-[1280px] mx-auto px-6 pt-10 pb-8 md:pt-16 md:pb-10 flex items-center gap-10 md:gap-16">
+          <div className="relative site-container pt-10 pb-8 md:pt-16 md:pb-10 flex items-center gap-10 md:gap-16">
 
             {/* Text */}
             <div className="flex-1 max-w-[640px]">
@@ -237,7 +237,7 @@ export default function SponsorsPage() {
             LOGO WALL
         ════════════════════════════════════════════════════════════ */}
         <section className="bg-deep-navy pt-2">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
 
             {/* Heading */}
             <div className="text-center mb-8">
@@ -342,7 +342,7 @@ export default function SponsorsPage() {
             COMMUNITY IMPACT — funding categories + stats
         ════════════════════════════════════════════════════════════ */}
         <section className="bg-deep-navy py-8 md:py-12">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
               {BENEFITS.map(({ label, body, icon }) => (
                 <div key={label} className="flex flex-col items-center text-center gap-3">
@@ -404,7 +404,7 @@ export default function SponsorsPage() {
             SPONSORSHIP PACKAGES
         ════════════════════════════════════════════════════════════ */}
         <section className="bg-deep-navy pt-2 md:pt-3">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
 
             {/* Section heading — inline scroll margin because the global [id] rule (72px) is unlayered and would beat a Tailwind utility */}
             <div
@@ -430,7 +430,7 @@ export default function SponsorsPage() {
             WHY PARTNER
         ════════════════════════════════════════════════════════════ */}
         <section className="bg-deep-navy pt-10 md:pt-12">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div
               className="rounded-xl p-6 md:p-8"
               style={{ border: "1px solid rgba(0,61,165,0.28)", background: "#0a1628" }}
@@ -477,7 +477,7 @@ export default function SponsorsPage() {
             CTA BANNER
         ════════════════════════════════════════════════════════════ */}
         <section className="bg-deep-navy pt-10 pb-12 md:pb-16">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div
               className="rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8"
               style={{ background: "#0a1628", border: "1px solid rgba(122,193,67,0.22)" }}

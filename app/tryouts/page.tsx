@@ -50,7 +50,7 @@ export default function TryoutsPage() {
           />
 
           {/* Content */}
-          <div className="relative max-w-[1280px] mx-auto px-6 py-12 flex flex-col justify-end" style={{ minHeight: "inherit" }}>
+          <div className="relative site-container py-12 flex flex-col justify-end" style={{ minHeight: "inherit" }}>
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-[0.72rem] font-inter uppercase tracking-[1.5px] text-white/40 mb-6">
               <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
@@ -86,7 +86,7 @@ export default function TryoutsPage() {
 
         {/* ── Info Strip ───────────────────────────────────────────── */}
         <div style={{ backgroundColor: "#003DA5" }} className="py-5">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
 
               {/* Date */}
@@ -134,7 +134,7 @@ export default function TryoutsPage() {
 
         {/* ── Upcoming Tryouts ─────────────────────────────────────── */}
         <section className="bg-deep-navy py-16 md:py-20">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
 
             {/* Section heading */}
             <h2
@@ -208,7 +208,7 @@ export default function TryoutsPage() {
 
         {/* ── What To Expect + What To Bring ───────────────────────── */}
         <section className="bg-charcoal py-16 md:py-24">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
 
               {/* Left — process steps */}
@@ -288,7 +288,7 @@ export default function TryoutsPage() {
 
         {/* ── Bottom CTA ───────────────────────────────────────────── */}
         <section style={{ backgroundColor: "#7AC143" }} className="py-8">
-          <div className="max-w-[1280px] mx-auto px-6">
+          <div className="site-container">
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
 
               {/* Logo */}
