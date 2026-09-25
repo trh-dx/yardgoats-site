@@ -243,10 +243,10 @@ export default function FieldRentalsPage() {
         </div>
 
         {/* ── Facility Features ────────────────────────────────────── */}
-        <section className="bg-charcoal py-16 md:py-24">
+        <section className="bg-charcoal py-12 md:py-16">
           <div className="max-w-[1280px] mx-auto px-6">
 
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <span
                 className="font-inter font-bold uppercase tracking-[3px] text-green block mb-2"
                 style={{ fontSize: "0.72rem" }}
@@ -290,11 +290,11 @@ export default function FieldRentalsPage() {
         </section>
 
         {/* ── Rental Options ───────────────────────────────────────── */}
-        <section className="bg-deep-navy py-20 md:py-28">
+        <section className="bg-deep-navy py-14 md:py-20">
           <div className="max-w-[1280px] mx-auto px-6">
 
             {/* Section heading */}
-            <div className="text-center mb-14">
+            <div className="text-center mb-10">
               <p
                 className="font-inter font-bold text-green uppercase tracking-[4px] mb-2"
                 style={{ fontSize: "0.72rem" }}
@@ -356,7 +356,7 @@ export default function FieldRentalsPage() {
         </section>
 
         {/* ── Rental Rules ─────────────────────────────────────────── */}
-        <section id="rental-rules" className="bg-charcoal py-20 md:py-28">
+        <section id="rental-rules" className="bg-charcoal py-14 md:py-20">
           <div className="max-w-[1280px] mx-auto px-6">
             <div className="max-w-[720px]">
 
@@ -372,9 +372,9 @@ export default function FieldRentalsPage() {
               >
                 Field Rental <span className="text-green">Rules</span>
               </h2>
-              <div className="w-12 h-[3px] rounded mb-10" style={{ backgroundColor: "#B3261E" }} />
+              <div className="w-12 h-[3px] bg-green rounded mb-7" />
 
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {rentalRules.map((rule) => (
                   <li key={rule} className="flex items-start gap-4">
                     <span

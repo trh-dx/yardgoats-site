@@ -67,7 +67,7 @@ Key colors:
 - Deep navy `#07111F` — page background (used consistently throughout `/sponsors`)
 - Green `#7AC143` — primary accent
 - Royal blue `#003DA5` — structural/info elements
-- Red `#B3261E` — section heading dividers (no longer used on `/about` or the homepage — the About Mission divider and the homepage sponsors-heading divider in `components/Sponsors.tsx` were switched to green `bg-green` on 2026-09-25)
+- Red `#B3261E` — section heading dividers (no longer used on `/about`, `/field-rentals` or the homepage — the About Mission divider, the Field Rental Rules divider, and the homepage sponsors-heading divider in `components/Sponsors.tsx` were switched to green `bg-green` on 2026-09-25)
 
 ### Text on green (contrast rule)
 
@@ -327,6 +327,16 @@ Page sections (top to bottom):
 4. **Rental Options** — 4 cards in a 1→2→4 column responsive grid (Team Practice, Private Lesson, Weekend Block, Event/Tournament), each with a "Book Now" button
 5. **Rental Rules** — Checklist section with green checkmark circles (anchor target `#rental-rules`)
 6. **Bottom CTA** — Green banner with logo and "Book Field Time" button
+
+### Field Rentals spacing
+
+The three middle sections were tightened on 2026-09-25 to match About / Sponsors / Contact (page ~250px shorter on desktop and tablet, ~190px on mobile):
+
+| Section | Before | After |
+|---|---|---|
+| Facility Features padding / header gap | `py-16 md:py-24` / `mb-12` | `py-12 md:py-16` / `mb-10` |
+| Rental Options padding / header gap | `py-20 md:py-28` / `mb-14` | `py-14 md:py-20` / `mb-10` |
+| Rental Rules padding / divider gap / list spacing | `py-20 md:py-28` / `mb-10` / `space-y-5` | `py-14 md:py-20` / `mb-7` / `space-y-4` |
 
 ### Updating the Booking URL
 
