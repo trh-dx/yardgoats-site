@@ -122,6 +122,57 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* ── VIDEO ───────────────────────────────────────────────── */}
+        <section aria-labelledby="about-video-heading" className="bg-deep-navy pb-10 md:pb-16">
+          <div className="max-w-[1280px] mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-6 lg:gap-12 items-center">
+
+              <div>
+                <span
+                  className="font-inter font-bold uppercase tracking-[3px] text-green block mb-2"
+                  style={{ fontSize: "0.72rem" }}
+                >
+                  Inside the Yard Goats
+                </span>
+                <h2
+                  id="about-video-heading"
+                  className="font-bebas text-white leading-none mb-2"
+                  style={{ fontSize: "clamp(2.2rem, 4vw, 3rem)" }}
+                >
+                  This Is <span className="text-green">Yard Goats Baseball</span>
+                </h2>
+                <div className="w-12 h-[3px] rounded mb-3" style={{ backgroundColor: "#003DA5" }} />
+                <p className="font-inter text-light-gray leading-relaxed" style={{ fontSize: "1rem" }}>
+                  Small-town pride. Big-game energy.
+                </p>
+              </div>
+
+              {/* aspect-video reserves the 16:9 box (source is 1920×1080) so nothing shifts while metadata loads */}
+              <div
+                className="relative aspect-video w-full overflow-hidden rounded-xl border border-royal-blue/35 bg-black"
+                style={{ boxShadow: "0 18px 40px rgba(0,0,0,0.45)" }}
+              >
+                <video
+                  className="absolute inset-0 h-full w-full object-contain"
+                  controls
+                  controlsList="nodownload"
+                  playsInline
+                  preload="metadata"
+                  aria-label="Paradise Yard Goats Baseball team video"
+                >
+                  <source src="/videos/yard-goats-about.mp4" type="video/mp4" />
+                  Your browser can&apos;t play this video.{" "}
+                  <a href="/videos/yard-goats-about.mp4" className="text-green underline">
+                    Download the Yard Goats video (MP4)
+                  </a>
+                  .
+                </video>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* ── MAIN CONTENT ────────────────────────────────────────── */}
         <section className="bg-deep-navy pb-5 md:pb-8">
           <div className="max-w-[1280px] mx-auto px-6">

@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring — **page still exists but is no longer linked from anywhere on the site** (see [Hidden Tryouts Info](#hidden-tryouts-info)) |
 | `/schedule` | Game and tournament schedule |
 | `/field-rentals` | Field rental page — "Baseball Field Rentals" hero, availability strip, facility features, rental option cards, rules checklist, booking CTA |
-| `/about` | Organization story and coaches |
+| `/about` | Header, "Inside the Yard Goats" video, mission + five values cards, "From The Dirt Up" philosophy pillars |
 | `/sponsors` | Full sponsors page — hero, logo wall, community impact (benefits + stats), packages, why partner, CTA |
 | `/contact` | "Contact Paradise Yard Goats Baseball" — contact form and info |
 
@@ -51,6 +51,8 @@ lib/
 public/
   images/             # Photos and sponsor logos
     sponsors/         # Individual sponsor logo files
+  videos/
+    yard-goats-about.mp4  # About page video (1920×1080, ~66s, ~19 MB)
   yardgoatsimage.png  # Primary team logo
 ```
 
@@ -147,6 +149,24 @@ Set `bg` to match the logo's intended background color (white for most, or a bra
 ### Updating Sponsor Packages
 
 Package names, prices, and perks are defined in `lib/data.ts` under `export const sponsors`. Tier-specific card styling (colors, shadows, badges) lives in the `cfg` object in `components/SponsorPackages.tsx`.
+
+## About Page
+
+`app/about/page.tsx` sections (top to bottom):
+
+1. **Header** — breadcrumb, "More than baseball." eyebrow, "About The Yard Goats" title. No fixed/min height; padding `py-10 md:py-16`
+2. **Video** — "Inside the Yard Goats" eyebrow, "This Is Yard Goats Baseball" heading, **royal blue** (`#003DA5`) divider (the other About dividers stay red), "Small-town pride. Big-game energy." On `lg` the text sits in a narrow left column beside the video (`grid-cols-[1fr_2fr]`); stacks on smaller screens
+3. **Mission** — "Developing Players. Building Character." beside five values cards (Coaching, Competitive Schedule, Player Development, Character First, Community)
+4. **Philosophy** — "From The Dirt Up" intro and four pillar cards (Baseball Skills, Teamwork, Confidence, Sportsmanship); 4 columns on `lg`, 2 on `sm`, 1 on mobile
+
+### About video
+
+- File: `public/videos/yard-goats-about.mp4`, served at `/videos/yard-goats-about.mp4`. **It must be committed with the page** — if `public/videos/` isn't pushed, the player breaks in production
+- Native `<video>` with `controls`, `playsInline` (keeps iPhone playback inline), `preload="metadata"`; no autoplay or loop; `aria-label` plus a fallback download link (shown only in browsers that can't play the video)
+- `controlsList="nodownload"` hides the Download item in the player's menu (Chrome, Edge, and other Chromium browsers). It does **not** prevent downloading — the file is still reachable at its direct URL
+- The frame is an `aspect-video` box (16:9, matching the 1920×1080 source) so the layout doesn't shift while the video loads; the video uses `object-contain` so it's never cropped
+- On page load the browser fetches ~1.7 MB of the file, not the whole video
+- Optional improvements not yet done: the MP4's metadata (`moov` box) sits at the end of the file, which costs an extra request before playback — `ffmpeg -i in.mp4 -c copy -movflags +faststart out.mp4` fixes it without re-encoding. There's no `poster` image (iPhone may show a black frame before play) and no captions track
 
 ## SEO & Metadata
 
