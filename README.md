@@ -67,7 +67,7 @@ Key colors:
 - Deep navy `#07111F` — page background (used consistently throughout `/sponsors`)
 - Green `#7AC143` — primary accent
 - Royal blue `#003DA5` — structural/info elements
-- Red `#B3261E` — section heading dividers (no longer used on `/about`, `/field-rentals` or the homepage — the About Mission divider, the Field Rental Rules divider, and the homepage sponsors-heading divider in `components/Sponsors.tsx` were switched to green `bg-green` on 2026-09-25)
+- Red `#B3261E` — section heading dividers (no longer used on `/about`, `/field-rentals`, `/contact` or the homepage — the About Mission divider, the Field Rental Rules divider, the homepage sponsors-heading divider in `components/Sponsors.tsx` (2026-09-25) and the Contact "Get In Touch" divider (2026-09-30) were switched to green `bg-green`)
 
 ### Page column (`site-container`)
 
@@ -102,7 +102,7 @@ See `.claude/skills/yardgoats-design-system/` for the full design system referen
 
 - Headline: "Support Local Players. Grow Your Local Brand."
 - Supporting copy about what sponsorships fund
-- **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR at `aspect-[3/2]`; 2 per row mobile / 3 on sm / 5 on xl
+- **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR, ECHO AFC Transportation at `aspect-[3/2]`; 2 per row on phones, 3 per row from sm, all 6 in one row from xl (`xl:w-[calc(16.666%-13.333px)]`, changed 2026-09-30 when ECHO AFC made six Diamond sponsors — 5-across left one orphan). If the Diamond count changes, adjust the xl width so rows stay full
 - **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services; 2×2 on mobile/tablet, one row of 4 on `lg`. Card aspect `5/2` mobile → `4/1` sm → `3/1` lg (KMB `scale: 1.8`; Consolidated Wellsite Services `scale: 1.1`)
 - Both tiers use `flex flex-wrap justify-center` so a partial last row is centered — card layout matches `/sponsors` exactly; keep the two in sync
 - "Packages starting at $250" callout
@@ -116,7 +116,7 @@ The full tier breakdown lives on the dedicated sponsors page (see below).
 
 1. **Hero** — "Invest in Players / Impact the Community" with YG logo (280px, `lg+` only) and a green **"View Sponsorship Packages ↓"** button (navy text on green) that jumps to `#packages`
 2. **Logo Wall** — "Our Proud Sponsors" heading with star divider, then tiered display. Both tiers use `flex flex-wrap justify-center` (not grid) so a partial last row is centered instead of left-aligned:
-   - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR at `aspect-[3/2]`; 2 per row mobile / 3 on sm / 5 on xl
+   - **Diamond Sponsors** — AmeriDream, GTG, Elite Metal Fabricators, Edward Jones, TLR, ECHO AFC Transportation at `aspect-[3/2]`; 2 per row on phones, 3 per row from sm, all 6 in one row from xl (`xl:w-[calc(16.666%-13.333px)]`, changed 2026-09-30 when ECHO AFC made six Diamond sponsors — 5-across left one orphan). If the Diamond count changes, adjust the xl width so rows stay full
    - **Supporting Sponsors** — Wise Powder Coating, ECS, KMB, Consolidated Wellsite Services; 2×2 on mobile/tablet, one row of 4 on `lg`. Card aspect `5/2` mobile → `4/1` sm → `3/1` lg (KMB `scale: 1.8`; Consolidated Wellsite Services `scale: 1.1` — higher clips the top of its icon)
 3. **Community Impact** — one section holding the 4-icon benefits grid (Tournament Fees, Equipment, Practice Facilities, Player Development) and, 32px below it, the stats bar (250+ players, 10+ tournaments, 1 mission, COUNTLESS memories)
 4. **Sponsorship Packages** — Single ($250), Double ($500), Triple ($1,000), Grand Slam ($2,000+). `id="packages"` sits on the heading with an inline `scrollMarginTop: 96px` (inline because the global `[id] { scroll-margin-top: 72px }` rule in `globals.css` is unlayered and overrides Tailwind `scroll-mt-*` utilities). Card buttons are bottom-aligned via flex column + `mt-auto`
@@ -153,7 +153,17 @@ To add a **Diamond** sponsor, drop the logo in `public/images/sponsors/` and add
 
 To add a **Supporting** sponsor, add to `SUPPORTING_LOGOS` in `app/sponsors/page.tsx` and the supporting grid in `components/Sponsors.tsx`.
 
-Each sponsor card shows a **"Visit Sponsor"** hover overlay with an external link icon and opens the `href` in a new tab. Use `"#"` as a placeholder until the real URL is known. Links must be updated in both `app/sponsors/page.tsx` and `components/Sponsors.tsx`.
+Each sponsor card shows a **"Visit Sponsor"** hover overlay with an external link icon and opens the `href` in a new tab. For a sponsor with no website yet, leave `href` out entirely (don't use `"#"`): the card then renders as a plain, non-clickable tile with no "Visit Sponsor" overlay. Edward Jones and KMB still use the older `"#"` placeholder. Links must be updated in both `app/sponsors/page.tsx` and `components/Sponsors.tsx`.
+
+### Sponsor card reveal animation
+
+On `/sponsors`, the Diamond and Supporting logo cards fade in and rise 14px as they scroll into view (400ms ease-out, once per visit). Added 2026-09-30; no animation library — `components/RevealOnScroll.tsx` (IntersectionObserver) + the `[data-reveal]` rules in `app/globals.css`.
+
+- **Opt in:** add `data-reveal` to any element on a page that renders `<RevealOnScroll />`.
+- **Stagger:** cards entering together are grouped into visual rows; delay is 75ms × position within the row and restarts each row (phones: 0 / 75ms per row of 2).
+- **Trigger:** when ~15% of a card is visible above the bottom 8% of the screen. Cards already scrolled past on a mid-page load appear instantly.
+- **Safety:** hidden state only applies with scripting on and motion allowed — no-JS and `prefers-reduced-motion` visitors see cards immediately. If the script never starts, a CSS failsafe shows the cards after 2.5s.
+- Uses `transform` (Tailwind hover lifts use `translate`, so they don't conflict); the transition and delay are removed from each card once it has appeared. Logo images keep normal lazy loading.
 
 ### Current sponsor links
 
@@ -164,6 +174,7 @@ Each sponsor card shows a **"Visit Sponsor"** hover overlay with an external lin
 | Elite Metal Fabricators | Diamond | `https://www.elitemetalfabinc.com/` |
 | Edward Jones | Diamond | `#` — **still needed** |
 | TLR | Diamond | `https://tlrwelding.com/` |
+| ECHO AFC Transportation | Diamond | none yet — **still needed** (added 2026-09-30; card renders without a link) |
 | Wise Powder Coating | Supporting | `https://wisepowdercoating.com/` |
 | ECS | Supporting | `https://engineandcompressor.com/` |
 | KMB | Supporting | `#` — **still needed** |

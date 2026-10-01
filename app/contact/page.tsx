@@ -210,7 +210,7 @@ export default function ContactPage() {
                 >
                   Get In Touch
                 </h2>
-                <div className="w-10 h-[3px] rounded mb-4" style={{ backgroundColor: "#B3261E" }} />
+                <div className="w-10 h-[3px] bg-green rounded mb-4" />
                 <p
                   className="font-inter text-muted-gray leading-relaxed"
                   style={{ fontSize: "0.97rem" }}

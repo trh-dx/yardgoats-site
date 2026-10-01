@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import SponsorPackages from "@/components/SponsorPackages";
+import RevealOnScroll from "@/components/RevealOnScroll";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -124,6 +125,8 @@ const PREMIER_LOGOS = [
   { src: "/images/sponsors/elite-metal-fabricators.png",                             alt: "Elite Metal Fabricators",  bg: "#ffffff", href: "https://www.elitemetalfabinc.com/" },
   { src: "/images/sponsors/Edward Jones.png",                                         alt: "Edward Jones",             bg: "#FFD100", href: "#" },
   { src: "/images/sponsors/TLR Logo.png",                                             alt: "TLR",                     bg: "#ffffff", href: "https://tlrwelding.com/" },
+  // No website yet — renders as a non-clickable card (no "Visit Sponsor" overlay) until href is added
+  { src: "/images/sponsors/echo-afc-transportation.png",                             alt: "ECHO AFC Transportation",  bg: "#ffffff" },
 ];
 
 const SUPPORTING_LOGOS = [
@@ -270,18 +273,31 @@ export default function SponsorsPage() {
 
             {/* Flex-wrap (not grid) so a partial last row centers instead of leaving an orphan hugging the left */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              {PREMIER_LOGOS.map(({ src, alt, bg, href }) => (
-                <a
-                  key={alt}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative w-[calc(50%-8px)] sm:w-[calc(33.333%-10.667px)] xl:w-[calc(20%-12.8px)] aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block"
-                  style={{ background: bg }}
-                >
+              {PREMIER_LOGOS.map(({ src, alt, bg, href }) => {
+                const cardClass = "group relative w-[calc(50%-8px)] sm:w-[calc(33.333%-10.667px)] xl:w-[calc(16.666%-13.333px)] aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block";
+                const logo = (
                   <div className="absolute inset-3">
                     <Image src={src} alt={alt} fill className="object-contain" />
                   </div>
+                );
+                if (!href) {
+                  return (
+                    <div key={alt} data-reveal className={cardClass} style={{ background: bg }}>
+                      {logo}
+                    </div>
+                  );
+                }
+                return (
+                <a
+                  key={alt}
+                  data-reveal
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClass}
+                  style={{ background: bg }}
+                >
+                  {logo}
                   <div className="absolute inset-0 flex items-end justify-center pb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ background: "linear-gradient(to top, rgba(7,17,31,0.82) 0%, transparent 65%)" }}>
                     <span className="flex items-center gap-1.5 font-inter font-bold uppercase tracking-[1.5px] text-white" style={{ fontSize: "0.72rem" }}>
                       Visit Sponsor
@@ -293,7 +309,8 @@ export default function SponsorsPage() {
                     </span>
                   </div>
                 </a>
-              ))}
+                );
+              })}
             </div>
 
             {/* Supporting */}
@@ -312,6 +329,7 @@ export default function SponsorsPage() {
               {SUPPORTING_LOGOS.map(({ src, alt, bg, href, inset, scale }) => (
                 <a
                   key={alt}
+                  data-reveal
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -515,6 +533,8 @@ export default function SponsorsPage() {
 
       </main>
       <Footer />
+      {/* Fades the [data-reveal] sponsor cards in as they scroll into view */}
+      <RevealOnScroll />
     </>
   );
 }
