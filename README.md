@@ -22,14 +22,14 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Route | Description |
 |---|---|
-| `/` | Homepage — hero ("Home of The / Paradise Yard Goats / Youth Baseball"), teams by age group, sponsors strip |
+| `/` | Homepage — hero ("Home of The / Paradise Yard Goats / Youth Baseball"), quick-facts strip with icons, teams by age group, Schedules & Live Scores (GameChanger widget), sponsors strip |
 | `/teams` | Hero: "6 Teams. / One Goat Nation." — age group cards (Team Overview header, 6 cards), player spotlights (hidden), CTA band |
 | `/tryouts` | Tryout dates with age-group cards (clock icon, time, register CTA), what to expect, what to bring — **page still exists but is no longer linked from anywhere on the site** (see [Hidden Tryouts Info](#hidden-tryouts-info)) |
 | `/schedule` | Game and tournament schedule |
-| `/field-rentals` | Field rental page — "Baseball Field Rentals" hero, availability strip, facility features, rental option cards, rules checklist, booking CTA |
+| `/field-rentals` | Field rental page — "Baseball Field Rentals" hero, availability strip, facility features, rental option cards (Book Now → Swift; "Ask About Events" → /contact), rules checklist, booking CTA |
 | `/about` | Header, "Inside the Yard Goats" video, mission + five values cards, "From The Dirt Up" philosophy pillars |
-| `/sponsors` | Full sponsors page — hero, logo wall, community impact (benefits + stats), packages, why partner, CTA |
-| `/contact` | "Contact Paradise Yard Goats Baseball" — contact form and info |
+| `/sponsors` | Full sponsors page — hero, logo wall (scroll-reveal animation), community impact (benefits + stats), packages, why partner, CTA |
+| `/contact` | "Contact Paradise Yard Goats Baseball" — contact form (Cloudflare Turnstile spam check, emails via Resend) and info |
 
 ## Project Structure
 
@@ -37,17 +37,21 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 app/                  # Next.js App Router pages
   sponsors/
     page.tsx          # Dedicated sponsors page
+  api/contact/
+    route.ts          # Contact form endpoint — verifies Cloudflare Turnstile, then emails via Resend
 components/           # Shared UI components
   Nav.tsx             # Fixed top navigation (links: Home, Teams, Field Rentals, About, Sponsors, Contact — Tryouts link removed, see Hidden Tryouts Info)
   Footer.tsx          # Site footer (5-col grid; Quick Links includes Field Rentals; Age Groups shows "7U - 11U"; Sponsors links "Our Sponsors" and "Become a Sponsor" both go to /sponsors)
-  Scoreboard.tsx      # Homepage score/stats bar
+  Scoreboard.tsx      # Homepage quick-facts strip (inline SVG icons, 2×2 below lg / 4 across from lg)
+  GameChangerSchedule.tsx # Homepage "Schedules & Live Scores" — official GameChanger widget (client component)
+  RevealOnScroll.tsx  # Scroll-triggered fade/rise for [data-reveal] elements (used on /sponsors)
   Sponsors.tsx        # Homepage sponsors strip — headline, logo wall, starting price, CTA to /sponsors
   SponsorPackages.tsx # Interactive pricing cards used on /sponsors (client component)
   TeamsGrid.tsx       # Teams page age-group cards (7U, 8U, 9U, 11U) — imports from lib/data.ts
   Schedule.tsx        # Schedule table/list
 lib/
   data.ts             # Teams, schedule, and sponsor package data
-  config.ts           # Site-wide config (social links, email, external URLs)
+  config.ts           # Site-wide config (site URL, social links, email, external URLs)
 public/
   images/             # Photos and sponsor logos
     sponsors/         # Individual sponsor logo files
@@ -305,6 +309,18 @@ Restyled 2026-09-25 from a mockup (background kept plain navy — the mockup's t
 - **VIEW TEAM button** — `#1A5FD4` blue outline, white text; hover fills blue (white on `#1A5FD4` = 5.8:1).
 - Age numbers stay green.
 
+### Homepage Schedules & Live Scores (GameChanger widget)
+
+Between "Teams By Age Group" and the sponsors section (added 2026-09-30). `components/GameChangerSchedule.tsx` loads the official GameChanger SDK (`https://widgets.gc.com/static/js/sdk.v1.js`) once via `next/script` and calls `window.GC.team.schedule.init({ target, widgetId, layout: "vertical", maxVerticalGamesVisible: 200 })`. The SDK injects a cross-origin iframe and resizes it itself — style only the frame around it.
+
+- **Adding teams:** add an entry to `SCHEDULE_TEAMS` at the top of the component (`key`, `label`, `coach`, `widgetId`, `containerId`). Only listed teams appear; with 2+ teams, tabs (desktop) and a labeled dropdown (phones) appear automatically. `coach` must match `lib/data.ts` — that's where the "Open in GameChanger" link comes from. Currently only **11U Wosko** (widget `216f7a1f-e02f-4546-8426-50fdd9497864`, container `gc-schedule-widget-dect`); still needed: 7U Leach, 8U Miller, 9U Smith, 11U White, 11U Abernathy.
+- **No duplicates:** `init()` replaces the container's contents and runs once per container (React dev double-mount and leaving/returning to `/` are safe).
+- **States:** "Loading schedule…" until the iframe loads; if the SDK fails or nothing loads within 15s, a short message shows and the GameChanger link remains.
+- The widget block is capped at **720px** and centered (`max-w-[720px]`) so each game row stays readable — at full width the opponent name and the date/score drifted ~900px apart.
+- **Fixed heading:** a bar above the scroll box ("Paradise Yard Goats" + the active team's `label`, and "Powered by GameChanger") stays visible while the games scroll. GameChanger's own header is inside its iframe and scrolls with the list (visible only when scrolled to the very top); it can't be pinned or reliably hidden from our side. With 2+ teams the bar follows the selected tab.
+- `layout: "vertical"` forces a top-to-bottom list on every screen size (GameChanger otherwise shows a side-scrolling strip on wide screens).
+- **Starts at the latest games:** GameChanger always lists games oldest-first and its iframe can't be scrolled from our page, and the widget has no sort option. So `maxVerticalGamesVisible: 200` makes it render every game with no inner scroll, our own box (`max-h-[480px] overflow-y-auto`, ~3 games tall) clips it, and a ResizeObserver scrolls our box to the bottom once GameChanger sizes the frame — staying pinned while the list loads, but never moving it after the visitor scrolls up. Mouse wheel / touch over the widget scroll our box. Note: the bottom is the **last game on the schedule**, so if many future games are scheduled, the visitor starts at the farthest one. On Windows, GameChanger's own empty inner scrollbar track still shows faintly inside the frame (cross-origin; can't be hidden).
+
 ### Section-label lines (homepage, /teams, /field-rentals)
 The "Our Teams" (`app/page.tsx`) and "Become a Sponsor" (`components/Sponsors.tsx`) eyebrow labels have a short green line on each side: `<span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />` in a `flex items-center justify-center gap-3 sm:gap-4` row. Also added (2026-09-25) to "Team Overview" (`components/TeamsGrid.tsx`, /teams) and "Facility Features" + "Reserve Your Time" (`app/field-rentals/page.tsx`). Applied only to these five centered labels — add per label on request, not site-wide.
 
@@ -365,7 +381,7 @@ Page sections (top to bottom):
 1. **Hero** — "Baseball Field Rentals" (white + green) with "THE GOAT YARD" eyebrow, subtitle, green primary button (booking URL), white outline "Rental Rules" button (anchor-scrolls to rules section)
 2. **Availability strip** — Royal blue band with calendar icon, description, and "Open Booking Calendar" button
 3. **Facility Features** — 5-column grid (Lighted Field, Turf & Infield, Dugouts, Parking, Restrooms) with icon, title, and description
-4. **Rental Options** — 4 cards in a 1→2→4 column responsive grid (Team Practice, Private Lesson, Weekend Block, Event/Tournament), each with a "Book Now" button
+4. **Rental Options** — 4 cards in a 1→2→4 column responsive grid (Team Practice, Private Lesson, Weekend Block, Event/Tournament); the first three have "Book Now" (Swift booking), Event/Tournament has "Ask About Events" (→ /contact)
 5. **Rental Rules** — Checklist section with green checkmark circles (anchor target `#rental-rules`)
 6. **Bottom CTA** — Green banner with logo and "Book Field Time" button
 
@@ -393,13 +409,13 @@ Rules are defined in the `rentalRules` array at the top of `app/field-rentals/pa
 
 ### Adding or Editing Rental Option Cards
 
-Cards are defined in the `rentalOptions` array at the top of `app/field-rentals/page.tsx`. Each card has a `title` and `desc`.
+Cards are defined in the `rentalOptions` array at the top of `app/field-rentals/page.tsx`. Each card has a `title` and `desc`, and gets a **Book Now** button to the Swift booking site (new tab) by default. Add an optional `cta: { label, href }` to use a different button — e.g. **Event or Tournament Inquiry** uses "Ask About Events" → `/contact` (same tab, added 2026-10-02).
 
 ---
 
 ## Contact Form
 
-`/contact` is a server-side wired contact form. Submissions POST to `app/api/contact/route.ts`, which sends email via [Resend](https://resend.com).
+`/contact` is a server-side wired contact form, protected by Cloudflare Turnstile. Submissions POST to `app/api/contact/route.ts`, which verifies the Turnstile token and then sends email via [Resend](https://resend.com).
 
 ### Email configuration
 
@@ -410,7 +426,17 @@ Cards are defined in the `rentalOptions` array at the top of `app/field-rentals/
 | Reply-To | Visitor's submitted email address |
 | Subject | `New Contact Form: {interest}` |
 
-### Environment variable
+### Environment variables
+
+| Variable | Where | Purpose |
+|---|---|---|
+| `RESEND_API_KEY` | Vercel Production (server only) | Sends the email |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Vercel Production (public) | Renders the Turnstile widget |
+| `TURNSTILE_SECRET_KEY` | Vercel Production (server only) | Verifies tokens with Cloudflare — never exposed to the browser |
+
+All three are configured in **Vercel → Settings → Environment Variables → Production** (confirmed 2026-10-02). Vercel applies variable changes only to **new** deployments, so redeploy after adding or changing one.
+
+Preview deployments don't have the Turnstile keys, so the form shows a notice and can't be sent there. For local development, `.env.local` (git-ignored, never deployed) holds Cloudflare's public test keys — see Spam protection below.
 
 `RESEND_API_KEY` must be set as a Vercel Secret scoped to **Production**. It is read only via `process.env.RESEND_API_KEY` in the server-side route — never exposed to the client. The variable is not needed locally unless testing email sending; the form will return a safe error message if it is missing.
 
@@ -425,8 +451,27 @@ Cards are defined in the `rentalOptions` array at the top of `app/field-rentals/
 | I'm Interested In | Yes |
 | Message | Yes |
 
+### Spam protection (Cloudflare Turnstile)
+
+Added 2026-10-02 (it had never been in the codebase before).
+
+- **Widget:** rendered explicitly (`api.js?render=explicit`, loaded once via `next/script`) above **Send Message**, dark theme; `flexible` size, or `compact` when the form is narrower than 300px (small phones). Rendered once per container and removed on unmount, so it never duplicates.
+- **Button:** disabled until Cloudflare issues a token. A ref guard blocks a second submit even on a fast double-click.
+- **Fresh token per attempt:** tokens are single-use, so after any failed or network-errored submission the widget is reset; the visitor's typed fields are kept.
+- **Messages:** widget load error → "The verification check couldn't load…"; expiry/timeout → "The verification check expired…"; no site key (previews) → form disabled with an email fallback.
+- **Server (fails closed, before Resend is touched):** missing secret → 500; missing token → 400; Cloudflare `success:false` (invalid, expired or reused token) → 403; hostname not `paradiseyardgoats.club` / `www.paradiseyardgoats.club` → 403; Cloudflare unreachable (8s timeout) → 503. Reasons are logged server-side (error codes only — never the secret or token).
+- **Local testing:** `.env.local` (git-ignored) holds Cloudflare's public **test** keys (`1x00000000000000000000AA` / `1x0000000000000000000000000000000AA`). Those report hostname `example.com` with `result_with_testing_key: true`, which the route accepts only when `NODE_ENV !== "production"` — a production server rejects any test-key result. Without `RESEND_API_KEY` locally, a verified submission stops at "Server email configuration is missing." (no email sent).
+
+### After deploying — manual checks
+
+1. Open `https://www.paradiseyardgoats.club/contact`: the Turnstile widget appears above **Send Message** with **no** red "For testing only" strip (that strip means test keys are in use).
+2. In Cloudflare → Turnstile, the widget's hostnames include `paradiseyardgoats.club` and `www.paradiseyardgoats.club`.
+3. Send one real message from the live site and confirm it arrives at `paradiseyardgoats@gmail.com` with a working Reply-To.
+4. If the form says "temporarily unavailable" or "Server email configuration is missing", a Production variable is missing or the deployment predates it — check Vercel and redeploy.
+
 ### Form states
 
+- **Waiting for verification** — button disabled until the Turnstile check passes
 - **Sending** — button shows "Sending…" and is disabled to prevent duplicate submissions
 - **Success** — form clears and a "Message Received!" confirmation screen replaces the form
 - **Error** — a red error message appears above the submit button; form remains editable
@@ -440,6 +485,10 @@ Every failure path returns JSON — there is no blank 500 response:
 | `RESEND_API_KEY` missing | 500 `{ error: "Server email configuration is missing." }` |
 | Malformed request body | 400 `{ error: "Invalid request body." }` |
 | Missing required fields | 400 `{ error: "Missing required fields." }` |
+| `TURNSTILE_SECRET_KEY` missing | 500 `{ error: "The contact form is temporarily unavailable. Please email us directly." }` |
+| Missing Turnstile token | 400 `{ error: "Please complete the verification check before sending." }` |
+| Token invalid / expired / reused, wrong hostname, or test key in production | 403 `{ error: "Verification failed or expired. Please complete the check again and resend." }` |
+| Cloudflare siteverify unreachable | 503 `{ error: "We couldn't verify the form right now. Please try again in a moment." }` |
 | Resend API error | 500 `{ error: "Failed to send message. Please try again." }` (name/message/statusCode logged server-side only) |
 | Unexpected exception | 500 `{ error: "An unexpected error occurred. Please try again." }` |
 

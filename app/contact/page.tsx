@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Script from "next/script";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -18,6 +19,23 @@ const FIELD_IDS: Record<keyof Fields, string> = {
   pMsg:   "contact-message",
 };
 const REQUIRED_ORDER: (keyof Fields)[] = ["pName", "pEmail", "pInt", "pMsg"];
+
+// ── Cloudflare Turnstile (spam protection) ──
+// Public site key only; the secret stays server-side in /api/contact, which verifies every token
+// before anything is emailed. Without a site key (e.g. preview builds) the form can't be sent.
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+type TurnstileApi = {
+  render: (el: HTMLElement, options: Record<string, unknown>) => string;
+  reset: (widgetId: string) => void;
+  remove: (widgetId: string) => void;
+};
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
+type TurnstileStatus = "loading" | "verified" | "expired" | "error";
 
 const socials = [
   {
@@ -78,6 +96,65 @@ export default function ContactPage() {
   const [serverError, setServerError] = useState("");
   const successRef = useRef<HTMLHeadingElement>(null);
 
+  // Turnstile widget state — a token is single-use, so every submit attempt gets a fresh one
+  const [tsToken, setTsToken] = useState("");
+  const [tsStatus, setTsStatus] = useState<TurnstileStatus>("loading");
+  const [tsScriptFailed, setTsScriptFailed] = useState(false);
+  const tsWidgetId = useRef<string | null>(null);
+  const tsContainer = useRef<HTMLDivElement | null>(null);
+  // Blocks a second submit immediately (state updates don't land between two fast clicks)
+  const sendingRef = useRef(false);
+
+  const renderTurnstile = useCallback((el: HTMLDivElement) => {
+    const api = window.turnstile;
+    if (!api || !TURNSTILE_SITE_KEY || tsWidgetId.current) return;
+    tsWidgetId.current = api.render(el, {
+      sitekey: TURNSTILE_SITE_KEY,
+      theme: "dark",
+      // "flexible" needs at least 300px; very narrow phones get the compact widget
+      size: el.clientWidth >= 300 ? "flexible" : "compact",
+      callback: (token: string) => {
+        setTsToken(token);
+        setTsStatus("verified");
+      },
+      "expired-callback": () => {
+        setTsToken("");
+        setTsStatus("expired");
+      },
+      "timeout-callback": () => {
+        setTsToken("");
+        setTsStatus("expired");
+      },
+      "error-callback": () => {
+        setTsToken("");
+        setTsStatus("error");
+      },
+    });
+  }, []);
+
+  // Widget container mounted (first visit, revisit, or React dev double-mount): render once,
+  // and remove the widget when the container goes away so it never duplicates
+  const tsContainerCallback = useCallback(
+    (el: HTMLDivElement | null) => {
+      tsContainer.current = el;
+      if (!el) return;
+      renderTurnstile(el);
+      return () => {
+        if (tsWidgetId.current) {
+          window.turnstile?.remove(tsWidgetId.current);
+          tsWidgetId.current = null;
+        }
+      };
+    },
+    [renderTurnstile]
+  );
+
+  const resetTurnstile = () => {
+    setTsToken("");
+    setTsStatus("loading");
+    if (tsWidgetId.current) window.turnstile?.reset(tsWidgetId.current);
+  };
+
   useEffect(() => {
     if (sent) successRef.current?.focus();
   }, [sent]);
@@ -90,6 +167,7 @@ export default function ContactPage() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (sendingRef.current) return;
     if (sending) return;
     const errs: Errors = {};
     if (!fields.pName.trim())                                     errs.pName  = "Please enter your name.";
@@ -103,24 +181,38 @@ export default function ContactPage() {
       return;
     }
 
+    if (!TURNSTILE_SITE_KEY) {
+      setServerError("The contact form is temporarily unavailable. Please email us at paradiseyardgoats@gmail.com.");
+      return;
+    }
+    if (!tsToken) {
+      setServerError("Please complete the verification check above the Send button.");
+      return;
+    }
+
+    sendingRef.current = true;
     setSending(true);
     setServerError("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(fields),
+        body: JSON.stringify({ ...fields, turnstileToken: tsToken }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
+        // Keep what they typed; the used token is spent, so get a fresh one for the retry
         setServerError(data.error ?? "Something went wrong. Please try again.");
+        resetTurnstile();
       } else {
         setFields(EMPTY);
         setSent(true);
       }
     } catch {
       setServerError("Network error. Please check your connection and try again.");
+      resetTurnstile();
     } finally {
+      sendingRef.current = false;
       setSending(false);
     }
   }
@@ -365,6 +457,31 @@ export default function ContactPage() {
                       {errorText("pMsg")}
                     </div>
 
+                    {/* Spam check (Cloudflare Turnstile) */}
+                    <div>
+                      {TURNSTILE_SITE_KEY && (
+                        <Script
+                          id="cf-turnstile-api"
+                          src={TURNSTILE_SCRIPT}
+                          strategy="afterInteractive"
+                          onReady={() => {
+                            if (tsContainer.current) renderTurnstile(tsContainer.current);
+                          }}
+                          onError={() => setTsScriptFailed(true)}
+                        />
+                      )}
+                      <div ref={tsContainerCallback} className="min-h-[65px] flex justify-center" />
+                      <p aria-live="polite" className="font-inter text-[0.78rem] text-center mt-1.5 text-white/60 empty:hidden">
+                        {!TURNSTILE_SITE_KEY
+                          ? "Spam protection isn't set up on this version of the site, so the form can't be sent. Please email paradiseyardgoats@gmail.com."
+                          : tsScriptFailed || tsStatus === "error"
+                            ? "The verification check couldn't load. Please refresh the page and try again, or email us."
+                            : tsStatus === "expired"
+                              ? "The verification check expired. Please complete it again."
+                              : ""}
+                      </p>
+                    </div>
+
                     {/* Server error */}
                     {serverError && (
                       <p role="alert" className="font-inter text-[#F07070] text-[0.85rem] text-center">
@@ -375,8 +492,8 @@ export default function ContactPage() {
                     {/* Submit */}
                     <button
                       type="submit"
-                      disabled={sending}
-                      aria-disabled={sending}
+                      disabled={sending || !tsToken}
+                      aria-disabled={sending || !tsToken}
                       className="w-full bg-green text-deep-navy font-inter font-bold uppercase tracking-[2px] py-3.5 rounded transition-all duration-200 hover:bg-green-lt hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
                       style={{ fontSize: "0.85rem" }}
                     >

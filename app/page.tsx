@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Scoreboard from "@/components/Scoreboard";
 import Sponsors from "@/components/Sponsors";
+import GameChangerSchedule from "@/components/GameChangerSchedule";
 
 export const metadata: Metadata = {
   title: {
@@ -213,7 +214,42 @@ export default function HomePage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════
-            SECTION 4 · SPONSORS
+            SECTION 4 · SCHEDULES & LIVE SCORES (GameChanger widget)
+        ════════════════════════════════════════════════════════════ */}
+        <section className="bg-deep-navy pb-12 md:pb-16">
+          <div className="site-container">
+
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2">
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+                <p
+                  className="font-inter font-bold text-green uppercase tracking-[4px]"
+                  style={{ fontSize: "0.72rem" }}
+                >
+                  Follow The Action
+                </p>
+                <span aria-hidden="true" className="h-[2px] w-6 sm:w-8 bg-green rounded-full" />
+              </div>
+              <h2
+                className="font-bebas text-white leading-none"
+                style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}
+              >
+                Schedules &amp; Live Scores
+              </h2>
+              <div className="w-12 h-[3px] bg-royal-blue rounded mx-auto mt-3" />
+              <p className="font-inter text-muted-gray mt-4" style={{ fontSize: "0.97rem" }}>
+                Choose your team to follow the latest games.
+              </p>
+            </div>
+
+            <GameChangerSchedule />
+
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════
+            SECTION 5 · SPONSORS
         ════════════════════════════════════════════════════════════ */}
         <Sponsors />
 

@@ -32,6 +32,8 @@ const rentalOptions = [
   {
     title: "Event or Tournament Inquiry",
     desc: "Contact us about special events, tournaments, camps, or larger rental needs.",
+    // Inquiries go to our contact page instead of the Swift booking system
+    cta: { label: "Ask About Events", href: "/contact" },
   },
 ];
 
@@ -342,19 +344,33 @@ export default function FieldRentalsPage() {
                     >
                       {card.desc}
                     </p>
-                    <a
-                      href={siteConfig.fieldRentals}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-inter font-bold uppercase tracking-[2px] text-white text-center py-2.5 px-4 rounded transition-all duration-200 hover:opacity-90"
-                      style={{
-                        fontSize: "0.72rem",
-                        backgroundColor: "#003DA5",
-                        border: "1.5px solid #003DA5",
-                      }}
-                    >
-                      Book Now
-                    </a>
+                    {"cta" in card && card.cta ? (
+                      <Link
+                        href={card.cta.href}
+                        className="font-inter font-bold uppercase tracking-[2px] text-white text-center py-2.5 px-4 rounded transition-all duration-200 hover:opacity-90"
+                        style={{
+                          fontSize: "0.72rem",
+                          backgroundColor: "#003DA5",
+                          border: "1.5px solid #003DA5",
+                        }}
+                      >
+                        {card.cta.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={siteConfig.fieldRentals}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-inter font-bold uppercase tracking-[2px] text-white text-center py-2.5 px-4 rounded transition-all duration-200 hover:opacity-90"
+                        style={{
+                          fontSize: "0.72rem",
+                          backgroundColor: "#003DA5",
+                          border: "1.5px solid #003DA5",
+                        }}
+                      >
+                        Book Now
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
