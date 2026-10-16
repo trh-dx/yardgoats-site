@@ -492,6 +492,10 @@ Every failure path returns JSON — there is no blank 500 response:
 | Resend API error | 500 `{ error: "Failed to send message. Please try again." }` (name/message/statusCode logged server-side only) |
 | Unexpected exception | 500 `{ error: "An unexpected error occurred. Please try again." }` |
 
+### Email output escaping
+
+Form values are visitor-controlled, so every field is HTML-escaped (`escapeHtml` in `route.ts`) before it goes into the Resend email body. A message containing `<a>`, `<img>`, or other markup shows up as plain text in the inbox instead of rendering. Line breaks are stripped from the Interest value before it's used in the email subject. (Added 2026-10-16.)
+
 ---
 
 ## Data

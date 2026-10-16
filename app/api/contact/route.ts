@@ -62,6 +62,18 @@ async function verifyTurnstile(token: string, secret: string, remoteip: string |
   return { ok: true };
 }
 
+// ── Email output escaping ─────────────────────────────────────────────────────
+// Form values are visitor-controlled, so they're escaped before going into the
+// email HTML — otherwise a message could inject links, images, or markup.
+function escapeHtml(value: unknown): string {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
@@ -118,16 +130,17 @@ export async function POST(req: NextRequest) {
       from: "Paradise Yard Goats <forms@paradiseyardgoats.club>",
       to: "paradiseyardgoats@gmail.com",
       replyTo: pEmail,
-      subject: `New Contact Form: ${pInt}`,
+      // Line breaks stripped so the subject stays a single header line
+      subject: `New Contact Form: ${String(pInt).replace(/[\r\n]+/g, " ")}`,
       html: `
         <h2>New message from the Paradise Yard Goats contact form</h2>
         <table cellpadding="6" style="border-collapse:collapse;font-family:sans-serif;font-size:15px;">
-          <tr><td><strong>Name</strong></td><td>${pName}</td></tr>
-          <tr><td><strong>Email</strong></td><td>${pEmail}</td></tr>
-          <tr><td><strong>Phone</strong></td><td>${pPhone || "—"}</td></tr>
-          <tr><td><strong>Player Age</strong></td><td>${pAge || "—"}</td></tr>
-          <tr><td><strong>Interest</strong></td><td>${pInt}</td></tr>
-          <tr><td><strong>Message</strong></td><td style="white-space:pre-wrap">${pMsg}</td></tr>
+          <tr><td><strong>Name</strong></td><td>${escapeHtml(pName)}</td></tr>
+          <tr><td><strong>Email</strong></td><td>${escapeHtml(pEmail)}</td></tr>
+          <tr><td><strong>Phone</strong></td><td>${escapeHtml(pPhone || "—")}</td></tr>
+          <tr><td><strong>Player Age</strong></td><td>${escapeHtml(pAge || "—")}</td></tr>
+          <tr><td><strong>Interest</strong></td><td>${escapeHtml(pInt)}</td></tr>
+          <tr><td><strong>Message</strong></td><td style="white-space:pre-wrap">${escapeHtml(pMsg)}</td></tr>
         </table>
       `,
     });
