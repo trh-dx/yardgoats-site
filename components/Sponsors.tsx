@@ -87,8 +87,7 @@ export default function Sponsors() {
               { src: "/images/sponsors/elite-metal-fabricators.png", alt: "Elite Metal Fabricators", bg: "#ffffff", href: "https://www.elitemetalfabinc.com/" },
               { src: "/images/sponsors/Edward Jones.png", alt: "Edward Jones", bg: "#FFD100", href: "#" },
               { src: "/images/sponsors/TLR Logo.png", alt: "TLR", bg: "#ffffff", href: "https://tlrwelding.com/" },
-              // No website yet — renders as a non-clickable card (no "Visit Sponsor" overlay) until href is added
-              { src: "/images/sponsors/echo-afc-transportation.png", alt: "ECHO AFC Transportation", bg: "#ffffff" },
+              { src: "/images/sponsors/echo-afc-transportation.png", alt: "ECHO AFC Transportation", bg: "#ffffff", href: "https://echoafc.com/" },
             ].map(({ src, alt, bg, href }) => {
               const cardClass = "group relative w-[calc(50%-8px)] sm:w-[calc(33.333%-10.667px)] xl:w-[calc(16.666%-13.333px)] aspect-[3/2] rounded-xl overflow-hidden ring-1 ring-white/20 block";
               const logo = (

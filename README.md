@@ -178,7 +178,7 @@ On `/sponsors`, the Diamond and Supporting logo cards fade in and rise 14px as t
 | Elite Metal Fabricators | Diamond | `https://www.elitemetalfabinc.com/` |
 | Edward Jones | Diamond | `#` — **still needed** |
 | TLR | Diamond | `https://tlrwelding.com/` |
-| ECHO AFC Transportation | Diamond | none yet — **still needed** (added 2026-09-30; card renders without a link) |
+| ECHO AFC Transportation | Diamond | `https://echoafc.com/` (added 2026-10-16) |
 | Wise Powder Coating | Supporting | `https://wisepowdercoating.com/` |
 | ECS | Supporting | `https://engineandcompressor.com/` |
 | KMB | Supporting | `#` — **still needed** |
